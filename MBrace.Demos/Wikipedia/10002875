@@ -1,0 +1,190 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Science|Science desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Science/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Science/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Science/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Science/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Science/2007 March 11|[[Wikipedia:Reference desk/Archives/Science/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Science|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Science Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Science/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== new technology ==
+
+dear sir, 
+   please tell me about new inventions & research works.
+<small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/202.88.252.28|202.88.252.28]] ([[User talk:202.88.252.28|talk]]) 04:19, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Dear sir, please make this question a little more specific. Thank you. − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 07:05, 10 March 2007 (UTC)
+
+There are a number of magazines devoted to this type of info, such as [[Popular Science]].  I'd go to the library and look through those mags, if I were you.  Another option is to go to any news site, like [[CNN]], and look through their science section. [[User:StuRat|StuRat]] 00:11, 11 March 2007 (UTC)
+:[[Technology]]? This question is wide open. [[User:Nimur|Nimur]] 19:50, 11 March 2007 (UTC)
+
+Intriguing question!  According to [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&f=S&l=50&d=PTXT&RS=ISD%2F20070305-%3E20070312&Refine=Refine+Search&Refine=Refine+Search&Query=+ISD%2F3%2F6%2F2007-%3E3%2F12%2F2007 this page], the 44 newest inventions are:
+
+
+
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=1&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Space-based server network architecture]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=2&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Stable pharmaceutical compositions containing 7-substituted-3,5-dihydroxyheptanoic acids or 7-substituted-3,5-dihydroxyheptenoic acids]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=3&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Multiple network protocol encoder/decoder and data processor]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=4&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Hybrid Tea rose plant named `Hadque`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=5&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Miniature rose plant named `Meigenpi`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=6&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Nectarine tree name `Nectareine`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=7&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Chrysanthemum plant named `Sunny Yoolympia`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=8&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Nemesia plant named `Inupcream`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=9&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Poinsettia plant named `Duepremmar`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=10&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Photinia plant named `Parbri`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=11&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Chrysanthemum plant named `Yorockport`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=12&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 New Guinea Impatiens plant named `Duerivdared`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=13&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 New Guinea Impatiens plant named `Dueriimbu`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=14&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Nemesia plant named `Inuppink`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=15&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Nemesia plant named `Intraiyel`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=16&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Hibiscus rosa-sinensis plant named `ISLAND MAGIC`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=17&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Lantana plant named `Robpatcha`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=18&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Phlox plant named `Delilah`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=19&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Persicaria plant named `Fat Domino`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=20&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Hibiscus rosa-sinensis plant named `Hollywood`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=21&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Variety of geranium named `Pendec`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=22&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Strawberry plant named `DPI Rubygem`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=23&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Mini Impatiens plant named `Immicora`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=24&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Geranium plant named `SIL RUBEN`]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=25&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Wide dynamic range vector data raster display]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=26&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Environmentally sealed shipping container]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=27&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Mailbox top adornment]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=28&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Forklift truck]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=29&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Support jack]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=30&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Mobile platform for contactless load inspection, especially for containers on transportation means]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=31&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Movable container]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=32&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Garbage can]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=33&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Garbage can]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=34&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Garbage can]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=35&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Sink grid]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=36&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Painter's bucket]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=37&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Spraying system for a cleaning wiper or cleaning mop]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=38&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Upright vacuum cleaner canister body]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=39&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Vacuum floor polisher]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=40&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Combination wet and dry vacuum appliance]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=41&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Washing machine]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=42&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Electronic identification device for pets]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=43&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Birdhouse entrance]
+# [http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&amp;Sect2=HITOFF&amp;u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&amp;r=44&amp;f=G&amp;l=50&amp;d=PTXT&amp;p=1&amp;p=1&amp;S1=%40PD%3E%3D20070306%3C%3D20070312&amp;OS=+ISD/3/6/2007-%3E3/12/2007&amp;RS=ISD/20070306-%3E20070312 Air pump for aquaria]
+
+
+
+
+--<b>[[User:TotoBaggins|TotoBaggins]]</b> 15:19, 12 March 2007 (UTC)
+
+::I never knew there were so many plants being "invented" [[User:Capuchin|Capuchin]] 13:16, 13 March 2007 (UTC)
+
+== Dove behavioural experiment ==
+
+I have once read about a behavioural conditioning experiment with doves. They were given food at random intervals. The doves thought they were rewarded for their behaviour and developed individual bizarre routines and movements in order to get the food. Does anybody have a reference about this experiment. Thanks, [[User:Cacycle|Cacycle]]
+:Take a look at [[B.F. Skinner#Superstition in the pigeon]]. --[[User:JWSchmidt|JWSchmidt]] 05:30, 10 March 2007 (UTC)
+::The pigeons might develop a habit like turning circles clockwise, or head bobbing in a seeming belief that it would make the food come. Then consider people who have lucky routines. Basketball Coach Adolph Rupp of the University of Kentucky would reportedly have to buy a pack of gum from the same stand and get a fresh towel from the supply room before each home game for good luck. If a person does something once (like wear a certain shirt before a test) and a good result occurs (like a good grade) it can become the "lucky exam shirt" to be worn to all tests even 30 years later. Not a bit more logical than pigeons. [[User:Edison|Edison]] 03:54, 11 March 2007 (UTC)
+:::Presumably if they're still taking exams 30 years later, a new lucky shirt might be in order. :) --<b>[[User:TotoBaggins|TotoBaggins]]</b> 15:22, 12 March 2007 (UTC)
+
+== What happens to the old heart ==
+
+After a heart transplant,What happens to the heart that was removed.In other words what happens to the old heart. <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/68.161.97.103|68.161.97.103]] ([[User talk:68.161.97.103|talk]]) 05:03, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+This is undoubtedly going to be answered by someone with more expertise, but I do know the cool fact that when you get a kidney transplant, the new organ is placed in the body without removing the old organs; the old kidneys stay in place. As my friend said, "They should really call it a kidney plant, not a kidney transplant." [[User:65.96.181.140|65.96.181.140]] 22:06, 10 March 2007 (UTC)
+*They don't always transplant entire organs, in the case of the kidney, you can transplant sections of tissue, which are presumably grafted onto the existing veins and arteries{{fact}}.  Although, if you want to know more, we do have an article on [[kidney transplantation]]--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 22:17, 10 March 2007 (UTC)
+::You're thinking of livers, I think, where transplants of a partial organ are very common.  A partial kidney transplant would be much rarer. - <span style="font-family: cursive">[[User:Nunh-huh|Nunh-huh]]</span> 22:26, 10 March 2007 (UTC)
+:::I thought that sounded wrong (: hence the {{tl|fact}} template. In that case, we also have articles on [[liver transplantation]] and [[heart transplantation]]--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 23:49, 10 March 2007 (UTC)
+:The removed portions of the (old) heart are sent to the pathology department for histological examination. They are then disposed of, either by incineration as medical waste,, or by other means (e.g. burial, usually because of religious beliefs)..  - <span style="font-family: cursive">[[User:Nunh-huh|Nunh-huh]]</span> 22:15, 10 March 2007 (UTC)
+
+==When will Wikiprotiens be avaliabale to the public?==
+:Um, not sure if we have anything on [[wikiprotein]], let alone wikiprotien...but we have wiki [[protein]] articles.  This will be available to the general public... on... [[Tuesday]]? [[User:Nimur|Nimur]] 19:51, 11 March 2007 (UTC)
+
+== Motorola RAZR battery Comparison ==
+
+Which of these batteries would be better for the RAZR phone
+
+1:BR50
+2:BC60
+
+--[[User:Boxbone|logger]] 06:11, 10 March 2007 (UTC)
+*Well, the BR50 is a 3.7 volt lithium ion battery, whereas the BC60 is a 3.7 volt lithium ion battery, if there is any difference I can't imagine what it is--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 13:28, 10 March 2007 (UTC)
+
+All right then i might as well stay with the BR50. Its the Mah i am trying to figure out.--[[User:Boxbone|logger]] 17:02, 10 March 2007 (UTC)
+
+:They might be different in capacity, size, operating parameters, where their made, design (maybe one is mor elikely to blow up), level of finishing... [[User:Nil Einne|Nil Einne]] 20:45, 13 March 2007 (UTC)
+
+:The form factor of these batteries is most definitely different [http://www.algogo.com/product.php?productid=16148&cat=260&bestseller=Y] [http://www.algogo.com/product.php?productid=16175&cat=260&bestseller=Y]. You should buy the one suitable for your variant of the RAZR [[User:Nil Einne|Nil Einne]] 20:49, 13 March 2007 (UTC)
+
+== Spider picture: request species identification ==
+[[Image:Tejedora (Caracas, Venezuela).jpg|thumb|left|Species: ????]]
+[[Image:DirkvdM_Nephila_clavipes.jpg|thumb|right|200px|It appears to be of the genera ''[[Nephila]]'' (also known as the golden silk orb-weaver), though I am no [[arachnologist]] − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 07:24, 10 March 2007 (UTC)]]
+
+Hi. Can someone identify what species (common name is fine) this spider belongs to? I need it to write 
+the caption. Many thanks. [[User:Saravask|Saravask]] 07:02, 10 March 2007 (UTC)
+
+
+
+::*[http://bugguide.net/ BugGuide.net]
+::*[http://www.whatsthatbug.com/ What's That Bug?]
+::--'''[[User:Kjoonlee|Kjoon]]'''[[User talk:Kjoonlee|lee]] 08:53, 10 March 2007 (UTC)
+:::Thanks, guys. I think genus name will do for now; if someone presses me for the binomial name, I'll post the image to the BugGuide page. [[User:Saravask|Saravask]] 18:56, 10 March 2007 (UTC)
+{{clear}}
+
+== lecithin ==
+
+I take lecithin daily as a vitamin;
+Are there any after effects generally noted?[[User:72.71.186.177|72.71.186.177]] 14:15, 10 March 2007 (UTC)
+
+:Our [[lecithin]] article doesn't list any direct side-effects, but does say that lecithin derived from eggs may contain cholesterol, and, of course, you need to limit that. [[User:StuRat|StuRat]] 00:02, 11 March 2007 (UTC)
+
+:I have noticed lecithin-smelling urine at times with high doses (40-45 grams), don't know if it means anything. -User: Nightvid
+
+== Battery power ==
+
+How come a 12 volt car battery is much more powerful than another 12 volt battery, such as one in a tractor or motorcycle? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/24.231.205.94|24.231.205.94]] ([[User talk:24.231.205.94|talk]]) 15:53, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+*Because [[Voltage]] and [[Electrical power]] aren't the same thing? Power is the "rate at which electrical energy is transmitted" and voltage is the "difference of electrical potential between two points of an electrical or electronic circuit". Where power is defined in [[watts]], voltage is measured in [[Volt|Watts per Ampere]], which is a unit of [[electric power|power]] per [[current]]--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 16:30, 10 March 2007 (UTC)
+
+:The car battery can probably sustain much higher currents and thereby deliver more power.  The basic reason for this is that the car battery is larger and can store more chemical energy (assuming the tractor and motorcycle batteries are of similar chemical makeup). -- [[User:Matt Britt|mattb]] <code>@ 2007-03-10T23:26Z</code>
+
+::A smaller battery might have the same chemicals and the same number of cells, but a smaller plate area, than the car battery.  [[User:Edison|Edison]] 03:56, 11 March 2007 (UTC)
+
+== CCD arrrays ==
+
+Isn't the output from a CCD array pretty much continuous such that shutter speed on a digital camera is pretty much a function of how many contiguous frames are recorded for a single snap shot? [[User:Leasing Agent|Diligent]] 17:43, 10 March 2007 (UTC)
+:No. A CCD can be used with a long exposure time, before reading it out. Of course, if a camera is built mainly for video, the designers might choose to use a fixed video-rate exposure time, in which case one would have to add images to simulate a longer exposure time, as you said. But still cameras are not made that way. --[[User:mglg|mglg]]<sub>([[User talk:mglg|talk]])</sub> 18:36, 10 March 2007 (UTC)
+::Are you saying that digital still cameras then are made like conventional cameras where there is a mechanical shutter? What about digital combo still/video cameras? [[User:Leasing Agent|Diligent]] 18:51, 10 March 2007 (UTC)
+:::DSLRs definitely have mechanical shutters, while most consumer digital cameras have electronic shutters. --[[User: Antilived|antilived]]<sup>[[User_talk:Antilived|T]] | [[Special:Contributions/Antilived|C]] | [[User:Antilived/Gallery|G]]</sup> 02:08, 11 March 2007 (UTC)
+::::Thats odd. I would think electronic shutters superior to mechanical. Maybe its just a traditional thing. [[User:Leasing Agent|Diligent]] 06:10, 11 March 2007 (UTC)
+:::::The thing with electronic shutters is that they take up real estate on the CCD cell. Each photodiode that collects light has an accompanying ''shift register''. After the photodiodes have collected light for a specified time, their values are instantaneously copied (shifted) into the shift registers. The camera will then start reading the shift registers into memory. The camera can't read the photodiodes directly because that would take too long, and the diodes would keep on taking in light during that time.
+:::::In contrast, a ''full frame'' CCD has no shift registers. A mechanical shutter stops light from coming in, and the camera can read the photodiodes directly, at its own leisurely pace. Because there are no shift registers the chip area can be used for photodiodes instead of register electronics, and so can have more pixels and better sensitivity.
+:::::Maybe engineers will figure out better ways of putting in the shift registers, thereby closing the gap between electronic and mechanical shutters. Electronic shutters have nice features like lack of moving parts and the ability to capture video. For now, high end cameras have to do without those in order to get better image quality.
+:::::Here's a camera review that briefly discusses the issue: [http://www.dpreview.com/reviews/kodakdcs620x/]. [[User:Weregerbil|Weregerbil]] 11:43, 11 March 2007 (UTC)
+::::::Wow, great answer!  --<b>[[User:TotoBaggins|TotoBaggins]]</b> 15:31, 12 March 2007 (UTC)
+:::::::Yes and Thanks! [[User:Leasing Agent|Diligent]] 04:05, 13 March 2007 (UTC)
+
+== Nocebo Effect ==
+
+I have read both the [[placebo]] and [[nocebo]] articles, i am unsure of my understanding of the nocebo effect though. Is it a pill to make someone feel ill? Or is it the patients mentallity when taking a placebo (unknowingly), that it won't work, so it doesn't.
+
+I am sorry if the question is worded badly, the whole thing is kind of a mess in my mind, thanks in advance for any answers.
+
+[[User:88.111.82.185|88.111.82.185]] 18:47, 10 March 2007 (UTC)
+:Arrgh, I lost my lengthy answer from network problems. In short, nocebo bills are like placebo pills. They shouldn't do any harm themselves. It's the patient's mentality when taking a nocebo pill that it will do harm, so harm comes. Not really from the pill, but from the patient's thinking. --'''[[User:Kjoonlee|Kjoon]]'''[[User talk:Kjoonlee|lee]] 20:33, 10 March 2007 (UTC)
+
+:The article says it's the reaction, not the pill or substance. It also says that the pill is called the same thing, whether it results in a helpful or harmful response. So you get a nocebo effect from a placebo. (If somebody tries to sell you "genuine nocebo pills", throw them away! Get the ''real'' fake pills.) [[User:Clarityfiend|Clarityfiend]] 20:34, 10 March 2007 (UTC)
+
+::[[Obecalp]]<sup>TM</sup>, the Genuine Placebo.  Trust no substitute. [[User:TenOfAllTrades|TenOfAllTrades]]([[User_talk:TenOfAllTrades|talk]]) 23:57, 10 March 2007 (UTC)
+
+:::Apply directly to the dyslexic forehead? [[User:Clarityfiend|Clarityfiend]] 08:49, 11 March 2007 (UTC)
+
+== [[Self-incompatibility in plants]] ==
+
+Following a discussion in the Hebrew Wikipedia about whether or not each species should have its own article, the subject of the self-incompatibility article has also risen. Someone claims that this article should be split - as it relates to different mechanisms which are evolutionarily independent. One of the disadvantages of the current (merged) format, is that the S locus, described for different mechanisms in parallel, can be mistakenly conceived to consist of a single locus for all mechanisms. Do you think this article should be split? You are also welcome to state your opinion about the one species-one article idea, although Wikipedia's policy was already stated here: [http://en.wikipedia.org/wiki/Wikipedia:WikiProject_Tree_of_Life#Article_titles_and_common_names]. 
+Thank you in advance, [[User:Gidip|Gidip]] 20:17, 10 March 2007 (UTC).

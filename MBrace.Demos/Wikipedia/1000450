@@ -1,0 +1,158 @@
+{{Refimprove|date=February 2010}}
+
+{{Infobox economist
+| name             = Johann Heinrich von Thünen
+| school_tradition = [[Classical economics]]
+| color            = green
+| image       = Johann Heinrich von Thünen Duke.png 
+| image_size       = 150px
+| caption    = Johann Heinrich von Thünen
+| birth_date       = {{Birth date|1783|06|24|df=y}}
+| birth_place      = [[Waddewarden|Canarienhausen]] in present day [[Wangerland]], [[Friesland (district)|Friesland]]
+| death_date       = {{Death date and age|1850|09|22|1783|06|24|df=y}}
+| death_place      = [[Warnkenhagen|Tellow]] in present day [[Rostock (district)|Rostock]]
+| nationality      = German
+| institution      = 
+| field            = [[Economic theory]]
+| alma_mater       = 
+| influences       = 
+| opposed          = 
+| influenced       = [[Joseph Schumpeter]]
+| contributions    = 
+| awards           = 
+| signature        = <!-- file name only -->
+}}
+'''Johann Heinrich von Thünen''' (24 June 1783, – 22 September 1850) was a prominent nineteenth century economist.<ref>He "ranks alongside [[Karl Marx|Marx]] as the greatest economist of the nineteenth century" ([[Fernand Braudel]])</ref> Von Thünen was a [[Mecklenburg]] (north German) landowner, who in the first volume of his treatise, ''The Isolated State'' (1826), developed the first serious treatment of spatial economics, connecting it with the theory of rent. The importance lies less in the pattern of land use predicted than in its analytical approach.
+
+Von Thünen developed the basics of the theory of [[marginal concepts|marginal]] productivity in a mathematically rigorous way, summarizing it in the formula in which
+:<math>R = Y(p - c) - YFm \,</math>
+
+where R=land rent; Y=yield per unit of land; c=production expenses per unit of commodity; p=market price per unit of commodity; F=freight rate; m=distance to market.
+
+The Von Thünen model of agricultural land, created before industrialization, made the following simplifying assumptions:
+
+* The city is located centrally within an "Isolated State."
+* The Isolated State is surrounded by wilderness.
+* The land is completely flat and has no rivers or mountains.
+* Soil quality and climate are consistent.
+* Farmers in the Isolated State transport their own goods to market via oxcart, across land, directly to the central city. There are no roads.
+* Farmers behave rationally to maximize profits.
+
+The use of a piece of land is put to is a function of the cost of transport to market and the land rent a farmer can afford to pay (determined by yield, which is held constant here).
+
+The model generated four concentric rings of agricultural activity. Dairying and intensive farming lies closest to the city. Since vegetables, fruit, milk and other dairy products must get to market quickly, they would be produced close to the city.
+
+Timber and firewood would be produced for fuel and building materials in the second ring. Wood was a very important fuel for heating and cooking and is very heavy and difficult to transport so it is located as close to the city.
+
+The third zone consists of extensive fields crops such as grain. Since grains last longer than dairy products and are much lighter than fuel, reducing transport costs, they can be located further from the city.
+
+Ranching is located in the final ring. Animals can be raised far from the city because they are self-transporting. Animals can walk to the central city for sale or for butchering.
+
+Beyond the fourth ring lies the  wilderness, which is too great a distance from the central city for any type of agricultural product.
+
+Von Thünen's rings proved especially useful to economic history, such as [[Fernand Braudel]]'s ''Civilization and Capitalism,'' untangling the economic history of Europe and European colonialism before the [[Industrial Revolution]] blurred the patterns on the ground. 
+
+In [[economics]], '''von Thünen rent''' is an [[economic rent]] created by spatial variation or location of a resource. It is 'that which can be earned ''above'' that which can be earned at the margin of production'.
+
+== Model of agricultural land use: the Thünen rings ==
+[[Image:Von Thünen circles city.svg|thumb|300px|Thünen's model: the black dot represents a city; 1 (white) dairy and market gardening; 2 (green) forest for fuel; 3 (yellow) grains and field crops; 4 (red) ranching; the outer, dark green area represents wilderness where agriculture is not profitable]]
+In his theory of "[[The Isolated State]]", he started out from [[Adam Smith]]'s idea of "[[economic man]]": that the farmer is expected to maximize his profit ("[[economic rent]]") from his farmland. Von Thünen, as a landlord, knew that such returns depends on an optimal use of the land surfaces and the transport costs. In concentrating on the effects of these two variables on profits, removal of other factors results in a homogeneous - and isolated - state: A circular, completely undilating plane with a single, dominant market in the center and no interactions with the outside. The economy in the surrounding rural area would have to rearrange itself according to economic behavior in such a way that each industry brings optimal profit in:
+
+Transport cost depends on the distance from the market and different kind of products. The gain from farming per unit area (locational rent) decreases with increasing distance from the market. The minimum price of a commodity is calculated by locational rent, transport costs and fixed production costs - the profit is then the difference between the costs and the fixed market price.
+Idealized pattern of agricultural land use zones in von Thünen's model
+
+Locational rent, a term used by von Thünen in his argument, is to be understood as the equivalent to land value. It corresponds to the maximum amount a farmer could pay for using the land, without making losses. It can be defined as the equation below:
+
+<math>L = Y ( P - C ) - Y D F</math> is...
+
+* L:  Locational rent (in [[Deutsche Mark|DM]]/<math>km^2</math>)
+* Y:  Yield (in <math>t/km^2</math>)
+* P:  Market price of the crop (in <math>DM/t</math>)
+* C:  Production cost of the crop (in <math>DM/t</math>)
+* D:  Distance from the market (in <math>km</math>)
+* F:  Transport cost (in <math>DM/t/km</math>)
+
+Take the locational rent of a product with a yield of 1,000 <math>t/km^2</math>, for example, with a fixed price of 100 DM/t in the market. Production and transport costs are respectively, 50 DM/t and 1 DM/t/km. The locational rent is 50,000 DM/km<sup>2</sup> at the market, 40,000 DM/km<sup>2</sup> 10&nbsp;km from the market and only 20,000 DM/km<sup>2</sup> 30&nbsp;km from the market. Since locational rent falls with increasing distance from the market, the amount each farmer is willing to pay for agricultural land will shrink and the price of land will eventually decline.
+
+Von Thünen concluded that the cultivation of a crop is only worthwhile within certain distances from the city: beyond that, either the cost of the land becomes too high, with increasing distances transport costs also increase, or, if there is another product having greater yield or lower transport costs. After a distance from the market (the city) the production of a crop becomes unprofitable, either because its profits drop to zero or the profits earned by other crops are higher, as von Thünen calculated them for products having different intensities (cattle, wood, grain, eggs, milk, etc.): For each product there is a certain distance from the city where its production would be worthwhile. Since Thünen referred transport costs directly to the market ("Luftlinie"), circular land use zones arises - the Thünen rings.
+Representation of the locational rent relationship between two agricultural goods
+
+The farmers of these products compete against each other, plant their crops concentrically around the market according to the locational rent curves of their own crops. Products having low yields with high price and high transport costs relative to its weight or distance due to its weight, will have higher locational rent close to the market than a product having lower transport costs. Locational rent is the highest possible amount one will pay for the use of the land for a certain cultivation, and is a relative indicator of competitiveness of it in the market.
+[work on]
+
+
+== Natural Wage ==
+In the second volume of his great work, The Isolated State, Von Thunen developed some of the mathematical foundations of marginal productivity theory and wrote about the Natural Wage indicated by the formula √AP, in which A equals the value of the product of labor and capital, and P equals the subsistence of the laborer and their family. The idea he presented is that a surplus will arise on the earlier units of an investment of either capital or labor, but as time goes on the diminishing return of newer investments will mean that if wages vary with the level of productivity those that are early will receive a greater reward for their labor and capital. But if wage rates were determined using his formula, thus giving labor a share that will vary as the square root of the joint product of the two factors, A and P.
+
+This formula was so important to him that it was a dying wish of his that it be placed on his tombstone.
+
+== Weaknesses and criticism ==
+The model was developed in an isolated state and did not take into consideration differences in sites (local physical conditions).  It can be modified by relaxing some of the conditions set forth by Von Thunen:
+
+*differential transportation costs. Example: boats are the cheapest mode of transportation.
+* variations in topography
+*soil fertility
+*changes in demand or price of the commodity
+
+However, the model tends to hold true in most instances.
+
+The theory may break down somewhat in industrial and post-industrial economies as urban expansion/sprawl occur.  For example, modern refrigerators enable perishable products to be transported longer distances
+
+Like many other models in geography, von Thünen's model was criticized frequently due to its restrictive nature. The basic conditions of the model, however, could be approximated by slight modifications of the respective reality. The circular pattern, which can be attributed to only one market and excluding transport costs gradients running from the centre, is for example only one of many conceivable geometrical starting situations. If other natural landscapes or transportation routes are present, the land use zones would be stripe-formed. If several markets were present, groups of zones would be formed around each market.
+
+A justified objection against it is the reference to the absence of any productive profit. In von Thünen's theory different agricultural uses compete for the optimal location, which results from the product-specific supply/expenditure relation. The competitive power becomes indirectly measurable over locational rent. After deducting production costs and location-specific transport costs, however, nothing more remains of the market profits. The von Thuenen model leads to the idea of complete self-sufficiency among farmers.
+
+Thünen's idea of "economic rent" attempted - while ignoring other characteristics - to explain the use of zones controlled solely by economically rational perception. Possible consumers play, finally, the crucial role for the choice of location. At the same time evaluation of all potential locations is released, which leads to a zoning of the possible offers. This simply developed space restaurant model reacts however sensitively to changes of the space overcoming costs. It possesses however due to its universality nevertheless a high value within geographical questions and methodology.
+
+==See also==
+
+*[[Ricardian rent]]
+*[[Hotelling rent]]
+
+==References==
+<references/>
+
+==External links==
+{{commons|Johann Heinrich von Thünen|Johann Heinrich von Thünen}}
+*[http://faculty.washington.edu/~krumme/450/thunen.html Online resources concerning von Thünen]
+*[http://cepa.newschool.edu/het/profiles/thunen.htm CEPA page on von Thünen]
+
+{{Classical economists}}
+
+{{Persondata         <!-- Metadata: see [[Wikipedia:Persondata]] -->
+| NAME              =Thunen, Johann Heinrich von
+| ALTERNATIVE NAMES =
+| SHORT DESCRIPTION =
+| DATE OF BIRTH     =24 June 1783
+| PLACE OF BIRTH    = [[Waddewarden|Canarienhausen]] in present day [[Wangerland]], [[Friesland (district)|Friesland]]
+| DATE OF DEATH     =22 September 1850
+| PLACE OF DEATH    = [[Warnkenhagen|Tellow]] in present day [[Rostock (district)|Rostock]]
+}}
+{{DEFAULTSORT:Thunen, Johann Heinrich Von}}
+[[Category:1783 births]]
+[[Category:1850 deaths]]
+[[Category:People from Friesland (district)]]
+[[Category:German economists]]
+[[Category:Classical economists]]
+[[Category:Economic geographers]]
+[[Category:German geographers]]
+
+[[ca:Johann Heinrich von Thünen]]
+[[cs:Johann Heinrich von Thünen]]
+[[de:Johann Heinrich von Thünen]]
+[[es:Johann Heinrich von Thünen]]
+[[eu:Johan Heinrich von Thünen]]
+[[fr:Johann Heinrich von Thünen]]
+[[ko:요한 하인리히 폰 튀넨]]
+[[hi:वाँन थ्यूनेन का सिद्धान्त]]
+[[id:Johann Heinrich von Thünen]]
+[[it:Johann Heinrich von Thünen]]
+[[nl:Johann Heinrich von Thünen]]
+[[ja:ヨハン・ハインリヒ・フォン・チューネン]]
+[[pl:Johann Heinrich von Thünen]]
+[[pt:Johann Heinrich von Thünen]]
+[[ru:Тюнен, Иоганн фон]]
+[[sr:Јохан Хајнрих фон Тинен]]
+[[fi:Johann Heinrich von Thünen]]
+[[sv:Johann Heinrich von Thünen]]
+[[zh:范杜能]]

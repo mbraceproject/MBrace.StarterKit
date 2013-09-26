@@ -1,0 +1,241 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Computing|Computing desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Computing/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Computing/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Computing/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Computing/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Computing/2007 March 11|[[Wikipedia:Reference desk/Archives/Computing/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Computing|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Computing Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Computing/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== Installing Windows Vista - UNSOLVED ==
+
+I am trying to install windows Vista on my computer.  I currently have windows xp professional and i am installing the acadeimc upgrade edition of Vista homee premium on to a second partition on my hard drive.  I have tried to install multiple times except it crashes in the "completing windows installation" phase.  I have tried to use Microsoft's tech support for a week now, but they have been unable to get it to work.  Here is a list of the error messages that have been produced (there is not always a error message)
+ IRQL_NOT_LESS_OR_EQUAL
+ BAD_POOL_CALLER
+ DRIVER_IRQL_NOT_LESS_OR_EQUAL
+
+System specs:
+* Radeon x1950 pro
+* 2gb ddr2 ram
+* samsung sp2504c hard disk
+* abit kn9s motherboard
+* amd x2 4200+ processor
+
+If amyone could help it would be greatly appreaciated [[User:Thepalm|Thepalm]] 00:21, 10 March 2007 (UTC)
+
+
+:If you have any nonstandard components, like external hard drives, an unusual video card, network card, etc. remove those (and replace the video card with a vanilla version).  It looks like a little-used [[device driver]] has a problem.  —[[user:EncMstr|EncMstr]] 00:29, 10 March 2007 (UTC)
+
+::I removed everything from the computer - the microsoft texh support guy even made me unplug my headphones.  I have no other graphics card that supports dx9.0 so i dont think swapping the graphics card is an option.  Do you know what specifc driver may be having a problem and howto install these  during the vista install process? [[User:Thepalm|Thepalm]] 00:53, 10 March 2007 (UTC)
+
+:::Several, slightly unrelated questions to hopefully stumble on the solution:  Does XP still boot?  Is the Vista install disc bootable, and does it boot okay?  Was there any trouble setting up XP (a few years ago)?  Was it necessary to install anything special for XP to work?  —[[user:EncMstr|EncMstr]] 01:08, 10 March 2007 (UTC)
+
+:In my personal experience, IRQL_NOT_LESS_OR_EQUAL often points to bad memory, stuck CPU fan, or other similar problems. Did you try to run [[memtest86+]] for a while to see if it finds any errors? --[[User:CesarB|cesarb]] 01:13, 10 March 2007 (UTC)
+
+: Wtf is IRQL_NOT_LESS_OR_EQUAL meant to mean? Interrupt ReQuest *what* is not less than or equal to *what*? Better start up the kernel debugger. Oh no. "The kernel is protected by your shiny TPM chip. Get lost." --[[User:Wj32|wj32]] <sup>[[User talk:Wj32|talk]] | [[Special:Contributions/Wj32|contribs]]</sup> 02:14, 10 March 2007 (UTC)
+
+::In answer to suggestions above: Windows XP does still run normally and has done so since it was installed normally in December last year without any problems.  As far as im aware, the cpu fan does is not stuck.  I ran memtest86+ which showed no errors. [[User:Thepalm|Thepalm]] 03:29, 10 March 2007 (UTC)
+
+:: Interrupt request ''level''. Numbers can be less than or equal to each other. IRQL_... usually means driver issues.
+
+== GDB ==
+
+I just discovered about GDB today, and it looks pretty cool. How does is work if you don't have the source code to a program (my computer runs Mac OS X, latest version.)  And when I pause the program, how do i continue it?  Thanks in advance!--[[User:Rgrasell|Ryan]] 02:03, 10 March 2007 (UTC)
+
+: All programs can be disassembled and debugged. --[[User:Wj32|wj32]] <sup>[[User talk:Wj32|talk]] | [[Special:Contributions/Wj32|contribs]]</sup> 02:14, 10 March 2007 (UTC)
+
+: It still works, except you don't get line numbers and sourcecode references.
+
+:To continue the program, type "continue".  There's more [http://sources.redhat.com/gdb/current/onlinedocs/gdb_toc.html over here].  You should definitely get comfortable using gdb on a program for which you ''do'' have the source before you start hacking on something for which you don't.  --<b>[[User:TotoBaggins|TotoBaggins]]</b> 14:01, 12 March 2007 (UTC)
+
+== OS ==
+
+Is there someway of getting the following OS onto one computer?
+
+1. Windows XP
+2. Windows Vista
+3. Mac OS X 10.4 "Tiger"
+
+Thanks! [[User:68.193.147.179|68.193.147.179]] 02:36, 10 March 2007 (UTC)
+
+:Yes. You want to triple-boot the OSes which should be installed on 3 partitions. Look around at OSx86 websites for complete instructions. [[User:Splintercellguy|Splintercellguy]] 03:05, 10 March 2007 (UTC)
+
+::Or get a Mac and [[Boot Camp]] --[[User: Antilived|antilived]]<sup>[[User_talk:Antilived|T]] | [[Special:Contributions/Antilived|C]] | [[User:Antilived/Gallery|G]]</sup> 03:05, 10 March 2007 (UTC)
+:::...or [[Parallels Desktop for Mac|Parallels]] — [[User:Bewildebeast|Matt Eason]] <sup>([[User talk:Bewildebeast|Talk]] &#149;  [[Special:Contributions/Bewildebeast|Contribs]])</sup> 03:10, 10 March 2007 (UTC)
+
+::::Or make up your mind. Har har har! − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 07:26, 10 March 2007 (UTC)
+
+== TFTs on iMacs ==
+
+Is there anything special about the TFT on an iMac? Is it any differnt to the actual screens in standalone TFTs by other manufactureres? Many thanks, --Fadders 10:02, 10 March 2007 (UTC)
+
+*The TFT screen on iMacs are pretty much the usual. To make a TFT screen much better than a regular screen, it would need to be a "Poly-Silicon" TFT screen, which it is not. Very few Poly-Silicon TFT screens are out there at all. They are also very rare in mobile cell phones. One notable exception was the Audiovox CDM-9900 cell phone with a striking Poly-Silicon TFT screen said by many to be the best screen ever used on a cell phone to date. [[User:Zeno333|Zeno333]] 11:09, 15 March 2007 (UTC)
+
+== ADSL modem  Connection troubleshooting ==
+
+I have an ADSL modem. The problem with it is that it connects only when required.When I switch on the modem, its supposed to connect to the server. But this happens rarely. I often have to disconnect the telephone line and connect it back when the modem is on for it to connect.Is there any remedy to this problem?Or is it just bad service or some reg settings? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/59.92.240.161|59.92.240.161]] ([[User talk:59.92.240.161|talk]]) 11:31, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Knowing the specific ADSL modem in question would help. I am undecided without further information, though I am leaning on the modem. [[User:Splintercellguy|Splintercellguy]] 13:18, 10 March 2007 (UTC)
+
+== XILINIX from Mentor graphics ==
+
+Is there any freeware or alternative to XILINIX from ''Mentor Graphics'' that enables us to do virtual hardware simulation?[[User:59.92.240.161|59.92.240.161]]
+
+:I've never used any of these, but google results [http://www.smps.us/tools.html show these] and [http://home.planet.nl/~heuvelvdg/freesoft/elec.html these] and [http://www.rfcascade.com/circuit_analysis.html] these just to name a few. --[[User:Wirbelwind|Wirbelwind<small>ヴィルヴェルヴィント</small>]]&nbsp;([[User_talk:Wirbelwind|talk]]) 17:50, 10 March 2007 (UTC)
+
+== ADSL modem to comp DUAL Connection  ==
+
+My ADSL modem has two ports, one USB and the other ethernet. So is it possible to connect another laptop/comp through the ethernet while my present comp is connected through USB and share my connection between the two computers?[[User:59.92.240.161|59.92.240.161]]
+
+:Without knowing what specific ADSL modem, I would have to guess a weak no. Better to invest in a hub or switch. [[User:Splintercellguy|Splintercellguy]] 13:16, 10 March 2007 (UTC)
+::Best to invest in a router --[[User:Froth|⁪froth]]<sup>'''[[User_talk:Froth|<small>T</small>]]'''</sup> 18:07, 10 March 2007 (UTC)
+
+== BLUE ray reliability ==
+
+I have heard that Blu-Ray discs are not so reliable with regards to scratches as they have such high density data packed that a single scratch could render a track useless, which is not so the case with DVD or Cd's.Is this somewhat true??[[User:59.92.240.161|59.92.240.161]]
+
+:On one hand, a smaller scratch could indeed cause data loss (for a movie, the player might skip a bit on playback or show errors in the picture, or in extreme cases refuse to play at all.) On the other hand, disk manufacturers are aware of the potential problem and have worked hard to make the disks scratch resistant. See the section ''Hard-coating technology'' in the article on [[Blu-ray Disc]]s. DVDs and CDs aren't immune to scratches either. [[User:Weregerbil|Weregerbil]] 13:27, 10 March 2007 (UTC)
+
+== internet phobia. ==
+
+how come when i go onto mozilla firefox a giant phalus apears onscreen? please get back to me its begining to get to me. your friend xxx
+
+:I expect someone's changed your homepage. Click the 'Tools' menu at the top of the screen and click 'Options' at the bottom of the menu. Make sure you're on the 'Main' page (it'll show you at the top of the window that pops up) and change the 'Home Page' text box to http://www.google.com/ or whatever website you want. — [[User:Bewildebeast|Matt Eason]] <sup>([[User talk:Bewildebeast|Talk]] &#149;  [[Special:Contributions/Bewildebeast|Contribs]])</sup> 12:58, 10 March 2007 (UTC)
+
+::I would suggest setting your homepage to http://en.wikipedia.org, but whatever =P --[[User:Wirbelwind|Wirbelwind<small>ヴィルヴェルヴィント</small>]]&nbsp;([[User_talk:Wirbelwind|talk]]) 17:43, 10 March 2007 (UTC)
+
+:::Or [http://www.google.com/firefox?client=firefox-a&rls=org.mozilla:en-US:official http://www.google.com/firefox?client=firefox-a&rls=org.mozilla:en-US:official]! --[[User:Froth|⁪froth]]<sup>'''[[User_talk:Froth|<small>T</small>]]'''</sup> 18:06, 10 March 2007 (UTC)
+
+::::Which is in fact what clicking on "restore default" sets it to. --[[User:CesarB|cesarb]] 19:59, 10 March 2007 (UTC)
+
+Would you prefer that a normal sized phallus appears whenever you go online ?  That might be a bit less intimidating. :-) [[User:StuRat|StuRat]] 23:14, 10 March 2007 (UTC)
+
+== C++ on Vista ==
+
+Greetings,
+
+I would like an IDE and compiler to learn how to program in C++ on Windows Vista Home Premium (32-bit, on a 64-bit system). Please suggest free software, though my birthday is coming up soon, so do not hesitate to mention commercial software if it is worth it.
+
+God bless you,
+
+[[User:82.249.51.241|82.249.51.241]] 14:43, 10 March 2007 (UTC)
+
+:Check out [http://msdn.microsoft.com/vstudio/express/downloads/ Visual C++ Express Edition]. It should provide all you need as a beginner. And it's free. [[User:Johnnykimble|Johnnykimble]] 15:14, 10 March 2007 (UTC)
+:Yep, visual studio is the best "hobby" compiler out there for windows, and Microsoft tries darn hard to get it into peoples hands for free. --[[User:Froth|⁪froth]]<sup>'''[[User_talk:Froth|<small>T</small>]]'''</sup> 18:05, 10 March 2007 (UTC)
+:Check out [[Comparison of integrated development environments#C/C++]] --[[User:Spoon!|Spoon!]] 23:01, 10 March 2007 (UTC)
+::Ah yeah, I also recommend Dev_C++. And a lot of people like eclipse but personally I have no idea why --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 19:51, 11 March 2007 (UTC)
+
+:I'll put in a vote for doing [[POSIX]] development with [[Cygwin]].  The  things you learn will be useful for many years, unlike with Microsoft-style development where they seem to keep their poor developers on a never-ending treadmill of shiny new things, same as the old things.  --<b>[[User:TotoBaggins|TotoBaggins]]</b> 14:07, 12 March 2007 (UTC)
+
+== IE 7.0 Homepage ==
+
+I have set my home page in IE 7.0 to a blank page. But everytime I close to browser and re-open it, it opens: http://runonce.msn.com/runonce2.aspx "Customize your settings". The page never finishes loading and it says "Error on page" and all i see is a blank blue page.
+Is there anyway I can fix this so that it open a blank page eevrytime I clsoe and open the browser again? Thanks. [[User:Jamesino|Jamesino]] 16:19, 10 March 2007 (UTC)
+
+:Hmm. You might try setting your homepage to "about:", which should come up blank. --[[User:24.147.86.187|24.147.86.187]] 18:11, 10 March 2007 (UTC)
+
+:: Set your homepage (to anything) by the "internet explorer settings" (or something) in your [[control panel]]. I'm guessing it's there, I've not used IE7. You could also upgrade to [[Firefox|a better browser]]. --[[User:H2g2bob|h2g2bob]] 01:16, 12 March 2007 (UTC)
+
+::: Im using firefox right now, but how is it better than IE7 (which you've not even used). Apart from some useful extensions IE7 is probably significantly better. Also the subpixel rendering makes text appear better than evr.--[[User:155.144.251.120|155.144.251.120]] 04:26, 12 March 2007 (UTC)
+
+::: This happened to me when I had set Firefox as the default web browser on my system and it would NOT let IE7 get past the customize settings page. Go to set default program access/use in the start menu (i'm not sure what its called) and set IE7 as the default browser (assuming that you are running windows XP in the first place). Hope this helps. [[User:Ikrizalllid|Ikrizalllid]] 12:08, 12 March 2007 (UTC)
+
+== Windows Vista Transformation ==
+
+What Exactly is a transformation pack? Are transformation packs usually good? Can they be safely installed without reducing the comps speed? Where do I get the best windows vista transformation pack for now? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/61.95.191.49|61.95.191.49]] ([[User talk:61.95.191.49|talk]]) 16:41, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+How do i upload a picture?
+:A vista transformation pack is a theme for windows XP to make it look like windows Vista. This is usually done with the skinning program [[WindowBlinds]]- which has a lot of memory overhead so I would never use it. The very best vista theme IMO is the original theme by KoL but Microsoft went crazy over it and sent all sorts of DMCA takedown notices so now it's awful tricky to find. The name is VistaXP v2 by KoL (v3 is only for windowblinds) if you want to find it yourself, or you can [[Special:Emailuser/Froth|email me]] and I'll send you the msstyles version (v2). This will run natively and take up just as much memory as the normal XP skin, but you have to patch one of your windows DLLs to get the theme applet to accept unsigned themes- I have the patcher too but if you want to look for it it's "UXTheme Multi-Patcher (Neowin Edition) 4.0" although you could just find a pre-patched uxtheme.dll without actually patching yours. Good luck --[[User:Froth|⁪froth]]<sup>'''[[User_talk:Froth|<small>T</small>]]'''</sup> 18:03, 10 March 2007 (UTC)
+
+
+I tried to find the software and its patch but couldnt. Please mail it over to me. My email id is ''(hidden)''.
+:Do not rather leave your e-mail here, as the pages are widely indexed and likely to be noticed by things you wouldn't come to like. Anyway, the patcher Froth spoke about is [http://www.holtstraeter.com/cybercheffe/download/nw_uxtheme.zip here]. --[[User:Ouro|Ouro]] <small>([[User_talk:Ouro|blah blah]])</small> 08:31, 11 March 2007 (UTC)
+:I emailed you back with the msstyles files and instructions --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 19:50, 11 March 2007 (UTC)
+(while trying to find it again, I came across my own comment in google, which is worrying. don't email me- http://www.juleswlf.karoo.net/vistaxp/VistaXP_VS_v2_0.zip)
+
+==Win Vista, Win XP==
+How can get just Windows XP and Windows Vista on to one computer? [[User:68.193.147.179|68.193.147.179]] 16:48, 10 March 2007 (UTC)
+:Just install xp and then install vista and tell vista during the installation to keep your XP partition. This isn't supposed to be possible with an Upgrade version (although it is) so it'll be easier if you have the full version of vista. --[[User:Froth|⁪froth]]<sup>'''[[User_talk:Froth|<small>T</small>]]'''</sup> 18:04, 10 March 2007 (UTC)
+
+::Can I get a pre-installed Vista Computer then, install, Windows XP? [[User:68.193.147.179|68.193.147.179]] 02:19, 11 March 2007 (UTC)
+
+:::You can certainly try it. They use the same bootloader, NTLDR, so it shouldn't be an issue. But in previous versions of windows, you had to install the newer OS second because the older one couldn't recognize the newer one as Windows kin --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 07:40, 11 March 2007 (UTC)
+
+::::Hm, I'm trying to triple boot Ubuntu Server, XP, and Vista, and apparently vista doesn't use NTLDR.. you have to work some magic to get GRUB to chainload vista. --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 18:33, 12 March 2007 (UTC)
+
+::Yes, you can dual-boot Vista and XP. [[User:Splintercellguy|Splintercellguy]] 03:35, 11 March 2007 (UTC)
+
+:Turns out you might need to create a different partition for vista with [[GParted]] or something if you want to keep both versions working --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 18:33, 12 March 2007 (UTC)
+
+== Belkin Wireless router problem ==
+
+I have a Belkin Wireless router hooked up to the Road Runner (my ISP) through one of their modems.  The router is a wireless G 2.4Ghz 802.11g model F5D7230-4.  For the past week, maybe once a day or maybe once ever other day, the router would completely blank out,  the modem light would blink green, and the wired connection to one computer would be orange (and that computer would say a network cable has been unplugged).  The Power light would turn off, wireless would stop blinking and internet would turn off.  Then, if I unplugged the router for 10 seconds or less, then plugged it back in, it would start working in a few seconds.  I wouldn't bother with the minor inconvenience of this except in the last 10 minutes it happened 5 times, and losing a connection randomly, frequently, is a little to much to simply shrug off.  The lights on the modem stay constant as they are when the lights on the router go out, so I have very little reason to believe it's the modem.  Does anyone know what may be causing it, and a good solution to fix it?  Thanks for your help. [[User:Chris Mason|Chris M.]] 19:25, 10 March 2007 (UTC)
+
+:Sounds like a connector problem with the power.  Does the connector feel secure?  Is the wall-wart making a good connection in the outlet?  —[[user:EncMstr|EncMstr]] 22:56, 10 March 2007 (UTC)
+
+: Try pulling bending on the power leads and see if that causes the problem instantly. If it does you may have to tape up the lead to stop it moving. Some connectors degrade very quickly. I used to a this problem in a modem and it drove me nuts. Basically footsteps was enough vibration to make the power connector loose its connection and bounce back on.
+
+I had the same problem with a Belkin router sometime last year.  I tried everything I could think of to get it to keep a connection, including updating the router's firmware.  Didn't even begin to make a difference.  I finally just broke down and purchased a different brand and haven't had a problem since.[[User:BrianWJ|BrianWJ]] 20:05, 15 March 2007 (UTC)
+
+== Changing monitor resolution in the Windows XP taskbar ==
+
+I used to have a program, ages ago, that would quickly let you change the monitor resolution in Windows XP by means of a little icon on the taskbar. I thought it was on of the Microsoft PowerTools but I don't see it in the current set of PowerTools. Any idea what this was? I remember it being fairly official, something by Microsoft, maybe a setting on the Display control panel, but I don't see anything related to that now. --[[User:24.147.86.187|24.147.86.187]] 19:32, 10 March 2007 (UTC)
+
+:Here's how you do it in Windows 98 (I never understood why it isn't on by default):
+
+:Start + Settings + Control Panel + Display + Settings Tab + Advanced button
+
+:Check "Show settings icon on task bar" then pick "OK".
+
+:Of course, they've probably changed it, for no apparent reason, in Windows XP. [[User:StuRat|StuRat]] 23:06, 10 March 2007 (UTC)
+
+::Yeah, maybe that is what I was remembering. It doesn't exist in Win XP so far as I can see, which is very irritating!! But thanks for the response; googling that phrase I found that the old one was called "QuickRes" and searching around there is a free program called "Quickres Light" which apparently duplicates the original functionality. --[[User:24.147.86.187|24.147.86.187]] 14:55, 11 March 2007 (UTC)
+
+== Partitioning ==
+
+I currently run [[Windows XP]] Home, and I am trying to install [[Gentoo Linux]]. However, the current partition, used by Windows XP, only leaves 7 megabytes of unused space on my hard drive. I have tried [[GParted]] and Partition Logic, but GParted encountered an error during resizing of the partition and Partition Logic encountered an error during booting. Can anyone give me the name of a good partition utility that could help me here? [[User:Someoneinmyheadbutit'snotme|Someoneinmyheadbutit&#39;snotme]] 21:08, 10 March 2007 (UTC)
+
+:ntfsprogs (utilized by Parted) seems to have issues making very large changes to NTFS partitions. Try resizing it in smaller increments. It might work, might not. You might also try running [[CHKDSK]] before doing the resize. -- [[User:Consumed Crustacean|Consumed Crustacean]] <small>([[User talk:Consumed Crustacean|talk]])</small> 23:05, 10 March 2007 (UTC)
+
+:Also, it says that it's not necessary but you might try defragmenting first. And if you value your computer at all, don't run partition magic ever again! *shudder* --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 07:39, 11 March 2007 (UTC)
+::Before performing touchy partitioning shuffling perhaps consider backing up your data? --[[User:Ouro|Ouro]] <small>([[User_talk:Ouro|blah blah]])</small> 08:26, 11 March 2007 (UTC)
+:Well, thanks for the suggestions and everything, but I used Acronis Disk Director Suite and it worked fine. By the way, the install didn't work anyway, something about the Stage 3 mirror I chose, and I don't feel like setting those USE flags all over again. [[User:Someoneinmyheadbutit'snotme|Someoneinmyheadbutit&#39;snotme]] 03:42, 12 March 2007 (UTC)
+
+You might also be interested in using a [[LiveDistro]] setup.  It doesn't require any partitioning of the hard drive, and let's you get a flavor of Linux with very little effort.  Another partition-less way of doing it is to just get another drive.  Here's a [http://www.newegg.com/Product/Product.asp?Item=N82E16822140118 40 GB one] for 38 bucks.  --<b>[[User:TotoBaggins|TotoBaggins]]</b> 14:17, 12 March 2007 (UTC)
+:Yeah, I was installing from the Live CD. I couldn't use a LiveDistro because they're too slow. [[User:Someoneinmyheadbutit'snotme|Someoneinmyheadbutit&#39;snotme]] 19:40, 12 March 2007 (UTC)
+
+== Eek! Spyware! ==
+
+:Can someone help me get rid of the crap that's suddenly on my computer?  There's some horrible rogue anti-spyware program called [[SpyDawn]] on my computer, and every time I remove it, it just reinstalls itself.  It seems to be connected to another evil program called [[MediaCodec]].  I downloaded, registered and ran [[Spyware Doctor]], and after removing a bunch of crap, it told me my computer is clean, but I still get popups every ten seconds from two items in my system tray telling me that my computer's infected, and clicking on the balloons just takes me to a SpyDawn webpage.
+:Frustrated, I downloaded another anti-spyware program that I thought was free, but after scanning my computer and finding a bunch of malware that Spyware Doctor had missed, it wants me to pay $40 to register.  Is there not a free, safe anti-spyware program that will get rid of this shit? -[[User:GTBacchus|GTBacchus]]<sup>([[User talk:GTBacchus|talk]])</sup> 22:14, 10 March 2007 (UTC)
+
+::Ad-aware Personal Edition, Spybot S&D, and HijackThis are what I use. Make sure not to get lookalike malware. [[User:Splintercellguy|Splintercellguy]] 22:30, 10 March 2007 (UTC)
+
+::However, a limitation is that those programs generally only remove the program on disk.  If the program is currently running, it will just save a copy of itself after you finish using your anti-spyware product.  Next time, do a reboot first, then use the task manager (CONTROL-ALT-DELETE) to kill everything but Explorer.  Now you can run your anti-spyware programs and have more hope of them working.  There likely are also registry entries that need to be removed, but a good anti-spyware program should do that for you, too. [[User:StuRat|StuRat]] 22:58, 10 March 2007 (UTC)
+
+:::Or just get into safe mode and do it there. --[[User: Antilived|antilived]]<sup>[[User_talk:Antilived|T]] | [[Special:Contributions/Antilived|C]] | [[User:Antilived/Gallery|G]]</sup> 02:40, 11 March 2007 (UTC)
+
+:My favorite method is booting into safe mode, then running Spyware Doctor, Ad-Aware, Spybot, and Webroot, then rebooting. A cocktail of antimalware is usually necessary for the really nasty or obscure stuff --[[User:Froth|'''⁪froth''']]<sup>[[User_talk:Froth|<small>t</small>]]</sup> 07:37, 11 March 2007 (UTC)
+
+::Spybot S&D has an option to run at system boot so it can identify and kill anything before it has a chance to activate. Also running Spybot and the free version of Ad-aware  with all their latest updates installed rarely leaves anything behind. And if you are using a P2P program, check that it cant bypass firewalls as that can be causing your problem. [[User:Ikrizalllid|Ikrizalllid]] 12:19, 12 March 2007 (UTC)
+
+Thanks everyone for your suggestions.  I think I've killed it with a combination of Spyware Doctor, McAfee, and something called "SmitfraudFix". -[[User:GTBacchus|GTBacchus]]<sup>([[User talk:GTBacchus|talk]])</sup> 22:50, 12 March 2007 (UTC)
+
+== www.amaena.com ==
+
+I keep getting boxes pop up advising me that I need to download software to protect my computer from viruses etc or requesting that I install a disc-cleaner because I have files of an adult nature. If I follow the instructions then my Norton Security advises me to block the action. Are these links bogus and if so how do I stop them from coming up?[[User:82.16.101.160|82.16.101.160]] 22:44, 10 March 2007 (UTC)rob
+
+:Yes, don't ever download something because a pop-up tells you to do so.  You now likely have [[malware]] on your computer.  Try using either [[AdAware]] or [[Spybot]] to remove the baddies.  You may also want to get a [[pop-up blocker]].  [[User:StuRat|StuRat]] 22:48, 10 March 2007 (UTC)
+:: If this is while you're using [[Internet Explorer]], switch to [[Firefox]], which has pop-up blocking built in. If this is at other times, use [[Spybot S&D]] and scan your PC with your [[Antivirus]] software. --[[User:H2g2bob|h2g2bob]] 01:05, 12 March 2007 (UTC)

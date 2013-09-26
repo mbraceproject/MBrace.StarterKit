@@ -1,0 +1,264 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Humanities|Humanities desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Humanities/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Humanities/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Humanities/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Humanities/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Humanities/2007 March 11|[[Wikipedia:Reference desk/Archives/Humanities/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Humanities|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Humanities Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Humanities/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== What is the legal status of a school? ==
+
+Can it claim copyright or trademark over its logo, mission slogan and other identifying marks? Can it sue for defamation? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/59.189.62.203|59.189.62.203]] ([[User talk:59.189.62.203|talk]]) 02:23, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:I think it would very much depend on any relevant national, state or local laws.  These are the things that would create the legal status of the school.   Which country are you interested in?  [[User:JackofOz|JackofOz]] 02:43, 10 March 2007 (UTC)
+
+::In the US, at least, it's also going to depend very much on whether the school is public or private -- most US public schools are legally just part of a school district; its usually at the district level where the school board and superintendent exist for oversight purposes, and where they make the legal decisions.  [[User:Jfarber|Jfarber]] 03:02, 10 March 2007 (UTC)
+
+:::I don't see how the public or private status of the institution bears any relevance. In pretty much every country I'm aware of, the state possesses the same capacity to enjoy [[intellectual property]] rights as any private person. Just try to start up a private courier business called "US Postal Service" and you'll get first hand experience of the IP rights the state possesses. [[User:Loomis51|Loomis]] 04:25, 10 March 2007 (UTC)
+
+::::I think you misunderstand my point, Loomis.   I don't know if the public or private status of a school affects the possibility that its logo can be copyrighted; I suspect, as you point out, that any logo can be copyrighted.  But that was not my point -- my point was that, in the US, the private school is most often a legal entity itself, while a public school is not -- it is instead a part of the legal entity of the district.   This matters, because '''the question is about both possibility (can a logo be copyrighted) AND about agency (can a school DO that)'''.   You seem to have confused my comment as being about one of these; it was about the other.  
+
+::::Remember, the heading here is '''what is the legal status of a school?'''  Having taught at both over my time in education, I can assure you that the private/public distinction affects legal status significantly.   For example, were a private school to want to copyright its logo, it could do so, because private schools are distinct, incorporated legal entities.   But public schools are not -- the board that oversees their incorporation exists at the level of the district.   Were a public school to want to try to copyright its logo, it would be the district, NOT the school, which obtained, and susequently owned rights to, that copyright. 
+
+::::Since the question is "can a SCHOOL do that," in most US public education, the answer is, technically, NO -- the school can only ask the district to do so on its behalf.   The follow-up question is relevant here, too -- public schools can not sue; their districts may be able to, depending on what status they are given by the state and the local school board; their school boards certainly can. [[User:Jfarber|Jfarber]] 14:43, 10 March 2007 (UTC)
+
+:::::My response seems to have upset you quite a bit, Jfarber. I had no intention of doing that. Of course everything you said is true. The only point I'd make is that questions are not always phrased as precisely as they could be. Nothing wrong with that, nobody's perfect. So in attempting to answer questions as effectively as possible, occasionally one is required to look beyond the literal words of the question to figure out exactly what the questioner is most likely asking. In this case, I'm almost certain that the crux of the OP's question was whether a school, be it directly or indirectly, has the capacity to possess and defend intellectual property. The answer to that question in an unqualified yes. If one were to ask you: "What is the capitol of the United States?" Would you reply in only the most literal of senses? "Why, the capitol of the United States is that dome shaped building where Congress meets!" [[User:Loomis51|Loomis]] 20:17, 10 March 2007 (UTC)
+
+:::::Upset?  Not at all.  I just disagree that what you think is trivial is, after all, trivial...and perhaps reacted strongly to being told that the information I offered, which was, after all, true and accurate and actually an answer to the question asked, was trivial.   Who are you to say that the querent didn't need to know this?    Since we do not know why the querent needs the answer, it may indeed be relevant.  For example, the individual may be a student who has been threatened by a principal, and we have no idea if the school board would back up the principal in this case.   More importantly, it is not important to answer the question asked wherever possible, and ALSO add what one thinks the querent truly desires to know, rather than dismiss the literal question wholesale?   This, at least, seems to be the standard I've seen here so far.   And my years at realworld reference desks has suggested the same.  
+
+:::::As for the totally unparallel comparison: I'd assume a spelling error.  I am, after all, a middle school teacher.   And the literal answer for the capitol/capital question would be meanspirited, while providing accurate information about the fact that some kinds of schools have the same legal existence as the HR department of a company is only, in the worst of cases, useless.    :-)  [[User:Jfarber|Jfarber]] 02:52, 11 March 2007 (UTC)
+
+::::FYI the [[United States Postal Service|Postal Service]] is a special case, because it's not the same kind of agency as other state organs. While it was created and is more or less controlled by the state, it functions like a private corporation with respect to intellectual property. Compare that to a 'real' government agency like, say, the [[Department of Transportation]], which in most cases is not allowed to own intellectual property like copyrights and trade marks. This is the reason Wikipedia is allowed to use most government logos and publications without permission &mdash; it's all considered public-domain. The Postal Service is different;  it actually had to trade-mark its logo, just like any other business would.
+
+::::Most exceptions to this rule are instituted by separate legislation (e.g., you could kind of consider the [[Federal Bureau of Investigation|FBI]] logo 'trade-marked', but they didn't have to actually go and submit the paper work like a regular organisation would &mdash; they're given a mandate over its use by law.) ~ [[User:Lav-chan|lav-chan]] @ 12:25, 11 March 2007 (UTC)
+
+== What book was written without the vowel "a"? ==
+
+I remember vaguely hearing that there was a book, written in French at least 100 years ago I believe, which never once used the vowel "a" anywhere inside it. Interestingly, it was also supposedly translated into English without the use of the same letter. A Google search returns nothing of any use, and I found nothing on-Wiki. Anybody in-the-know recognize this bit of trivia? [[User:Thadius856|thadius856]]<sub>[[User talk:Thadius856|talk]]|[[Wikipedia:WikiProject Airports|airports]]|[[Wikipedia:Neutrality Project|neutrality]]</sub> 07:25, 10 March 2007 (UTC)
+
+:Could this possibly be [[A Void (novel)|A Void]] by [[Georges Perec]]?  There are, however, two things wrong with this suggestion: the missing vowel is 'e' not 'a', and it was published in 1969, not a hundred years ago.  [[User:Clio the Muse|Clio the Muse]] 08:59, 10 March 2007 (UTC)
+
+::My favorite bit is the e-less version of Poe's The Raven poem, or as the book would have it "That Black Bird".  Amazing to think an e-less book in French was successfully translated into an e-less book in English. [[User:Pfly|Pfly]] 09:06, 10 March 2007 (UTC)
+
+:::Into Swedish, as well... Thank God for translators who could endure such a task... [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 10:18, 10 March 2007 (UTC)
+
+::It is almost certainly said novel, known as ''La disparition'' (the disappearance) in French.  [[User:Jade Knight|The Jade Knight]] 11:14, 10 March 2007 (UTC)
+
+:Perhaps you mean ''[[Gadsby (novel)|Gadsby]]'' by [[Ernest Vincent Wright]]—it is 50,000 words in length and does not contain the letter '[[e]]'?  See also [[lipogram]]. − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 09:54, 10 March 2007 (UTC)
+
+I recall [[James Joyce]] wrote a child's story entirely without punctuation.[[User:Ddball|DDB]] 10:24, 10 March 2007 (UTC)
+:...perhaps intended as a [[New England Primer|primer]] for eventually tackling <s>[[Finnegan's Wake]]</s> ''[[Finnegans Wake]]''  ?  :-o  ''-- [[User:Deborahjay|Deborahjay]] 10:37, 10 March 2007 (UTC)''
+
+::That would be ''[[Finnegans Wake]]'' without the apostrophe [[User:Twas Now|Twas Now]] 10 March 2007 1955 UTC
+:::Indeed; there I go adding punctuation where [[James Joyce|the author]] omitted it. My bad. ''-- [[User:Deborahjay|Deborahjay]] 20:06, 10 March 2007 (UTC)''
+
+::::Deborahjay, have a go at ''Penelope'', part eighteen of ''Ulysses''.  It might enable me to read it and draw breath at the same time!  [[User:Clio the Muse|Clio the Muse]] 21:10, 10 March 2007 (UTC)
+
+== Holiday Sweater -- origin ==
+
+What is the origin of the holiday sweater and its history? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/128.196.107.128|128.196.107.128]] ([[User talk:128.196.107.128|talk]]) 07:30, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Is there a difference between a holiday sweater and the everyday kind?  Do sweaters have a history?  I suppose they must, at least the [[Aran sweater]] does.  I was once told a story by an old fisherman from the Shetlands that sweater patterns, like tartan, had a distinctly local significance, enabling the identification of those drowned at sea.  Not very plausible, I know, but a nice tall tale anyway! [[User:Clio the Muse|Clio the Muse]] 21:45, 10 March 2007 (UTC)
+
+::There definitely is a difference. Holiday sweaters contain a (sometimes cheesy) Christmas or New Year's related design. Patterns for holiday sweaters can be found dating from as far back as the turn of the century, but they only became common after the Second World War - before that time women didn't wear patterned sweaters at all (before ca. 1918 women rarely wore sweaters except as jackets/coats) and men who wore sweaters generally wore either traditional patterns or plain sweaters. Before 1945 most people couldn't afford a special sweater just for one season, either - most people had two or three changes of clothing at most. Knitters spent most of their time on socks, mitts, and other necessary cold-weather accessories.
+
+::What happened after the Second World War is that the wool manufacturing industry had to find a way to sell wool. Manufacturers had built huge factories for carding and sorting wool and producing fibers in order to fill the demand for uniform cloth during the war, but the larger wardrobes being purchased by returning veterans and their families contained a lot of items made of the new synthetic fabrics. So as not to take a huge loss on the facilities built during the war, manufacturers retooled to a small extent and started producing much larger amounts of yarn than they previously had. In order to sell this, they promoted sweaters as a fashion statement and prompted the development of commercial knitting facilities. They also produced thousands of pattern books for the home knitter and crocheter. These pattern books proliferated and things like holiday sweaters, novelty socks, crocheted toilet roll covers (anybody remember those at Grandma's house?) and even 'peter heaters' (I kid you not; my mother, may she rest in peace, had a pattern. And yes, it had sizes S-M-L-XL.) Basically, if you could knit it there was a pattern for it. It was in this flurry of knitting frenzy that the holiday sweater became an entrenched part of the Anglo-American holiday period. Later on in the 70s when hand knitting became 'old-fashioned' and 'fuddy-duddy', it became more common to buy the holiday sweater. Nowadays it's all back.
+
+::Source: my mother's 363460989843 knitting books. --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 09:24, 11 March 2007 (UTC)
+
+:::The holiday concerned was Christmas, btw. The first Christmas sweater I ever saw, ca. 1954, had white snowflake designs on dark red and a frieze of reindeer across the chest.--[[User:Wetman|Wetman]] 09:36, 11 March 2007 (UTC)
+
+::::Thank you both for that clarification!  The 'holiday sweater' is not a tradition we have in England-thankfully-hence my bemusement.  [[User:Clio the Muse|Clio the Muse]] 10:45, 11 March 2007 (UTC)
+:::::What of [[Ron Weasley]]'s annual Christmas jumper? Added for American audiences?? I had assumed that England shared the tradition of hideous sweaters at Yuletide. - <span style="font-family: cursive">[[User:Nunh-huh|Nunh-huh]]</span> 00:24, 13 March 2007 (UTC)
+:::::As with everything in Britain, it depends on class. My mother's working class parents used to knit 'holiday'  sweaters (though we would not use this term). And Ron Weasley's family defines this sort of class (though technically his father is not, but is considered 'above his station' and is which is the subject of amusement and derision). 
+:::::I think the practice has died out a bit, Knitting, and certainly knitting machines, kind of died out after the 70s/early-80s. 01:00, 13 March 2007 (UTC)
+
+::::::Clearly, I move in the wrong social circles: I have ''never'' seen a 'holiday' or a Christmas sweater!  [[User:Clio the Muse|Clio the Muse]] 10:38, 13 March 2007 (UTC)
+
+:::::They were made by the same sort of grandmothers who used to knit children's clothes. Possibly because it was cheaper. Now, of course, the price of buying wool and a knitting machine places the cost higher than buying some import from China. 
+
+:::::Thinking about it now, I don't think they were 'holiday sweaters', i.e. had fluffy reindeer on or something, just normal knitted jumpers given at Christmas as a present.  [[User:194.80.193.188|194.80.193.188]] 11:16, 13 March 2007 (UTC)
+
+::::::::I suppose the practice may have died out "a bit", but in the US, at least, as regular readers of [http://www.boingboing.net BoingBoing] know, knitting is coming back in style.   Granted, it's coming back as a kind of activity geared towards a younger generation, the type prone to knit vibrator cozies more than sweaters...but that only brings a new, previously untapped potential to the concept of the handknitted holiday gift, eh?   Oh, and just to make sure folks know the old-school holiday sweater set isn't gone yet, my mother-in-law, not even 65 yet, still makes each of our children a sweater at the holidays.   [[User:Jfarber|Jfarber]] 19:06, 13 March 2007 (UTC)
+
+==Charles X And Louis-Philippe==
+How does one explain the dynastic rivalries between the Bourbon and Orleans branches of French Monarchy ? 
+
+Philippe Égalité, duke of Orleans and father of Louis-Philippe, was the famous leader of all the freemasons during the Revolution. He helped bring down the the catholic King, Louis XVI.
+
+Does this mean that monarchists can be equally liberal or conservative ? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/69.157.225.122|69.157.225.122]] ([[User talk:69.157.225.122|talk]]) 10:22, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+::Yes, but not 'equally." --[[User:Wetman|Wetman]] 18:07, 10 March 2007 (UTC)
+
+The political ambition of the house of Orléans is hardly surprising, given how close it was to the centre of power, merely duplicating a pattern that can be found everywhere in the history of monarchy.  During the minority of Louis XV Philippe, the second duke of Bourboun-Orléans, the father of Philippe Égalité, achieved a position of unparalleled power, establishing his dynasty as a permanent rival-and alternative-to their royal cousins. Philippe Égalité was intelligent enough to recognize the trend of the times, and was quick to identify himself with the liberal opposition to Louis XVI in both the 1787 [[Assembly of Notables]] and the Parlement of Paris. Too much can be made, however, of his alleged royal ambitions.  The court itself was blinded to the reality of the political crisis of 1789, seeing the popular movement as little more than a cover for Orléanist scheming. There is no evidence that Philippe in any way connived at the downfall of Louis. And despite his role in the National Assembly he gradually retreated into the political background, making no attempt to gain advantage after the king's flight to Varennes.  Philippe drifted with events: he did not control them.  And, yes, nineteenth century monarchs had a choice between the politics of reaction and the politics of progress.  Taking one path destroyed the monarchy of [[Charles X of France|Charles X]]; taking the other finally brought the Orléanists to the throne, in the shape of the unprepossessing, and pear-like, [[Louis-Philippe of France|King Louis-Philippe]], son of Égalité.  [[User:Clio the Muse|Clio the Muse]] 20:03, 10 March 2007 (UTC)
+
+:I saw this question earlier and thought to myself, now this is a question for Clio.  I was not wrong.  [[User:Marco polo|Marco polo]] 20:42, 10 March 2007 (UTC)
+
+::I thank you, sir, for your confidence in me!  [[User:Clio the Muse|Clio the Muse]] 21:00, 10 March 2007 (UTC)
+
+== What is the Historical Success of Peace Activism and Oppositional Politics ==
+
+When Hannibal was approaching Rome, the Roman population united against the enemy. The WW1 Russian front suffered from divisive home politics until the 1917 revolution. What are some historical examples of successful oppositional politics (or peace activism)? Failures are also welcome ;) [[User:Ddball|DDB]] 11:37, 10 March 2007 (UTC)
+
+:I'm not sure quite what you mean but how about too cool words [[satyagraha]] and [[anschluss]]. ''<small><font color="#000000">[[User:MeltBanana|meltBanana]]</font></small>'' 16:33, 10 March 2007 (UTC)
+
+:Antiwar protests and public sentiment against the [[Vietnam War]] were reputed to have hastened the end of [[USA|America's]] [[US Army|military engagement]] there. ''-- [[User:Deborahjay|Deborahjay]] 20:15, 10 March 2007 (UTC)''
+
+::On the other side of the coin, the British and American peace movements of the 1930's actually hampered the efforts of their respective governments to confront Hitler early on enough to avert the unprecedented horrors of WWII. I'd consider that one a "failure" of rather immense proportions! [[User:Loomis51|Loomis]] 00:30, 11 March 2007 (UTC)  
+
+:::You can understand the British population of the day finding another round superfluous, having just lost a generation to the "[[WWI|war to end all wars]]".   I think the greatest achievement of the "peace movement" (whatever that is (e.g., does a [[Walter B. Jones|partisan hawk]] who used to spend time renaming [[freedom fries|French Fries]] but now caucuses with [[Dennis Kucinich]] on ending the [[Iraq War|present adventure]] count?)) is in making wars marginally more humane.  I believe that without the dovish side of the political spectrum, and in particular now that there's [[Fall of communism|no risk]] of an unforeseen escalation, that in a bloody and tiresome situation like Iraq nations would be open to using chemical weapons, or worse.  --<b>TotoBaggins</b> 05:52, 11 March 2007 (UTC)
+
+DDB, I'm not quite sure how to tackle your question which I find, please forgive me for saying so, far too broad and ambitious in scope.  There are just too many examples of 'oppositional politics' in both peace and war for me to construct an adequate-and meaningful-answer.  However, I will mention two examples in passing: the [[Revolution of 1905]], born out of failure in war, and the [[Easter Rising]], a failed attempt at revolution in Ireland.  [[User:Clio the Muse|Clio the Muse]] 20:18, 10 March 2007 (UTC)
+
+Muse, it isn't a soapbox question, it asks for examples, not the justifications, but there are interesting things that get thrown up. One example might be the US Pacific WW2 effort, where the US President deprived MacArthur of supplies, capitalising politically over pacific failure. The Russian loss to a Japanese fleet in 1905 might have been related to morale. I like the responses I see. [[User:Ddball|DDB]] 02:38, 11 March 2007 (UTC) Just to clarify, I asked it because I know you've a lot to say .. I think you should treat it as a gimme for a fave. [[User:Ddball|DDB]] 02:42, 11 March 2007 (UTC)
+
+::OK, DDB; I think I understand!  Anyway, unsuccessful peace movements range in the modern period from the [[Copperheads (politics)|Copperheads]] at the time of the American Civil War to the more recent [[Campaign for Nuclear Disarmament]] in the United Kingdom.  Related to the latter, both in spirit and practice, was the [[Greenham Common Women's Peace Camp]], which unsuccessfully challenged the introduction of cruise missiles into England.  In Nazi Germany there is the sad example of the [[White Rose]] and the wonderful [[Sophie Scholl]], for whom the sun will shine forever.  And we should not forget to mention, in the context of peace movements, both successful and unsuccessful, [[George Fox]] and the Quakers.  In the Middle East there is [[Combatants for Peace]] and [[Peace Now]].  In the US the [[War Resisters League]] was set up in the wake of the Great War and is still active, as is the London-based [[War Resisters' International]].  During the [[Second Boer War]], at the high noon of British imperialism, there was a Stop the War Committee.  Prominent opponents of the war included none other than David Lloyd George, who later led England to victory in an even greater conflict.  In the period from 1939 to 1941 the war effort was opposed by the Communist Party of Great Britain, on the grounds that it was a struggle between two sets of imperialism in which the workers had no interest.  It rapidly changed its mind when Hitler crossed the Soviet border.  I could go on like this, but it might just get a shade too long and a tad too tedious!  But if you would like any clarification on any of these points, DDB, just let me know. [[User:Clio the Muse|Clio the Muse]] 09:04, 11 March 2007 (UTC)    
+
+:Don't forget the successful efforts of [[Gandhi]] and the [[Indian National Congress]] to get the British to withdraw from [[India]]. 02:53, 11 March 2007 (UTC)
+
+:Another success of the peace movement has been in [[Land_mine#Efforts_to_ban_anti-personnel_mines|efforts to ban anti-personnel mines]].  --<b>TotoBaggins</b> 05:59, 11 March 2007 (UTC)
+
+Also, how about the peaceful end to the [[Cold War]]?  That's certainly not how the [[Curtis Lemay]]s of the world wanted it to go down.  --<b>TotoBaggins</b> 06:03, 11 March 2007 (UTC)
+
+== fiction after 1950 ==
+
+Enlist the characteristics of fictions between 1950 and 2000, with adequate references to the major authors. <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/59.93.195.188|59.93.195.188]] ([[User talk:59.93.195.188|talk]]) 14:24, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Sounds like a homework question, which we do not and will not answer for you.   This question is also far too broad to be answered well without a substantial essay, even if we could stick to one type of fiction, or one region -- the characteristics of fiction have been significantly different in, say, African and the US in those time periods! -- so I wonder if you're missing some important context, like whether this is for a class on, say, modern European literature.    
+
+:Still, depending on what you need, you might find [[Fiction]] a good place to start, as it has an "elements of fictions" section.   If you're looking instead to start with the characteristics of fiction writing and narrative, [[Postmodern literature]] seems to be at the beginning of your time frame, though it is certainly not the only major movement in writing during your overall time frame.   [[User:Jfarber|Jfarber]] 14:55, 10 March 2007 (UTC)
+::Furthermore, the (rather short and not well referenced) articles on [[literary fiction]] and "[[death of the novel]]" might be of interest to you. ---[[User:Sluzzelin|Sluzzelin]] [[User talk:Sluzzelin|<small>talk</small>]] 15:10, 10 March 2007 (UTC)
+
+:Are you asking for a list of '''every''' fictional character created between 1950 and 2000? − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 19:53, 10 March 2007 (UTC)
+::ehm, I think User:59.93.195.188 was asking for character''istics'', not characters. :-) ---[[User:Sluzzelin|Sluzzelin]] [[User talk:Sluzzelin|<small>talk</small>]] 20:13, 10 March 2007 (UTC)
+
+I'm sorry; this is impossibly ambitious.  You are surely not looking for insight into ''all'' post-war fiction, which follows too many paths to mention outwith a doctoral thesis?  If you try to be a little more precise I might be able to help.  [[User:Clio the Muse|Clio the Muse]] 20:32, 10 March 2007 (UTC)
+
+:I hope that this is not a homework question, because "enlist" is the wrong word.  Presumably the person who wrote the question meant "list".  The question is actually too broad even for a doctoral dissertation.  [[User:Marco polo|Marco polo]] 20:38, 10 March 2007 (UTC)
+
+::I had originally written "doctoral thesis" instead of "substantial essay", but I decided that was too harsh.   Glad to see I was wrong.  [[User:Jfarber|Jfarber]] 02:43, 11 March 2007 (UTC)
+
+== scottish painter DY Cameron ==
+
+Did David Young Cameron ever sign his paintings "D Cameron" (without the 'Y')?[[User:Rcbeattie|Rcbeattie]] 14:57, 10 March 2007 (UTC)RCBeattie
+
+:D.Cameron could possibly be the painter Duncan Cameron (1837-1916) --[[User:HJMG|HJMG]] 12:08, 12 March 2007 (UTC)
+
+== USSR Question ==
+
+Greetings,
+
+I am writing a fictional essay, and I need the name of a USSR leader during the Cold War that would have used a new nuclear device on: 
+A. A city under the control of the USSR 
+B. The USA
+
+Also, who was prime minister of Great Britain at that time? This is not a homework question.
+
+Fare thee well,
+Alexander the Great <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[User:AlexanderTG|AlexanderTG]] ([[User talk:AlexanderTG|talk]] • [[Special:Contributions/AlexanderTG|contribs]]) 19:25, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Take your pick: [[List of leaders of the Soviet Union]], [[List of Prime Ministers of the United Kingdom]]. (A ''fictional'' essay? Does that mean you're only going to pretend to write it?) [[User:Clarityfiend|Clarityfiend]] 19:34, 10 March 2007 (UTC)
+
+:::The Cold War lasted over 40 years, roughly from 1947-1991. Though I'm not 100% on this, I'm pretty sure Great Britain had more than one Prime Minister during that period. In fact, I believe there were quite a few, so I suppose you can choose for yourself [[List of Prime Ministers of the United Kingdom|among them]] which one you'd like to use for your essay. Good luck! [[User:Loomis51|Loomis]] 19:48, 10 March 2007 (UTC)
+
+::::The last link has been brought to you by the Redundant Department of [[List of Prime Ministers of the United Kingdom|Links]] That Are Duplicated Redundantly By This Department. [[User:Clarityfiend|Clarityfiend]] 20:39, 10 March 2007 (UTC)
+
+:::::Was that meant for me? Ever hear of "edit conflict"? [[User:Loomis51|Loomis]] 00:20, 11 March 2007 (UTC)
+
+::::::(a) I was only funning. (b) an edit conflict for 14 minutes? [[User:Clarityfiend|Clarityfiend]] 02:48, 11 March 2007 (UTC)
+
+Alexander, you can have your pick of nine British prime ministers, all the way from Clement Attlee to Margaret Thatcher (the greatest of them all!).   Soviet leaders resolve to three basic choices: Joseph Stalin, Nikita Krushchev and Leonid Breshnev, though you may also wish to consider Yuri Andropov.  I find part of your question a little bewildering.  Are you suggesting that a Russian leader would have ordered the bombing of a Russian city?  Not one he happened to be living in at the time, one assumes?  Not even Stalin was that mad or the Chernenko that senile! [[User:Clio the Muse|Clio the Muse]] 20:54, 10 March 2007 (UTC)
+
+:<s>I'm confused. Why is [[John Major|Major]] being excluded?  Why are [[Georgy Malenkov|Malenkov]] and [[Mikhail Gorbachev|Gorbachev]] being excluded as well? Why is [[Konstantin Chernenko|Chernenko]] first being overlooked, only to be apparently subsequently included? I admire [[Margaret Thatcher|Thatcher]], but was she actually a greater leader than [[Winston Churchill|Churchill]]? Are you also saying that [[Josef Stalin|Stalin]] wasn't mad enough to be capable of [[Great Purge|murdering several million of his people]]?</s><small>Oops. Sorry, I honestly didn't realize who I was responding to. Please feel free to continue completely ignoring any and all of my points, no matter how much sense they make, no matter how politely they're expressed, and no matter how successful they are in challenging yours. </small> [[User:Loomis51|Loomis]] 00:20, 11 March 2007 (UTC)
+
+Stalin seemed the most likely to order the deaths of millions of his own people for some political reason or the other.  However, nuclear weapons are easy to detect when used, and he would have preferred to keep his genocide private.  Most of the Russian leaders would have been willing to nuke the US, if they weren't afraid of retaliation.  [[User:StuRat|StuRat]] 02:43, 11 March 2007 (UTC)
+
+This nuclear weapon is a new one. They (the Soviets) would find it, test it on a peasant city and threaten to us it on the US.
+[[User:AlexanderTG|AlexanderTG]] 03:01, 12 March 2007 (UTC)
+
+== Stalin acted or reacted? ==
+
+About half a year ago I found something what I thought was wrong in the article on Stalin. I took it up for discussion on the talk question to that article, but so far no one has given any comments. How could I put some attention to that issue? I don't know whether I should paste my whole comment on this page as well. Basically I think that the article on Stalin in its current wording is wrong, since it claims that Stalin reacted on the Kirov's murder instead of being the one ordering this murder. This is a very important issue since Kirov's murder was used to justify a new wave of purges. --[[User:Smallchanges|Smallchanges]] 20:02, 10 March 2007 (UTC)
+
+:If you have a source that describes this important issue, you can then proceed and add such material to the article. You may want to become familiar with our policy of [[WP:ATT|attribution]]. [[User:Jossi|≈ jossi ≈]] <small>[[User_talk:Jossi|(talk)]]</small> 20:05, 10 March 2007 (UTC)
+
+Stalin took the same kind of political advantage from Kirov's murder that Hitler did from the Reichstag fire: to achieve a complete hold on power.  It seems likely that he was involved in the assassination of a man who was becoming a dangerous rival.  But this contention has ''never been proved.''  If you have definite, and reliable, evidence on the matter I would love to see it.  [[User:Clio the Muse|Clio the Muse]] 20:26, 10 March 2007 (UTC)
+
+:On the other hand, if you only want to add the statement that there were suspicions that Stalin was involved in the assassination, then you only need sources that indicate that such suspicions existed, you don't need to prove that the suspicions were correct. [[User:StuRat|StuRat]] 02:31, 11 March 2007 (UTC)
+
+The suggestion that Stalin was implicated in Kirov's murder already appears in the article in question, though the point is also made, quite correctly, that there is no conclusive proof in the matter.  However, if you wish to amplify on the point, Smallchanges, there is some information that might be of use to you.  Years after the event Krushchev, not always the most reliable source, I have to stress, made the specific claim that Stalin ordered the killing, although he produced nothing to back up his contention.  However, Anastas Mikoyan, a close associate of Stalin, and with much less to prove than Krushchev, also came to believe in the truth of the story, though again he cited no evidence.  It is unlikely that any paper trail will ever be found on the death of Kirov, but Stalin was known to gave verbal orders for other political killings. In the end it all comes down, I suppose, to the question posed by Cicero-''Cui bono''? -whose interest did the crime serve?  The obvious answer, of course, is Stalin, who immediately blamed Zinoviev and his associates in the former Left Opposition. The texts you should draw on in this matter are Simon Sebag Montiefiore's superb ''Stalin: the Court of the Red Tsar'', and Robert Service's ''Stalin'', which musters all of the facts, though in a somewhat more pedestrian fashion.  A word of warning, though: the Stalin page is something of a bear-pit, as you may have gathered from the talk page, subject to raids by political revisionists and ideological warriors.  Best of luck!  [[User:Clio the Muse|Clio the Muse]] 12:47, 11 March 2007 (UTC)
+
+== Good Hip-Hop ==
+
+Hi. can anyone recommend a good hip-hop or rap song? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/91.109.31.221|91.109.31.221]] ([[User talk:91.109.31.221|talk]]) 21:08, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:No, but I can link you to the [http://www.billboard.com/bbcom/charts/randb_hiphop_index.jsp billboard charts for hiphop]. --[[User:Wirbelwind|Wirbelwind<small>ヴィルヴェルヴィント</small>]]&nbsp;([[User_talk:Wirbelwind|talk]]) 21:26, 10 March 2007 (UTC)
+
+:Here is a taste:
+:* "[[Sabotage (song)|Sabotage]]" by [[Beastie Boys]]
+:* "[[Wamp Wamp (What It Do)]]" and "Hello New World" by [[Clipse]]
+:* "Propaganda" and "Hip-Hop" by the [[dead prez]]
+:* "Smithereens" by [[El-P]]
+:* "[[Diamonds from Sierra Leone]]" by [[Kanye West]]
+:* "[[One Mic]]" by [[Nas]]
+:* "All Caps" by [[Madvillain]]
+:* "Brooklyn" by [[Mos Def]]
+:* "Get By" by [[Talib Kweli]]
+: And check out the Nova Scotia musician [[Buck 65]]. − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 21:50, 10 March 2007 (UTC)
+
+::If limited to one answer, I'll recommend [[Critical Beatdown]]. ---[[User:Sluzzelin|Sluzzelin]] [[User talk:Sluzzelin|<small>talk</small>]] 21:56, 10 March 2007 (UTC)
+:::Don't dis my personal taste, but:
+:::*"Rooster" by [[Outkast]]
+:::*"Renegade" by [[Jay-Z]]/[[Eminem]]
+:::*"Examination of what" by [[Digable Planets]]
+:::*"Love is blind" by [[Eve (rapper)|Eve]]
+:::*"Watch out now" by [[Beatnuts]]
+:::etc. [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 00:31, 11 March 2007 (UTC)
+
+::::If you're interested in the classics, I'd go for anything off [[De La Soul is Dead]], point you towards the earlier works of [[A Tribe Called Quest]], and second [[Digable Planets]].  [[Ghostface Killah]] is one of my favorite modern artists in the genre.  [[User:Jfarber|Jfarber]] 01:52, 11 March 2007 (UTC)
+
+:::::I have to second that recommendation for A Tribe Called Quest and De La Soul. Other artists and groups of possible interest include:
+:::::*[[Aesop Rock]]
+:::::*[[Cannibal Ox]]
+:::::*[[Jurassic 5]]
+:::::*[[Dr. Octagon]]
+:::::*[[The Roots]]
+:::::*[[Public Enemy]]
+:::::*[[Atmosphere (music group)|Atmosphere]]
+:::::*[[Dälek]]
+:::::*[[Jungle Brothers]]
+:::::*[[Wu-Tang Clan]]
+:::::*[[Sage Francis]]
+:::::-- [[User:Chairman S.|Chairman S.]] <span style="font-size:75%"><font color="#E32636">[[User talk:Chairman S.|Talk]]</font> <font color="#177245"><sup>[[Special:Contributions/Chairman_S.|Contribs]]</sup></font></span> 02:20, 11 March 2007 (UTC)
+
+=="Sanctity of Life" in relation to Warfare==
+
+In preparation for a debate on the ethical conflict between the [[sanctity of life]] and service in [[Warfare|military combat units]], I'm seeking quotable material, pro and con, relating to the dilemmas involved in fighting (i.e., killing and being killed) to defend a [[Democracy|democratic]], [[Humanism|humanistic]] way of life. Some of this is treated in the [[IDF]] Code of [[Ethics]] as cited in [[Purity of Arms]]; I'm looking for historical sources and examples outside of [[Israel]] as well. '''''Clarification:''''' The case is that of an [[conscription|individual draftee]] with a [[Humanism|humanistic]] belief system <s>faced with</s> considering the option of joining a [[Warfare|combat]] unit rather than seeking an explicitly noncombat position or even applying for [[conscientious objector]] status. '''''Further clarification:''''' This is about the army of a country in a state of [[war]] (i.e. [[Israel]]), not (as with the [[US]] army at present) sending its troops to defend the freedoms of others'. ''-- Thanks, [[User:Deborahjay|Deborahjay]] 22:40, 10 March 2007 (UTC)''
+
+:I suppose there is the "greater good" argument.  For example, isn't it better to kill a few thousand genocidal soldiers than to allow them to kill millions ? [[User:StuRat|StuRat]] 02:25, 11 March 2007 (UTC)
+
+:Could you clarify a bit? In relation to warfare or to military service? The general or the personal? Pithy quotes to use in the debate or background references to support an argument?&mdash;[[User:EricR|eric]] 04:16, 11 March 2007 (UTC)
+::Both of the latter would be helpful, on either side of the issue. Othewise, see the '''''clarifications''''' I've added to the initial query, above. ''-- Thanks, [[User:Deborahjay|Deborahjay]] 06:02, 11 March 2007 (UTC)''
+
+:Since most wars are initiated not for [[national defense]] or for the amelioration of the sort of [[genocide|exceptional circumstance]] to which StuRat alluded, I think the ''practical'' ethical choice for someone who actually believes in the sanctity of life is to become a [[conscientious objector]].  You can always change your mind and join up if the [[Fourth Reich]] ever pops up.   --<b>TotoBaggins</b> 05:05, 11 March 2007 (UTC)
+::See ''"Further clarification"'' (above): the [[IDF]], since the inception of the [[Israel|State]], engages in [[national defense]] (though also sends troops to police its occupied territories, a matter for consideration though ''not for discussion here''). Also, the belief systems is ''humanism;'' the ''"sanctity of life"'' as an ethical value <s>a value in the code of ethics</s>, applies not only to enemy soliders and civilians, but also to one's fellow citizens, soldiers, and oneself. ''-- [[User:Deborahjay|Deborahjay]] 05:56, 11 March 2007 (UTC)''
+
+:::I'm not really sure that this is what you are looking for Deborahjay, it's not a contemporary example and it does not touch on the conflict between one's individual conscience and the greater need to defend a democratic way of life, but your questions immediately reminded me of the remarkable case of Franz Jäggerstätter, an ordinary little man, a farmer, who took a simple, and fatal, stand on the basis of his faith.  Jäggerstätter, a committed Catholic, and a consciencious objector, single-handedly challenged the war-effort of the Nazi State, refusing to serve in the army.  Although the church, in the person of the Bishop of Linz, tried to persuade him out of the position he had taken, pointing to the danger he was placing himself in, he refused to compromise, telling the bishop that the Nazis were on a train to Hell.  He was beheaded for treason in August 1943.  In one of his last letters he wrote: ''Just as the man who thinks only of this world does everything possible to make life here easier and better, so must we, who believe in the eternal Kingdom, risk everything in order to receive a great reward there.  Just as those who believe in National Socialism tell themselves that their struggle is for survival, so must we, too, convince ourselves that the struggle is for the eternal Kingdom.  But this is the difference: we need no rifles or pistols for our battle, but instead spiritual weapons-and the foremost among these is prayer. ''  Gordon Zahn, an American sociologist later wrote about Jäggerstätter in his book, ''Solitary Witness'', which influenced Daniel Ellsberg in his decision to make a stand against the war in Vietnam.  
+
+:::St. Augustine's arguments in defence of the just war continues, I suppose, to have universal relevance.  For him the sole justification for war was, paradoxically, the defence of peace;  ''A just war is wont to be descibed as one that avenges wrongs, when a nation or a state has to be punished, for refusing to make amends for for the wrongs inflicted by its subjects, or to restore what it has seized unjustly...We do not seek peace in order to be at war , but we go to war that we may have peace.  Be peaceful, therefore, in warring, so that that you may vanquish those whom you war against, and bring them to the prosperity of peace''.  This position was later given some profane confirmation from Machiavelli, when he wrote: ''War is just when it is necessary; arms are permissible when there is no hope except in arms.  '' There is so much additional information I could provide along these lines, but I grow more conscious that I am drawing too far away from your area of immediate concern.  [[User:Clio the Muse|Clio the Muse]] 10:20, 11 March 2007 (UTC)
+::::Thanks much, [[User:Clio the Muse|Clio]], for the extensive treatment. I view the matter as one of [[Ethics|ethical values]] as imparted by sociocultural channels such as the educational system and family, rather than "conscience" per se, so hadn't considered the relevance of discussion such as raised in formal "[[Conscientious objector|conscientious objection]]." I now see that page does have useful content for this debate. As for [[Franz Jägerstätter|Jägerstätter]] [sic; I've added two [[WP:REDIRECT|Redirect pages]] with yours and a similar spelling): it's great that you reminded me of his name, as his case is familiar in [[Israel]] from [[Yehoshua Sobol]]'s dramatization, and I've edited their respective pages accordingly. On the other hand, I was entirely unfamiliar with [[St. Augustine]] and had neglected to pursue the concept of a "[[just war]]" and those are certainly pertinent. Now we've more to go on, and more work ahead!  ''-- Cheers, [[User:Deborahjay|Deborahjay]] 04:39, 13 March 2007 (UTC)''
+
+:::I can see the [[sanctity of life]] as related to [[humanism]] but not so well with [[democracy]].  Certainly there are worse political systems, but democracy is has its own problems, can and has resulted in violations of the sanctity of life.  Not to dis democracy, but perhaps it is too often held up as a kind of platonic ideal, as if anything other than democracy is a negative thing.  Sorry I don't have any quotes to provide. [[User:Pfly|Pfly]] 10:35, 11 March 2007 (UTC)

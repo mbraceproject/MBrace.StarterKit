@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Demos", "Demos\Demos.fsproj", "{7305971B-AD13-43FF-BAF4-1E073D8A45BF}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Nessos.MBrace.Lib", "Nessos.MBrace.Lib\Nessos.MBrace.Lib.fsproj", "{255737AA-9364-4E25-88E1-EC3E3ACC650D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2012:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Demos\\Demos.fsproj
+		SccProjectName1 = Demos
+		SccLocalPath1 = Demos
+		SccProjectUniqueName2 = Nessos.MBrace.Lib\\Nessos.MBrace.Lib.fsproj
+		SccProjectName2 = Nessos.MBrace.Lib
+		SccLocalPath2 = Nessos.MBrace.Lib
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug CLUSTER|Any CPU = Debug CLUSTER|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Debug-AppDomain Isolation|Any CPU = Debug-AppDomain Isolation|Any CPU
+		DebugM|Any CPU = DebugM|Any CPU
+		MBrace-Debug|Any CPU = MBrace-Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug CLUSTER|Any CPU.ActiveCfg = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug CLUSTER|Any CPU.Build.0 = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug-AppDomain Isolation|Any CPU.ActiveCfg = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug-AppDomain Isolation|Any CPU.Build.0 = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.DebugM|Any CPU.ActiveCfg = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.DebugM|Any CPU.Build.0 = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.MBrace-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.MBrace-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug CLUSTER|Any CPU.ActiveCfg = Debug CLUSTER|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug CLUSTER|Any CPU.Build.0 = Debug CLUSTER|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug-AppDomain Isolation|Any CPU.ActiveCfg = Debug-AppDomain Isolation|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug-AppDomain Isolation|Any CPU.Build.0 = Debug-AppDomain Isolation|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.DebugM|Any CPU.ActiveCfg = DebugM|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.DebugM|Any CPU.Build.0 = DebugM|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.MBrace-Debug|Any CPU.ActiveCfg = MBrace-Debug|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.MBrace-Debug|Any CPU.Build.0 = MBrace-Debug|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

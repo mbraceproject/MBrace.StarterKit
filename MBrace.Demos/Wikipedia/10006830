@@ -1,0 +1,130 @@
+{{Infobox Aviation|name = Disk loading|image = file:DN-SD-06-03008.JPG|caption = The [[MV-22 Osprey]] [[tiltrotor]] has a relatively high disk loading, producing visible [[Wingtip vortices|blade tip vortices]] from [[condensation]] of the marine air in this photo of a [[vertical takeoff]].}}
+[[Image:C27 SPartan making condensation spirals.jpg|thumb|right|[[C-27J Spartan]] with propeller tip vortices condensation. The C-27J uses the same engines as the MV-22, but has higher disk loading.]]
+[[File:Flight.rob.arp.750pix.jpg|thumb|[[Piston engine|Piston-powered]] light utility [[helicopter]]s like this [[Robinson R-22]] have relatively low [[Helicopter rotor|main rotor]] disk loading]]
+In [[fluid dynamics]], '''disk loading''' or '''disc loading''' is the average [[pressure]] change across an [[actuator disk]], such as an airscrew. Airscrews with a relatively low disk loading are typically called rotors, including [[helicopter]] [[Helicopter rotor|main rotor]]s and [[tail rotor]]s; [[propeller (aircraft)|propeller]]s typically have a higher disk loading.<ref name="isbn0-486-64647-5">{{cite book |author=Keys, C. N.; Stepniewski, W. Z. |title=Rotary-wing aerodynamics |publisher=Dover Publications |location=New York |year=1984 |pages=3 |isbn=0-486-64647-5 |oclc= |doi= |accessdate=|quote=It is interesting to note that there has always been a strong intuitive association of rotary-wing aircraft with low disc loading which is reflected in the commonly accepted name of rotor given to their lifting airscrews.}}</ref> 
+The [[V-22 Osprey]] [[tiltrotor]] aircraft has a high disk loading relative to a helicopter in the hover mode, but a relatively low disk loading in [[fixed-wing aircraft|fixed-wing]] mode compared to a [[turboprop]] aircraft.<ref name=VDTR>{{cite conference|title=A Variable Diameter Short Haul Civil Tiltrotor |url=http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.45.612&rep=rep1&type=pdf |author=Wang, James M.; Jones, Christopher T.; Nixon, Mark W. |conference= 55th Annual Forum of the American Helicopter Society| location=[[Montreal, Canada]]| date=1999-05-27|quote=The variable diameter tiltrotor (VDTR) is a Sikorsky concept aimed at improving tiltrotor hover and cruise performance currently limited by disk loading that is much higher in hover than conventional helicopter, and much lower in cruise than turbo-prop systems.}}</ref> 
+
+==Rotors==
+Disc loading of a [[hover (helicopter)|hover]]ing helicopter 
+is the ratio of its weight to the
+total main rotor disc area. It is determined by dividing
+the total helicopter weight by the rotor disc area,
+which is the area swept by the blades of a rotor. Disc
+area can be found by using the span of one rotor blade
+as the radius of a circle and then determining the area
+the blades encompass during a complete rotation. As
+the helicopter is maneuvered, disc loading changes.
+The higher the loading, the more power needed to
+maintain rotor speed.<ref name=FAA>{{cite book
+ | title = Rotorcraft Flying Handbook
+ | year = 2000
+ | publisher = U.S. Federal Aviation Administration
+ | location = U.S. Government Printing Office, Washington D.C.
+ | id = FAA-8083-21
+ | pages = 2–4, 19-3, G-2
+ | url=http://www.faa.gov/library/manuals/aircraft/media/faa-h-8083-21.pdf
+ | quote=DISC LOADING—The total helicopter weight divided by the rotor disc
+area.}}</ref>
+
+Increasing the weight of a helicopter increases disk loading. For a given weight, a helicopter with shorter rotors will have higher disk loading, and will require more engine power to hover. A low disk loading improves [[Autorotation (helicopter)|autorotation]] performance in [[rotorcraft]].<ref>{{cite book |author=Noor, Ahmed Khairy |title=Future Aeronautical and Space Systems (Progress in Astronautics and Aeronautics) |publisher=AIAA (American Institute of Aeronautics & Astronautics) |location= |year=1996 |pages= 66|isbn=1-56347-188-4 |quote=Reduced disk loading in the vertical mode also results in lower downwash and improved capability for autorotation.}}</ref> Typically, an [[autogyro]] (or gyroplane) has a lower rotor disc loading than a helicopter, which provides a slower rate of descent in autorotation.<ref name=FAA/>
+
+==Propellers==
+In reciprocating and propeller engines, disk loading can be defined as the ratio between propeller-induced velocity and freestream velocity.{{Citation needed|date=August 2009}} Lower disk loading will increase efficiency, so it is generally desirable to have larger propellers from an efficiency standpoint. Maximum efficiency is reduced as disk loading is increased due to the rotating slipstream; using [[contra-rotating propellers]] can alleviate this problem allowing high maximum efficiency even at relatively high disc loadings.<ref>{{cite book | last = Birdsall | first = David | title = Aircraft Performance | publisher = Cambridge University Press | location = Cambridge | year = 1996 | isbn = 0521568366 | pages=99 |quote=contra-rotating propellers this rotational loss can be eliminated and maximum efficiencies approaching 0.9 can be obtained even with high disc loading }}</ref>
+
+The [[Airbus A400M]] fixed-wing aircraft will have a very high disk loading on its propellers, and this had to be factored into the design.<ref>{{cite book |author=Reinhard Hilbig; Wagner, Siegfried; Ulrich Rist; Hans-Joachim Heinemann |title=New Results in Numerical and Experimental Fluid Mechanics III |series=Notes on Numerical Fluid Mechanics and Multidisciplinary Design |volume = 3) |publisher=Springer |location=Berlin |year=2002 |page= 82|isbn=3-540-42696-5|The A400M will be driven by four modern turboprop engines with a high disc loading.... The disc loading of the propellers is significantly higher than realised on former tactical transport aircraft like C130H or Transall C160.}}</ref>
+
+==Theory==
+The ''momentum theory'' or ''disk actuator theory'' describes a [[mathematical model]] of an ideal actuator disk, developed by [[William John Macquorn Rankine|W.J.M. Rankine]] (1865), [[Alfred George Greenhill]] (1888) and [[R.E. Froude]] (1889). The [[helicopter]] [[helicopter rotor|rotor]] is modeled as an infinitely thin disc with an infinite number of blades that induce a constant pressure jump over the disk area and along the axis of rotation. For a helicopter that is [[hover (helicopter)|hover]]ing, the aerodynamic force is vertical and exactly balances the helicopter weight, with no lateral force. 
+
+The upward action on the helicopter results in a downward reaction on the air flowing through the rotor. The downward reaction produces a downward velocity on the air, increasing its [[kinetic energy]]. This energy transfer from the rotor to the air is the induced power loss of the rotary wing, which is analogous to the [[lift-induced drag]] of a fixed-wing aircraft. 
+
+[[Conservation of linear momentum]] relates the induced velocity downstream in the far wake field to the rotor thrust per unit of [[mass flow]]. [[Conservation of energy]] considers these parameters as well as the induced velocity at the rotor disk. [[Conservation of mass]] relates the mass flow to the induced velocity. The momentum theory applied to a helicopter gives the relationship between induced power loss and rotor thrust, which can be used to analyze the performance of the aircraft. [[Viscosity]] and [[compressibility]] of the air, [[friction]]al losses, and rotation of the slipstream in the wake are not considered.<ref name=Johnson/>
+
+===Momentum theory===
+For an actuator disk of area <math>A</math>, with uniform induced velocity <math>v</math> at the rotor disk, and with <math>\rho</math> as the [[density of air]], the [[mass flow rate]] <math>^\dot{m}</math> through the disk area is:
+
+:<math>\dot m = \rho \, A \, v.</math>
+
+By conservation of mass, the mass flow rate is constant across the [[slipstream]] both upstream and downstream of the disk (regardless of velocity). Since the flow far upstream of a helicopter in a level hover is at rest, the starting velocity, momentum, and energy are zero. If the homogeneous [[slipstream]] far downstream of the disk has velocity <math>w</math>, by conservation of momentum the total thrust <math>T</math> developed over the disk is equal to the rate of change of momentum, which assuming zero starting velocity is:  
+
+:<math> T= \dot m\, w.</math>
+
+By conservation of energy, the work done by the rotor must equal the energy change in the slipstream:
+
+:<math> T\, v= \tfrac12\, \dot m\, {w^2}.</math> 
+
+Substituting for <math>T</math> and eliminating terms, we get:
+
+:<math> v= \tfrac12\, w.</math>
+
+So the velocity of the wake far downstream is twice the velocity at the disk, which is the same result for an elliptically loaded fixed wing predicted by [[lifting-line theory]].<ref name=Johnson>{{cite book |author=Johnson, Wayne |title=Helicopter theory |chapter=2|publisher=Dover Publications |location=New York |year=1994 |pages= 28–34|isbn=0-486-68230-7|quote=In the momentum theory analysis the rotor is modeled as an actuator disk, which is a circular surface of zero thickness that can support a pressure difference and thus accelerate the air through the disk.}}</ref>
+
+===Bernoulli's principle===
+
+To compute the disk loading using [[Bernoulli's principle]], we assume the pressure in the slipstream far downstream is equal to the starting pressure <math>p_0</math>, which is equal to the [[atmospheric pressure]]. From the starting point to the disk we have:
+
+:<math> p_0 =\, p_1 +\ \tfrac12\, \rho\, v^2.</math>
+
+Between the disk and the distant wake, we have:
+
+:<math> p_2 +\ \tfrac12\, \rho\, v^2 =\, p_0 +\ \tfrac12\, \rho\, w^2.</math>
+
+Combining equations, the disk loading <math>T /\, A</math> is:
+
+:<math>\frac {T}{A} = p_2 -\, p_1 = \tfrac12\, \rho\, w^2</math>
+
+The total pressure in the distant wake is: 
+
+:<math> p_0 + \tfrac12\, \rho\, w^2 =\, p_0 + \frac {T}{A}.</math>
+
+So the pressure change across the disk is equal to the disk loading. Above the disk the pressure change is:
+
+:<math> p_0 - \tfrac12\, \rho\, v^2 =\, p_0 -\, \tfrac14 \frac {T}{A}.</math>
+
+Below the disk, the pressure change is:
+
+:<math> p_0 + \tfrac32\, \rho\, v^2 =\, p_0 +\, \tfrac34 \frac {T}{A}.</math>
+
+The pressure along the slipstream is always falling downstream, except for the positive pressure jump across the disk.<ref name=Johnson/>
+
+===Power required===
+From the momentum theory, thrust is:
+:<math> T = \dot m\, w = \dot m\, (2  v) = 2 \rho\, A\, v^2.</math>
+
+The induced velocity is:
+
+:<math>v = \sqrt{\frac{T}{A} \cdot \frac{1}{2 \rho}}.</math>
+
+Where <math>T/A</math> is the disk loading as before, and the power <math>P</math> required in hover (in the ideal case) is:
+
+:<math>P = T v = T \sqrt{\frac{T}{A} \cdot \frac{1}{2 \rho}}.</math>
+
+Therefore the induced velocity can be expressed as:
+
+:<math> v = \frac{P}{T} = \left [ \frac{T}{P} \right ] ^{-1}.</math>
+
+So, the induced velocity is inversely proportional to the [[power loading]] <math>T/P</math>.<ref name="isbn0-521-85860-7">{{cite book |author= |title=Principles of Helicopter Aerodynamics (Cambridge Aerospace Series) |publisher=Cambridge University Press |location=Cambridge, UK |year=2006 |pages= |isbn=0-521-85860-7 |oclc= |doi= |accessdate=}}</ref>
+
+== Examples ==
+[[Image:VTOL DiscLoad-LiftEfficiency.PNG|right|thumb|623px|Correlation between disc loading and hover lift efficiency, for various VTOL aircrafts]]<!--image size=623 to include title-->
+{{Table
+|type=class="wikitable sortable"
+|title=Disk loading comparison
+|hdrs=Aircraft!!Description!!Max Gross Weight!!Total disk area!!Max disk Loading
+|row1=[[Robinson R-22]]{{!!}}Light utility [[helicopter]]{{!!}}1,370 lb (635 kg){{!!}}497 ft² (46.2 m²){{!!}}2.6 lb/ft² (14 kg/m²)
+|row2=[[Bell 206|Bell 206B3 JetRanger]]{{!!}}[[Turboshaft]] utility [[helicopter]]{{!!}}3,200 lb (1,451 kg){{!!}}872 ft² (81.1 m²){{!!}} 3.7 lb/ft² (18 kg/m²)
+|row3=[[CH-47D Chinook]]{{!!}}[[Tandem rotor]] [[helicopter]]{{!!}}50,000 lb (22,680 kg){{!!}}5,655 ft² (526 m²){{!!}}8.8 lb/ft² (43 kg/m²)
+|row4=[[Mil Mi-26]]{{!!}}Heavy-lift [[helicopter]]{{!!}}123,500 lb (56,000 kg){{!!}}8,495 ft² (789 m²){{!!}}14.5 lb/ft² (71 kg/m²)
+|row5=[[CH-53E Super Stallion]]{{!!}}Heavy-lift [[helicopter]]{{!!}}73,500 lb (33,300 kg){{!!}}4,900 ft² (460 m²){{!!}}15 lb/ft² (72 kg/m²)
+|row6=[[V22 Osprey|MV22B Osprey]]{{!!}}[[Tiltrotor]] [[Vertical/Short Takeoff and Landing|V/STOL]]{{!!}}60,500 lb (27,400 kg) {{!!}}2,268 ft² (211.4 m²){{!!}}26.68 lb/ft² (129.63 kg/m²)
+|}}
+
+== See also ==
+*[[Wing loading]]
+
+==References==
+{{reflist}}
+{{FAA.Gov|sourceURL=[http://www.faa.gov/library/manuals/aircraft/media/faa-h-8083-21.pdf Rotorcraft Flying Handbook]}}
+
+{{DEFAULTSORT:Disk Loading}}
+[[Category:Aerospace engineering]]

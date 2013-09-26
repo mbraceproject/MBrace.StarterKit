@@ -1,0 +1,132 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Language|Language desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Language/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Language/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Language/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Language/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Language/2007 March 11|[[Wikipedia:Reference desk/Archives/Language/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Language|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Language Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Language/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== County, Parish, Townload? ==
+
+Could someone give a definition for ''townload''? Apparently some kind of administrative division in Ireland ([http://www.google.com/search?hl=en&q=townload+ireland&btnG=Search examples]).&mdash;[[User:EricR|eric]] 00:41, 10 March 2007 (UTC)
+
+:I think you're looking for a '''[[townland]]'''. — [[User:Garzo|Gareth Hughes]] 00:45, 10 March 2007 (UTC)
+
+Townland ? Parish the thought. [[User:StuRat|StuRat]] 14:54, 11 March 2007 (UTC)
+
+== Able vs. Capable ==
+
+What's the difference between the English words "able" and "capable"? The dictionaries are of absolutely no use. Some of them actually send you into an endless feedback loop: An "able" person is defined as "one who is capable", while a "capable" person is defined as "one who is able". Do the two words mean precisely the same thing, or is their some distinction I seem to be missing? It's quite maddening actually. Same goes for the words "flammable" and "inflammable". While seemingly antonyms, they too seem to be defined in precisely the same way as each other. I pity the poor foreign language speaking student of English flipping back and forth in a dictionary, looking for the definition of "able", being redirected to "capable", only to be redirected once again to "able"...and on and on. If their is indeed absolutely no distinction between the two words, is there perhaps a term for an entirely redundant word in a language? I'm not speaking of mere synonyms, as to be synonymous, two words need not have ''precisely'' the same definition, but a generally similar definition, save for those slight differences in nuance providing a purpose for their independent existence. For example, consider the words: intelligent, smart, bright, sharp, clever, witty, astute, wise, brainy, quick, knowledgeable, etc. Most of these words would be considered synonyms of each other, as they refer generally to extremely similar attributes, yet each possesses, at the very least, a separate nuance, providing a rationale for retaining each one in the English language. But the two words "able" and "capable"? These aren't mere synonyms, rather, they seem to mean ''exactly'' the same thing. Can anyone provide me with a distinction between these two words I may have missed? [[User:Loomis51|Loomis]] 02:41, 10 March 2007 (UTC)
+
+:They each also have usages that the other does not share.  For example, "I am '''capable of''' climbing Mt Everest", but "I am '''able to''' climb Mt Everest".  The ''of'' and ''to'' can't be interchanged.  I don't think these have quite the same nuances.  Just a thought.  [[User:JackofOz|JackofOz]] 02:47, 10 March 2007 (UTC)
+
+::Interesting. You say that the two are different in nuance. Can you provide an illustration where saying "I am '''capable of''' climbing Mt Everest", is either more or less of an accurate statement than saying "I am '''able to''' climb Mt Everest"? Otherwise, I can't accept that two words meaning precisely the same thing aren't redundant merely because they follow different syntactical and grammatical rules. That's no more than what they call a ''distinction without a difference''. Of course the two words are ''distinct'', for no other reason that they're spelled differently, but how are they actually ''different''? [[User:Loomis51|Loomis]] 03:36, 10 March 2007 (UTC)
+
+:::How about "I'm capable of climbing Mt. Everest, but I am unable to because I have no money to get there." To me, capable is having the skills/ability/etc to do something, while able is more general, encompassing capable, but also including all other aspects. Not sure how accurate that is compared to dictionaries' infinite loop. --[[User:Wirbelwind|Wirbelwind<small>ヴィルヴェルヴィント</small>]]&nbsp;([[User_talk:Wirbelwind|talk]]) 03:40, 10 March 2007 (UTC)
+
+:::::Bingo, Wirbel! That's it! That makes perfect sense! After years of scratching my head about it, I finally have a satisfying answer. There is indeed a subtle difference between "able" and "capable" after all. One's "capabilities" would seem to be a subset of one's "abilities". Whereas "capability" is restricted to one's own ''inner capacity'' to do something, "ability" seems to include external factors as well. To say that "I'm incapable of climbing Mount Everest because I can't afford the trip" wouldn't make sense, because you're not speaking strictly of any lack of ''inner capacity'', but rather a more external factor, that being the cost of the trip. Thanks Wirbel! [[User:Loomis51|Loomis]] 16:32, 10 March 2007 (UTC)   
+
+::::To answer Loomis: Many humans have climbed Mt Everest, which suggests that it's not beyond human capacity.  Thereore I am also capable of doing it.  But am I able to?  Certainly not at the moment - no mountaineering training or experience; my fitness is ... well, let's move on; I don't have the financial resources needed; etc.  I might someday become able to do it, if I had the remotest interest, which I don't.  [[User:JackofOz|JackofOz]] 05:12, 10 March 2007 (UTC)
+
+:::::First your rather unique interpretation of the word "fact", and now this? ''Many humans have climbed Mt Everest...thereore I am also capable of doing it''? With the greatest of respect, Jack, your posts seem to be getting, as you might put it "loopier and loopier" by the day! :--) No, Jack! Just because some other humans are capable of doing something, or even ''potentially'' doing something, doesn't mean you are! For example, from what I understand you happen to be quite the talented pianist. You're "capable" of playing the piano quite well. Many other humans share this talent, which, as you put it, suggests it's not beyond human capacity. But does that necessarily mean that I, too, am capable of playing as well as you? Absolutely not! I've tried, (and tried and tried!), yet the unfortunate truth is that even if I were to practice 12 hours a day for the next 20 years, I ''still'' wouldn't be capable of playing the piano at your level. [[User:Loomis51|Loomis]] 16:32, 10 March 2007 (UTC)      
+
+::::::That may be because you don't really believe you can play well.  The fact that you've tried and tried suggests that some part of you believes, or once believed, you could do this.  At what point did you decide it was impossible for you?  and why?  Wasn't it you who reminded us all a year or so ago about Winston Churchill's recommendation to never, never, never give up?  And who was it who said, "What the mind can conceive, the body can achieve"?  These may seem like new-agey waffle to some, but I think they relate very directly to the question of capability.  [[User:JackofOz|JackofOz]] 00:43, 11 March 2007 (UTC)
+
+:::::::Are you denying the fact that certain people possess gifts that others do not? Are you denying the possibility that you just may possess a musical talent that I simply lack? Your modesty is certainly admirable, but unwaranted. For me, the beauty of humanity lies in its diversity. We all have our unique strengths and weaknesses, our unique set of ''capabilities'' and ''incapabilities''. If this were not the case, the human species would certainly be a rather dull one, I'd say. [[User:Loomis51|Loomis]] 14:09, 11 March 2007 (UTC)     
+
+:To say of someone that they are capable, as in "She's a very capable administrator", means that they are effective and accomplish their responsibilities with skill. Would you say that "She's an able administrator" has the same connotations of unmitigated praise? [[User:Tesseran|Tesseran]] 10:36, 10 March 2007 (UTC)
+
+
+::Of course not, because for some reason you decided to omit the superlative "very" in your second phrase. The only fair comparison would be between the sentences: "She's a very capable administrator", and "She's a very able administrator". I don't see any noticeable difference in level of praise between those two sentences. [[User:Loomis51|Loomis]] 16:32, 10 March 2007 (UTC)
+
+:::There might be. To me, "capability" says she'll be able to handle matters now and in the future, while "ability" says she's been able to handle matters in the past. An able administrator has done her job well; a capable administrator is expected to be able to do so in the future. --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 23:34, 11 March 2007 (UTC)
+
+Yes, to me "you're capable of doing that" seems to suggest the potential of being able to do that. I've be told a number of times "you're capable of being good at math if you only tried... blah blah blah..." --[[User:Candy-Panda|Candy-Panda]] 03:09, 16 March 2007 (UTC)
+
+When looking at the etymology for capable you find it's root is capabilis, meaning receptive. Through it's evolution it's maintained a meaning akin to retaining, holding, containing as such it is closely related to captive, the state of captivity. It seems then that capable is an etymological hybrid of captive and able. So that are you capable can be taken as do you hold captive the ability to demonstrates a mastery of. Are you able seems, than to be relegated to mean are you able to be capable.
+
+==Either & Either==
+I noticed that the first syllable of the word "either" can sometimes be pronounced like an "I" or other times like an "E". From hearing other people's speech, I suspect that there is a usage rule for its pronunciation. Could anyone explain? [[User:Aurora sword|Aurora sword]] 06:35, 10 March 2007 (UTC)
+:Nope. Just regional preference for the most part. --[[User:Wirbelwind|Wirbelwind<small>ヴィルヴェルヴィント</small>]]&nbsp;([[User_talk:Wirbelwind|talk]]) 06:37, 10 March 2007 (UTC)
+::Oh. Well, thanks for clarifying that up. [[User:Aurora sword|Aurora sword]] 06:39, 10 March 2007 (UTC)
+:::In case you're interested, it's called [[free variation]] in linguistics. :) --'''[[User:Kjoonlee|Kjoon]]'''[[User talk:Kjoonlee|lee]] 06:56, 10 March 2007 (UTC)
+
+:An old joke, which needs to be heard (so I have to indicate the pronunciation of some words):
+::–Foreigner: Do you say ''eether'' or ''eyether''?
+::–Native speaker: Eether.
+::–Foreigner: So it is ''eether''.
+::–Native speaker: Yes, eyether.
+:&nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 09:31, 10 March 2007 (UTC)
+
+According to the [[George Gershwin|Gershwin]] song “[[Let's Call the Whole Thing Off]],” both pronunciations are acceptable: 
+{{cquote|You say ''ee-ther'' and I say ''eye-ther''. / You say ''nee-ther'' and I say ''nye-ther''. / ''Ee-ther'', ''eye-ther'', ''nee-ther'', ''nye-ther'', / Let's call the whole thing off.}}
+(The song then goes into the whole ''to-may-to'' / ''to-mah-to'' bit.) — [[User:Michael J|<font face="Times New Roman" color="#003366"> '''''Michael J''''' </font>]] 01:54, 12 March 2007 (UTC)
+
+== -or versus -er ==
+
+This seems like a question that someone should've asked before, but i can't find anything in search, so....
+
+I'm wondering about the significance of the ''-or'' ending versus the ''-er'' ending in nouns &mdash; for example, ''actor'' vs ''writer'' and ''supervisor'' vs ''teacher''. Etymologically, where do these two endings derive from? Words ending in ''-or'' seem more Latin-sounding, so that's my guess there, but i'm not sure.
+
+And what about words that accept either ending? (''adaptor''/''adapter'' is the only one i can think of, but there must be others.) Surely there must be a 'correct' ending, etymologically speaking, right? ~ [[User:Lav-chan|lav-chan]] @ 15:21, 10 March 2007 (UTC)
+
+:[[OED]] divides ''-or'' nouns as a suffix for either nouns of condition (e.g. 'error') or agent nouns (e.g. 'actor'), and links them through Norman French to Latin. The French influence meant that many such nouns of condition were spelt ''-our'' in English (some of which have been respelled ''-or'' in the US). On the other hand, ''-er'' is used for numerous purposes in English and is a native suffix. In this case, it is used as a native suffix for agent nouns. — [[User:Garzo|Gareth Hughes]] 15:42, 10 March 2007 (UTC)
+
+::Although -er is apparently also a Latin borrowing, from -ārius [http://dictionary.reference.com/browse/-er], only much older... [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 18:27, 10 March 2007 (UTC)
+
+:::Adviser is often spelled advisor.  I'm sure there are other examples.  [[User:JackofOz|JackofOz]] 00:36, 11 March 2007 (UTC)
+
+This reminds me that I've always wondered about the female versions ''-rix'' vs. ''-ress'' such as ''dominatrix'' vs. ''actress'' and ''executrix'' vs. ''waitress''. It seems that ''-tor'' tends to go to ''-trix'', but the actor/actress example disproves that rule. Is there a pattern and/or explanation? [[User:Mom2jandk|Ingrid]] 01:33, 11 March 2007 (UTC)
+
+:Just don't dare call a female actor an actress to her face.  It's somehow considered demeaning these days.  Except at the Oscars, of course.  There, it's mandatory.  Can someone please explain this to me?  [[User:JackofOz|JackofOz]] 06:50, 11 March 2007 (UTC)
+
+::In Victorian times, "actress" was a code word for "prostitute" or "kept woman". That may be why it's now unpopular among the acting profession. They use "actress" at the Oscars so as not to alienate those moviegoers (the Oscars being mainly a big PR festival anyway) who think gender-neutral language is somehow being "picky". I wonder if they'd feel the same way if we called the men actresses. --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 23:16, 11 March 2007 (UTC)
+
+::My friend and i have a thing about gender-specific nouns &mdash; namely, that they're fucking stupid. My friend also happens to be an (aspiring) actor, and that's what she refers to herself as when it comes up. Frequently people will actually ''question'' her terminology (''don't you mean '''actress'''?''), to which my friend of course responds, ''uh no, idiot''.
+
+:::The [[Screen Actors Guild]] award a statuette called "The Actor" (like "The Oscar").  Females receive "The Actor for Best Peformance by a Female Actor", or something like that.  [[User:Corvus cornix|Corvus cornix]] 19:46, 11 March 2007 (UTC)
+
+::Some gender-specific words like that (especially a lot of the ''-trix'' ones) descend from languages that actually have (or had) gender. Some of them, though, are purely invented to address what people evidently saw as a failing of the language. Specifically ''-ess'' is French and has been applied to all kinds of words that either don't descend from French or didn't have that ending if they do. Actor (having come from Latin) is one of them. ~ [[User:Lav-chan|lav-chan]] @ 11:08, 11 March 2007 (UTC)
+
+:::The French word for "actress" seems to be "actrice", with a related word ending. [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 11:26, 11 March 2007 (UTC)
+
+:Older terms ending in the suffix "-trix" ("testatrix", "executrix") come from Law Latin, where the French "-trice" ending was changed to "-trix". I have no idea why, but it dates from the 15th century at least. "Editrix" dates from only 1950 according to Merriam-Webster, and "dominatrix" from 1971. --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 23:13, 11 March 2007 (UTC)
+
+::It's French ''-trice'' that comes from Latin ''-trix''.  Latin ''-trix'' as a feminine counterpart to ''-tor'' is indeed associated with legal usage (already in ancient times: ''testatrix'' in the ''[[Pandects|Digest]]''; ''actrix'' for a female plaintiff in Cod. Th.).  But Latin ''-trix'' is found from the beginnings of Latin literature in other genres ([[Plautus]] has ''amatrix''; [[Martial]] has ''[[Sappho]] amatrix''; [[Cicero]]'s [[De Inventione]] has ''dominatrix'', not in the modern sense!).  [[User:Wareh|Wareh]] 00:20, 12 March 2007 (UTC)
+
+:''sailor'' was formerly ''sailer''; the latter is now restricted to boats, not people.  Re ''-ress'', ''actress'' is one of the few holdouts, along with ''waitress'', ''stewardess''; nobody says ''manageress'' nowadays. See  [[gender neutral language]]. Even worse is ''-ette'' as in ''farmerette'', ''usherette''.  Are there any ''-er''/''-rix'' pairs? [[User:Jnestorius|jnestorius]]<sup>([[User talk:Jnestorius|talk]])</sup> 14:19, 11 March 2007 (UTC)
+
+::And "stewardess" is going out of fashion as cabin crews become more equally divided between men and women. Male flight attendants were not historically called "stewards" in North America at least, and to call one sex by a gender-neutral term like "flight attendant" and the other sex by a gender-specific term such as "stewardess" doesn't fly. There's also the fact that "stew" is an old term for "prostitute" or "brothel". Now if people would just stop assuming flight attendants are there to look pretty (they're primarily there to provide for the safety of passengers; providing for their comfort is a secondary task.) --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 23:05, 11 March 2007 (UTC)
+
+:::Rereading, I notice ''steward'' doesn't end with ''-er''/''-or'' in any case.  One might include ''enchantress'', ''sorceress''; possibly ''murderess'', ''adulteress''; but not really ''mistress'', ''seamstress'', ''empress'', ''heiress''.  [[User:Jnestorius|jnestorius]]<sup>([[User talk:Jnestorius|talk]])</sup> 02:22, 13 March 2007 (UTC)
+
+If I was an actress, I would have no problem being called an actress. It sounds prettier and just rolls off the tongue better than "female actor". I think forcing people to make words like "actor" and "waitor" gender neutral to avoid offending anyone is just being picky and overly PC. Eliminating "sexist" language won't eliminate sexism. --[[User:Candy-Panda|Candy-Panda]] 03:48, 12 March 2007 (UTC)
+
+:Waitor? Isn't it "waiter"? [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 14:44, 12 March 2007 (UTC)
+
+::In some circles, it's a "waitron." [[User:Wareh|Wareh]] 17:26, 12 March 2007 (UTC)
+:::Although "wait staff" seems to be becoming dominant.  [[User:Corvus cornix|Corvus cornix]] 17:36, 12 March 2007 (UTC)
+
+:Why would you need to point out your sex anyway? The only time it actually matters is when it's important to the rôle (e.g., when a script calls for a specific character to be a specific sex), and even then it isn't required. Surely when a rôle calls for the actor to be black, it isn't necessary for everybody to keep pointing out the actor's skin colour. It will be quite obvious to everyone. I don't know about anybody else, but i certainly don't need to be reminded that the person playing Catwoman is in fact a woman.
+
+:And as far as the 'female actor' SAG award, i don't see the purpose there in the first place. Why make the distinction at all? How is sex at all an important factor in how well a person is able to act? Why aren't there separate awards for black actors or Jewish actors or foreign-born actors? ~ [[User:Lav-chan|lav-chan]] @ 23:07, 12 March 2007 (UTC)
+
+::I'm not entirely sure what you mean -- surely the great majority of significant central characters in the great majority of screenplays are written with either specifically male casting or specifically female casting in mind; it's minor peripheral roles which can more often be easily be changed in gender without affecting the dynamics of the character interactions and the plot.
+::Traditionally, the people behind film and theater awards shows have been reluctant to directly compare and judge against each other women's performances and men's performances -- and even if one considers that attitude to be hopelessly old-fashioned, one should still consider the possibility that men are more often given flashier roles with more "business" to do, so that if there weren't separate women's categories, the acting awards might be somewhat monopolized by men. [[User:AnonMoos|AnonMoos]] 17:46, 13 March 2007 (UTC)
+
+:::The fact that they are written with a specific sex in mind, i think, speaks to my point &mdash; it is usually <i>obvious</i> what sex the character is intended to be, so why keep bringing it up by pointing out that the person playing the character is (e.g.) female? Referring to a person as an 'actress' is equivalent to referring to a person as 'female', which, while true, is redundant and unnecessary. If a 'significant central character' was designed around a specific race or other quality, we wouldn't keep referring to the person playing them as a 'black actor' or something. The generic term seems to suffice in all cases <i>except</i> when the person is female.
+
+:::And as far as awards becoming 'monopolized' by men, while i guess that is a noble concern, i don't think <i>flashiness</i> should be relevant when judging a person's acting prowess. The award should go to the best actor, period, not the 'flashiest' one or the one with the most parts or the one who looks the best or the one who gets the most 'business'. Did Person A display better acting skills than Person B, y/n? ~ [[User:Lav-chan|lav-chan]] @ 16:30, 14 March 2007 (UTC)

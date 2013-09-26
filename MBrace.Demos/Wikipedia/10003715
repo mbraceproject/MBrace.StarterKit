@@ -1,0 +1,98 @@
+<noinclude>
+[[Category:Expired Wikipedia bot requests for approval|StewieBot]]
+<div class="boilerplate metadata" style="background-color: #dedaca; margin: 2em 0 0 0; padding: 0 10px 0 10px; border: 1px solid #AAAAAA;">
+:''The following discussion is an archived debate. <span style="color:red">'''Please do not modify it.'''</span> Subsequent comments should be made in a new section.'' The result of the discussion was [[File:Symbol neutral vote.svg|20px]] '''Request Expired'''.<!-- from Template:Bot Top-->
+== [[User:StewieBot|StewieBot]] ==
+{{Newbot|StewieBot}} <!-- If this is not the first request, use {{Newbot|BotName|Request#}} -->
+
+'''Operator:''' [[User:Damienhunter|Damienhunter]]
+
+<!--Automatic: Specify whether supervised or unsupervised -->
+<!--Manually Assisted: User must manually confirm every change -->
+'''Automatic or Manually Assisted:'''Automatic
+
+'''Programming Language(s):''' Perl
+
+<!--Please keep Function Summary SHORT-->
+'''Function Summary:''' Compile a list of vandalizing IP addresses.
+
+'''Edit period(s)''' ''(e.g. Continuous, daily, one time run)''''':''' 
+Continuous
+
+<!--Edit rate requested should be no faster then is required to complete/maintain the task-->
+'''Edit rate requested:''' 60 requests per minute
+
+<!--List full function details here-->
+'''Function Details:''' Bot monitors IRC channel Recent Changes and scans for changes to IP talk pages. If a change is found, StewieBot then checks the talk page of the IP address and scans for a specific vandalism tag. If enough vandalism tags are accrued in a short enough period of time, StewieBot adds the IP address as well as a simple description of the vandalism charge to a Ban IP Address page for Sysops to look over. Also, StewieBot compiles a list of the total number of vandalism tags the IP address has, and compares the total number of tags before or on the same date as the last scan to the number of tags stored in memory. If the total tags from the scan is less than the number stored in memory, StewieBot adds the vandals IP address to the Ban IP Address page with a description including the number of tags removed from the page.
+
+'''Possible later add-ins:''' If there are repeat vandals, StewieBot can change the lower the number of required vandalisms for banning and decrease the time allowed between vandal tags. This way repeat offenders are stopped much more quickly, and are held to a kind of "probation" in which their vandalism is less tolerated. For the sake of this proposal, please do not consider this a feature of StewieBot... I will propose any changes at a later time.
+
+=== Note on new description ===
+For the sake of completeness I left the discussion from the first version of StewieBot. I hope that changing the description to adapt to input does not cause any problems.
+
+=== Discussion ===
+<!-- This is not a vote.  It is a discussion -->
+*What's the ultimate purpose of this list? Is this proposal the result of discussions about or requests for this functionality or an idea you will "market" if approved? I'm struggling to see any purpose here, and it all sounds a bit like [[Big Brother]] to me. --[[User:Kingboyk|kingboyk]] 01:06, 12 March 2007 (UTC)
+
+**The purpose is to compile a list to use with proposed VandalBot which can be found on the [[Wikipedia:Bot_requests| bot request page]]. It can be expanded to automate processes which need to be done IP address specific. As a large majority of vandalism is done from anonymous IP addresses and not a user account, I think there is a justification in collecting this amount of information. It should be noted that while it checks talk pages for content, it in no way archives the content found there. --[[User:Damienhunter|D]] 01:14, 12 March 2007 (UTC)
+***Thanks for the reply. Might it not be better to seek approval in principle for the whole shebang? (even if there's no code yet). This particular operation isn't useful on it's own and I don't like to approve this without any demonstrable benefit. --[[User:Kingboyk|kingboyk]] 01:18, 12 March 2007 (UTC)
+****The reason I want to do this in segments is to modularize the components of the program. By breaking the vandalism bot into two segments, two benefits arise. 
+
+::::One, I do not have to simultaneously run two bots, reducing the workload placed on my network in half. Vandalbot (which will actually be renamed later for its debut) can be hosted by another Wikipedia user (I know of at least one possible editor) freeing processing power on my system, and cutting down the number of requests my computer must make in a given time period. Since Vandalbots search would only require it to download the list of IP addresses one time per total search (once every several days), the taxation that it would put on the Wikipedia server by being a separate entity would be nearly zero.
+
+::::Two, the list of active IP addresses can be used for the benefit of other bots as well as a system to identify the total number of IP addresses that edit Wikipedia. Analysis of this list would allow Wikipedia as an organization to better comprehend the dynamics of their users (ie. have a running total of the number of active IP addresses, and allow comparison of that number to the number of created user accounts). --[[User:Damienhunter|D]] 03:23, 12 March 2007 (UTC)
+:Open to the floor... other BAG members? --[[User:Kingboyk|kingboyk]] 13:11, 12 March 2007 (UTC)
+
+*I added a description of vandalbot, not to get it approved but so that the intent of the use of StewieBot is clear. Instead of finding vandalbot at the [[Wikipedia:Bot_requests| bot request page]] please just observe above description.  --[[User:Damienhunter|D]] 17:09, 12 March 2007 (UTC)
+
+*After doing some calculations I realize that I will need to run this bot continuously if I am going to get the job done in an appropriate amount of time. Total time required will be approximately 1 year (297 days). Any suggestions that help me narrow down the ranges of IP addresses that need to be scanned are much appreciated. --[[User:Damienhunter|D]] 17:12, 12 March 2007 (UTC)
+
+*I added information about the edit rate I am requesting. There are two notable reasons why this edit rate is acceptable.
+
+:One, the type of request I am making does not require much information from Wikipedia. Since I am simply requesting a talk page with little if any images and text, the traffic being sent from the server is very minimal in size. Also, I'd guess that a good 75% or more of user talk pages for IP addresses do not exist, which means for those pages, the packet sizes are negligible.
+
+:Second, the value of the information needs to be determined. This is the first step in being able to determine the number of IP users in Wikipedia. Just having a list would give a significant idea of whether or not users are preferring to create accounts, or are just editing. Also, the bot proposal to follow, vandalbot, can help automate our vandalism response, and bring vandalism down to acceptable levels.
+
+:Also, I have the ability to shift speeds during peak and non-peak hours. So in non-peak times, I could perhaps double the speed, so that during peak times, I can half it. --[[User:Damienhunter|D]] 17:33, 12 March 2007 (UTC)
+
+*I just checked the IANA registry and found 1,275,068,416 more addresses that have not been assigned. Removing these ranges from the scan will allow me to either throttle down the request speed, or will allow me to finish an entire scan in just over 6 months. --[[User:Damienhunter|D]] 18:16, 12 March 2007 (UTC)
+
+I guess the userpages are saved in some kind of database by wikipedia. Wouldn't it be '''a lot''' easier to search that database using wildcards/regular expressions such as ''User talk:[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]''. I think you'd get the result of all existing IP address user pages in minutes or seconds instead of months. Such a request could be included in the [http://meta.wikimedia.org/wiki/API MediaWiki API extension]. Furthermore, the list would be a little more up to date then. — [[User:Ocolon|Ocolon]] 17:20, 13 March 2007 (UTC)
+
+:*I tried to find a comprehensive list of users that included the IP addresses without registered usernames, but was unable to. I tried your wildcard search format, but it failed. If anyone knows a way to get a list of every user including the non-registered IP addresses, it would increase the speed of this process dramatically. I still think it would be worthwhile though to have a bot check the talk pages of the accessing IP addresses to see if they are active and compile a list of active ip addresses. --[[User:Damienhunter|D]] 17:59, 13 March 2007 (UTC)
+
+Um, any reason why you can't just go through [http://en.wikipedia.org/w/index.php?title=Special%3AAllpages&from=1&namespace=3 Special:Allpages] and grab the ones in dotted-IP form? [[User:Kirill Lokshin|Kirill Lokshin]] 19:53, 13 March 2007 (UTC)
+
+There are some very valid concerns raised at [[Wikipedia:BOTREQ|the request page]] about why this is a difficult idea to implement.  My concern is that the whole idea of a vandal reporting bot such is this is misguided.  If, as an admin, I got to [[Wikipedia:AIV]] and see that an IP has vandalised in the past, but not within the last 36 hours-ish, I won't block unless there's another reason.  Blocks for vandalism are designed to stop it - if the vandalism has stopped of its own accord, there is no need for a block, hence many of the results gained by this bot could (and would) be useless.  The only way to get admins to block vandals is for them to be reported while in the act of vandalism, usually by an RC patroller - I can't see how a bot could do this sort of thing.  <strong>[[User:Martinp23|Mart]]<font color="red">[[User talk:Martinp23|inp23]]</font></strong> 21:51, 13 March 2007 (UTC)
+
+:*All pages is exactly the list I was looking for. I still need approval for the bot to download the User Talk pages list and load the IP addresses to a Wikipedia active IP Users page. But with a much smaller list and single request for the data, the time this will take would be cut significantly as well as the request speed.
+
+::As for vandalbot, if you read the description you'll see that it requires x number of vandalisms in a defined time period. If an IP is being a problem consistently, I would think that is a valid reason to block. Also, it would use a special vandalism tag, which means that running the bot would not be retroactive to other vandalism warnings. If the bot is working quickly enough then multiple vandalism attempts should be reported pretty quickly (within the same day even?). I can't give you a good estimation of how quickly until a list of active IPs is compiled and the total number determined. Also, the vandalbot will be able to determine if IP users are blanking their talk pages, to deceive editors and administrators, automatically without assistance. With the new information on the User Talk pages listing, I don't see how StewieBot is going to cause any harm, and the task it is performing is one that has not been done before (to my knowledge). This is not a approval request for vandalbot, though I understand how it is essential to the functionality of StewieBot. --[[User:Damienhunter|D]] 01:28, 14 March 2007 (UTC)
+
+:::Yes - I do see what you mean.  The only problem with the bot design right now is that it would pick up a lot of "dead" IPs, which have topped vandalising, and this would make it harder for the bot to pick up the active IPs.  Basically, the problem I have with this, having already thoroughly read the proposal, is that it is extremely prone to inefficiency, most of its page fetches actually being a waste of time.  Have you though of using the recent changes IRC channel?  The bot could easily be programmed to watch the RC feed, pick up edits to IP talk pages and then scan these pages.  This way, you'd make sure that you'd have "live" data, and fewer of the bot's queries would be wasted.    How does this strike you? <strong>[[User:Martinp23|Mart]]<font color="red">[[User talk:Martinp23|inp23]]</font></strong> 06:43, 14 March 2007 (UTC)
+
+::::Using the IRC recent changes channel is a good idea. The reason I never considered it before is because I'm a bit new to the inner workings of Wikipedia. Would it be better if I rewrote the proposal for StewieBot including the IRC RC scanning? --[[User:Damienhunter|D]] 16:54, 14 March 2007 (UTC)
+
+
+=== Discussion on New Description ===
+Looks good to me.  Will it report directly on [[Wikipedia:AIV]], or to a subpage of that transcluded onto the main page (which should be easier).  See the "bot reports" secton on that page for an example of how [[User:MartinBot|MartinBot]] and [[Wikipedia:AVB|AVB]] use the subpage, transcluded.  If you do choose to use an altogether new subpage, I'd suggest notifying [[User:HighinBC]] too se if he can add it to the HBC AIV helperbot's rounds.  In realiy, however I can see no problem with you bot adding report to the existing subpage ([[Wikipedia:Administrator intervention against vandalism/TB2|here]]), as long as it doesn't blank the page.  <strong>[[User:Martinp23|Mart]]<font color="red">[[User talk:Martinp23|inp23]]</font></strong> 16:28, 17 March 2007 (UTC)
+
+:For testing I'd use a subpage, but I don't see why it can't report to [[Wikipedia:AIV]] when it is fully approved. It would probably make things easier for administrators I'd imagine. --[[User:Damienhunter|D]] 16:41, 17 March 2007 (UTC)
+::The reason I suggest it is that, on the one hand, you're less likely to get an edit conflict, and that on the other hand, because such a page would only be bot edited, you would be much lesslikely ot get stray lines of Wikitext which could cause problems. <strong>[[User:Martinp23|Mart]]<font color="red">[[User talk:Martinp23|inp23]]</font></strong> 00:05, 18 March 2007 (UTC)
+
+Has this been proposed to the community members who would actually use it? (ultimately admins as they do the blocking). I think it would be best to seek community approval at, perhaps, [[Wikipedia:AN]]. If the community think this is useful and a fair use of server resources (which it may well be), we can just give the technicals a once over. It would make the whole process a lot easier, and there's no point developing a solution if you have no customers for it. --[[User:Kingboyk|kingboyk]] 18:20, 19 March 2007 (UTC)
+:Posted at [[Wikipedia:Administrators%27_noticeboard#Bot_Proposal_To_Help_Out_With_IP_Vandalism]] since 20 March; I've now posted a last chance notification there. If nobody speaks up soon we must assume lack of community support. --[[User:Kingboyk|kingboyk]] 13:06, 22 March 2007 (UTC)
+
+::I don't honestly understand why approving this is such a big deal. It places almost no strain on Wikipedia's resources (certainly no more than the average user) and completes a task that most users do with less uniformity and accuracy. --[[User:Damienhunter|D]] 14:33, 22 March 2007 (UTC)
+:::I'm inclined to agree.  I would actually like to see ''some trials'' (run it for an hour say..) and see what it does.  I don't see it using much more resource wise than AVB by any means, AVB has to be the biggest resource hog around.  So yeah, post some diffs please -- [[User:Tawker|Tawker]] 19:36, 22 March 2007 (UTC)
+::::Resources are only one part of the equation; the other is consensus and community support. That said, I think you're right, we ought to see what it can do. Maybe it will prove so wonderful the admins and vandal fighters will be snapping our hands off to get this approved. --[[User:Kingboyk|kingboyk]] 19:57, 22 March 2007 (UTC)
+
+{{BotTrial}} For up to 24 hours operation. --[[User:Kingboyk|kingboyk]] 19:57, 22 March 2007 (UTC)
+
+Just a note, another modification that would be really nice would be to have it report users to an IRC channel using "!admin <userinfo>". That will allow admins who are sitting on IRC to block instantly on detection. To do this will require the bot to join the freenode network (irc.freenode.net), and join a channel to be determined. (perhaps #vandalism-en-wp). —— [[User:Eagle 101|<font color="navy">'''Eagle'''</font><font color="red">'''101''']] </font><sup>[[User talk:Eagle 101|Need help?]]</sup> 03:01, 23 March 2007 (UTC)
+
+{{BotExpired}} One month with no activity. [[User:ST47|ST47]]<small>[[User talk:ST47|Talk]]</small> 16:31, 26 April 2007 (UTC)
+
+
+:''The above discussion is preserved as an archive of the debate. <span style="color:red">'''Please do not modify it.'''</span> Subsequent comments should be made in a new section.''<!-- from Template:Bot Bottom --></div> 
+</noinclude></noinclude>

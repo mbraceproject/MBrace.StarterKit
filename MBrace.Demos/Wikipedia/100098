@@ -1,0 +1,146 @@
+{{SS7 stack}}
+'''Signalling System No. 7''' ('''SS7''') is a set of [[telephony]] [[Signaling (telecommunications)|signaling]] protocols which are used to set up most of the world's [[public switched telephone network]] telephone calls. The main purpose is to set up and [[Clearing (telecommunications)|tear down]] [[telephone call]]s.  Other uses include number translation, [[local number portability]], prepaid billing mechanisms, [[short message service]] (SMS), and a variety of other mass market services.
+
+It is usually referenced as ''Signalling System No. 7'' or ''Signalling System #7'', or simply abbreviated to ''SS7''. In North America it is often referred to as ''CCSS7'', an abbreviation for ''Common Channel Signalling System 7''. In some European countries, specifically the [[United Kingdom]], it is sometimes called ''C7'' (CCITT number 7) and is also known as ''number 7'' and ''CCIS7'' (Common Channel Interoffice Signaling 7).
+
+There is only one international SS7 protocol defined by [[ITU-T]] in its Q.700-series recommendations.<ref name="q700">[http://www.itu.int/rec/T-REC-Q.700/en ITU-T Recommendation Q.700]</ref>  There are however, many national variants of the SS7 protocols.  Most national variants are based on two widely deployed national variants as standardized by [[American National Standards Institute|ANSI]] and [[European Telecommunications Standards Institute|ETSI]], which are in turn based on the international protocol defined by [[ITU-T]].  Each national variant has its own unique characteristics.  Some national variants with rather striking characteristics are the China ([[People's Republic of China|PRC]]) and Japan ([[Telecommunication Technology Committee|TTC]]) national variants.
+
+The [[Internet Engineering Task Force]] (IETF) has also defined level 2, 3, and 4 protocols that are compatible with SS7:
+* MTP2 (M2UA and M2PA)
+* MTP3 (M3UA)
+* [[Signalling Connection Control Part]] (SCCP) (SUA)
+but use a [[Stream Control Transmission Protocol]] (SCTP) transport mechanism. This suite of protocols is called [[SIGTRAN]].
+
+==History==
+[[Common Channel Signaling]] protocols have been developed by major telephone companies and the [[ITU-T]] since 1975; the first international Common Channel Signaling protocol was defined by the [[ITU-T]] as [[SS6|Signalling System No. 6]] (SS6) in 1977.<ref name="Ronayne 1986 145">{{harv|Ronayne|1986|p=145}}.</ref>  Signalling System No. 7 was defined as an international standard by [[ITU-T]] in its 1980 (Yellow Book) Q.7XX-series recommendations.<ref name="q700"/>  SS7 was designed to replace SS6, which had a restricted 28-bit signal unit that was both limited in function and not amenable to digital systems.<ref name="Ronayne 1986 145"/>  SS7 has substantially replaced [[SS6]], [[Signalling System No. 5]] (SS5), [[Multi-frequency|R1]] and [[R2 signalling|R2]], with the exception that [[Multi-frequency|R1]] and [[R2 signalling|R2]] variants are still used in numerous nations.
+
+SS5 and earlier systems used [[in-band signaling]], in which the call-setup information was sent by playing special [[multi-frequency]] tones into the telephone lines, known as ''bearer channels'' in the parlance of the telecom industry. This led to security problems with [[Blue box (phreaking)|blue box]]es.  SS6 and SS7 implement out-of-band signaling protocols, carried in a separate ''signaling channel'',<ref>{{harv|Ronayne|1986|p=141}}.</ref> explicitly keep the end-user's audio path&mdash;the so-called ''speech path''&mdash;separate from the signaling phase to eliminate the possibility that end users may introduce tones that would be mistaken for those used for signaling. ''See [[falsing]]''. SS6 and SS7 are referred to as so-called '''''C'''ommon '''C'''hannel '''I'''nteroffice '''S'''ignalling'' Systems (CCIS)  or [[Common Channel Signaling]] (CCS) due to their hard separation of signaling and bearer channels. This required a separate channel dedicated solely to signaling, but the greater speed of signaling decreased the holding time of the bearer channels, and the number of available channels was rapidly increasing anyway at the time SS7 was implemented.
+
+The common channel signaling paradigm was translated to IP via the [[SIGTRAN]] protocols as defined by the IETF. While running on a transport based upon IP, the [[SIGTRAN]] protocols are not an SS7 variant, but simply transport existing national and international variants of SS7.<ref name="rfc2716">[http://www.ietf.org/rfc/rfc2719.txt RFC 2719] - Framework Architecture for Signaling Transport</ref>
+
+==Functionality==
+The term [[Signalling (telecommunications)|signaling]], when used in telephony, refers to the exchange of control information associated with the setup and release of a telephone call on a telecommunications circuit.<ref name="Russell 2002 318">{{harv|Russell|2002|p=318}}.</ref>  An example of this control information is the digits dialed by the caller, the caller's billing number, and other call-related information.
+
+When the signaling is performed on the same circuit that will ultimately carry the conversation of the call, it is termed [[Channel Associated Signalling|channel associated signaling]] (CAS).  This is the case for earlier analogue trunks, [[Multi-frequency|MF]] and [[R2 signalling|R2]] digital trunks, and [[Digital Access Signalling System|DSS1/DASS]] [[Private branch exchange|PBX]] trunks.
+
+In contrast, SS7 signaling is termed Common Channel Signaling (CCS) in that the path and facility used by the signaling is separate and distinct from the telecommunications channels that will ultimately carry the telephone conversation.  With CCS, it becomes possible to exchange signaling without first seizing a facility, leading to significant savings and performance increases in both signaling and facility usage.
+
+Because of the mechanisms used by signaling methods prior to SS7 (battery reversal, [[Multi-frequency|multi-frequency digit outpulsing]], [[Robbed-bit signaling|A- and B-bit signaling]]), these older methods could not communicate much signaling information.  Usually only the dialed digits were signaled, and only during call setup.  For charged calls, dialed digits and charge number digits were outpulsed.  SS7, being a high-speed and high-performance packet-based communications protocol, can communicate significant amounts of information when setting up a call, during the call, and at the end of the call.  This permits rich call-related services to be developed.  Some of the first such services were call management related services that many take for granted today: [[Call forwarding|call forwarding (busy and no answer)]], [[voice mail]], [[call waiting]], [[conference calling]], [[Caller ID|calling name and number display]], [[call screening]], [[Malicious Caller Identification|malicious caller identification]], [[Automatic callback|busy callback]].<ref>{{harv|Russell|2002|p=xx}}.</ref><!--page xx is in the introduction-->
+
+The earliest deployed upper layer protocols in the SS7 signaling suite were dedicated to the setup, maintenance, and release of telephone calls.<ref>[http://www.itu.int/rec/T-REC-Q.700-199303-I/en/ ITU-T Recommendation Q.700], Section 3.2.1, p. 7.</ref>  The [[Telephone User Part]] (TUP) was adopted in Europe and the [[Integrated Services Digital Network]] (ISDN) User Part ([[ISDN User Part|ISUP]]) adapted for [[public switched telephone network]] (PSTN) calls was adopted in North America.  [[ISDN User Part|ISUP]] was later used in Europe when the European networks upgraded to the [[Integrated Services Digital Network|ISDN]].  (North America never accomplished full upgrade to the ISDN and the predominant telephone service is still the older [[Plain Old Telephone Service|POTS]]).  Due to its richness and the need for an out-of-band channel for its operation, SS7 signaling is mostly used for signaling between [[Telephone exchange|telephone switches]] and not for signaling between [[Telephone exchange|local exchanges]] and [[customer-premises equipment]] (CPE).
+
+Because SS7 signaling does not require seizure of a channel for a conversation prior to the exchange of control information, [[Non-Facility Associated Signalling|non-facility associated signalling]] (NFAS) became possible.  NFAS is signaling that is not directly associated with the path that a conversation will traverse and may concern other information located at a centralized database such as service subscription, feature activation, and service logic.  This makes possible a set of network-based services that do not rely upon the call being routed to a particular subscription switch at which service logic would be executed, but permits service logic to be distributed throughout the telephone network and executed more expediently at originating switches far in advance of call routing.  It also permits the subscriber increased mobility due to the decoupling of service logic from the subscription switch.  Another characteristic of [[ISDN User Part|ISUP]] made possible by SS7 with NFAS is the exchange of signaling information during the middle of a call.<ref name="Russell 2002 318"/>
+
+Also possible with SS7 is Non-Call-Associated Signaling, which is signaling that is not directly related to the establishment of a telephone call.<ref>{{harv|Russell|2002|p=319}}.</ref>  An example of this is the exchange of the registration information used between a mobile telephone and a [[Home Location Register|home location register]] (HLR) database: a database that tracks the location of the mobile.  Other examples include [[Intelligent Network]] and [[local number portability]] databases.<ref>{{harv|Russell|2002|p=433}}.</ref>
+
+===Signaling modes===
+As well as providing for signaling with these various degrees of association with call set up and the facilities used to carry calls, SS7 is designed to operate in two modes: ''associated mode'' and ''quasi-associated mode''.<ref>[http://www.itu.int/rec/T-REC-Q.700-199303-I/en/ ITU-T Recommendation Q.700], p. 4.</ref>
+
+When operating in the ''associated mode'', SS7 signaling progresses from [[Telephone exchange|switch to switch]] through the [[Public Switched Telephone Network|PSTN]] following the same path as the associated facilities that carry the telephone call.  This mode is more economical for small networks.  The associated mode of signaling is not the predominant choice of modes in North America.<ref>{{harv|Dryburgh|2004|pp=22–23}}.</ref>
+
+When operating in the ''quasi-associated mode'', SS7 signaling progresses from the originating [[Telephone exchange|switch]] to the terminating switch, following a path through a separate SS7 signaling network composed of [[Signal Transfer Point|signal transfer point]]s.  This mode is more economical for large networks with lightly loaded signaling links.  The quasi-associated mode of signaling is the predominant choice of modes in North America.<ref>{{harv|Dryburgh|2004|p=23}}.</ref>
+
+==Physical network==
+SS7 separates signalling from the voice circuits. An SS7 network must be made up of SS7-capable equipment from end to end in order to provide its full functionality. The network can be made up of several link types (A, B, C, D, E, and F) and three signaling nodes - [[Service switching point]] (SSPs), [[signal transfer point]] (STPs), and [[service control point]] (SCPs). Each node is identified on the network by a number, a signalling point code. Extended services are provided by a database interface at the SCP level using the SS7 network.
+
+The links between nodes are full-duplex 56, 64, 1,536, or 1,984 kbit/s graded communications channels. In Europe they are usually one (64 kbit/s) or all (1,984 kbit/s) [[timeslot]]s ([[DS0]]s) within an [[E-carrier|E1]] facility; in North America one (56 or 64 kbit/s) or all (1,536 kbit/s) timeslots ([[DS0A]]s or DS0s) within a [[T-carrier|T1]] facility.  One or more signaling links can be connected to the same two endpoints that together form a signaling link set.  Signaling links are added to link sets to increase the signaling capacity of the link set.
+
+In Europe, SS7 links normally are directly connected between switching exchanges using F-links.  This direct connection is called ''associated signaling''.  In North America, SS7 links are normally indirectly connected between switching exchanges using an intervening network of STPs.  This indirect connection is called ''quasi-associated signaling''.  ''Quasi-associated signaling'' reduces the number of SS7 links necessary to interconnect all switching exchanges and SCPs in an SS7 signaling network.<ref>[http://www.itu.int/rec/T-REC-Q.700-199303-I/en/ ITU-T Recommendation Q.700], Section 2.2.3, ''"signalling modes"'', pp. 4-5.</ref>
+
+SS7 links at higher signaling capacity (1.536 and 1.984 Mbit/s, simply referred to as the 1.5 Mbit/s and 2.0 Mbit/s rates) are called [[High Speed Link|high speed links (HSL)]] in contrast to the low speed (56 and 64 kbit/s) links.  High speed links are specified in [http://www.itu.int/rec/T-REC-Q.703-199607-I/en/ ITU-T Recommendation Q.703] for the 1.5 Mbit/s and 2.0 Mbit/s rates, and ANSI Standard T1.111.3 for the 1.536 Mbit/s rate.  There are differences between the specifications for the 1.5 Mbit/s rate. High speed links utilize the entire bandwidth of a T1 (1.536 Mbit/s) or E1 (1.984 Mbit/s) transmission facility for the transport of SS7 signaling messages.<ref>[http://www.itu.int/rec/T-REC-Q.703-199607-I/en/ ITU-T Recommendation Q.703], Annex A, ''"Additions for a national option for high speed signalling links"'', pp 81-86.</ref>
+
+[[SIGTRAN]] provides signaling using [[SCTP]] associations over the [[Internet Protocol]].<ref>{{harv|Russell|2002|p=456}}.</ref> The protocols for [[SIGTRAN]] are M2PA, M2UA, [[M3UA]] and SUA.
+
+==SS7 protocol suite==
+{{SS7 stack}}
+The SS7 [[protocol stack]] borrows partially from the [[OSI Model]] of a packetized digital protocol stack. OSI layers 1 to 3 are provided by the [[Message Transfer Part]] (MTP) and the [[Signalling Connection Control Part]] (SCCP) of the SS7 protocol (together referred to as the Network Service Part (NSP)); for circuit related signaling, such as the [[Telephone User Part (TUP)]] or the [[ISDN User Part]] (ISUP), the User Part provides layer 7. Currently there are no protocol components that provide OSI layers 4 through 6.<ref name="q700"/> The [[Transaction Capabilities Application Part]] (TCAP) is the primary SCCP User in the Core Network, using SCCP in connectionless mode. SCCP in connection oriented mode provides the transport layer for air interface protocols such as BSSAP and RANAP.  TCAP provides transaction capabilities to its Users (TC-Users), such as the [[Mobile Application Part]], the [[INAP|Intelligent Network Application Part]] and the [[Camel Application Part|CAMEL Application Part]].
+
+The Message Transfer Part (MTP) covers a portion of the functions of the OSI network layer including: network interface, information transfer, message handling and routing to the higher levels. Signalling Connection Control Part (SCCP) is at functional Level 4. Together with MTP Level 3 it is called the Network Service Part (NSP).  SCCP completes the functions of the OSI network layer:  end-to-end addressing and routing, connectionless messages (UDTs), and management services for users of the Network Service Part (NSP).<ref>[http://www.itu.int/rec/T-REC-Q.711-200103-I/en/ ITU-T Recommendation Q.711], Section 1, ''"Scope and field of application"'', pp 1-2.</ref> Telephone User Part (TUP) is a link-by-link signaling system used to connect calls. [[ISDN User Part]] (ISUP) is the key user part, providing a circuit-based protocol to establish, maintain, and end the connections for calls. Transaction Capabilities Application Part (TCAP) is used to create database queries and invoke advanced network functionality, or links to Intelligent Network Application Part (INAP) for intelligent networks, or Mobile Application Part (MAP) for mobile services.
+
+==References==
+{{Reflist|2}}
+<!-- Alphabetical, reverse-chronological order please. -->
+<!--
+* {{cite book
+|last=Dryburgh
+|first=Lee
+|coauthors=Jeff Hewitt
+|title=Signaling System No. 7 (Ss7/C7)
+|year=2007
+|publisher=Cisco Press
+|location=Indianapolis
+|isbn=978-1587053573}}  Link to online version of text below. -->
+* {{cite book
+|last=Dryburgh
+|first=Lee
+|coauthors=Jeff Hewitt
+|title=Signalling System No. 7 (SS7/C7): Protocol, Architecture, and Services
+|year=2004
+|publisher=Cisco Press
+|location=Indianapolis
+|isbn=1-587-05040-4}} Link to online version of text below.
+* {{cite book
+|last=Ronayne
+|first=John P.
+|title=Introduction to Digital Communications Switching
+|edition=1st edition
+|year=1986
+|publisher=Howard W. Sams & Co., Inc.
+|location=Indianapolis
+|isbn=0-672-22498-4
+|chapter=The Digital Network}}
+<!-- * {{cite book
+|last=Russell
+|first=Travis
+|title=Signaling System #7
+|year=2006
+|edition=5th Edition
+|publisher=McGraw-Hill
+|location=New York
+|isbn=978-0071468794}} -->
+* {{cite book
+|last=Russell
+|first=Travis
+|title=Signaling System #7
+|year=2002
+|edition=4th Edition
+|publisher=McGraw-Hill
+|location=New York
+|isbn=978-0071387729}}
+
+==External links==
+
+* [http://www.ss7-training.net Signaling System No. 7 (SS7/C7): Protocol, Architecture, and Services].  Full HTML version of the 2004 edition of the Dryburgh/Hewitt book (above).
+* [http://www.telecomspace.com/ss7.html SS7 Protocol layer architecture overview, tutorials and discussion forum]
+* [http://www.kenneyjacob.com/2007/06/05/ss7-backbone-of-mobile-networks SS7 - A Brief Comparison with TCP/IP]
+* [http://www.protocols.com/pbook/pdf/ss7.pdf www.protocols.com: practical overview]
+* [http://www.openss7.org SS7 open source project]
+* [http://www.mobicents.org/ss7/intro.html Mobicents SS7 open source project]
+* [http://www.buzzinbees.com/services-tutorials.php Introduction to signaling]. A tutorial about signaling.
+* [http://www.pt.com/page/tutorials/ss7-tutorial Excellent SS7 Tutorial]
+* [http://decoder.seventest.com/cgi-bin/decoder SeveNTest online SS7 decoder]
+* [http://www.yate.ro Yate open source for fixed and mobile SS7] 
+
+{{telecommunications}}
+
+[[Category:ITU-T recommendations]]
+[[Category:Signaling System 7]]
+[[Category:Telephony]]
+
+[[bn:সিগনালিং সিস্টেম ৭]]
+[[cs:Signalling System 7]]
+[[de:Signalling System 7]]
+[[es:Sistema de señalización por canal común n.º 7]]
+[[fr:Signaling System 7]]
+[[it:Signaling System 7]]
+[[he:SS7]]
+[[ja:共通線信号No.7]]
+[[pl:Signaling System 7]]
+[[pt:Sinalização por canal comum número 7]]
+[[ro:Sistemul de semnalizare 7]]
+[[ru:ОКС-7]]
+[[sr:Систем сигнализације број 7]]
+[[fi:SS7]]
+[[sv:Signalsystem nummer 7]]
+[[ta:சமிக்ஞை முறைமை 7]]
+[[zh:七号信令系统]]

@@ -1,0 +1,178 @@
+This page collects helpful resources — Web sites, books, journals, and so on — to assist in writing good mathematics articles. To follow the [[Wikipedia:scientific citation guidelines|scientific citation guidelines]] adopted by [[Wikipedia:WikiProject Mathematics|WikiProject Mathematics]], every article should cite high quality sources where readers can learn more about the topic. In the spirit of Wikipedia, most sources listed here can be freely viewed and downloaded without charge and without access restrictions, thus they are particularly convenient for both editors and readers alike. As well, some tools are listed to help find and format citation data.
+
+Editors can request access to specific articles or books or information on a specific topic at [[Wikipedia:WikiProject Resource Exchange/Resource Request]].
+
+==Source formats and viewing options==
+Many valuable references in mathematics are beginning to migrate from inaccessible libraries to scans available on the web. This includes both classical publications and recent ones. The most common document formats are:
+# '''[[HTML]]''': Hypertext markup language, the standard web browsing format
+# '''[[PDF]]''': Portable document format, the [[Adobe Acrobat]] format
+# '''[[PostScript|PS]]''': PostScript, [[Adobe]]'s format for printing
+# '''[[DjVu]]''': a compact format for scanned documents
+# '''[[DVI (file format)|DVI]]''': Device independent format, produced by [[TeX]]
+Scans of historical works are significantly more compact in DjVu as compared to PDF, and often the text can be searched. Readers for this popular format can be [http://www.djvuzone.org/download/index.html downloaded] and used at no cost. Adobe's PS (and PDF) format can be imaged for viewing using a [[Ghostscript]] implementation (with Ghostview), which also can be [http://www.cs.wisc.edu/~ghost/ downloaded] and used freely. On [[Linux]] systems, the [[Evince]] viewer can handle DVI as well as other formats, and DVI viewers are also available freely available from [http://www.lizardtech.com/download/dl_options.php?page=doc LizardTech] for [[Microsoft Windows]] and [[Mac OS]] systems.
+
+==Websites with extensive coverage of mathematical topics==
+
+*[http://planetmath.org PlanetMath] — [[Wikipedia:WikiProject Mathematics|WikiProject Mathematics]] exchanges content with [[PlanetMath]]; see [[WP:PMEX]]
+*[http://mathworld.wolfram.com/ MathWorld] — See [[MathWorld]]
+
+=== General reference ===
+* [http://en.wikisource.org/wiki/User:Tim_Starling/ScanSet_TIFF_demo Encyclopaedia Brittanica 11/e] — This is full 1911 Encyclopedia Britanica. Its copyright has expired and its content is open to anyone.
+* [http://www.perseus.tufts.edu/ Perseus Digital Library] — This is an electronic library of source materials maintained by Tufts.
+* [http://math.furman.edu/~mwoodard/mquot.html Mathematical Quotation Server] — This is a resource of Mathematics related quotations. It is maintained by Furman and is available for download.
+* [http://www.ashep.com/archive/loQtus/homepage.html l o Q t u s] — This is a non-specific quotation database.
+* [http://www.faqs.org faqs.org] —  A database of Internet related FAQs
+
+=== General books online ===
+* [http://digital.library.upenn.edu/books/ OnlineBooks] — a database of free books provided by U. Penn
+* [http://www.archive.org/details/texts Internet Archive: Text Archive] —  An open access text archive licensed using Creative Commons licenses.
+
+=== Historical mathematics ===
+* [http://historical.library.cornell.edu/math/browse.html Cornell Historical Math] — A database of source materials. (Note: multiple entries will not be in English due to the nature of the sources.)
+* [http://www.hti.umich.edu/u/umhistmath/ The University of Michigan Historical Mathematics Collection] — Similar to the Cornell database, provides texts from the 19th and 20th centuries and before.
+* [http://dz-srv1.sub.uni-goettingen.de/cache/browse/AuthorMathematicaMonograph,WorkContainedA1.html GDZ - Göttingen digital collection] —  The majority of the works in this database are in German.
+* [http://www.numdam.org/?lang=en NUMDAM - Numérisation de documents anciens mathématiques] — A collection of historical academic journals
+* [http://perso.univ-rennes1.fr/antoine.chambert-loir/DJVU/ Antoine Chambert-Loir - Littérature mathématique en ligne] — small collection of source materials (site in French language)
+* [http://www.math.dartmouth.edu/~euler/ The Euler Archive] — The collected works of Leonhard Euler.
+* [http://dz-srv1.sub.uni-goettingen.de/cache/toc/D38910.html Gauss collected works] — This site and the works are in German
+* [http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/ Writings of Sir William Rowan Hamilton]
+* [http://www.faculty.fairfield.edu/jmac/sjscient.htm Some Early Jesuit Scientists]
+* [http://ntrs.nasa.gov/search.jsp NASA Technical Reports Server] — searchable database of technical reports-requires javascript
+* [http://www.tac.mta.ca/tac/reprints/index.html Reprints in Theory and Applications of Categories] — a variety of papers involving category theory.
+* [http://matwbn.icm.edu.pl ICM virtual library of science (Polish journals and monographs)] — Polish language site
+*[http://www.dcs.warwick.ac.uk/bshm/gazetteer.html Mathematical Gazetteer of the British Isles] information about where mathematicians were born, lived, worked, died, or are buried or commemorated. Published by The British Society for the History of Mathematics.
+
+=== Other mathematics ===
+* [http://www.waukesha.uwc.edu/mat/kkromare/up.html Pronunciation Guide for Mathematics]
+* [http://www.ams.org/mathweb/annser_f/ AMS Abbreviations of Names of Serials]
+* [http://eom.springer.de/default.htm Encyclopædia of Mathematics]
+* [http://eqworld.ipmnet.ru/ EqWorld] — for mathematical equations (mainly differential equations)
+* [http://us2.metamath.org:8888/index.html Metamath Home Page] — illustrations of proofs
+* [http://ocw.mit.edu/OcwWeb/Mathematics/index.htm MIT OpenCourseWare | Mathematics] — learning resource, essentially an E-classroom that allows you to attend selected courses at MIT
+* [http://www.ams.org/online_bks/online-books-web.html AMS: Mathematics Books Online] — a small collection of online books
+* [http://www.emis.de/monographs/links.html EMIS ELibM: Links to Mathematical Monographs and Lecture Notes] — links to other resources
+* [http://www.geocities.com/alex_stef/mylist.html Alex Stefanov's list of textbooks, lecture notes and tutorials in mathematics] — a comprehensive list of free books of mathematics, organised by subject; includes the AMS books
+* [http://www.math.gatech.edu/%7Ecain/textbooks/onlinebooks.html George Cain's list of online math texts] — diverse books of mathematics compiled by George Cain
+* [http://www.jmilne.org/math/index.html Home Page J. S. Milne] - contains e-books and course notes
+* [http://www.emis.de/projects/JFM/ The Jahrbuch Project: Electronic Research Archive for Mathematics] — extensive archive of 17,772 links to facsimiles of (mainly German) publications from 1868–1942.
+* [http://mathdl.maa.org/mathDL/4/ MathDL: Journal of Online Mathematics and its Applications] — this is an MAA sub-journal.
+* [http://journalseek.net/ JournalSeek - A Searchable Database of Online Scholarly Journals] — contains many hundreds of mathematics-related journals, organised by subject
+* [http://www.intute.ac.uk/sciences/mathematics/ Intute: Science, Engineering and Technology - Mathematics] — a resource gateway, many of these resources require a subscription. If you are attached to a university you might have access to some of the resources listed
+* [http://infomine.ucr.edu/cgi-bin/search?physci Physical Sciences, Engineering, Computing &amp; Math] — scholarly resource search-engine
+* [http://torte.cs.berkeley.edu:8010/tilu TILU] — Table of Integrals Look Up
+* [http://www.math.sfu.ca/~cbm/aands/ Abramowitz and Stegun: Handbook of Mathematical Functions] — available for download
+* [http://web.comlab.ox.ac.uk/oucl/work/nick.trefethen/tools.html Numerical Software Tools] — list of databases, journals, tools, etc..
+* [http://www-cgrl.cs.mcgill.ca/~godfried/teaching/cg-web.html Computational Geometry on the Web] — A variety of geometry related material.
+
+==Online journals and preprints==
+* [http://www.ams.org/global-preprints/ AMS Directory of Mathematics Preprint and e-Print Servers]
+===Online journals with free public access===
+*[http://front.math.ucdavis.edu/ arXiv math portal] — [[arXiv]] has many articles that have been published in journals.  Additionally, overlay journals include the [[Annals of Mathematics]], [[Geometry and Topology]].  It should be noted that the articles in arXiv are not peer reviewed.
+*[[Notices of the American Mathematical Society]] [http://www.ams.org/notices website]
+*[http://www.doaj.org/ Directory of Open Access Journals]
+
+===Non-free online journal archive===
+*[http://www.jstor.org/ JSTOR] —  A very useful resource, requires subscription. Most universities provide access through their network
+
+==Citation templates==
+:{{see|:Category:Mathematics referencing resources|:Category:Mathematics source templates}}
+*{{tl2|AS ref}} — [[Abramowitz and Stegun]]
+*{{tl2|dlmf}} — [[Digital Library of Mathematical Functions]]
+*{{tl2|Springer}} — Springer [[Encyclopaedia of Mathematics]]
+*{{tl2|MathGenealogy}} — [[Mathematics Genealogy Project]]
+*{{tl2|MathSciNet}} — [[MathSciNet]] (A.M.S. Mathematical Reviews)
+*{{tl2|Cite arXiv}} and {{tl2|Arxiv}} — [[arXiv]]
+*{{tl2|MacTutor Biography}} — [[MacTutor History of Mathematics archive]]
+*{{tl2|MathWorld}}, {{tl2|WolframFunctionsSite}} — [[MathWorld]]
+*{{tl2|Planetmath reference}}, {{tl2|PlanetMath}} — [[PlanetMath]]
+*{{tl2|OEIS}} — link to sequence in the [[On-Line Encyclopedia of Integer Sequences]]
+*{{tl2|Zbl}} - Makes a link to [[Zentralblatt MATH]] from a Zbl id.
+*{{tl2|JFM}} - Makes a link to [[Zentralblatt MATH]] from a JFM ({{lang-de|Jahrbuch über die Fortschritte der Mathematik}}) id.
+*{{tl2|harvtxt}}, {{tl2|harv}}, {{tl2|harvs}}, and {{tl2|harvnb}}, in combination with {{tl2|citation}} — Harvard referencing, that can be used as an alternative to the "footnote style". For example, take the text reference <tt><nowiki>{{harvtxt|Pincherle|1880}}</nowiki></tt> and the citation <tt><nowiki>{{citation|last = Pincherle |first = Salvatore |title = Saggio di una introduzione alla teorica delle funzioni analitiche secondo i principi del prof. Weierstrass |journal = Giornale di Matematiche |year = 1880}}</nowiki></tt>. This produces the reference {{harvtxt|Pincherle|1880}} for inline citation, and the full bibliographic reference {{citation|last = Pincherle |first = Salvatore |title = Saggio di una introduzione alla teorica delle funzioni analitiche secondo i principi del prof. Weierstrass |journal = Giornale di Matematiche |year = 1880}}. The inline reference is an HTML link, linking to an anchor embedded in the second, full bibliographic reference.
+*[[:Category:Citation templates]] (see especially [[Wikipedia:Citation templates]])
+
+== Citation tools ==
+
+There are also some convenient tools to find data and produce formatted citations:
+*[http://zeteo.info/ Zeteo (ζητέω)] database for Wikipedia mathematics citations; [[User:Jakob.scholbach/zeteo|documentation]]
+*[http://diberri.dyndns.org/wikipedia/templates/ Wikipedia template filling]
+*[http://isbndb.com/ ISBNdB.com] finds book information
+*[http://www.books-by-isbn.com/ books-by-isbn] finds books, corrects ISBNs, and lists publishers
+
+==Document identifiers==
+===ISBN===
+An [[ISBN]] makes a reference to a book unambiguous, and can help readers to locate a reference. Suppose, for example, you want to cite a book by Hartman entitled ''Ordinary Differential Equations''. If you use Google to search for [<tt>Hartman "Ordinary Differential Equations" ISBN</tt>] (note the quotes around the title and the explicit request for the search term <tt>ISBN</tt>), you quickly discover that the second edition, reissued in soft cover in 2002, has ISBN 0898715105. [http://www.isbn.org/converterpub.asp This handy online tool] will convert an ISBN-10 into a correctly hyphenated ISBN-13, for this example ISBN 978-0-89871-510-1.
+
+One caution is that a book will have a different ISBN for hard, soft, reprints by different publishers, and different editions. Sometimes it is acceptable, even a good idea, to list the most recent edition (and soft if available), but sometimes not. For example, material covered in an older edition may be dropped in a newer one; and page numbers and other location information may change. Consider what one [[Amazon.com]] reviewer of Mac&nbsp;Lane and Birkhoff's ''Algebra'', 3/e, ISBN 978-0-8218-1646-2, says about this book in three editions: "[I]t also contained unusual topics such as multilinear algebra and affine and projective spaces, but no Galois theory. The second edition has gained a chapter on Galois theory, but has lost the part on affine and projective spaces. The third edition is the best! It has recovered the part which was lost in the second edition, and had its exposition considerably polished." Going back to the Hartman example, this means that if the article refers to, say, Chapter VII: The Poincaré-Bendixson Theory, of
+* {{Citation | last=Hartman | first=Philip | title=Ordinary Differential Equations | year=1964 | publisher=Wiley}}
+then it may be a mistake to change the citation to
+* {{Citation | last=Hartman | first=Philip | title=Ordinary Differential Equations | edition=2nd | year=2002 | publisher=SIAM | isbn=978-0-89871-510-1}}
+which is an unabridged but corrected (soft) reprint of the (hard) second edition
+* {{Citation | last=Hartman | first=Philip | title=Ordinary Differential Equations | edition=2nd | year=1982 | publisher=Birkhäuser | isbn=978-0-8176-3068-3}}
+The only way to be sure is to see what the article depends on and compare both texts.
+
+==Verifing references==
+Finding potential sources for references can often be done by a simple Google search, as described above, or if you only wish to consider academic sources, [http://scholar.google.com/ Google scholar]. Only cite a (reliable) source after you have verified that the source actually supports the statements in the article. Although not optimally convenient, [http://books.google.com/ Google book search] allows you to search book texts, and can sometimes be used for such verification if no online version or library copy is available. Also [[Amazon.com]] allows reading fragments of some books online.
+
+==Guidelines for selected websites==
+===[[Encyclopaedia of Mathematics]]===
+This started as a translation from Russian of ''Matematicheskaya entsiklopediya'' and was acquired by [[Springer Science+Business Media|Springer]], a publishing house with a long and respected history in mathematics. It has since been updated and expanded, and is now freely available on the web. As of 2011, the site has been converted to a [[wiki]] so new material can be added; Springer's board of editors will maintain quality.
+*[http://eom.springer.de/default.htm '''Link to website''']
+*'''Referencing template'''
+ <nowiki>{{springer|title=|id=|last=|first=}}</nowiki>
+*'''Reliability'''
+::Should be regarded as a highly reliable source.
+*'''Notability'''
+::Nearly every article should have a corresponding article in Wikipedia, though some titles will need to be changed to conform to Wikipedia naming guidelines. There are a few survey type articles where the material should be covered more completely in several Wikipedia articles.
+
+===[[MathWorld]]===
+Originally published as a website, then collected as a book (''The CRC Concise Encyclopedia of Mathematics'') and taken down from the web, then acquired by [[Wolfram Research]] who put on the web again as ''MathWorld'' where it continues to be updated and expanded.
+*[http://mathworld.wolfram.com/letters/ '''Link to website''' (alphabetical index)]
+*'''Referencing template'''
+ <nowiki>{{MathWorld|title=|urlname=|author=}}</nowiki>
+*'''Reliability'''
+::Usually regarded as a reliable source, though occasional errors have been found. Most articles have a list of references which should be consulted for independent verification when possible.
+*'''Notability'''
+::Nearly all material should be regarded as encyclopedic. However MathWorld has a reputation for creating neologisms so article names should be only be used if notability can be established independently, otherwise it's better to add the material to an existing article. Also, MathWorld has a tendency to have separate articles for different aspects of a single subject. For example it has 17 separate articles for different [[Elementary cellular automaton|Elementary cellular automata]]. In such cases it's better to gather all the MathWorld material into a single Wikipedia article.
+
+===[[PlanetMath]]===
+This started as a project to take over for MathWorld when that site was temporarily taken down due to a law suit. It is edited by users, much like Wikipedia, but in some ways it's very different. 
+*[http://planetmath.org/browse/objects/ '''Link to website''' (subject index)]
+*'''Template'''
+ <nowiki>{{PlanetMath|urlname=|title=}}</nowiki>
+*'''Reliability'''
+::Though PlanetMath uses a different verifiability model than Wikipedia, it does not meet Wikipedia's criteria for a "reliable source". So additional sources should be found when possible if citing PlanetMath.
+*'''Notability''''
+::Again, because PlanetMath is user edited it should not be used as a criterion for notability. However, the corresponding PlanetMath article often makes a valuable addition to an External links section.
+
+===[[MacTutor History of Mathematics archive]]===
+Hosted by the [[University of St Andrews]], this is a useful resource for historical and biographical information. The site is organized by several indexes: Biographies, History Topics, Additional material, and Famous curves.
+*[http://www-history.mcs.st-andrews.ac.uk/history/index.html '''Link to website''']
+*'''Referencing template'''
+ <nowiki>{{MacTutor|class=|id=|title=}}</nowiki>
+*'''Reliability'''
+::Should be regarded as a reliable source.
+*'''Notability'''
+::Most articles in the Biographies index should have a corresponding article in Wikipedia. Some of the articles in the other indexes are more essay-like in style and the material may not be encyclopedic.
+
+===[[Cut-the-Knot]]===
+An educational site with a articles on a variety of mathematical subjects, geared toward students. More a collection of essays and demonstrations than an encyclopedia, but it can be a valuable resource.
+*[http://www.cut-the-knot.org '''Link to website''']
+*'''Reliability'''
+::Though not a published source, the recognition the site has received from publications such as Scientific American, the Encyclopædia Britannica, and Science Magazine means it should probably be regarded as reliable.
+*'''Notability'''
+::Since the articles on the site are more in the nature of essays, some of the material is not encyclopedic.
+
+===[[On-Line Encyclopedia of Integer Sequences]]===
+A vast, searchable collection of sequences and tables from a variety of mathematical areas. This started as a reference book but has grown in size and scope due to the power of the internet.
+*[http://oeis.org/ '''Link to website''']
+*'''Link template'''
+ <nowiki>{{OEIS|id=}}</nowiki>
+*'''Reliability'''
+::Material is submitted by users but is validated an editorial board before being added to the site. A sequence appearing in a Wikipedia article should be accompanied by its OEIS link.
+*'''Notability'''
+::There are too many entries in the OEIS for them all to be considered encyclopedic in the Wikipedia sense, so the presence of a sequence in the OEIS should not be used as direct evidence of notability. However, the <span style="font-size:90%;">REFERENCES</span> section of an entry may list sources that can be used to establish the notability of a sequence.
+
+[[Category:WikiProject Mathematics|Reference resources]]
+[[Category:Mathematics referencing resources]]
+[[Category:WikiProject reference libraries]]

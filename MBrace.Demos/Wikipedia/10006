@@ -1,0 +1,482 @@
+{{Redirect|Electronic instrument|Electronic measuring instruments|Electronic instrumentation}}
+
+[[Image:Ondes martenot.jpg|thumb|200px|[[Ondes Martenot]] created by [[Maurice Martenot]], 1928]] 
+
+An '''electronic musical instrument''' is a [[musical instrument]] that produces its sounds using [[electronics]]. Such an instrument sounds by outputting an electrical [[audio signal]] that ultimately drives a [[loudspeaker]].
+
+An electronic instrument may include a [[user interface]] for controlling its sound, often by adjusting the [[pitch (music)|pitch]], [[frequency]], or duration of each [[note]]. However, it is increasingly common for the user interface and sound-generating functions to be separated into a [[MIDI controller|music controller]] ([[input device]]) and a [[music synthesizer]], respectively, with the two devices communicating through a musical performance description language such as [[MIDI]] or [[Open Sound Control]].
+
+All electronic musical instruments can be viewed as a subset of [[audio signal processing]] applications. Simple electronic musical instruments are sometimes called [[sound effect]]s; the border between sound effects and actual musical instruments is often hazy.
+
+French [[composer]] and engineer [[Edgard Varèse]] created a variety of compositions using [[electronic horn]]s, whistles, and tape. Most notably, he wrote [[Poème électronique|Poème Électronique]] for the Phillips pavilion at the [[Expo '58|Brussels World Fair]] in 1958. 
+
+Electronic musical instruments are now widely used in most styles of music. The development of new electronic musical instruments, controllers, and synthesizers continues to be a highly active and interdisciplinary field of research. Specialized conferences, notably the International Conference on [[New interfaces for musical expression]], have organized to report cutting edge work, as well as to provide a showcase for artists who perform or create music with new electronic music instruments, controllers, and synthesizers.
+
+== Early electronic musical instruments ==
+=== Emergence of electronic sound technology ===
+[[Image:Clavessin electrique.jpg|thumb|Diagram of the clavecin électrique]]
+In the 18th-century, musicians and composers adapted a number of acoustic instruments to exploit the novelty of electricity. Thus, in the broadest sense, the first electrified musical instrument was the [[Denis d'or]], dating from 1753, followed shortly by the [[Clavecin électrique]] by the Frenchman Jean-Baptiste de Laborde in 1761. The former instrument consisted of a keyboard instrument of over 700 strings, electrified temporarily to enhance sonic qualities. The latter was a keyboard instrument with [[plectrum|plectra]] (picks) activated electrically. However, neither instrument used electricity as a sound-source.
+
+The first electric synthesizer was invented in 1876 by [[Elisha Gray]].<ref name="elisha">{{Citation
+  | title = Electronic Musical Instrument 1870 - 1990
+  | year = 2005
+  | url = http://www.obsolete.com/120_years/machines/telegraph/
+  | accessdate = 2007-04-09 
+}}</ref><ref name="beginnings">{{Citation
+  | last = Chadabe
+  | first = Joel
+  | author-link = Joel Chadabe
+  | title = The Electronic Century Part I: Beginnings
+  | publisher = Electronic Musician
+  | pages = 74&ndash;89
+  | date = February 2000
+  | url = http://emusician.com/tutorials/electronic_century1/
+}}</ref> The "Musical Telegraph" was a chance by-product of his telephone technology when Gray accidentally discovered that he could control sound from a self-vibrating electromagnetic circuit and so invented a basic [[oscillator]]. The Musical Telegraph used steel reeds oscillated by electromagnets and transmitted over a telephone line. Gray also built a simple loudspeaker device into later models, which consisted of a diaphragm vibrating in a magnetic field.
+
+A significant invention, which later had a profound effect on electronic music, was [[Lee DeForest]]'s triode [[Audion tube|audition]]. This was the first thermionic valve, or [[vacuum tube]], invented in 1906, which led to the generation and amplification of electrical signals, radio broadcasting, and electronic computation, amongst other things.
+
+Other early synthesizers included [[Thaddeus Cahill]]'s [[Dynamophone]] or Telharmononium (before 1907), Jorg Mager's Spherophone (1924) and Partiturophone, the [[Theremin]] (1927), which was marketed by RCA, Taubmann's similar Electronde (1933), the Ondes Martenot (1928), Trautwein's [[Trautonium]] (1930). The '''Mellertion''' (1933) used a non-standard scale, Bertrand's Dynaphone could produce octaves and perfect fifths, while the '''Emicon''' was an American, keyboard-controlled instrument constructed in 1930 and the German '''Hellertion''' combined four instruments to produce chords. Three Russian instruments also appeared, Oubouhof's [[Croix Sonore]] (1934),  [[Ivor Darreg]]'s [[microtonal music|microtonal]] 'Electronic Keyboard Oboe' (1937) and the [[ANS synthesizer]], constructed by the Russian scientist [[Evgeny Murzin]] from 1937 to 1958. Only two models of this latter were built and the only surviving example is currently stored at the Lomonosov University in [[Moscow]]. It has been used in many Russian movies - like ''[[Solaris (1972 film)|Solaris]]'' - to produce unusual, "cosmic" sounds.<ref>{{Citation
+  | last = Vail
+  | first = Mark
+  | title = Eugeniy Murzin's ANS &mdash; Additive Russian synthesizer
+  | publisher = [[Keyboard Magazine]]
+  | page = 120
+  | date = November 1, 2002
+  | url = }}</ref><ref>All the preceding instruments except those of Darreg and Murzin described in P. Scholes, ''The Oxford Companion to Music'', 10th Ed. OUP, p.322</ref> 
+
+[[Hugh Le Caine]], John Hanert, [[Raymond Scott]], composer [[Percy Grainger]] (with Burnett Cross), and others built a variety of automated electronic-music controllers during the late 1940s and 1950s. In 1959 [[Daphne Oram]] produced a novel method of synthesis, her "[[Oramics]]" technique, driven by drawings on a 35&nbsp;mm film strip; it was used for a number of years at the [[BBC Radiophonic Workshop]].<ref>{{Citation
+  | last = Manning
+  | first = Peter
+  | title = Electronic and Computer Music
+  | publisher = Oxford University Press US
+  | year = 2004
+  | pages = 129&ndash;132
+  | url = http://books.google.com/books?id=P2dClS4LdPQC
+  | isbn = 0195144848}}</ref> This workshop was also responsible for the theme to the TV series [[Doctor Who]], a piece, largely created by [[Delia Derbyshire]], that more than any other ensured the popularity of electronic music in the UK.
+
+=== Telharmonium ===
+<div style="clear:right;float:right;">
+[[Image:Teleharmonium1897.jpg|thumb|center|160px|Telharmonium console <br/>by [[Thaddeus Cahill]] 1897]]</div>
+{{main|Telharmonium}}
+In 1897 [[Thaddeus Cahill]] patented an instrument called the Telharmonium (or Teleharmonium, also known as the Dynamaphone). Using [[tonewheel]]s to generate musical sounds as electrical signals by [[additive synthesis]], it was capable of producing any combination of notes and overtones, at any dynamic level. This technology was later used to design the [[Hammond organ]]. Between 1901 and 1910 Cahill had three progressively larger and more complex versions made, the first weighing seven tons, the last in excess of 200 tons. Portability was managed only by rail and with the use of thirty boxcars. By 1912, public interest had waned, and Cahill's enterprise was bankrupt.<ref>Weidenaar 1995.</ref>
+
+=== Theremin ===
+<div style="clear:right;float:right;">
+{{multiple image |align=right |direction=horizontal
+|caption1=Theremin (1924)
+|image1=Leon Theremin.jpg |width1=120 
+|caption2=Fingerboard Theremin <!-- (1930) -->
+|image2=Theremin Cello '30.jpg |width2=114
+}}</div>
+{{main|Theremin}}
+Another development, which aroused the interest of many composers, occurred in 1919-1920. In Leningrad, Leon Theremin (actually [[Lev Termen]]) built and demonstrated his Etherophone, which was later renamed the [[Theremin]]. This led to the first compositions for electronic instruments, as opposed to noisemakers and re-purposed machines.
+
+Composers who ultimately utilized the Theremin included [[Edgard Varèse|Varèse]]&mdash;in his piece ''Ecuatorial'' (1934)&mdash;while conductor [[Leopold Stokowski]] experimented with its use in arrangements from the classical repertory.{{Citation needed|date=August 2007}}
+In 1929, [[Joseph Schillinger]] composed ''First Airphonic Suite for Theremin and Orchestra'', premièred with the [[Cleveland Orchestra]] with [[Leon Theremin]] as soloist. The next year [[Henry Cowell]] commissioned Theremin to create the first electronic rhythm machine, called the [[Rhythmicon]]. Cowell wrote some compositions for it, and he and Schillinger premiered it in 1932.
+
+=== Ondes Martenot ===
+<div style="clear:right;float:right;">
+[[Image:Ondes martenot.jpg|thumb|center|160px|Ondes Martenot (ca.1974, <br/>7th generation model)]]</div>
+{{main|Ondes Martenot}}
+The 1920s have been called the apex of the Mechanical Age and the dawning of the Electrical Age. In 1922, in Paris, [[Darius Milhaud]] began experiments with "vocal transformation by phonograph speed change."<ref name = "tvnpyt">Russcol 1972, 68.</ref> These continued until 1927.
+
+This decade brought a wealth of early electronic instruments&mdash;along with the Theremin, there is the presentation of the [[Ondes Martenot]], which was designed to reproduce the microtonal sounds found in Hindu music, and the [[Trautonium]].
+Maurice Martenot invented the Ondes Martenot in 1928, and soon demonstrated it in Paris. Composers using the instrument ultimately include [[Pierre Boulez|Boulez]], [[Arthur Honegger|Honneger]], [[André Jolivet|Jolivet]], [[Charles Koechlin|Koechlin]], [[Olivier Messiaen|Messiaen]], [[Darius Milhaud|Milhaud]], [[Gilles Tremblay|Tremblay]], and [[Edgard Varèse|Varèse]]. [[Radiohead]] guitarist and multi-instrumentalist [[Jonny Greenwood]] also uses it in his compositions and a plethora of Radiohead songs. In 1937, Messiaen wrote ''Fête des belles eaux'' for 6 ondes Martenot, and wrote solo parts for it in ''[[Trois petites Liturgies de la Présence Divine]]'' (1943&ndash;44) and the ''[[Turangalîla-Symphonie]]'' (1946&ndash;48/90).
+
+=== Trautonium ===
+<div style="clear:right;float:right;">
+[[Image:Volkstrautonium MIM.jpg|thumb|center|160px|Volks Trautonium (1933, Telefunken Ela T 42)]]</div>
+{{main|Trautonium}}
+The Trautonium was invented in 1928. It was based on the [[subharmonic]] scale, and the resulting sounds were often used to emulate bell or gong sounds, as in the 1950s Bayreuth productions of ''[[Parsifal]]''. In 1942, Richard Strauss used it for the bell- and gong-part in the Dresden première of his ''Japanese Festival Music''.  This new class of instruments, microtonal by nature, was only adopted slowly by composers at first, but by the early 1930s there was a burst of new works incorporating these and other electronic instruments.
+
+=== Hammond organ and Novachord ===
+<div style="clear:right;float:right;">
+[[Image:Novachord frontS.jpg|thumb|center|160px|Hammond Novachord (1939)]]</div>
+{{main|Hammond organ|Novachord}}
+In 1929 [[Laurens Hammond]] established his company for the manufacture of electronic instruments. He went on to produce the [[Hammond organ]], which was based on the principles of the [[Telharmonium]], along with other developments including early reverberation units.<ref>Russcol 1972, 70.</ref>
+
+The first commercially-manufactured synthesizer was the [[Novachord]], built by the [[Hammond Organ]] Company from 1938 to 1942, which offered 72-note [[Polyphony (instrument)|polyphony]] using 12 oscillators driving [[monostable]]-based divide-down circuits, basic [[envelope generator|envelope]] control and resonant [[low-pass filter]]s. The instrument featured 163 vacuum tubes and weighed 500 pounds. The instrument's use of envelope control is significant, since this is perhaps the most significant distinction between the modern synthesizer and other electronic instruments.<br clear="right"/>
+
+== Analogue synthesis 1950-80 ==
+{{multiple image |align=right |direction=vertical |width=180
+|caption1=Siemens Synthesizer at Siemens Studio For Electronic Music (ca.1959)
+|image1=DM Recording Studio.jpg
+|caption2=The RCA Mark II (ca.1957)
+|image2=RCA Mark II Sound Synthesizer.png
+}}
+{{Main|Analog synthesizer|Synthesizer}}
+
+The most commonly used electronic instruments are [[synthesizer]]s, so-called because they artificially generate sound using a variety of techniques. All early circuit-based synthesis involved the use of analogue circuitry, particularly voltage controlled amplifiers, oscillators and filters. An important technological development was the invention of the [[Clavivox]] [[synthesizer]] in 1956 by [[Raymond Scott]] with subassembly by [[Robert Moog]].
+
+=== Modular synthesizers ===
+{{main|Modular synthesizer}}
+[[RCA]] produced experimental devices to synthesize voice and music in the 1950s.  The [[RCA Mark II Sound Synthesizer|Mark II Music Synthesizer]], housed at the [[Computer Music Center|Columbia-Princeton Electronic Music Center]] in [[New York City]]. Designed by Herbert Belar and Harry Olson at RCA, with contributions from Vladimir Ussachevsky and Peter Mauzey, it was installed at Columbia University in 1957. Consisting of a room-sized array of interconnected sound synthesis components, it was only capable of producing music by programming,<ref name="beginnings"/> using a [[paper tape]] [[Music sequencer|sequencer]] punched with holes to control pitch sources and filters, similar to a mechanical [[player piano]] but capable of generating a wide variety of sounds. The [[vacuum tube]] system had to be patched to create timbres.
+
+[[Image:Bob Moog3.jpg|thumb|left|Robert Moog]]
+In the 1960s synthesizers were still usually confined to studios due to their size. They were usually modular in design, their stand-alone signal sources and processors connected with patch cords or by other means and controlled by a common controlling device. [[Harald Bode]], [[Don Buchla]], [[Hugh Le Caine]], [[Raymond Scott]] and [[Paul Ketoff]] were among the first to build such instruments, in the late 1950s and early 1960s. Buchla later produced a commercial modular synthesizer, the [[Buchla|Buchla Music Easel]].<ref>{{Citation
+  | last = Vail
+  | first = Mark
+  | title = Buchla Music Easel &mdash; Portable performance synthesizer
+  | publisher = [[Keyboard Magazine]]
+  | page=108
+  | date = October 1, 2003
+  | url = }}</ref>  [[Robert Moog]], who had been a student of [[Peter Mauzey]] and one of the RCA Mark II engineers, created a synthesizer that could reasonably be used by musicians, designing the circuits while he was at Columbia-Princeton. The [[Moog modular synthesizer|Moog synthesizer]] was first displayed at the [[Audio Engineering Society]] convention in 1964.<ref>{{Citation
+  | last = Glinsky
+  | first = Albert
+  | title = Theremin: Ether Music and Espionage
+  | publisher = [[University of Illinois Press]]
+  | page=293
+  | year = 2000
+  | isbn = 0252025822}}</ref> It required experience to set up sounds but was smaller and more intuitive than what had come before, less like a machine and more like a musical instrument. Moog established standards for control interfacing, using a logarithmic 1-volt-per-octave for pitch control and a separate triggering signal. This standardization allowed synthesizers from different manufacturers to operate simultaneously. Pitch control was usually performed either with an organ-style keyboard or a [[music sequencer]] producing a timed series of control voltages. During the late 1960s hundreds of popular recordings used Moog synthesizers. Other early commercial synthesizer manufacturers included [[ARP Instruments, Inc.|ARP]], who also started with modular synthesizers before producing all-in-one instruments, and British firm [[Electronic Music Studios (London) Ltd|EMS]].
+
+<!-- image of next section --><div style="clear:right;float:right;">
+[[Image:R.A.Moog minimoog 2.jpg|thumb|center|180px|Minimoog (1970, R.A.Moog)]]</div>
+
+===Integrated synthesizers===
+
+In 1970, Moog designed the [[Minimoog]], a non-modular synthesizer with a built-in keyboard. The analogue circuits were interconnected with switches in a simplified arrangement called "normalization." Though less flexible than a modular design, normalization made the instrument more portable and easier to use. The [[Minimoog]] sold 12,000 units.<ref>{{Citation
+  | title = 1970 Robert Moog Moog Music Minimoog Synthesizer
+  | publisher = Mix Magazine
+  | date=September 1, 2006
+  |accessdate = 2008-04-10
+  |url = http://mixonline.com/TECnology-Hall-of-Fame/moog-music-minimoog-090106/}}</ref> further standardized the design of subsequent synthesizers with its integrated keyboard, pitch and modulation wheels and VCO->VCF->VCA signal flow. It has become celebrated for its "fat" sound - and its tuning problems. Miniaturized solid-state components allowed synthesizers to become self-contained, portable instruments that soon began to be used in live performance and quickly became  the most widely used synthesizer in both popular and electronic art music.<ref name="montanaro">{{cite web
+  |url = http://www.lib.utexas.edu/etd/d/2004/montanarolk042/montanarolk042.pdf
+  |title = A Singer’s Guide to Performing Works for Voice and Electronics, PhD thesis  Doctor of Musical Arts 
+  |last = Montanaro
+  |first = Larisa Katherine
+  |publisher = The University of Texas at Austin 
+  | date = May, 2004 
+  |quote = In 1969, a portable version of the studio Moog, called the Minimoog, became the 
+most widely used synthesizer in both popular music and electronic art music
+}}</ref>
+
+During the late 1970s and early 1980s, [[DIY]] (Do it yourself) designs were published in hobby electronics magazines (notably the Formant modular synth, a DIY clone of the Moog system, published by [[Elektor]]) and kits were supplied by companies such as Paia in the US, and Maplin Electronics in the UK.
+
+<!-- image of next section -->{{multiple image |align=right |direction=horizontal
+|caption1=[[Yamaha GX1|Yamaha GX-1]] <span style="font-size:90%;">(ca.1973)</span>
+|image1=Yamaha GX-1 (clip) @ Yamaha Design Masterworks.png |width1=120
+|caption2=[[E-mu Modular System]] <span style="font-size:90%;">(ca.1973)</span>
+|image2=E-mu Modular System @ Cantos.jpg |width2=120
+}}<div style="position:relative;top:-3ex;">
+{{multiple image |align=right |direction=horizontal
+|image1=SCI Prophet 5.jpg|width1=180|caption1=Sequential Circuits Prophet-5 (1977)
+}}</div>
+
+===Polyphony===
+{{main|Polyphony (instrument)#Synthesizer}}
+Many early analog synthesizers were monophonic, producing only one tone at a time. Popular monophonic synthesizers include the Moog [[Minimoog]], and [[Roland SH-101]]. A few, such as the Moog Sonic Six, [[ARP Odyssey]] and EML 101, could produce two different pitches at a time when two keys were pressed.  [[Polyphony (instrument)|Polyphony]] (multiple simultaneous tones, which enables [[Chord (music)|chords]]) was only obtainable with electronic organ designs at first. Popular electronic keyboards combining organ circuits with synthesizer processing included the ARP Omni and Moog's Polymoog and Opus 3.
+
+By 1976 affordable polyphonic synthesizers began to appear, notably the Yamaha CS-50, CS-60 and [[Yamaha CS-80|CS-80]], the [[Sequential Circuits Prophet-5]] and the [[Oberheim]] Four-Voice. These remained complex, heavy and relatively costly. The recording of settings in digital memory allowed storage and recall of sounds. The first practical polyphonic synth, and the first to use a microprocessor as a controller, was the [[Sequential Circuits]] [[Prophet-5]] introduced in late 1977.<ref>{{Citation
+  | last = Wells
+  | first = Peter
+  | title = A Beginner's Guide to Digital Video
+  | publisher = AVA Books (UK)
+  | page = 10
+  | year = 2004
+  | isbn = 2884790373}}</ref> For the first time, musicians had a practical polyphonic synthesizer that allowed all knob settings to be saved in computer memory and recalled by pushing a button.  The Prophet-5's design paradigm became a new standard, slowly pushing out more complex and recondite modular designs.<br clear="right"/>
+
+== Tape recording ==
+{{multiple image |align=right |direction=horizontal
+|caption1=[[Musique concrète#The_phonogene|<!-- Chromatic --> Phonogene]] (1953) <br/>for musique concrète
+|image1=Phonogene.jpg |width1=108
+|caption2=Mellotron　MkVI<ref name="MellotronMarkVI">
+ {{cite web
+  |title     = Mellotron Mark VI (1999-) Images
+  |url       = http://www.mellotron.com/mellotron_mk_vi_images.htm
+  |publisher = Mellotron (Canada)
+ }} &mdash; Note: It has a speed selector switch on the red logo.
+ </ref><ref name="MellotronM4000">
+ {{cite web 
+  |title=Streetly Mellotron M4000
+  |url = http://www.soundonsound.com/sos/oct07/articles/mellotronm4000.htm
+  |journal = Sound On Sound
+  |issue   = October 2007
+  |quote   = Mellotron M4000's controll panel identical to the M400's, aside from the addition of four buttons and an LED display to operate the cycling mechanism.
+ }}</ref><ref name="MellotronM4000D">
+ {{cite web
+  |title     = Digital Mellotron M4000D
+  |url       = http://www.mellotron.com/mellotron_mk_vi_images.htm
+  |publisher = Mellotron (Canada)
+  |quote     = The front panel user inteface has 2 TFT-displays of high quality and are capable of showing pictures of the actual instruments. 
+ }}</ref>
+|image2=Mellotron.jpg |width2=104
+}}
+{{main|Magnetophon|Musique concrète|Multitrack recording|Chamberlin|Mellotron}}
+In 1935, another significant development was made in Germany. Allgemeine Elektrizitäts Gesellschaft (AEG) demonstrated the first commercially produced [[magnetic tape recorder]], called the "[[Magnetophon]]".  [[Magnetic tape sound recording|Audio tape]], which had the advantage of being fairly light as well as having good audio fidelity, ultimately replaced the bulkier wire recorders.
+
+The term "electronic music" (which first came into use during the 1930s) came to include the tape recorder as an essential element: "electronically produced sounds recorded on tape and arranged by the composer to form a musical composition")<ref>"Electronic music": [http://dictionary.reference.com/browse/electronic%20music Dictionary.com Unabridged (v 1.1). Random House, Inc.]  (accessed: August 19, 2007)</ref> It was also indispensable to [[Musique concrète]].
+
+Tape also gave rise to the first, analogue, sample-playback keyboards, the [[Chamberlin]] and its more famous successor the [[Mellotron]], an electro-mechanical, polyphonic keyboard originally developed and built in Birmingham, England in the early 1960s.
+
+== Sound sequencer ==
+<div style="clear:right;float:right;">
+{{multiple image |align=center |direction=vertical
+|caption1=<span style="font-size:95%;">One of the earliest digital sequencer, </span>[[Electronic Music Studios|EMS]] Synthi Sequencer 256 (1971)
+|image1=EMS at MIM Sequencer.jpg |width1=180
+}}</div>
+{{main|Music sequencer}}
+In 1951 former [[jazz]] composer [[Raymond Scott]] invented the first [[Music sequencer|sequencer]], which consisted of hundreds of switches controlling stepping relays, timing solenoids, tone circuits and 16 individual oscillators.
+
+== Hardware hacking ==
+{{main|circuit bending}}
+It was within this period (1966&ndash;67) that [[Reed Ghazala]] discovered and began to teach "[[circuit bending]]"&mdash;the application of the creative short circuit, a process of chance short-circuiting, creating experimental electronic instruments, exploring sonic elements mainly of timbre and with less regard to pitch or rhythm, and influenced by [[John Cage]]’s [[aleatoric music]] concept.<ref name="circuit">{{cite web
+  |url = http://www.gamemusic4all.com/backto8bit%204.html
+  |title = Back to the 8 bit: A Study of Electronic Music Counter-culture
+  |last = Yabsley
+  |first = Alex
+  |authorlink = 
+  |coauthors = 
+  |date = 2007-02-03
+  |publisher = Dot.AY
+  |quote = This element of embracing errors is at the centre of Circuit Bending, it is about creating sounds that are not supposed to happen and not supposed to be heard (Gard, 2004). In terms of musicality, as with electronic art music, it is primarily concerned with timbre and takes little regard of pitch and rhythm in a classical sense. ... . In a similar vein to Cage’s aleatoric music, the art of Bending is dependent on chance, when a person prepares to bend they have no idea of the final outcome.
+}}</ref>
+
+Much of this manipulation of circuits directly, especially to the point of destruction, was pioneered by [[Louis and Bebe Barron]] in the early 1950s, such as their work with [[John Cage]] on the ''[[Williams Mix]]'' and especially in the soundtrack to [[Forbidden Planet]].
+
+==The digital era 1980-2000==
+===Digital synthesis===
+{{multiple image |align=right |direction=horizontal
+|caption1=Synclavier I (1977)
+|image1=Synclavier1 JB.jpg |width1=100
+|caption2=Synclavier PSMT <!-- with V/PK --> (1984)
+|image2=NED Synclavier VPK (Velocity Pressure Keyboard) 1.jpg |width2=170
+}}<div style="position:relative;top:-3ex;">
+{{multiple image |align=right |direction=horizontal
+|caption1=Yamaha GS-1 (1980)
+|image1=Yamaha GS-1 @ Yamaha Design Masterworks.jpg |width1=135
+|image2=Yamaha VP1 and DX7 @ Yamaha Design Masterworks.jpg
+|caption2=Yamaha DX7 (1983) and Yamaha VL-1 (1994) |width2=135
+}}</div>
+{{main|Digital synthesizer}}
+The first [[digital synthesizer]]s were academic experiments in sound synthesis using digital computers. [[FM synthesis]] was developed for this purpose, as a way of generating complex sounds digitally with the smallest number of computational operations per sound sample. In 1983 [[Yamaha Corporation|Yamaha]] introduced the first stand-alone digital synthesizer, the [[DX-7]]. It used frequency modulation synthesis (FM synthesis), first developed by [[John Chowning]] at [[Stanford University]] during the late sixties.<ref>Chowning, 1973</ref> Chowning exclusively licensed his [[FM synthesis]] patent to Yamaha in 1975.<ref>{{Citation
+  | last = Petzold
+  | first = Charles
+  | title = Riding the wave of sound synthesis: the origins of FM synthesis
+  | publisher = [[PC Magazine]]
+  | page = 232
+  | date = November 29, 1988
+  | url = }}</ref> Yamaha subsequently released their first FM synthesizers, the [[Yamaha GS-1|GS-1]] and [[Yamaha GS-2|GS-2]], which were costly and heavy. There followed a pair of smaller, preset versions, the CE20 and CE25 Combo Ensembles, targeted primarily at the home organ market and featuring four-octave keyboards.<ref>{{Citation
+  | title = Yamaha GS1 & DX1
+  | publisher = Sound On Sound
+  | date = 06-2001
+  | url = http://www.soundonsound.com/sos/aug01/articles/retrofmpt1.asp
+  | accessdate = 2008-04-10}}</ref> Yamaha's third generation of digital synthesizers was a commercial success; it consisted of the [[Yamaha DX7|DX7]] and [[Yamaha DX9|DX9]] (1983). Both models were compact, reasonably priced, and dependent on custom digital integrated circuits to produce FM tonalities. The DX7 was the first mass market all-digital synthesizer.<ref>{{Citation
+  | last = Le Heron
+  | first = Richard B.
+  | last2 = Harrington
+  | first2 = James W.
+  | title = New Economic Spaces: New Economic Geographies
+  | publisher = Ashgate Publishing
+  | year = 2005
+  | page = 41
+  | isbn = 0754644502}}</ref> It became indispensable to many music artists of the 1980s, and demand soon exceeded supply.<ref>{{Citation
+  | title = Three Yamaha products that reshaped the industry mark 20th anniversary
+  | publisher = Music Trades
+  | pages = 70&ndash;74
+  | date = February 2004
+  | url = http://findarticles.com/p/articles/mi_hb5264/is_200402/ai_n20430721}} {{Dead link|date=September 2010|bot=RjwilmsiBot}}</ref> The DX7 sold over 200,000 units within three years.<ref>{{Citation
+  | last = Colbeck
+  | first = Julian
+  | title = Keyfax The Omnibus Edition
+  | publisher = Hal Leonard Corporation
+  | date = June 1997
+  | page = 208
+  | isbn = 0918371082}}</ref>
+
+The DX series was not easy to program but offered a detailed, percussive sound that led to the demise of the electro-mechanical [[Rhodes piano]]. Following the success of FM synthesis Yamaha signed a contract with Stanford University in 1989 to develop [[digital waveguide synthesis]], leading to the first commercial [[Physical modelling synthesis|physical modeling synthesizer]], [[Yamaha]]'s VL-1, in 1994.<ref>{{Citation
+  | last = Aikin
+  | first = Jim
+  | title = Software Synthesizers: The Definitive Guide to Virtual Musical Instruments
+  | publisher = Backbeat Books
+  | year = 2003
+  | page = 4
+  | isbn = 0879307528}}</ref>
+
+=== Sampling ===
+{{multiple image |align=right |direction=horizontal
+|caption1=A Fairlight CMI keyboard (1979) <!-- , featuring signatures from 43 celebrity musicians, composers and producers. -->
+|image1=Fairlight CMI.jpg |width1=173
+|caption2=<span style="font-size:90%;">Kurzweil K250 (1984)</span>
+|image2=KURZWEIL 250.jpg |width2=97
+}}
+{{main|Sampler (musical instrument)|Sampling (music)}}
+The [[Fairlight CMI]]  (Computer Musical Instrument), the first polyphonic digital [[Sampler (musical instrument)|sampler]], was the harbinger of sample-based synthesizers.<ref>{{Citation
+  | last = Holloway
+  | first = David
+  | title = Fairlight's Peter Vogel
+  | publisher = [[Keyboard Magazine]]
+  | page = 104
+  | date = July 1, 2006}}</ref> Designed in 1978 by Peter Vogel and Kim Ryrie and based on a dual [[microprocessor]] computer designed by Tony Furse in Sydney, Australia, the Fairlight CMI gave musicians the ability to modify volume, attack, decay, and  use special effects like vibrato. Sample [[waveform]]s could be displayed on-screen and modified using a [[light pen]].<ref>{{Citation
+  | last = Scott
+  | first = David
+  | title = Music computer - you draw sounds you want to hear
+  | publisher = [[Popular Science]]
+  | page = 154
+  | date = May 1984}}</ref> The [[Synclavier]] from [[New England Digital]] was a similar system.<ref>{{Citation
+  | title = 1979 Fairlight CMI
+  | publisher = Mix Magazine
+  | date = September 1, 2006
+  | url = http://mixonline.com/TECnology-Hall-of-Fame/fairlight-computer-musical-090106/index.html
+  | accessdate = 2008-05-30}}</ref> [[Jon Appleton]] (with Jones and Alonso) invented the Dartmouth Digital Synthesizer, later to become the New England Digital Corp's [[Synclavier]]. The [[Kurzweil K250]], first produced in 1983, was also a successful polyphonic digital music synthesizer,<ref>{{Citation
+  | last = Battino
+  | first = David
+  | coauthors = Kelli Richards, Stewart Copeland
+  | title = The Art of Digital Music
+  | publisher = Backbeat Books
+  | year = 2005
+  | page = 58
+  | url = http://books.google.com/books?id=1cSfFMaR0QkC&pg=PA58&dq=Kurzweil+K250&ei=3n8ASNmEGIuCyQT4keXPDA&sig=7nmpGx1BTQ4XDNDi3gDwa7zwPe4#PPA58,M1
+  | isbn = 0879308303}}</ref> noted for its ability to reproduce several instruments synchronously and having a velocity-sensitive keyboard.<ref>{{Citation
+  | last = Porter
+  | first = M
+  | title = The Impact of the Kurzweil 250
+  | publisher = Computers & Electronics
+  | pages = 42&ndash;43
+  | date = July 1984}}</ref>
+
+=== Computer music ===
+{{multiple image |align=right |direction=horizontal 
+|caption1=[[Max Mathews]] (1970s) playing realtime software instrument.
+|image1=Mathews260.jpg |width1=117
+|caption2=[[ISPW]], a successor of [[Sogitec 4X|4X]], was a DSP platform based on [[Intel i860|i860]] and [[NeXT Computer|NeXT]], by [[IRCAM]].
+|image2=ISPW - IRCAM Signal Processing Workstation.jpg |width2=153
+}}
+{{main|computer music|Software synthesizer}}
+An important new development was the advent of computers for the purpose of composing music, as opposed to manipulating or creating sounds. [[Iannis Xenakis]] began what is called "musique stochastique," or "[[stochastic music]]", which is a method of composing that employs mathematical probability systems. Different probability algorithms were used to create a piece under a set of parameters. Xenakis used graph paper and a ruler to aid in calculating the velocity trajectories of [[glissando|glissandi]] for his orchestral composition ''Metastasis'' (1953&ndash;54), but later turned to the use of computers to compose pieces like ''ST/4'' for string quartet and ''ST/48'' for orchestra (both 1962). 
+
+The impact of computers continued in 1956. [[Lejaren Hiller]] and [[Leonard Isaacson]] composed ''Iliac Suite'' for [[string quartet]], the first complete work of computer-assisted composition using [[algorithm]]ic composition.<ref>Schwartz 1975, 347.</ref> 
+
+In 1957, [[Max Mathews]] at [[Bell Lab]] wrote [[MUSIC-N]] series, a first computer program family for generating digital audio waveforms through direct synthesis.  Then [[Barry Vercoe]] wrote [[MUSIC-N|MUSIC 11]] based on [[Music 4|MUSIC IV-BF]], a next-generation music synthesis program (later evolving into [[csound]], which is still widely used).
+
+In mid 80s, [[Miller Puckette]] at [[IRCAM]] developed graphic signal-processing software for [[Sogitec 4X|4X]] called [[Max (software)|Max]] (after [[Max Mathews]]), and later ported it to [[Apple Macintosh|Macintosh]] (with [[Dave Zicarelli]] extending it for [[Opcode Systems|Opcode]] <ref>[http://www.atpm.com/6.05/barline.shtml Max at Opcode]</ref>) for real-time [[MIDI]] control, bringing algorithmic composition availability to most composers with modest computer programming background.
+
+=== MIDI ===
+[[Image:Midiaansl.jpg|thumb|MIDI, a LAN for music, enables connections between digital musical instruments]]
+{{main|Musical Instrument Digital Interface}}
+In 1980, a group of musicians and music merchants met to standardize an interface by which new instruments could communicate control instructions with other instruments and the prevalent microcomputer. This standard was dubbed MIDI ([[Musical Instrument Digital Interface]]). A paper was authored by [[Dave Smith (engineer)|Dave Smith]] of [[Sequential Circuits]] and proposed to the [[Audio Engineering Society]] in 1981. Then, in August 1983, the MIDI Specification 1.0 was finalized.
+
+The advent of MIDI technology allows a single keystroke, control wheel motion, pedal movement, or command from a microcomputer to activate every device in the studio remotely and in synchrony, with each device responding according to conditions predetermined by the composer.
+
+MIDI instruments and software made powerful control of sophisticated instruments easily affordable by many studios and individuals. Acoustic sounds became reintegrated into studios via [[Sampling (music)|sampling]] and sampled-ROM-based instruments.
+
+== Modern electronic musical instruments ==
+<div style="clear:right;float:right;margin:0 0 -3.3ex 0;">
+{{multiple image |align=right |direction=horizontal
+|caption1=Wind synthesizer
+|image1=Onyx The Digital Pied Piper.jpg |width1=150
+|caption2=SynthAxe
+|image2=SynthAxe.jpg |width2=68
+}}</div>
+The increasing power and decreasing cost of sound-generating electronics (and especially of the personal computer), combined with the standardization of the [[MIDI]] and [[Open Sound Control]] musical performance description languages, has facilitated the separation of musical instruments into music controllers and music synthesizers.
+
+By far the most common musical controller is the [[musical keyboard]]. Other controllers include the [[radiodrum]], Akai's [[EWI]], the guitar-like [[SynthAxe]], the [http://www.synthzone.com/bsynth.html BodySynth], the [[Buchla Thunder]], the [[Continuum (instrument)|Continuum Fingerboard]], the [[Roland Octapad]], various [[isomorphic keyboards]] including the [[Thummer]], and [[Kaossilator|Kaossilator Pro]], and kits like [[I-CubeX]].
+
+===The reactable===
+<div style="clear:right;float:right;margin:0 0 -3.3ex 0;">
+[[Image:Reactable Multitouch.jpg|thumb|160px|Reactable]]</div>
+{{main|reactable}}
+The reactable is a round translucent table, used in a darkened room, and appears as a [[backlight|backlit]] display. By placing blocks called ''tangibles'' on the table, and interfacing with the visual display via the tangibles or fingertips, a [[Virtuality|virtual]] [[modular synthesizer]] is operated, creating music or sound effects.
+
+===Percussa AudioCubes===
+<div style="clear:right;float:right;margin:0 0 -3.3ex 0;">
+[[Image:Detailed view of Audiocubes.jpg|thumb|160px|Audiocubes]]</div>
+{{main|audiocubes}}
+AudioCubes are autonomous wireless cubes powered by an internal computer system and rechargeable battery. They have internal RGB lighting, and are capable of detecting each other's location, orientation and distance. The cubes can also detect distances to the user's hands and fingers. Through interaction with the cubes, a variety of music and sound software can be operated. AudioCubes have applications in sound design, music production, DJing and live performance.
+
+===Kaossilator===
+<div style="clear:right;float:right;margin:0 0 -3.3ex 0;">
+[[Image:KORG Kaossilator.jpg|thumb|120px|Korg Kaossilator]]</div>
+{{main|Kaossilator}}
+The Kaossilator and Kaossilator Pro are compact instruments where the position of a finger on the touch pad controls two note-characteristics; usually the pitch is changed with a left-right motion and the tonal property, filter or other parameter changes with an up-down motion.  The touch pad can be set to different musical scales and keys.  The instrument can record a repeating loop of adjustable length, set to any tempo, and new loops of sound can be layered on top of existing ones.  This lends itself to electronic dance-music but is more limited for controlled sequences of notes, as the pad on a regular Kaossilator is featureless.
+
+===Eigenharp===
+{{main|eigenharp}}
+The Eigenharp is a large instrument resembling a [[bassoon]], which can be interacted with through touch-sensitive buttons, a drum sequencer and a mouthpiece. The sound processing is done on a separate computer.
+
+===AlphaSphere===
+<div style="clear:right;float:right;margin:0 0 -3.3ex 0;">
+[[Image:Alphasphere.jpg|thumb|160px|[[AlphaSphere (instrument)|AlphaSphere]]]]</div>
+{{main|AlphaSphere (instrument)}}
+The AlphaSphere is a spherical instrument that consists of 48 tactile pads that respond to pressure as well as touch. Custom software allows the pads to be indefinitely programmed individually or by groups in terms of function, note, and pressure parameter among many other settings. The primary concept of the instrument is to move electronic musicians away from their computer screens and back to an instrument.
+
+==DIY culture==
+===Circuit bending on today===
+[[File:Bending.jpg|thumb|160px|Probing for "bends" using a jeweler's screwdriver and alligator clips.]]
+{{main|#Hardware hacking|Chiptune}}
+
+[[Circuit bending]] is the creative customization of the circuits within electronic devices such as low [[voltage]], battery-powered [[guitar effects]], children's [[toy]]s and small digital [[synthesizer]]s to create new musical or visual instruments and sound generators. Emphasizing spontaneity and randomness, the techniques of circuit bending have been commonly associated with [[noise music]], though many more conventional contemporary musicians and musical groups have been known to experiment with "bent" instruments. Circuit bending usually involves dismantling the machine and adding components such as switches and [[potentiometer]]s that alter the circuit. With the revived interest for analogue synthesizer circuit bending became a cheap solution for many experimental musicians to create their own individual analogue sound generators. Nowadays many schematics can be found to built noise generators such as the [[Atari Punk Console]] or the [[Dub Siren]] as well as simple modifications for children toys such as the famous [[Speak & Spell (toy)|Speak & Spell]]s that are often modified by circuit benders.
+
+===Chip music===
+{{main|Chiptune}}
+{{see also|Video game music}}
+[[Chiptune]], chipmusic, or chip music is music written in sound formats where many of the sound textures are synthesized or sequenced in real time by a [[computer]] or [[video game console]] [[sound chip]], sometimes including sample-based synthesis and low bit sample playback. Many chip music devices featured synthesizers in tandem with low rate sample playback.
+{{-}}
+
+== Future electronic musical instruments ==
+{{multiple image |align=right |direction=horizontal
+|caption1=three degree of freedom on [[Continuum (instrument)|Continuum]]
+|image1=ContinuumAxes2.jpg |width1=145
+|caption2=[[Six degrees of freedom]] of the [[Razer Hydra|Sixense/Razer Hydra]] controller<!-- : forward/back, up/down, left/right, pitch, yaw, roll -->
+|image2=6DOF en.jpg |width2=120
+}}
+{{Expand section|date=December 2010}}
+According to a [http://sixense.com/forum/phpBB3/viewtopic.php?t=61 forum post] in December 2010, Sixense Entertainment is working on musical control with the [[Sixense TrueMotion]] motion controller.
+
+[[Immersive virtual musical instrument]]s, or [[immersive virtual instrument]]s for music and sound aim to represent musical events and sound parameters in a [[virtual reality]] so that they can be perceived not only through auditory feedback but also visually in 3D and possibly through tactile as well as haptic feedback, allowing the development of novel interaction metaphors beyond manipulation such as prehension.
+
+== See also ==
+{{Multicol}}
+* [[Electronic music]]
+* [[Experimental musical instrument]]
+;instrument families
+* [[Drum machine]]
+* [[Vocoder]]
+
+{{Multicol-break}}
+;organizations
+* [[STEIM]]
+;individual techniques
+* [[Chiptune]]
+* [[Circuit bending]]
+
+{{Multicol-break}}
+;individual instruments (historical)
+* [[Electronic Sackbut]]
+* [[Continuum Fingerboard]]
+* [[Spharophon]]
+;individual instruments (modern)
+* [[Atari Punk Console]]
+* [[Kraakdoos]]
+* [[Razer Hydra]]
+
+{{Multicol-end}}
+
+== References ==
+
+{{reflist|2}}
+
+== External links ==
+* [http://www.obsolete.com/120_years/ 120 Years of Electronic Music]
+* [http://www.doornbusch.net/chronology A chronology of computer and electronic music (including instruments)]
+* [http://sonhors.free.fr/ History of Electronic Music] (French)
+* [http://tons-of-tone.tripod.com/index.html Tons of Tones !! : Site with technical data on Electronic Modelling of Musical Tones ]
+
+{{DEFAULTSORT:Electronic Musical Instrument}}
+[[Category:Electronic musical instruments| ]]
+
+[[ca:Instrument musical electrònic]]
+[[da:Elektroniske musikinstrumenter]]
+[[de:Elektronisches Musikinstrument]]
+[[et:Elektroonilised muusikainstrumendid]]
+[[es:Instrumento musical electrónico]]
+[[fa:ساز موسیقی الکترونیک]]
+[[fr:Instrument de musique électronique]]
+[[ko:전자 악기]]
+[[he:כלי נגינה אלקטרוניים]]
+[[ja:電子楽器]]
+[[pl:Elektrofony elektroniczne]]
+[[ru:Электронные музыкальные инструменты]]
+[[sl:Elektronska glasbila]]
+[[sv:Elektroniska musikinstrument]]
+[[uk:Електронні музичні інструменти]]
+[[zh:電子樂器]]

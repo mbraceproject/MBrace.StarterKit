@@ -1,0 +1,97 @@
+There are numerous debates over who created the '''first video game''', with the answer depending largely on how [[video game]]s are defined.  The evolution of video games represents a tangled web of several different industries, including [[science|scientific]], [[computer industry|computer]], [[arcade game|arcade]], and [[consumer electronics]].
+
+The "video" in "[[video game]]" traditionally refers to a [[Raster graphics|raster]] display device.<ref name="Pong Story: Main Page"/>  However, with the popular [[catch phrase]] use of the term "video game", the term now implies all display types, formats, and platforms.
+
+Historians have also sought to bypass the issue by instead using the more inclusive "digital games" descriptive.<ref name="Game Innovation Database">[http://www.gameinnovation.org/ The Game Innovation Database]</ref>  However, this term still leaves out the earlier [[analog computer|analog-based computer]] games.
+
+==History==
+The history of video games is filled with events and earlier technology that paved the way for the advent of video games.  It also includes games that represent direct steps in the evolution of computerized gaming, and lastly the development and release of video games themselves.
+
+===1947: Cathode Ray Tube Amusement Device===
+{{main|Cathode ray tube amusement device}}
+
+The earliest{{citation needed|date=June 2011}} known interactive electronic game was by [[Thomas T. Goldsmith Jr.]] and [[Estle Ray Mann]] on a [[cathode ray tube]].<ref>http://www.pong-story.com/2455992.pdf U.S. Patent #2,455,992</ref> The patent was filed on January 25, 1947 and issued on December 14, 1948.<ref name="CRT game patent">{{Citation| inventor-last=Goldsmith Jr.| inventor-first=Thomas T.| inventor2-last=Mann| inventor2-first=Estle Ray| publication-date=25 Jan 1947| issue-date=14 Dec 1948| title=Cathode Ray Tube Amusement Device| country-code=| description= |patent-number=2455992}}</ref> The game was a [[Missile simulator game|missile simulator]] inspired by radar displays from World War II. It used analog circuitry, not digital, to control the CRT beam and position a dot on the screen. Screen overlays were used for targets since graphics could not be drawn at the time.<ref name="Pong Story: Main Page">[http://www.pong-story.com/intro.htm Pong Story: Main Page]</ref>[[File:CRT amusement device.jpg|thumb|right|circuit diagram for the "CRT amusement device"]]
+
+===1947–1958: Chess===
+
+[[Alan Turing]], a British mathematician, developed a theoretical computer chess program as an example of machine intelligence. In 1947, Turing wrote the theory for a program to play chess. His colleague Dietrich Prinz<ref>http://www.mosi.org.uk/media/34368825/ferranti%20mark%20i%20computer.pdf</ref> wrote it as the first limited program of chess for [[Manchester University]]'s [[Ferranti Mark I]].<ref>http://inventors.about.com/od/cstartinventions/a/Computer-Chess.htm</ref> The program, however, was only capable of computing "mate-in-two" problems and was not powerful enough to play a full game.<ref>http://www.computerhistory.org/chess/main.php?sec=thm-42b86c2029762&sel=thm-42b86c4252f72</ref>
+
+===1951: Nim===
+
+[[Image:Nimrod schematic.svg|thumb|A drawing of the [[Nimrod (computing)|NIMROD]] computer.]]
+
+On May 5, 1951, the [[Nimrod (computing)|NIMROD]] computer, created by Ferranti, was presented at the [[Festival of Britain]].  Using a panel of lights for its display, it was designed exclusively to play the game of ''Nim''; this was the first instance of a digital computer designed specifically to play a game.<ref name="Nimrod">[http://www.goodeveca.net/nimrod/ Nimrod Game Computer]</ref> This machine was based on an original design built by E.U. Condon in 1941, after having acquired a patent in 1940. The machine weighed over a ton, and a duplicate was displayed at the New York World's Fair.<ref>http://www.jstor.org/pss/2304959</ref> NIMROD could play either the traditional or "reverse" form of the game.
+
+===1952: OXO / Noughts and Crosses (Tic-Tac-Toe)===
+
+In 1952, [[A.S. Douglas|Alexander S. Douglas]] made the first computer game to use a digital graphical display. ''[[OXO]]'', also known as ''Noughts and Crosses'', is a version of [[tic-tac-toe]] for the [[EDSAC]] computer at the [[University of Cambridge]].  It was designed for the world's first stored-program computer, and used a rotary telephone controller for game control.<ref>http://www.pong-story.com/1952.htm</ref>
+
+===1958: Tennis for Two===
+
+[[Image:Tennis for Two.jpg|thumb|left|''Tennis for Two'' recreation]]
+
+In 1958, [[William Higinbotham]] made an interactive computer game named ''[[Tennis for Two]]'' for the [[Brookhaven National Laboratory|Brookhaven National Laboratory's]] annual visitor's day. This display, funded by the [[U.S. Department of Energy]], was meant to promote [[Nuclear power|atomic]] power, and used an [[analog computer]] and the [[vector graphics|vector display]] system of an [[oscilloscope]].<ref>http://www.bnl.gov/bnlweb/history/higinbotham.asp Brookhaven History: The First Video Game</ref><ref name="Introduction to Game Development">Rabin, Steve. ''Introduction to Game Development''. Massachusetts: Charles River Media, 2005.</ref> 
+
+===1959: Mouse in the Maze, Tic-Tac-Toe===
+
+In 1959–1961, a collection of interactive graphical programs were created on the [[TX-0]] experimental computer at MIT. These included ''Mouse in the Maze''<ref name=TCMR-V08>[http://www.bitsavers.org/pdf/mit/tx-0/TX-0_history_1984.txt The Computer Museum Report Volume 8, Spring 1984], archived by bitsavers.org</ref> and ''Tic-Tac-Toe''.<ref name=cc>[http://www.wheels.org/spacewar/creative/SpacewarOrigin.html "The origin of Spacewar"], ''[[Creative Computing]]'' magazine, August, 1981, J. M. Graetz, archived by wheels.org, retrieved 2010-2-17</ref> ''Mouse in the Maze'' allowed users to use a light pen to place maze walls, dots that represented bits of cheese, and (in some versions) glasses of martini. A virtual mouse represented by a dot was then released and would traverse the maze to find the objects. ''Tic-Tac-Toe'' used the light pen as well to play a simple game of naughts and crosses against the computer.<ref name=cc />
+
+===1961: Spacewar!===
+
+In 1961, [[MIT]] students Martin Graetz, [[Steve Russell]], and Wayne Wiitanen created the game ''[[Spacewar!]]'' on a [[Digital Equipment Corporation|DEC]] [[PDP-1]] mini-computer which also used a vector display system.<ref name="Pong Story: Main Page"/><ref name="Introduction to Game Development" /> The game, generally considered the first [[Shooter game]],{{Citation needed|date=December 2009}} spread to several of the early mini-computer installations, and reportedly was used as a [[smoke test]] by DEC technicians on new PDP-1 systems before shipping, since it was the only available program that exercised every aspect of the hardware.<ref name="Hackers: Heroes of the Computer Revolution">Levy, Steven. ''[[Hackers: Heroes of the Computer Revolution]]'', Massachusetts:Anchor Press/Doubleday, 1984.</ref> Russell has been quoted as saying that the aspect of the game that he was most pleased with was the number of other programmers it inspired to write their own games.<ref name="A Long Time Ago, in a Lab Far Away . . .">[http://www.nytimes.com/2002/02/28/technology/a-long-time-ago-in-a-lab-far-away.html?pagewanted=2 "A Long Time Ago, in a Lab Far Away . . ."], ''The New York Times'', 28 February 2002</ref>
+
+[[File:Magnavox-Odyssey-Console-Set.jpg|thumb|The [[Magnavox Odyssey]] released in 1972]]
+
+===1966: Odyssey===
+
+In 1966, [[Ralph Baer]] resumed work on an initial idea he had in 1951 to make an interactive game on a television set. In May 1967, Baer and an associate created the first game to use a raster-scan video display, or television set, directly displayed via modification of a video signal – i.e. a "video" game.<ref name="Videogames Turn 40">[http://www.1up.com/do/feature?pager.offset=0&cId=3159462 Videogames Turn 40]</ref>  The "Brown Box", the last prototype of seven, was released in May 1972 by [[Magnavox]] under the name [[Magnavox Odyssey|Odyssey]]. It was the first home [[video game console]].<ref name="Pong Story: Main Page"/>
+
+===1971: Galaxy Game===
+
+In 1971, Bill Pitts and Hugh Tuck developed the first coin-operated computer game, ''[[Galaxy Game]]'', at [[Stanford University]] using a DEC [[PDP-11/20]] computer; only one unit was ever built (although it was later adapted to run up to eight games at once).<ref name="stanford">http://infolab.stanford.edu/pub/voy/museum/pictures/display/5-GG-machine.htm</ref>
+
+===1971: Computer Space===
+
+Two months after Galaxy Game's installation, ''[[Computer Space]]'' by [[Nolan Bushnell]] and [[Ted Dabney]] was released, which was the first coin-operated video game to be commercially sold (and the first widely available video game of any kind, predating the Odyssey by six months). Both games were variations on the vector display 1961 ''Spacewar!''; however, Bushnell and Dabney's used an actual video display by having an actual television set in the cabinet.
+
+===1972: Pong===
+
+''[[Pong]]'', also by Bushnell and Dabney, used the same television set design as ''Computer Space'', and was not released until 1972 – a year after ''Computer Space''.
+
+==Controversy and lawsuits==
+
+Baer was involved in court battles over patents that spanned the 1970s and 1980s. These trials defined a video game as an apparatus that displays games by manipulating the video display signal of the [[Raster graphics|raster]] equipment: a television set, a monitor, etc. The previous computer games did not use a video display, so did not qualify as such in the courts.<ref name="Pong Story: Main Page"/>
+
+==See also==
+*[[History of video games]]
+*[[History of video game consoles (first generation)]]
+*[[History of video game companies]]
+
+==Notes and references==
+{{Reflist|2}}
+
+==External links==
+;Research
+*[http://invention.smithsonian.org/resources/fa_baer_index.aspx  Ralph H. Baer Papers, 1943–1953, 1966–1972, 2006] – Ralph Baer's prototypes and documentation housed at the Smithsonian Lemelson Center.
+*[http://www.pong-story.com pong-story.com]
+*[http://www.classicgaming.com/features/articles/cgexpo2000/baerkeynote/baer_c.shtml Classic Gaming Expo 2000: Baer Describes the Birth of Videogames]
+*[http://www.1up.com/do/feature?pager.offset=0&cId=3159462 Videogames Turn 40] at 1UP.com.
+
+;Game emulation
+*[http://www.dcs.warwick.ac.uk/~edsac/ EDSAC Emulator (to play OXO)]
+*[http://www.goodeveca.net/nimrod/simulation.html NIM Interactive Simulation for Be OS operating system]
+*[http://spacewar.oversigma.com/ Spacewar! Java Emulation]
+*[http://www.gamersquarter.com/tennisfortwo/ Tennis for Two Simulation]
+
+[[Category:Tennis video games]]
+[[Category:Electronics companies]]
+[[Category:First-generation video game consoles]]
+[[Category:History of video games|*]]
+[[Category:Monochrome video game consoles]]
+[[Category:United States Department of Energy]]
+[[Category:Earliest phenomena|Video games]]
+[[Category:American inventions]]
+
+[[es:Primer videojuego]]
+[[ro:Primul joc video]]
+[[tr:İlk video oyunu]]

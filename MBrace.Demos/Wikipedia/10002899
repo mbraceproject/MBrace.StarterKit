@@ -1,0 +1,223 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Help desk|Help desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Help desk/Archives/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Help desk/Archives/February 2007|Feb]] | [[Wikipedia:Help desk/Archives/March 2007|March]] | [[Wikipedia:Help desk/Archives/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Help desk/Archives/2007 March 11|[[Wikipedia:Help desk/Archives/2007 March 11|March 11]]|[[Wikipedia:Help desk|Current help desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Help Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Help desk/Archives/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Help desk|current Help Desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== Deleting search history ==
+
+when i type something into the search bar a list of all searches Ive made apperas below it. This is quite bothersome how can i stop this from happening?
+
+* In Internet Explorer, click Tools -> Internet Options..., click the Content tab, click AutoComplete and there are options there. Uncheck the box for "forms" (and "Web addresses" and "User names and passwords on forms" if you want) and click "Clear Forms".
+* In Firefox, to disable the feature go to Tools -> Options..., in the Privacy section, click the Saved Forms tab and uncheck "Save information I enter in forms and the Search Bar" and click OK and then click Tools -> Clear Private Data... and make sure Saved Form Information has a tick and then click Clear Private Data Now. It's up to you to determine what other data you want to clear. --[[User:WikiSlasher|WikiSlasher]] 00:41, 10 March 2007 (UTC)
+
+== National Anthem Project ==
+
+Could this article please be made more secure? 
+It concerns a highly controversial project that has been the subject of considerable scholarly debate in many publications in the fields of music and education. Some contributors have attempted to provide a balanced depiction of pro and con arguments regarding this project. Examine previous versions of this page and you will find lists of references to relevant books and articles as well as an explanation of opposing views. However, someone - presumably directly associated with the project - has repeatedly deleted everything and simply posted what essentially amounts to a propagandistic advertisement supporting the project. Today, once again, that is what has been posted on this page. Thank you very much for your attention to this matter. <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/24.218.204.17|24.218.204.17]] ([[User talk:24.218.204.17|talk]]) 00:31, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+:If it is the same person, report them at [[WP:AIV]] if its just vandalism type things or [[WP:ANI]] for more major problems. If there is a serious problem with multiple users, request page protection at [[WP:RPP]]. <font color="maroon">[[User:Mr.Z-man|Mr.Z-man]]</font>'''<small>[[User talk:Mr.Z-man|talk]]</small>''<font color="navy" face="cursive">[[Special:Contributions/Mr.Z-man|¢]]</font>'''''<small>[[Wikipedia:Editor review/Mr.Z-man|Review!]]</small> 01:28, 10 March 2007 (UTC)
+
+== words in dictionary ==
+
+Why can't I find words and their meanings that are in an English dictionary? 
+Whare do I find them?
+
+Thank you[[User:74.109.135.152|74.109.135.152]] 01:17, 10 March 2007 (UTC)
+
+Vi <email redacted>
+
+:Hi. You'll probably find what you're looking for at [http://en.wiktionary.org/wiki/Main_Page Wiktionary.org]. If not, you may create a page there just like you do here. [[User:Xiner|Xiner]] ([[User talk:Xiner|talk]], [[Special:Emailuser/Xiner|email]]) 01:20, 10 March 2007 (UTC)
+
+== Deleting pictures ==
+
+how so i delete a picture from a particular page?[[User:Pilotchick|Pilotchick]] 01:18, 10 March 2007 (UTC)
+:You can ''remove'' a picture by editing the page and taking out the picture link. It should look something like <pre>[[Image:example.jpg|75px|right|]]</pre> To have an image ''deleted'', nominate it on [[WP:IFD]]. <font color="maroon">[[User:Mr.Z-man|Mr.Z-man]]</font>'''<small>[[User talk:Mr.Z-man|talk]]</small>''<font color="navy" face="cursive">[[Special:Contributions/Mr.Z-man|¢]]</font>'''''<small>[[Wikipedia:Editor review/Mr.Z-man|Review!]]</small> 01:25, 10 March 2007 (UTC)
+::It's more problematic than that - dueling or doubled articles, [[Cătălina Ponor]] and [[Catalina Ponor]], one of which has an atrocious photo.  Haven't compared the two articles, but I don't doubt one is meant to be complimentary and the other not.  Should be merged and redirected, eh? [[User:Shenme|Shenme]] 01:38, 10 March 2007 (UTC)
+:::I've restored the redirect at [[Catalina Ponor]] and found the original standard athletic photo and restored that at [[Cătălina Ponor]].  It's obvious someone has included much negative text in the article ... (sigh) [[User:Shenme|Shenme]] 03:08, 10 March 2007 (UTC)
+
+== Text Size ==
+
+Other than putting text into a header format, how can I increase the size of the text? ---Signed By:[[Korn|<span style="color:#FF0000;">Korn</span>]][[User:Kornfan71|<span style="color:#FF0000;">fan71</span>]]<small>([[User talk:Kornfan71|<span style="color:#FF0000;">My Talk</span>]]       [[۩]]       [[Special:Contributions/User:Kornfan71|<span style="color:#FF0000;">Contribs</span>]])</small> 01:54, 10 March 2007 (UTC)
+:You can make text <big>Big</big>, by doing this <nowiki><big>Big</big></nowiki>. --[[User:After Midnight|After Midnight]] <sup><small>[[User talk:After Midnight|0001]]</small></sup> 02:20, 10 March 2007 (UTC)
+::Or even better, use CSS. Try
+<pre><span style="font-size:157%;">text</span></pre>
+::which will result in <span style="font-size:157%;">text</span>: default size 10 pt font * 157% = 15.7 size font. The "big" tag does the same as <nowiki><span style="font-size:120%;">text</span></nowiki>. [[User:Gracenotes|<font color="#960">Grace</font><font color="#000">notes</font>]]<sup>[[User talk:Gracenotes|<font color="#960">T</font>]]</sup> § 06:47, 10 March 2007 (UTC)
+
+:Thanks! ---Signed By:[[Korn|<span style="color:#FF0000;">Korn</span>]][[User:Kornfan71|<span style="color:#FF0000;">fan71</span>]]<small>([[User talk:Kornfan71|<span style="color:#FF0000;">My Talk</span>]]       [[۩]]       [[Special:Contributions/User:Kornfan71|<span style="color:#FF0000;">Contribs</span>]])</small> 14:45, 10 March 2007 (UTC)
+
+::Or you could use <nowiki><span style="font-size:larger;">text</span></nowiki> (<span style="font-size:larger;">text</span>), which is a bit less specific. (Do we want half of the people using size 156% and the other half 157%?) See [http://www.w3.org/TR/CSS21/fonts.html#font-size-props the CSS 2.1 standard] for the list of sizes CSS understands. In general, though, there's probably no good reason to do this. Use headers for sections, and that should be all that's needed. [[User:Grendelkhan|grendel]]|[[User_talk:Grendelkhan|khan]] 16:17, 13 March 2007 (UTC)
+
+== How do I write this article if no "respected" sources exist. ==
+
+There is an article on the software "Vodei Multimedia Processor" that I have worked on. Factual information is being removed because it isn't published or on a website that is considered credible.
+
+I am writing things that the reader only needs to investigate themselves. I've even listed step-by-step instructions and uploaded screenshots to show that the software does, indeed, cost money and that there are a few other questionable attributes about the software (not the least of which is, why would anyone encode with their software?).
+
+Can you help me in figuring out how to write this article without having a procession of people remove it completely citing wikipedia policy?
+
+Tony Reed <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[User:Qabala|Qabala]] ([[User talk:Qabala|talk]] • [[Special:Contributions/Qabala|contribs]]) 03:40, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:[[WP:ATT|Attribution]] is a non-negotiable policy. If there are no reliable sources for the article, then there is no article. [[User:Natalie Erin|Natalie]] 03:41, 10 March 2007 (UTC)
+::Yes, and this may involve [[WP:OR|original research]] and [[WP:N|non-notability]], too. You may want to read [[Wikipedia:Your first article]] for ideas about what you can contribute. [[User:Xiner|Xiner]] ([[User talk:Xiner|talk]], [[Special:Emailuser/Xiner|email]]) 03:45, 10 March 2007 (UTC)
+
+:::If Wikipedia does not want your content, maybe [[List of wikis|another wiki]] does. [http://wikiindex.org/index.php?search=software&go=Go Search WikiIndex] for wikis that are about software. If no published sources exist for your topic, contact some reporters and see if they will write some. --[[User:Teratornis|Teratornis]] 18:21, 10 March 2007 (UTC)
+
+::::I can't believe I forgot about this: [[Wikipedia:Not Wikipedia]] and [[Wikipedia:Alternative outlets]] both have links to a wide variety of other wikis, both Wikimedia Foundation projects and others, that may accept the content you have. [[User:Natalie Erin|Natalie]] 17:44, 12 March 2007 (UTC)
+
+== Charles Upham Memorial Cavalry Champions Belt. ==
+
+My question is, Is an ongoing history of a sporting competition a suitable article for inclusion as a Wikipedia subject. There is currently no written history of this prestigeous competition. 
+The Cavalry Champions Belt is New Zealand's second oldest sporting competition, started in 1872 and renamed the Charles Upham Memorial Cavalry Champions belt in 1985, following the death of Sir Charles Upham, VC and Bar.
+I wish to write an ongoing history of the Belt with brief information about each of the winners.
+My intention is to add information as it comes to light and as time produces more Champions.
+[[User:CUMCCB020304|CUMCCB020304]] 04:50, 10 March 2007 (UTC)
+:It probably is. If you make sure that you follow the [[Wikipedia:attribution|attribution]] policy (basically linking to/referencing the external sources you used) then there shouldn't be a problem. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 10:16, 10 March 2007 (UTC)
+I don't see any problems with this, except to be careful to avoid [[WP:OR]]. If there is currently no written history of this competition, it may be difficult to find reputable sources as references for the article, which may lead to problems. BTW, if you wish to have a look at a possible format for such an article, a comparison with something like [[Chatham Cup]] (NZ's top soccer tournament) may be informative. [[User:Grutness|Grutness]]...''<small><font color="#008822">[[User_talk:Grutness|wha?]]</font></small>'' 10:25, 10 March 2007 (UTC)
+
+== Searching for the use of a term within articles when the term is the title of an article ==
+
+How can one search for the use of a term within articles without being redirected to the main article about the term?
+
+It would be very helpful to do this when rooting out vandalism spamming by commercial entities. For example, I watch the article [[Benjamin Britten]]. In the past, I have removed commercial links from the page to the [[Find A Grave]] website and the website for [[Naxos records]]. I was clear from looking at histories that users had created accounts or used anon accounts to add these links to a number of pages. However, especially when IPs are used, it may not be possible to track down all instances of such spamming just from user histories.
+
+When a non-notable organization spams in this way, you can simply search for the orgs name and get a list of articles in which its mentioned. However, both [[Naxos]] and [[Find a Grave]] are notable enough to have their own articles - searching simply directs me there, so the main article acts as a sort of "search shield" for any spamming they may do in other articles.
+
+Is there any way to get around this?
+
+[[User:Dybryd|Dybryd]] 08:33, 10 March 2007 (UTC)
+*Actually, [[Find A Grave]] isn't spam. I sometimes link to them as they're a pretty useful resource in their field and multiple veteran users and non-spammers link to it, just like we often link to IMSB. Full text searching can't be done with the Wikipedia search engine, you can use a restricted Google search instead. As for finding links: [[Special:Linksearch]]. - [[User:MacGyverMagic|Mgm]]|[[User talk:MacGyverMagic|<sup>(talk)</sup>]] 08:46, 10 March 2007 (UTC)
+*Click on "Search" instead of "Go" (which is activated by pressing enter) to search for articles containing the search term. [[User:PrimeHunter|PrimeHunter]] 12:50, 10 March 2007 (UTC)
+
+==Ipswich School==
+
+Dear Sir/Madam,
+
+I have been informed that the entry for Ipswich School is offensive and should be removed. It mentions pupils by name and makes a number of unfounded comments about the school's reputation.
+
+I would appreciate some contact from those who edit the content to explain their policy as regards schools and the protection of pupils from bullying.
+
+I would also like the page removed, please.
+
+Mr D Ayling
+(Deputy Head)
+
+:The offensive material has been removed. Our experience shows that material such as this is almost always added by pupils of the school itself so they are probably the people you wish to speak to. Unfortunately we cannot remove the page completely. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 10:23, 10 March 2007 (UTC)
+
+::Also we can strict rules governing the information that can be added concerning real people - and this will include the bullying of individuals. Please see [[WP:BLP]] for more info. Such instances will be deleted on sight, the only problem is that there is only a limited number of editors to patrol many articles, but we will try our best. It is not possible to remove the page completely. Cheers [[User talk:Lethaniol|Lethaniol]] 10:42, 10 March 2007 (UTC)
+:::That is the unfortunate downside to free and open editing - anyone can add/remove/change whatever they want to. You, or another member of staff/responsible individual, may wish to keep an eye on the article from now on. [[User:Adrian_M._H.|<font color="#4B0082">'''Adrian'''</font>]] [[User_talk:Adrian_M._H.|<font color="#4B0082">'''M. H.'''</font>]] 14:51, 10 March 2007 (UTC)
+
+::::If the problem continues, see: [[Template:Schoolblock]] and [[WP:ABUSE]]. --[[User:Teratornis|Teratornis]] 18:07, 10 March 2007 (UTC)
+
+== language translation ==
+
+how do i translate the web page to hindi? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/59.92.77.219|59.92.77.219]] ([[User talk:59.92.77.219|talk]]) 09:08, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+:This would be better addressed [[Wikipedia:Reference desk/Language|here]] --[[User:Kzrulzuall|<font color= "blue" face="Harlow Solid Italic"><u>'''''KZ'''''</u></font>]]     [[User talk:Kzrulzuall|<sup><small><font color= "red" face="Century Schoolbook">''' Talk '''</font></small></sup>]] <sup>•</sup> [[User:Kzrulzuall/VandalismLog| <small><sup><font color= "green" face="Century Schoolbook">'''Vandal'''</font></sup></small>]] <sup>•</sup> [[Special:Contributions/Kzrulzuall|<sup><small><font color= "purple" face="Century Schoolbook">''' Contrib '''</font></small></sup>]] 10:00, 10 March 2007 (UTC)
+:If you are looking for Wikipedia articles in Hindi, see  the [[Hindi Wikipedia]].[[User:24.20.69.240|24.20.69.240]] 10:03, 10 March 2007 (UTC)
+
+== IS:3521:1988 Safety Belts ==
+
+Furnish Details of Safety Belt Testing <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/61.2.34.154|61.2.34.154]] ([[User talk:61.2.34.154|talk]]) 09:51, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+:Knowledge questions are normally best asked at the [[Wikipedia:reference desk|reference desk]] but in your case it may be best to contact a safety belt testing company. Either way, you should probably ask it more politely. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 10:26, 10 March 2007 (UTC)
+
+
+== My son has a problem... ==
+''Content has been removed. If you want to see it, please check [[wikinews:Wikinews:Bad jokes and other deleted nonsense#Not quite news]] (third item). This is apparently a sort of urban legend.''  -- <font style="font-family:Monotype Corsiva; font-size:15px;">[[User:John Broughton|John Broughton]] </font>  [[User talk:John Broughton |(♫♫)]] 12:46, 10 March 2007 (UTC)
+
+:Wikipedia isn't really qualified to give advice about this. If it is something that worries you then you should talk to his school or seek help from a qualified professional. Sorry I can't help more. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 11:28, 10 March 2007 (UTC)
+::Assuming good faith and all, but see also [[Wikipedia:Community_noticeboard#Briefsism]]. [[User:Garion96|Garion96]] [[User talk:Garion96|(talk)]] 11:49, 10 March 2007 (UTC)
+
+This is about the 3rd time I have seen this. Has also been posted to the admin noticedboards. [[User:Viridae|Viridae]][[User talk:Viridae|<small><sup>Talk</sup></small>]] 12:07, 10 March 2007 (UTC)
+
+== Download pages with Plucker ==
+
+Hi Wikipedians:
+
+I want to download a page with Plucker, but Plucker seems to be unable to generate a home page from Wikipedia -- I am guessing because the Wikipedia is not HTML.
+
+I have seen a couple of bundles of Wikipedia content in Plucker format so it appears to be possible.  Can you tell me how to go about this?
+
+Also, if possible I would like to use Plucker to pluck linked pages as well to a depth of two pages only (including the home page).  Can this be done?
+
+Thanks --
+[[User:216.147.135.2|216.147.135.2]] 12:34, 10 March 2007 (UTC)
+
+:Wikipedia ''is'' HTML - that's why you can see it with your web browser without Flash or Acrobat Reader.  As for using a third-party program to download contents, that's probably better asked at [[Wikipedia:Reference desk]]; this page is for assisting ''editors'', not readers.  -- <font style="font-family:Monotype Corsiva; font-size:15px;">[[User:John Broughton|John Broughton]] </font>  [[User talk:John Broughton |(♫♫)]] 12:38, 10 March 2007 (UTC)
+:We have some available at [[Wikipedia:Snapshots]]. You're probably better off asking for help at a Plucker forum, rather than here. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 12:40, 10 March 2007 (UTC)
+
+== how should one download the contents of wikipedia? ==
+
+how should one download the contents of wikipedia? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/202.53.8.229|202.53.8.229]] ([[User talk:202.53.8.229|talk]]) 14:24, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+:Short answer: I wouldn't it has 1.6 million articles. Somone else can direct you to the database dumps, I can't remember where they are. [[User:Viridae|Viridae]][[User talk:Viridae|<small><sup>Talk</sup></small>]] 14:30, 10 March 2007 (UTC)
+::[[Wikipedia:Database dumps]]? --[[User talk:Cherry blossom tree|Cherry blossom tree]] 14:36, 10 March 2007 (UTC)
+:::For the important articles, i suggest going [http://www.soschildrensvillages.org.uk/charity-news/education-cd.htm here] and downloading the zip file. --[[User:Kzrulzuall|<font color= "blue" face="Harlow Solid Italic"><u>'''''KZ'''''</u></font>]]     [[User talk:Kzrulzuall|<sup><small><font color= "red" face="Century Schoolbook">''' Talk '''</font></small></sup>]] <sup>•</sup> [[User:Kzrulzuall/VandalismLog| <small><sup><font color= "green" face="Century Schoolbook">'''Vandal'''</font></sup></small>]] <sup>•</sup> [[Special:Contributions/Kzrulzuall|<sup><small><font color= "purple" face="Century Schoolbook">''' Contrib '''</font></small></sup>]] 00:17, 11 March 2007 (UTC)
+
+== Article: Religious of the Sacred Heart of Mary ==
+
+I think I forgot to sign most of my edits [[User:Haberrshm|Haberrshm]] 14:56, 10 March 2007 (UTC)haberrshm - is that the cleanup problem.
+
+I don't know what is not neutral about the article.  The information comes from Religious of the Sacred Heart of Mary articles, constitutions, documents, policies, mandates, etc. that we have written about ourselves.
+
+Please let me know.  If we cannot write about who we are, perhaps we need to ask that the article be totally deleted.  The first edition of the article certainly did not reflect at all who we are or what we wish to be said about ourselves.
+
+Thanks for any help you could give.
+
+Sr. Dympna Haber, RSHM
+
+[[User:Haberrshm|Haberrshm]] 14:56, 10 March 2007 (UTC) haberrshm
+
+:There is a difference between an encyclopaedia article and what a group wishes to write about themselves. It is written in the first person, which is the most obvious problem, but it also reads like a promotional pamphlet. If you want to have the article deleted then you can look at [[Wikipedia:Articles for deletion]], but arguing for this on the basis that you cannot control the contents of the article will not be successful. --[[User talk:Cherry blossom tree|Cherry blossom tree]] 15:09, 10 March 2007 (UTC)
+
+::I am afraid you can not own an article - please read [[WP:OWN]]. If this article is of notable subject, which it appears to be, then it is unlikely to be deleted. Also I recommend reading [[WP:NPOV]] - an article should not be written to promote a particular POV (point of view) even if this it the article subject's POV. All significant points of view need to be taken into account, as well as the article being written in a neutral style Cheers [[User talk:Lethaniol|Lethaniol]] 15:21, 10 March 2007 (UTC)
+
+I have deleted (I think) all usage of We and Our, so I think that the article is now all in the 3rd person.  Does that fix it?
+
+[[User:Haberrshm|Haberrshm]] 14:42, 11 March 2007 (UTC)haberrshm
+
+==Images==
+How do you add a pic? <small><span class="autosigned">—Preceding [[Wikipedia:Signatures|unsigned]] comment added by [[User:Phillyfan0419|Phillyfan0419]] ([[User talk:Phillyfan0419|talk]] • [[Special:Contributions/Phillyfan0419|contribs]]) </span></small><!-- Template:Unsigned -->
+:[[WP:IMAGE]] should help. [[User:Xiner|Xiner]] ([[User talk:Xiner|talk]], [[Special:Emailuser/Xiner|email]]) 16:50, 10 March 2007 (UTC)
+
+:Just to tell you, however, most pictures lying around the internet are not free, which means that (unless they can be used via [[WP:FU|fair use]]), they should not be uploaded. If you have a personal picture to upload to Wikipedia, please release under a free license (such as the GFDL), or even upload it to [[commons:Main Page|Wikimedia Commons]]. Meanwhile, please [[WP:BB|be bold]] :) [[User:Gracenotes|<font color="#960">Grace</font><font color="#000">notes</font>]]<sup>[[User talk:Gracenotes|<font color="#960">T</font>]]</sup> § 17:07, 10 March 2007 (UTC)
+
+==Time Covers==
+
+I've noticed that there are a whole bunch of TIME magazine covers in various articles. How do I get one for an article where there's none as yet? There's a beautiful one of [[Mario Proccacino]] I'd love to see in the article I wrote. [[User:Ericl|Ericl]] 18:54, 10 March 2007 (UTC)
+
+:Please note that using an image for decorative purposes would violate [[WP:FAIRUSE]]. You may check the criteria to see if there's a valid reason for uploading such a [[WP:COPYRIGHT|copyrighted]] image. [[User:Xiner|Xiner]] ([[User talk:Xiner|talk]], [[Special:Emailuser/Xiner|email]]) 19:02, 10 March 2007 (UTC)
+
+::I think the information found in this image page may help: [[:Image:Time's first cover.jpg]]. It looks like you can use low resolution images from [http://www.time.com/time/archive/] under [[Wikipedia:Fair use]] - but as Xiner said you need to check this first. Cheers [[User talk:Lethaniol|Lethaniol]] 19:04, 10 March 2007 (UTC)
+
+== G Tube Feeding ==
+
+How long is the normal range for your stomach to empty after a g tube feeding.  My mother is finding that when she starts her 2nd feeding of 4 a day that the food from the previous feeding backs up out of her tube.
+
+Thank you,
+
+Renee Peterson <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/208.187.151.227|208.187.151.227]] ([[User talk:208.187.151.227|talk]]) 17:17, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Please discuss this with your doctor. [[User:Xiner|Xiner]] ([[User talk:Xiner|talk]], [[Special:Emailuser/Xiner|email]]) 17:29, 10 March 2007 (UTC)
+
+::If you have insurance, companies such as Blue Cross and Aetna usually have advice nurses that can be called, at no charge.  If you don't know the number, check the website or call the toll-free number on your insurance card.  -- <font style="font-family:Monotype Corsiva; font-size:15px;">[[User:John Broughton|John Broughton]] </font>  [[User talk:John Broughton |(♫♫)]] 20:31, 11 March 2007 (UTC)
+
+== How to Nominate a Page For Protection? ==
+
+The article [[James Bradford]] has been vandalized over the past few days by a variety of different IP addresses. In each one they add some sort of joke about Bradford being seafood, and recently even included a link to a strange web page. My best guess is this is a personal prank because the people in question know a person by the same name, but I would advise a temporary lock being put on the page prohibiting edits by unregistered users - except I don't know how to do that. [[User:Midnightguinea|Midnightguinea]] 23:47, 10 March 2007 (UTC)
+:Normally [[WP:RFPP]]. I am looking into it though. [[User:Viridae|Viridae]][[User talk:Viridae|<small><sup>Talk</sup></small>]] 23:48, 10 March 2007 (UTC)
+:No need for protection, very low level vandalism. Suggest you put it on your watch list and just revert the vandalism as it comes along. [[User:Viridae|Viridae]][[User talk:Viridae|<small><sup>Talk</sup></small>]] 23:48, 10 March 2007 (UTC)
+:: I'll gladly do that, but I think if it continues on a daily basis over the next several weeks I'll grow a little tired of doing so ;)  [[User:Midnightguinea|Midnightguinea]] 01:42, 11 March 2007 (UTC)
+:::I have it on my watch list too and it will come up on the recent changes list. I'm sure you won't have to revert too often. [[User:Viridae|Viridae]][[User talk:Viridae|<small><sup>Talk</sup></small>]] 01:48, 11 March 2007 (UTC)

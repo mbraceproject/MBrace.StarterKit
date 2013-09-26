@@ -1,0 +1,115 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Mathematics|Mathematics desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Mathematics/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Mathematics/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Mathematics/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Mathematics/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Mathematics/2007 March 11|[[Wikipedia:Reference desk/Archives/Mathematics/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Mathematics|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Mathematics Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Mathematics/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== A ball is chosen at random from n different vases... ==
+
+containing m red balls and p green balls each.
+
+What is the probability (in terms of n, p, and m) that the chosen ball is a red ball from the 3rd vase?
+
+Basicly, what I'm looking for is a general formula. No, this is not a homework problem (thank God!).--<font color="red">[[User:Kirbytime|Ķĩřβȳ]]</font><font color="green">[[Islam|♥]]</font><font color="pink">[[User_talk:Kirbytime|Ťįɱé]]</font><font color="blue">[[Special:Contributions/Kirbytime|Ø]]</font> 00:37, 10 March 2007 (UTC)
+:The vases are identical, thus the choices (vase and color of ball) are independent. The probability is the product <math> (1/n)(m/(m+p))</math>, unless I misunderstood the problem. [[User:Phils|Phil]]<span style="font-weight: bold;">[[User_talk:Phils|s]]</span> 00:49, 10 March 2007 (UTC)
+
+::That sounds right. (Probability of 3rd vase) times (Probability of red ball). [[User:Black Carrot|Black Carrot]] 01:24, 10 March 2007 (UTC)
+
+Sorry, only '''one''' ball is selected. Not one from each vase. --<font color="red">[[User:Kirbytime|Ķĩřβȳ]]</font><font color="green">[[Islam|♥]]</font><font color="pink">[[User_talk:Kirbytime|Ťįɱé]]</font><font color="blue">[[Special:Contributions/Kirbytime|Ø]]</font> 10:41, 12 March 2007 (UTC)
+
+:<s>It depends</s>.  Are you picking a vase at random and then picking a ball from that vase, or are you labelling the balls in each vase, then dumping them all into one big pile and picking randomly from that?  In the first case you're really making two selections, whereas in the second case you're making one random selection among the ''balls'' and you're asking a question about a function of the ball you picked (namely to which vase it belongs).  See also '''[[Bertrand's paradox (probability)]]'''.   --[[User:Tardis|Tardis]] 13:25, 12 March 2007 (UTC)
+
+Wow. I never realized that. Interesting paradox. I meant the second scenario you provided. Thanks! --<font color="red">[[User:Kirbytime|Ķĩřβȳ]]</font><font color="green">[[Islam|♥]]</font><font color="pink">[[User_talk:Kirbytime|Ťįɱé]]</font><font color="blue">[[Special:Contributions/Kirbytime|Ø]]</font> 23:39, 12 March 2007 (UTC)
+
+:Actually, now that I look at your question more carefully, I realize that in this particular case it ''doesn't'' depend!  Since the vases all have the same contents, the contents of the pile of balls mirrors that of each vase, and since they have the same number of (red) balls, they each compete equally to own the ball you selected.  As such, it's entirely equivalent to picking the vase first; the answer given by Phils is correct.  However, supposing for the sake of example that vase ''i'' (counting from 1) bears ''im'' red balls and ''p'' green balls, and using for numerical examples <math>n=5,m=2,p=3</math>:
+:#Selecting the 3rd vase first is still <math>\frac1n</math>, if we know nothing about them (as opposed to, say, knowing that the last vase had lots more red balls and wanting a red ball), and then the probability in that vase is obviously <math>\frac{3m}{3m+p}</math>.  Total probability: <math>\frac{3m}{n(3m+p)}=\frac2{15}</math>.
+:#Selecting the balls first requires that we count the total number of each kind: there are obviously <math>np</math> green balls, and there are <math>\sum_{i=1}^n im=\frac{mn(n+1)}2</math> red ones.  So the probability of red is just <math>\frac{mn(n+1)}{mn(n+1)+2np}</math>; the probability that a given ''red'' ball came from #3 is <math>\frac{3m\cdot2}{mn(n+1)}=\frac6{n(n+1)}</math>.  Total probability: <math>\frac{6m}{mn(n+1)+2np}=\frac1{10}</math> (lower because the 3rd vase has comparatively few red balls in it).
+:Does that help?  --[[User:Tardis|Tardis]] 19:15, 15 March 2007 (UTC)
+
+Surely it's this easy. The chance of picking the 3rd vase is 1/n. Each vase contains m+p balls. Thus the chance of selecting a red ball form any vase is m/(m+p). And logically the chance of it coming from vase #3 is the product of those 2 probabilities, viz: m/n(m+p). Just as indicated by Phils. vertles (08:53 AEST)
+
+== Drawing Fractals ==
+There are two different ways of drawing fractals. 1) Recursively copying and pasting scaled-down versions of an image (most easily drawn using the chaos game), like the Koch curve or snowflake. 2) Graphing the set of points that don't diverge on being recursively run through a formula, like the Mandelbrot or Julia sets. Is there any way to translate directly from one to the other? Is it possible, for instance, to draw a Koch snowflake or Sierpinski triangle using the same system as the Mandelbrot set? [[User:Black Carrot|Black Carrot]] 01:23, 10 March 2007 (UTC)
+
+:Julia sets can be drawn as a recursive copy, but the copies are not just scaled and rotated, but have to be warped in a nonlinear way instead. The Mandelbrot, however, is rather special. There are no true copies on it, just similarities. I don't think there's a converge/diverge kind of method to generate the self-similarity fractals like the koch curve... most methods come down to a scale and copy kind of idea; even the random-point "chaos game" methods are really just repeatedly scaling and pasting the one point. Sometimes there's an interesting pattern, like you can generate a sierpinski triangle with a modulo on a pascal triangle, or a harter-heighway dragon with a series of "folding" operations on a list of turns, but these, and a great deal of fractals fall into the category that can be produced by recursive copies. There are a few others similar to the Julia sets that you might be able to make with the nonlinear scaling and copy; maybe the [[Newton fractal]]? But as far as I know the Mandelbrot can't. - [[User:Rainwarrior|Rainwarrior]] 08:00, 10 March 2007 (UTC)
+
+== efficiently optimize multiple parameters? ==
+
+What are possible statistical methods to efficiently optimize multiple parameters when designing a complex system? I know [[Heuristic_%28computer_science%29|heuristics]] is one, but maybe there is something better. I read just a tiny bit about factorial experiment design and also about taguchi methods, but maybe you really can tell me what to do. If you must know the application area, let’s say it’s a complex artificial neural net with a dozen parameters. [[User:202.89.38.70|202.89.38.70]] 02:08, 10 March 2007 (UTC)
+
+:Is there a reason to bring in the notion of statistics? The possible efficient methods (if any) for efficient optimization depend on the details of your application. In many cases, no efficient methods exist. If the objective function is a continuous function of the parameters and can be evaluated with reasonable efficiency, perhaps [[hill climbing]] or other [[local search (optimization)|local search]] methods will do. If these are discrete parameters and you expect that specific combinations will have synergetic effects, have a look at [[genetic algorithm]]s. Or perhaps our article [[Optimization (mathematics)]] will give you further inspiration. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 10:42, 10 March 2007 (UTC)
+
+== what is the derivative of this function? ==
+
+f(x)=(x)^x,
+is it right that d/dx(f(x))=x{(x)^(x-1)} ?
+[[User:80.255.40.168|80.255.40.168]] 08:58, 10 March 2007 (UTC)ARTHER
+
+:No. You can't differentiate ''x''<sup>''x''</sup> using the same rule as for ''x''<sup>''n''</sup> because in the first case the exponent (the power to which ''x'' is raised) is a variable, and in the second case it is a constant. You have to express ''x''<sup>''x''</sup> as ''e''<sup>''x''log''x''</sup>, and then use the [[chain rule]]. [[User:Gandalf61|Gandalf61]] 10:29, 10 March 2007 (UTC)
+
+
+You do not have to use e. 
+If f(x)=y then by taking logs, you get log y = x logx. Then you can differentiate both sides to get 1/y dy/dx = 1 + logx. You want dy/dx.
+It all comes to the same thing but this may seem to be simpler.
+[[User:Geoffcobra|Geoffcobra]] 23:36, 10 March 2007 (UTC)
+
+== Tautology test for disjunctive normal form ==
+
+I'm trying to work out how putting a logical formula in [[disjunctive normal form]] allows a test for [[Tautology (logic)|tautology]]-hood without requiring trees or truth tables. Whilst some tautologies come out with DNFs that are obviously tautologies, I can't see any standard form that all tautologies take when in DNF. Can anybody give me a nudge in the right direction? [[User:Maelin|Maelin]] <small>([[User talk:Maelin|Talk]] | [[Special:Contributions/Maelin|Contribs]])</small> 10:09, 10 March 2007 (UTC)
+
+:Testing tautology of formulas in disjunctive normal form can be reduced to testing [[Boolean satisfiability problem|satisfiability]] of formulas in [[conjunctive normal form]], which is known to be [[NP-complete]]. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 10:24, 10 March 2007 (UTC)
+
+::So I abandoned the hope that it would be some simple test involving the number of atoms and the number and lengths of disjuncts and such, but I still need a tautology test that takes advantage of the fact that it's in DNF, without assigning truth values or using trees. I honestly can't see any common feature of tautologies in DNF that isn't also possessed by contingencies in DNF. Any ideas? [[User:Maelin|Maelin]] <small>([[User talk:Maelin|Talk]] | [[Special:Contributions/Maelin|Contribs]])</small> 00:28, 11 March 2007 (UTC)
+
+== Proof that AB = I => BA = I ==
+Theorem: For n-by-n matrices A and B, if AB = I, then BA = I. My textbook offers the hint "use Invertibility Theorem part C" (non-singularity <=> invertibility). But I'm not really sure how knowing that ABx = 0 has only one solution helps with the proof. Any hints? --[[User:Taejo]]|[[User talk:Taejo|대조]] 15:18, 10 March 2007 (UTC)
+
+:I don't know which properties you are allowed to use, but perhaps this: if A is singular, then so is AB, but I is not singular. So inv(A) exists. Does this help? &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 17:16, 10 March 2007 (UTC)
+: ABx=0 having only one solution implies that the kernel of B is zero, and this implies (e.g., by the dimension formula) that B has full rank. This means that, given any x, you can find y such that x = By. But then, BAx=BA(By)=B(ABy)=By=x. Since this is valid for any x, we get BA=I.--[[User:80.136.148.239|80.136.148.239]] 14:16, 11 March 2007 (UTC)
+
+:det(AB)=det(A)det(B), so both matrices must be non-singular, so inv(B) exists. Multiply your equation by inv(B) first:
+::(AB)×inv(B) = I×inv(B) → A = inv(B)
+:and then by B again:
+::B×A = B×inv(B) → BA = I
+:Done. --[[User:CiaPan|CiaPan]] 08:26, 12 March 2007 (UTC)
+
+: Here's a proof that uses some high-powered stuff. Square matrices form a ring. If AB = I, A and B are units. The units of a ring commute.
+
+:: The problem is, that "high-powered stuff" makes a low-brow mistake: it assumes the conclusion! That is, a unit in a ring ''by definition'' has a two-sided inverse. The question assumes only the existence of a one-sided inverse, and asks us to prove that it is two-sided. So when you say "If AB = I, A and B are units", you skip the essence of the question. --[[User:KSmrq|KSmrq]]<sup>[[User talk:KSmrq|T]]</sup> 07:15, 13 March 2007 (UTC)
+
+::: Right. Whoops. <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/203.49.187.203|203.49.187.203]] ([[User talk:203.49.187.203|talk]]) 20:35, 13 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:::: No worries; I caught it quickly because I almost made the same mistake myself. <tt>;-)</tt>
+:::: The proof by [[User:CiaPan|CiaPan]] is efficient, so long as we have established that a nonzero [[determinant]] implies invertibility. I'm assuming the question is about matrices over a [[field (mathematics)|field]], probably the [[real number|reals]], in which case that works. Not so working over the [[integer]]s; consider, for example,
+:::::<math>\begin{bmatrix}4&7\\3&5\end{bmatrix} . </math>
+:::: Its determinant is −1, and it has a two-sided integer inverse,
+:::::<math>\begin{bmatrix}-5&7\\3&-4\end{bmatrix} . </math>
+:::: Change the 7 to a 6,
+:::::<math>\begin{bmatrix}4&6\\3&5\end{bmatrix} , </math>
+:::: so that the determinant becomes 2, and we lose invertibility. (The inverse of a matrix is the [[adjugate]] — which requires only [[ring (mathematics)|ring]] operations — scaled by the multiplicative inverse of the determinant.) Fortunately in this case, det(''I'')&nbsp;= 1 implies the determinants of ''A'' and ''B'' are either both −1 or both +1 if ''AB''&nbsp;= ''I'', so we do have invertibility. --[[User:KSmrq|KSmrq]]<sup>[[User talk:KSmrq|T]]</sup> 23:20, 13 March 2007 (UTC)
+
+:kinda ran into this post, so sry if this is a late reply. there's a simple argument that doesn't resort to, explicitly, determinants or the ring structure. instead we make use of the following simple fact: a n &times; n matrix is injective iff it is surjective. (a map between sets of n elements is injective iff it's surjective, then apply linearity.) the assumption AB = I implies that B is injective and A is surjective. so A and B are both bijections. let B<sup>-1</sup> be the set-theoretic inverse of B. we know B<sup>-1</sup> is a linear map, so a matrix. again according to AB = I, the map A is described by A: Bx -> x for any vector Bx (we use surjectivity of B here). equivalently, A: y -> B<sup>-1</sup>y for any vector y. now it is clear that BA(y) = y for any y. [[User:Mct mht|Mct mht]] 14:11, 15 March 2007 (UTC)
+
+== Does this have a name? ==
+
+If ''ax'' + ''by'' = ''c'' where ''a'', ''b'', and ''c'' are constants, the maximum value of ''kxy'' where ''k'' is a constant and ''k'' > 0 occurs at the point ''x'' = ''c''/(2''a''), ''y'' = ''c''/(2''b'').
+
+What is the name of this theorem/postulate/whatever, if it exists? [[User:Curtmack|Curtmack]] of the [[User_talk:Curtmack|Asylum]] 21:05, 10 March 2007 (UTC)
+
+:Don't believe so - but it can easily be derived by differentiation and solving.  <span style="font-family: Tahoma; font-size: 8pt;">[[User:x42bn6|<span style="font-weight: bold;">x42bn6</span>]] [[User_talk:x42bn6|Talk]]</span> 14:29, 11 March 2007 (UTC)
+: It is essentially equivalent to the [[inequality of arithmetic and geometric means]].--[[User:.7g.|.7g.]] 14:53, 11 March 2007 (UTC)

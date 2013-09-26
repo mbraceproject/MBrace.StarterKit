@@ -1,0 +1,265 @@
+<noinclude><!-- From archive header-->
+{{#ifeq:{{PAGENAME}}|Special:Undelete| |{{#if:{{{nosubst|}}}|<div style="display:none;">}} {{#ifeq:{{NAMESPACE}}|Wikipedia|{{#switch:{{NAMESPACE}}|= |<div style="display:none;">}}|{{error:not substituted|Archive header}}<div style="display:none;">}}}} {{#if:{{{nosubst|}}}|</div></div>}}{| width = "100%"
+|-
+! colspan="3" align="center" | [[Wikipedia:Reference desk/Miscellaneous|Miscellaneous desk]]
+|-
+! width="20%" align="left"  | &lt; [[Wikipedia:Reference desk/Archives/Miscellaneous/2007 March 9|March 9]]
+! width="25%" align="center"|&lt;&lt; [[Wikipedia:Reference desk/Archives/Miscellaneous/February 2007|Feb]] | [[Wikipedia:Reference desk/Archives/Miscellaneous/March 2007|March]] | [[Wikipedia:Reference desk/Archives/Miscellaneous/April 2007|Apr]] &gt;&gt;
+! width="20%" align="right" |{{#ifexist:Wikipedia:Reference desk/Archives/Miscellaneous/2007 March 11|[[Wikipedia:Reference desk/Archives/Miscellaneous/2007 March 11|March 11]]|[[Wikipedia:Reference desk/Miscellaneous|Current desk]]}} &gt;
+|}
+{| align=center width=95% style="background: #FFFFFF; border: 1px solid #003EBA;" cellpadding="8" cellspacing="0"
+|-
+! style="background: #5D7CBA; text-align: center;" align="center" | <font face="Arial" color="#FFFFFF">'''Welcome to the Wikipedia Miscellaneous Reference Desk Archives'''</font>
+|-
+| The page you are currently viewing is {{#ifexist:Wikipedia:Reference desk/Archives/Miscellaneous/2007 March 20|an archive page|a [[Wikipedia:Transclusion|transcluded]] archive page}}. While you can leave answers for any questions shown below, please ask new questions on one of the [[Wikipedia:Reference desk|current reference desk]] pages.
+|}
+
+
+__TOC__
+</noinclude>
+= March 10 =
+
+== missingno. ==
+
+When encountering (NOT capturing) a [[Missingno.]] in the US version of Pokemon Yellow, will it have long term damage in the cartiage? If so, what are the possibele risk?--[[User:PrestonH|'''<font color="green">PrestonH</font>''']] | [[User talk:PrestonH|<font color="blue">talk</font>]] | [[Special:Contributions/PrestonH|<font color="red">contribs</font>]] | [[Wikipedia:Editor review/PrestonH (2)|<font color="brown">editor review</font>]] | 00:51, 10 March 2007 (UTC)
+:One (36th?) of the items in your inventory will be super-doubled. However, it won't have any damage unless you capture it. <font color="blue">-[[User:Wooty|'''Wo''']][[User:Wooty/b|'''''o''''']][[User:Wooty/Avoid presenting Wikipedia as anything but an encyclopedia|'''ty''']]&nbsp;<small>[[User talk:Wooty|'''Woot?''']]&nbsp;[[Special:Contributions/Wooty|'''contribs''']]</small></font> 03:06, 10 March 2007 (UTC)
+::Ummmm... Does freezing the game (3 or 4 times) after encoutering Missingno. cause damage?--[[User:PrestonH|'''<font color="green">PrestonH</font>''']] | [[User talk:PrestonH|<font color="blue">talk</font>]] | [[Special:Contributions/PrestonH|<font color="red">contribs</font>]] | [[Wikipedia:Editor review/PrestonH (2)|<font color="brown">editor review</font>]] | 03:11, 10 March 2007 (UTC)
+
+No matter what you do in software it will not damage the cartridge physcially (unless, of course, that the Nitendo developers left in functions to erase roms and such). --[[User: Antilived|antilived]]<sup>[[User_talk:Antilived|T]] | [[Special:Contributions/Antilived|C]] | [[User:Antilived/Gallery|G]]</sup> 03:28, 11 March 2007 (UTC)
+
+== 100 billion dollars ==
+
+President Bush is trying to raise another 100 billion dollars for the war in Iraq. This seems like a great deal of money but if we divide that by 300 million people in the US that works out to about 300$ per person or 25$ per month per person. Is my math right? Also, does anyone know the total amount of money in circulation (I'm talking about actual cash, not debt), because I am wondering what number one would get by dividing that number by the population. [[User:Duomillia|Duomillia]] 01:45, 10 March 2007 (UTC)
+
+:A sum of $100 billion divided by 300 million people equals $333.33 (and a third) for each man, woman, or child. That amounts to just under $27.78 each per month.  The total money in circulation in the United States (M2, defined as physical cash, plus checking and savings accounts and certificates of deposit) amounted to $7.1445 trillion as of February 26, according to the [http://research.stlouisfed.org/fred2/series/M2 Federal Reserve Bank of St. Louis].  Divided by 300 million people, that equals $23,815 each.  [[User:Marco polo|Marco polo]] 02:46, 10 March 2007 (UTC)
+
+:European and Asian readers note that in the United States, "billion" means "thousand million", and "trillion" means "million million".  [[User:Marco polo|Marco polo]] 02:53, 10 March 2007 (UTC)
+
+::The monthly figures would only apply if the total amount had to be collected over 1 year.  Was that part of Bush's goal?  If not, a longer collection period would mean smaller monthly amounts.  [[User:JackofOz|JackofOz]] 02:50, 10 March 2007 (UTC)
+
+::(after edit conflict) That's what I get, too. But the issue of "how much does it cost people to support the war" isn't a math problem, though it's couched like one here; it's a social problem. A significant perentage of US taxpayers don't pay any taxes (they get them all back); an even more significant percentage of the population are not taxpayers, but deductions (like my 2 year old kid). In more human terms, my wife and I are getting all our taxes back for our family of four; someone else would have to throw in our 1200 bucks, and I don't think Bill Gates is planning on it. As such, that money is likely to end up coming from monies which could otherwise have been available for, say, our local schools (and sure enough, the state we're in has told us that there will be federal monies coming in this year for schools, and this is a big part of why -- and the state gets less from the feds, and thus they have less to give schools, too). 
+
+::Incidentally, Jack has a good point, but again, to put this in real terms, borrowing against the future has its own problems...less monthly amounts would only apply if no one ever asks for a hundred billion the next year, and the next, ad infinitum.  More realistically, this money needs to come from somewhere to be spent relatively soon.   [[User:Jfarber|Jfarber]] 02:55, 10 March 2007 (UTC)
+
+:::According to [http://www.presstv.ir/detail.aspx?id=800&sectionid=3510203 this source] and [http://www.fox28.com/News/index.php?ID=14683 this ideologically very different source], Bush is asking for $93.4 billion in ''supplemental'' funding, that is over and above the funding already voted this year, for operations just through the end of September.  That is a rate of $13.34 billion per month, or $44.47 for each man, woman, and child in the country.  As others have suggested, the budget deficit exceeds this, so this is $44.47 in added debt each month for each American.  [[User:Marco polo|Marco polo]] 03:05, 10 March 2007 (UTC)
+
+First, these expenditures are non-recurring and are applied directly to the debt.  As such, yearly cost calculations and talk about the "deficit" is a non-sequitir.  Secondly, 97% of the income taxes in the U.S. are paid by the upper 50% of '''wage earners'' so the cost is only distributed among this much smaller subset.[http://www.irs.gov/pub/irs-soi/04in06tr.xls]  37% of the taxes are paid by the top 1% of wage earners so the cost is even less to the vast majority of Americans.  --[[User:Tbeatty|Tbeatty]] 08:00, 10 March 2007 (UTC)
+
+:"...'''seems''' like a great deal of money."?!? A hundred billion '''is''' a great deal of money! According to [[User:Marco Polo|Marco Polo]]'s figure, that's 1.4% of all the money circulating in the US. [[User:Clarityfiend|Clarityfiend]] 08:56, 10 March 2007 (UTC)
+
+::Interesting stuff. Perhaps look at (http://thebudgetgraph.com/) for a look at just how much defense/security costs. Of course $100bn seems like a lot of money but it isn't. According to that poster (on the site i mentioned) the AIrforce costs $130bn and that is no doubt around the same amount every single year. The money whilst a lot is not amazingly difficult for the government to work into its budget if it works intelligently (we live and hope...). [[User:Ny156uk|ny156uk]] 10:17, 10 March 2007 (UTC)
+
+:::It is not difficult for the government to raise the money as long as foreigners are willing to go on lending!  [[User:Marco polo|Marco polo]] 14:15, 10 March 2007 (UTC)
+
+::A wee query relevant to Marco Polo's point about European values of a Billion being 1000 million. How do international clearing banks and similar financial authorities deal with transferring large sums of money, bonds, certificates etc., between USA, Asia, and Europe and vice-versa when the numerical values of Billion and Trillion are vastly different?
+:::Simple. They do not use 'billion' or 'trillion' but rather '1 293 495 349 Euro'. --[[User:Ouro|Ouro]] <small>([[User_talk:Ouro|blah blah]])</small> 09:37, 11 March 2007 (UTC)
+::BTW, a billion nearly always means 1 000 000 000 in English nowadays [[User:Nil Einne|Nil Einne]] 21:26, 11 March 2007 (UTC)
+
+:Note, while tbeatty might be right about who the money is coming from, it's important to remember this money has to come from somewhere. What I mean by this is the that either you have to cut money from somewhere else in the budget or keep taxes at a level higher then would otherwise be necessary (which according to those that support them reduces growth). Even if it's borrowed, it has to eventually come from somewhere, with interest. So in otherwords, it's wrong to think it's only the rich that pay (which isn't actually true in simple terms either) [[User:Nil Einne|Nil Einne]] 21:32, 11 March 2007 (UTC)
+::Actually, that's a little misleading.  Most increases in tax revenue come from either increasing the velocity of money or increasing wealth through the growth of GDP.  Tax revenue increases every year subject to fluctuations in GDP and stock markets (i.e. how fast people are making money).  It is not a zero sum game.  In fact, with a progressive tax scheme where the rich pay disproportionate amounts of taxes with respect to income, "the rich getting richer" actually means more tax revenue (if you give $1 million dollars to 1 rich person, you get $300,000 in taxes.  If you give the same $1 million to 100,000 poor people, you get 0 taxes.).  This is why government revenue is unduly sensitive to the stock market.  --[[User:Tbeatty|Tbeatty]] 04:04, 12 March 2007 (UTC)
+
+An english billion is actually 1,000,000,000,000 instead of just 1 000 000 000 000 :] [[User:Hidden secret 7|HS7]] 12:27, 12 March 2007 (UTC)
+
+== greek word or gibberish? ==
+
+Does this word mean anything in greek, if so, what? i thought that i heard somebody use it or write it down before, but im not really sure. the word is this; ΏώąΙί
+thanks <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/74.211.8.100|74.211.8.100]] ([[User talk:74.211.8.100|talk]]) 02:10, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+While I know nothing about the Greek language, searching for it on google reveals nothing, so it may not be a word, but don't take my word for it ;). --[[User:IvanKnight69|IvanKnight69]] 10:34, 10 March 2007 (UTC)
+*<span class="plainlinks">[http://babelfish.altavista.com/tr Babelfish]</span> translates it as "''W'w'?Jj'''" So I'm pretty sure it's gibberish, or horribly misspelled, either way I'll always differ to a native speaker over an automated translation utility. --<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 16:38, 10 March 2007 (UTC)
+
+Why don't you ask on the language desk? [[User:Sashafklein|Sashafklein]] 16:59, 10 March 2007 (UTC)
+
+== enquiry about acceptence of article sent to Wikipedia ==
+
+Whether the article sent by me on 2nd March 2007 entitled ''''Vedantic''' '''Cosmology'''' was scrutinized and accepted by Wikipedia. Please reply me on my E-mail ID <[http://en.wikipedia.org/w/index.php?title=Wikipedia%3AReference_desk%2FMiscellaneous&diff=114005792&oldid=113985839 email address removed]>
+
+:This [[Special:Contributions/Crnath1933|appears to be]] your first edit. Could you please elaborate on what you mean by "sending" a Wikipedia article? − [[User:Twas Now|'''Twas ''Now''''']] <small>( [[User talk:Twas Now|talk]] • [[Special:Contributions/Twas Now|contribs]] • [[Special:Emailuser/Twas Now|e-mail]] )</small> 07:10, 10 March 2007 (UTC)
+
+:: Hi. I'm afraid your article was deleted on 1 March 2007 by [[User:Jimfbleak|Jimfbleak]]  with the justification ''(unsourced text dump, nn [non-notable])''. You can get a more detailed explanation from that editor. [[User:Rockpocket|<font color="green">Rockpock</font>]]<font color="black">e</font>[[User_talk:Rockpocket|<font color="green">t</font>]] 07:11, 10 March 2007 (UTC)
+
+== sending sms  ==
+
+i have a sony k510 mobile phone. can i send a word file or notepad file (Windows XP)over the phone as SMS using data cable- file manager?
+
+thank you [[User:124.43.246.46|124.43.246.46]] 10:09, 10 March 2007 (UTC)
+
+'''Clarification Request:'''<br />
+As you may know SMS deals with plaintext only, so formatting is generally lost and certainly images. There are things like MMS that are used to send certain multimedia over phones (but the sending and receiving phone must be able to read MMS and be MMS enabled), and then there are things like email (on phones) that can send and receive any type of file/data (size allowing). Now, do you need to know how to send the '''files''' from notepad (.txt extension) and word (.doc extension), or do you need to know how to send the '''plaintext contents''' of such files ? [[User:Rfwoolf|Rfwoolf]] 20:03, 10 March 2007 (UTC)
+
+:Coded with [[base64]]? Either way it's not very convenient to do so. --[[User: Antilived|antilived]]<sup>[[User_talk:Antilived|T]] | [[Special:Contributions/Antilived|C]] | [[User:Antilived/Gallery|G]]</sup> 03:25, 11 March 2007 (UTC)
+
+== An Old Coin ==
+
+A while ago, I inherited an old coin, it's being sitting in a drawer for years, I haven't really thought about it much, til now, when I thought that perhaps I could ask about it here to see if anyone knows what type of coin it may be, and what era it was from. 
+
+The coin appears to be made of a hard, metal-like substance. and is dark brown, the edges are somewhat eroded. On one side is the image of man wearing a Roman-style hat, with the words 'Stephanus D.C. Anglia Rex above his image. On the other side, there appears to be an image of some sort of monument, with two people looking at it on the left-hand side. On the bottom of that side, there are the words 'NAT 1105 COR 1135 MORI 1154. Does anyone know what type of coin it may be, and from what age? If it would help, I can take a picture of it and post it here. Thanks for anyone who can help :) --[[User:IvanKnight69|IvanKnight69]] 10:33, 10 March 2007 (UTC)
+
+That would be from the reign of [[King Stephen]] who reigned from 1135-1154.
+The words are Stephanus D G(Deo Gratia) Anglia Rex Natus 1105 Coronus 1135 Mori 1154 which translates from Latin as Stephen By The Grace of God King of England Born 1105 crowned 1135 died 1154,so it would appear to be some sort of commemorative medal in honor of the king.That should help you be able to value him a bit more accurately-a coin dealer could help more with that [[User:Lemon martini|Lemon martini]] 11:51, 10 March 2007 (UTC)
+
+:Presumably the dates are given in Roman numerals.  Otherwise it is a hoax, because Arabic numerals were not in use in Europe at that time.  [[User:Marco polo|Marco polo]] 14:10, 10 March 2007 (UTC)
+
+:Also, shouldn't it be "Angliae Rex"?  [[User:Marco polo|Marco polo]] 14:12, 10 March 2007 (UTC)
+
+:Some information can be gleaned from [http://imagesvr.library.upenn.edu/cgi/i/image/image-idx?type=detail&cc=furness&entryid=X-furn1930&viewid=1&sstrt=1&hits=1&q1=stephanus%20d%20g&cat1=All%20Categories&thsz=12&txsz=50&slsz=1&c=furness this link]. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 21:19, 10 March 2007 (UTC)
+
+:If the coin has his death date, then it obviously wasn't coined during his reign.  Why would a coin with King Stephen's image on it have been struck after he died?  [[User:Corvus cornix|Corvus cornix]] 03:36, 11 March 2007 (UTC)
+
+:Why on earth anyone would want to commemorate King Stephen I have no idea - he's commonly regarded as a disaster, one of the worst kings in English history; it's no coincidence that the period of his reign is known as "[[The Anarchy]]" and no royal princes have been given his name since. -- [[User:Arwel_Parry|Arwel]] ([[User talk:Arwel_Parry|talk]]) 13:01, 12 March 2007 (UTC)
+
+::Yes, you should post a pic or two of this item; the setup can be a very big clue as to when and why it was made (i.e., whether it is a commemorative medallion, or actual money). [[User:V-Man737|V-Man]] - <sup>[[User talk:V-Man737|T]]</sup>/<sub>[[Special:Contributions/V-Man737|C]]</sub> 04:29, 13 March 2007 (UTC)
+
+== Martin Vanbee ==
+
+Does anyone know any biographical information about Martin Vanbee, please?
+Martin Vanbee was the pen name for Van Buren Hooper, Sr. 
+Van B. Hooper, Sr. was the founder and editor of Ideals(tm) magazine up until his death in 1963, he also was the editor of the Louis Allis Messenger until sometime in the late 1940's - sorry no firm date is available when he stopped being an editor for Louis Allis Messenger.
+[[User:61.19.202.173|61.19.202.173]] 13:07, 10 March 2007 (UTC)
+
+== ERA ==
+
+Shall be grateful if somebody can explain this sentence from Jefferson Parker's Black Water:  `Archie's ERA was 2.18 and his bass plugs worked'[[User:90.14.146.166|90.14.146.166]] 15:12, 10 March 2007 (UTC)petitmichel
+
+:I would assume ERA refers to [[earned run average]]. [[user:anonymous6494|anonymous6494]] 16:07, 10 March 2007 (UTC)
+::Because of the bass plug, I thought it might refer to the [[acoustics]] term ''Early Reflection Absorption'', yet I cannot interpret the sentence. Could you perhaps provide some more context, petitmichel? ---[[User:Sluzzelin|Sluzzelin]] [[User talk:Sluzzelin|<small>talk</small>]] 16:12, 10 March 2007 (UTC)
+
+:The bass plugs are the choice bass plugs Archie brought for Lee while he was dating his daughter. The fact they worked, and Archie's proficiency as a pitcher in the all-American sport of baseball, were reasons for Lee to trust Archie. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 21:37, 10 March 2007 (UTC)
+Whow!  Thanks. Similar to an American asking the difference between a googlie and a yorker (in cricket).[[User:86.197.148.150|86.197.148.150]] 09:53, 11 March 2007 (UTC)petitmichel
+
+:Hey, I'm an American and I knew that one! Not only was cricket class fun, it was educational too! [[user:anonymous6494|anonymous6494]] 18:56, 11 March 2007 (UTC)
+
+Hey, I'm english and all I know about cricket is that you hit balls with bats :( [[User:Hidden secret 7|HS7]] 12:26, 12 March 2007 (UTC)
+
+== spelling question ==
+
+First of all, is this the place to ask about spelling?
+
+Or, in general, where do I look to find spellings of various forms of a word?
+
+Specifically, the gerund of binge: is it bingeing or binging? If binging what about the gerundial form of bing, the onomatopoeic word for a shape sound, similar to ping. <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[User:Nealatlex|Nealatlex]] ([[User talk:Nealatlex|talk]] • [[Special:Contributions/Nealatlex|contribs]]) 16:26, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+[[User:Nealatlex|Nealatlex]] 16:28, 10 March 2007 (UTC)
+*Oddly enough, our article on [[Binge eating disorder]] uses both spellings (: <small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 16:33, 10 March 2007 (UTC)
+
+*Merriam-Webster gives both, with bingeing first.  [[User:Nricardo|--Nélson Ricardo]] 17:37, 10 March 2007 (UTC)
+
+if it works in the same way as other words, it would be binging for binge, and bingging for ning, which sounds ridiculous to me, but I don't make up the rules :( [[User:Hidden secret 7|HS7]] 22:08, 10 March 2007 (UTC)
+
+:I seriously doubt that.  The gerund for ''fling'', ''bring'' and ''sing'' do without the double g.   Why should ''bing'' be any different?  [[User:JackofOz|JackofOz]] 00:30, 11 March 2007 (UTC)
+
+because it can have an e on the end, like hopping, tapping, &c. :] [[User:Hidden secret 7|HS7]] 10:41, 11 March 2007 (UTC)
+:Dude, the gerund of 'hope' is 'hoping'. That's the gerund for 'hop'. [[User:Ajsh|Vitriol]] 19:39, 11 March 2007 (UTC)
+
+::Wasn't that the point? Because it ''could'' have an 'e', you use a double letter when the 'source' ''doesn't'' have an 'e'. So binging would be for binge, and bingging would be for bing. However, it doesn't quite work because the double letter shortens the preceding vowel, while there is an 'n' between the vowel and the double letter. Maybe bing -> binnging? [[User:Skittle|Skittle]] 21:35, 11 March 2007 (UTC)
+
+Yes, it is a ridiculously mangled language :( [[User:Hidden secret 7|HS7]] 12:24, 12 March 2007 (UTC)
+
+Also sing can have an e to become singe
+:I probably got confused :/ [[User:Ajsh|Vitriol]] 15:02, 12 March 2007 (UTC)
+
+Not sure who's saying what here.  "Singe" produces ''singe-ing'' (''singing'' is also an accepted spelling, but still pronounced singe-ing).  However, "sing" does not produce ''sing-ging'', or ''sinn-ging''; just ''sing-ing''.  Same for "bing" > ''bing-ing'' (pronounced like that).  ''Binging'' (pronounced binge-ing) is also a recognised form of "binge".  This is a phenomenon called [[homograph]], two words that are spelled the same but with different meanings (and possibly different pronunciations, such as in this case).  The usual practice is to learn to live with these quirks, not make up new spellings to get around them and blame it on some non-existent "rules".  I'm off to do some singing now, possibly followed by a bit of bingeing.  :)  [[User:JackofOz|JackofOz]] 01:50, 13 March 2007 (UTC)
+
+== Editing Problem ==
+
+I have a big problem. And I mean HUGE. When I am logged in, I can't click the Edit this Page button. When I do, it wants me to download index.php. I've tried everything that I can think of. I can click on the edit section buttons or the + signs to start a new discussion. When I am logged out, though, I can click the Edit This Page button without any problems. Is anyone else having this problem? Can anyone help me? My logged out talk page is [[User talk:24.16.54.4]] if you want to go there. otherwise look on my signature.
+
+--[[User:Ryan Keyes|Ryan]] <sup>[[User_talk:Ryan Keyes|TALK]]</sup> 16:41, 10 March 2007 (UTC)
+*Go to [[Special:Preferences#prefsection-5|Preferences]], click the ''Editing'' tab, which boxes are checked?--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 16:55, 10 March 2007 (UTC)
+:*If you '''un'''check "''Use external editor by default''" that might solve your problem--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 19:42, 10 March 2007 (UTC)
+
+*What browser are you using? It doesn't sound like it is handling the MIME headers correctly. --[[User:24.147.86.187|24.147.86.187]] 18:08, 10 March 2007 (UTC)
+
+*Some standard things you can try: Delete/clear all cookies, and then retry. Clear your browser's cache (temporary internet files). The problem may come down to the skin you are using with your wikipedia user or the preferences of your user. [[User:Rfwoolf|Rfwoolf]] 19:55, 10 March 2007 (UTC)
+
+== vehicle value ==
+
+Which vehicle (cars, trucks) manufacturer holds their value the greatest?
+[[User:69.76.2.46|69.76.2.46]] 18:27, 10 March 2007 (UTC)Heidi
+''E-mail removed for spambots''
+:What do you mean with "vehicle"? Cars? Airplanes? Submarines? [[User:Wakuran|惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ *]] 18:36, 10 March 2007 (UTC)
+
+::Hey - be fair - the Q does state cars and/or trucks. Can't you read?
+
+:::Hey- be fair - the person that asked the question went back and added (cars, trucks) to the question after 惑乱 分からん * \)/ (\ (&lt; \) (2 /) /)/ asked what kind of vehicle.  Can't you check the history, or sign your posts?--[[User:ChesterMarcol|ChesterMarcol]] 19:54, 10 March 2007 (UTC)
+
+:It is hard to generalize, but makes and models with a reputation for long-term reliability tend to hold their value best.  In no particular order, BMW, Mercedes, Lexus, Volvo, Toyota, some Honda models, and perhaps Subaru tend to depreciate less rapidly than other makes, at least in the United States.  You can check used-car values for different years, makes, and models at [http://www.kbb.com/kbb/UsedCars/default.aspx this site].  [[User:Marco polo|Marco polo]] 21:06, 10 March 2007 (UTC)
+
+::First off, I want to apologise to Wakuran.
+
+::Secondly, I want to apologise to ChesterMarcol.
+
+::Thirdly, I want to ask Chester whether he can spell. I mean - '''''Articles''''' I have Created ??????????????????
+'''''Removed offtopic junk''''' [[User:SteveBaker|SteveBaker]] 01:29, 11 March 2007 (UTC)
+
+: The [[MINI (BMW)]] is pretty amazing at retaining it's value:
+:* 2006: Automotive Lease Guide - Highest Residual Value
+:* 2006: Kelley Blue Book's "2006 Best Resale Value Awards" - Best Brand, Best Resale Value and Top 10 Winner in the Hatchback class. 
+:* 2005: Automotive Lease Guide - Highest Residual Value 
+:* 2003: Edmunds.com - Editor's Most Wanted Coupe under $25K
+:* 2002: Automotive Lease Guide - Highest Predicted Residual Value Award
+: I sold my last MINI after two years and 28,000 miles for $800 less than I paid for it.  I'm selling my current MINI right now and I've had offers at $2000 less than I paid for it after two and a half years and 35,000 miles.  Not bad for a $20,000 car.  (It's also the most fun car you'll ever own!)
+: [[User:SteveBaker|SteveBaker]] 01:29, 11 March 2007 (UTC)
+
+::Consumer Reports produces lists of the best and worst cars in terms of depreciation.  I highly recommend checking out their latest reports (you can usually get them at the library if you don't want to pay).  -- [[User:Matt Britt|mattb]] <code>@ 2007-03-11T01:46Z</code>
+
+== Info ==
+
+After seeing this: http://www.youtube.com/watch?v=YO6VY3C6PNw
+I went to find some more information about this guy but I couldnt find anything on wikipedia or google and other searches, Im wondering if anyone can help? [[User:Joneleth|Joneleth]] 18:48, 10 March 2007 (UTC)
+
+:His name is James Yu, from a group calling themselves [http://www.teamfs.com/members.htm Team FS]. I don't know where they are based, but at 01:36 in the video you see a sign "Birchmount Friendship Classic", so this was apparently recorded at [http://birchmountgymnastics.com/index.php Birchmount Gymnastics Centre], which is in [[Ontario]]. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 22:06, 10 March 2007 (UTC)
+
+Thanks that should get me started anyway. [[User:Joneleth|Joneleth]] 13:25, 11 March 2007 (UTC)
+
+== Police departments in Canada ==
+
+What's up with policing in Canada? What does it take to get your own police department? I just moved to Canada (Vancouver area). I noticed the local transit authority, TransLink has their own police department. Is it because their buses and trains go to the suburbs? How strict are cops when it comes to jurisdiction issues? For example, I live in a house in [[Burnaby]], literally accross the street from [[Vancouver]]. So if a cop is chasing my down the sidewalk and I cross the street, he's gonna stop and call Burnaby police to take over? Speaking of which, Burnaby, like many cities here with hundreds of thousands of residents, don't have a city-run police department. The [[RCMP|national police]] do the job. Meanwhile the [[CN]] rail company, and the [[University of Toronto]] have their own police dpartments (what a joke!) the latter is within Toronto police's jursdiction. Anyway, what do other suburbs of majore North Amercian cities do for policing? Do they each have their own police dpartments, form "metropolitan police" dpeartments, or leave it upto national police? Do most Canadaian provinces and U.S. states have provincial/state police forces too? <small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/209.53.181.30|209.53.181.30]] ([[User talk:209.53.181.30|talk]]) 19:25, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+:You usually have better luck with a single clear question, leaving out the rants. --[[User:Zeizmic|Zeizmic]] 19:41, 10 March 2007 (UTC)
+
+::There is some ranting, but there are also some requests for information. I don't know enough about Canada to be sure, but from your description, the situation is similar to the U.S., except that in the U.S. there is no national police as such, certainly not a national police force that would patrol the streets.  We have the [[Federal Bureau of Investigation]] which investigates federal crimes, but it does not do street patrols or enforce state or local laws.  Every state (I believe) has a state police force.  Their job is to patrol state and interstate highways and often state property, such as state parks.  However, street patrols are usually the responsibility of the jurisdictions below the state level.  Typically these are county police, for unincorporated and for some smaller incorporated areas, and town or city police forces for the larger incorporated areas.  Transit agencies that span local jurisdictions typically also have their own police forces.  Some metropolitan areas have a metropolitan police force whose jurisdiction includes multiple incorporated and unincorporated areas. Finally, some institutions, such as universities, may have their own police forces.  However, these institutional police forces typically have limited powers (for example, they may not be allowed to carry firearms) and have to call in the government police force with jurisdiction over their area to formalize arrests and take suspects into custody. Police departments typically do have to obtain permission from a neighboring department to pursue a suspect into a neighboring jurisdiction.  There may be a standing agreement to allow such pursuits and/or a standard procedure for taking the suspect into custody in a neighboring jurisdiction.  It is all somewhat confusing: a byproduct of the complex system of federalism and strong local government that prevails in both the United States and Canada.  [[User:Marco polo|Marco polo]] 21:00, 10 March 2007 (UTC)
+:::To add a few more details, only three provinces have their own police forces, [[Ontario]], [[Quebec]], and [[Newfoundland]]. Except in major cities, which generally have their own forces, the other provinces use the RCMP. - [[User:SimonP|SimonP]] 21:16, 10 March 2007 (UTC)
+
+::Well, actually, we do have a national police force in the US, the [[U.S. Marshals]]. My sense is that they are somewhat less important than their Canadian counterpart, the [[Royal Canadian Mounted Police]]. --[[User:Trovatore|Trovatore]] 21:47, 10 March 2007 (UTC)
+
+
+::Oh, and about state police forces: The only statewide police force in California is the [[California Highway Patrol]]. That explains, I guess, why it was the CHP that was investigating whether some of Governor Schwarzenegger's political opponents had broken any laws when they found voice recordings of some of his private meetings in a non-public (or at least not-intentionally-public) area of his website. I thought it was strange at the time that the CHP would be involved; shouldn't they be chasing down speeders? Actually, I still think it's strange; it seems to me more of something that the Attorney General's office would handle. --[[User:Trovatore|Trovatore]] 22:00, 10 March 2007 (UTC)
+:::So they're patrolling the [[information superhighway]]. &nbsp;--[[User:Lambiam|Lambiam]][[User talk:Lambiam|<small><sup>Talk</sup></small>]] 22:16, 10 March 2007 (UTC)
+
+:What you're probably finding is that some public organizations in Canada &ndash; typically those which operate a large number of facilities, occupy a large amount of land, and/or interact extensively with the public &ndash; have their own police services, which in many cases are made up of [[Special constable|Special Constables]].  Special Constables are employees of the organization (a transit authority or major university, for example) who have been trained in police procedures and have the powers of a regular police officer while on the transit system or campus.  Note that the local police service shares jurisdiction; you can't escape from the local police just by running on to a University campus.
+
+:In the case of the [[University of Toronto]], for example, the University of Toronto Campus Community Police Service has a number of sworn Special Constables[http://www.campuspolice.utoronto.ca/CommunityPolice/About_Us.htm#SPC].  On campus they have regular police powers of arrest and detention, and the authority to enforce criminal and provincial law.  In addition, they receive training that is specific to the needs of the University environment.
+
+:Similar powers and specialized training are provided to the Special Constables on other university campuses, national organization, and transit authorities.
+
+:As a minor aside, I note that the [[Special constable]] article needs updating; if someone wants to dive in there. [[User:TenOfAllTrades|TenOfAllTrades]]([[User_talk:TenOfAllTrades|talk]]) 23:14, 10 March 2007 (UTC)
+
+::Generally, the law is pretty flexible when it comes to crimes in progress... I'm sure the Vancouver police could step across the street to arrest you. I remember there was an issue a few years back in suburban Cleveland where one suburb complained that the cops from another suburb were parking on the first town's side of the street when looking for speeders. The situation regarding police departments in the U.S. differs among the states and even among counties. In Ohio, for instance, you might have a township with a part-time police department that mostly writes speeding tickets. If a major crime happens, they might call the county sheriff's department or the Ohio State Highway Patrol for assistance. On the other hand, in [[Cuyahoga County]], almost all of the territory is in one incorporated municipality or another, so the sheriff's department is a small agency that mostly deals with the county jail, and the state highway patrol only patrols the interstates, I think. There is no U.S. federal equivalent to the RCMP -- the FBI does not do ground-level policing anywhere. -- [[User:Mwalcoff|Mwalcoff]] 23:56, 10 March 2007 (UTC)
+:::Well, the FBI is (officially) not a police agency at all, and they will tell you that forcefully. The theory is that they are an investigative unit, not a law enforcement agency. The closest equivalent to the RCMP is the U.S. Marshals. But you're right that the Marshals are not really the same thing (they certainly don't serve as local law enforcement for localities without it). --[[User:Trovatore|Trovatore]] 03:44, 11 March 2007 (UTC)
+
+When it comes to rail police, remember that before privatization the rail companies were prohibited from asking local or provincial police forces to investigate crimes on their property. Theft, sabotage, and personal crimes on railway property had to be investigated and prosecuted by rail police under the provisions of the Acts of Parliament that created them. Nowadays local police have the right to investigate crime on CN and CP property so the number of rail police has shrunk significantly, but there is still a skeleton staff of rail police around which co-ordinate multi-provincial investigations, supervise security matters, etc. --[[User:Charlene.fic|<font color="blue" face="Matisse ITC">Charlene</font>]] 22:50, 11 March 2007 (UTC)
+
+== how do i read my emails? ==
+
+I have Aol broadband, and want to read my emails. I have never done this before so I haven't got a clue. As far as I can tell I have to sign on to the internet, which i have also never done before. Since i have broadband, it should sign streight om, but it doesn't and instead tries to phone Aol and then fails. What should I do, and I am expecting an important email soon, that has to be answered within 24 hours. Help. And I am really serious about not having a clue. [[User:Hidden secret 7|HS7]] 22:05, 10 March 2007 (UTC)
+:Have you tried AOL's tech support or Help line?  <span style="font-family:monospace;">[[User:Dismas|Dismas]]</span>|[[User talk:Dismas|<sup>(talk)</sup>]] 22:11, 10 March 2007 (UTC)
+::Suggestion, since you obviously have an alternative means to connect to the internet, go to <span class="plainlinks">[https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&seamless=novl&sitedomain=sns.webmail.aol.com&lang=en&locale=us&authLev=2&siteState=ver%3a1%252c0%26ac%3aWS%26ld%3awebmail.aol.com%26uv%3aAOL%26lc%3aen-us%26ud%3aaol.com%26br%3aWebSuite-CurrentProd AOL.com]</span> and input your screenname and password and you *should* be able to check your mail from there without having to ever connect using the AOL framework--<small>'''VectorPotential'''</small><sup>[[User_talk:VectorP|Talk]]</sup> 00:19, 11 March 2007 (UTC)
+:::You are confusing AOL with the Internet itself, as AOL tends to do. AOL's browser is not needed for broadband access. Simply open Internet Explorer, go to AOL.com as the above user said, and login there. I also recommend switching ISPs to one with less bloaty unnecessary software. Usually you should simply be able to boot up your computer, open your browser and go. <font color="blue">-[[User:Wooty|'''Wo''']][[User:Wooty/b|'''''o''''']][[User:Wooty/Avoid presenting Wikipedia as anything but an encyclopedia|'''ty''']]&nbsp;<small>[[User talk:Wooty|'''Woot?''']]&nbsp;[[Special:Contributions/Wooty|'''contribs''']]</small></font> 07:23, 11 March 2007 (UTC)
+
+== Petrified Human Ear? ==
+
+
+Hello
+
+My name is David and I found a stone "exact size and looks' as the human ear, I am curious about to whom to send the pic's to find out more about it.
+
+I have had it for several years now and having no luck to this answer. What group do I need to contact to learn more about it,.
+
+thank you
+David
+<small>—The preceding [[Wikipedia:Sign your posts on talk pages|unsigned]] comment was added by [[Special:Contributions/72.73.135.54|72.73.135.54]] ([[User talk:72.73.135.54|talk]]) 22:49, 10 March 2007 (UTC).</small><!-- HagermanBot Auto-Unsigned -->
+
+:Try [[Pareidolia]]...or [[eBay]]. Addendum: I doubt it's a human ear, since it's made up of [[soft tissue]] and therefore not something that usually gets fossilized. [[User:Clarityfiend|Clarityfiend]] 23:52, 10 March 2007 (UTC)
+
+::While it might not be a fossilized ear, a picture of it would be interesting to see. [[User:V-Man737|V-Man]] - <sup>[[User talk:V-Man737|T]]</sup>/<sub>[[Special:Contributions/V-Man737|C]]</sub> 04:30, 13 March 2007 (UTC)
+
+:I would have to completely discount the possibility of a fossilized ear.  Either it's just an coincidentally ear-shaped rock, or perhaps it was knocked off of a statue.--[[User:Pharos|Pharos]] 09:14, 13 March 2007 (UTC)

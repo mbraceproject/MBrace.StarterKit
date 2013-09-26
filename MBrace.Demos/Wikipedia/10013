@@ -1,0 +1,246 @@
+'''Evidence-based medicine''' (EBM) or '''[[evidence-based practice]]''' (EBP) aims to apply the best available [[evidence]] gained from the [[scientific method]] to clinical [[decision making]].<ref>{{cite journal |author=Timmermans S, Mauck A |title=The promises and pitfalls of evidence-based medicine |journal=Health Aff (Millwood) |volume=24 |issue=1 |pages=18–28 |year=2005 |pmid=15647212 |doi=10.1377/hlthaff.24.1.18 }}</ref> It seeks to assess the strength of evidence of the risks and benefits of [[therapy|treatments]] (including lack of treatment) and diagnostic tests.<ref name="pmid15338074">{{cite journal |author=Elstein AS |title=On the origins and development of evidence-based medicine and medical decision making |journal=Inflamm. Res. |volume=53 |issue=Suppl 2 |pages=S184–9 |year=2004 |pmid=15338074 |doi=10.1007/s00011-004-0357-2}}</ref> This helps clinicians to learn whether or not any treatment will do more good than harm.<ref name="pmid15205295">{{cite journal |author=Atkins D, Best D, Briss PA, ''et al.'' |title=Grading quality of evidence and strength of recommendations |journal=BMJ |volume=328 |issue=7454 |page=1490 |year=2004 |pmid=15205295 |doi=10.1136/bmj.328.7454.1490 |pmc=428525}}</ref>
+
+Evidence quality can be assessed based on the source type (from [[meta-analyses]] and [[systematic reviews]] of [[double-blind]], [[placebo-controlled]] [[clinical trials]] at the top end, down to [[conventional wisdom]] at the bottom), as well as other factors including statistical validity, clinical relevance, currency, and peer-review acceptance.
+
+EBM/EBP recognizes that many aspects of health care depend on individual factors such as [[quality of life|quality-]] and [[value of life|value-of-life]] judgments, which are only partially subject to scientific methods. EBP, however, seeks to clarify those parts of medical practice that are in principle subject to scientific methods and to apply these methods to ensure the best ''[[prediction]]'' of outcomes in medical treatment, even as debate continues about which outcomes are desirable.
+
+Because this approach is used in allied related fields, including [[dentistry]], [[nursing]], and [[psychology]], ''[[evidence-based practice]]'' is a more encompassing term.
+
+==Classification==
+Two types of evidence-based practice have been proposed.<ref name="pmid15647211">{{cite journal|author=Eddy DM |title=Evidence-based medicine: a unified approach |journal=Health affairs (Project Hope) |volume=24 |issue=1 |pages=9–17 |year=2005 |pmid=15647211 |doi=10.1377/hlthaff.24.1.9}}</ref>
+
+===Evidence-based guidelines===
+Evidence-based guidelines (EBG) is the practice of evidence-based medicine at the organizational or institutional level. This includes the production of guidelines, policy, and regulations. This approach has also been called evidence based healthcare.<ref>{{cite book |author=Gray, J. A. Muir|authorlink=Muir Gray |title=Evidence-based health care |publisher=Churchill Livingstone |location=Edinburgh |year=1997 |isbn=0-443-05721-4 }}</ref>
+
+===Evidence-based individual decision making===
+Evidence-based individual decision (EBID) making is evidence-based medicine as practiced by the individual [[health care provider]]. There is concern that current evidence-based medicine focuses excessively on EBID.<ref>{{cite journal |author=Eddy DM |title=Evidence-based medicine: a unified approach |journal=Health Aff (Millwood) |volume=24 |issue=1 |pages=9–17 |year=2005 |pmid=15647211 |doi=10.1377/hlthaff.24.1.9 }}</ref>
+
+==Process and progress==
+Using techniques from [[science]], [[engineering]], and [[statistics]], such as the [[systematic review]] of [[medical literature]], [[meta-analysis]], [[risk-benefit analysis]], and [[randomized controlled trial]]s (RCTs), EBM aims for the ideal that [[healthcare]] professionals should make "conscientious, explicit, and judicious use of current best evidence" in their everyday practice. ''[[Ex cathedra]]'' statements by the "medical [[expert]]" are considered to be least valid form of evidence.   All "experts" are now expected to reference their pronouncements to scientific studies.
+
+The systematic review of published research studies is a major method used for evaluating particular treatments. The [[Cochrane Collaboration]] is one of the best-known, respected examples of systematic reviews. Like other collections of systematic reviews, it requires authors to provide a detailed and repeatable plan of their literature search and evaluations of the evidence. Once all the best evidence is assessed, treatment is categorized as "likely to be beneficial", "likely to be harmful",  or "evidence did not support either benefit or harm".
+
+A 2007 analysis of 1016 systematic reviews from all 50 [[Archie Cochrane|Cochrane]] Collaboration Review Groups found that 44% of the reviews concluded that the intervention was "likely to be beneficial", 7% concluded that the intervention was "likely to be harmful", and 49% concluded that evidence "did not support either benefit or harm". 96% recommended further research.<ref name=Mapping2007>{{cite journal |author=El Dib RP, Atallah AN, Andriolo RB |title=Mapping the Cochrane evidence for decision making in health care |journal=J Eval Clin Pract |volume=13 |issue=4 |pages=689–92 |year=2007 |month=August |pmid=17683315 |doi=10.1111/j.1365-2753.2007.00886.x }}</ref> A 2001 review of 160 Cochrane systematic reviews (excluding complementary treatments) in the 1998 database revealed that, according to two readers, 41.3% concluded positive or possibly positive effect, 20% concluded evidence of no effect, 8.1% concluded net harmful effects, and 21.3% of the reviews concluded insufficient evidence.<ref name=Ezzo2001>{{cite journal | author = Ezzo J, Bausell B, Moerman DE, Berman B, Hadhazy V | title= Reviewing the reviews. How strong is the evidence? How clear are the conclusions? | year = 2001 | journal = Int J Technol Assess Health Care | volume = 17 | issue = 4 | pages = 457–466| pmid=11758290}}</ref> A review of 145 [[alternative medicine]] Cochrane reviews using the 2004 database revealed that 38.4% concluded positive effect or possibly positive (12.4%) effect, 4.8% concluded no effect, 0.69% concluded harmful effect, and 56.6% concluded insufficient evidence.<ref name=IOM2005>{{cite web |url=http://www.nap.edu/catalog.php?record_id=11182 |title=Complementary and Alternative Medicine in the United States }}</ref>{{Rp|135-136}}
+
+Generally, there are three distinct, but interdependent, areas of evidence based medicine. The first is to treat individual patients with acute or chronic pathologies by treatments supported in the most scientifically valid medical literature. Thus, medical practitioners would select treatment options for specific cases based on the best research for each patient they treat. The second area is the systematic review of medical literature to evaluate the best studies on specific topics. This process can be human-centered, as in a [[journal club]], or technical, using computer programs and information techniques such as [[data mining]]. Increased use of [[information technology]] turns large volumes of information into practical guides. Finally, evidence-based medicine can be understood as a medical "movement" in which advocates work to popularize the method and usefulness of the practice in the public, patient communities, educational institutions, and [[continuing education]] of practicing professionals {{Citation needed|date=November 2009}}.
+
+==Ranking the quality of evidence{{anchor|Qualification of evidence}}==
+Evidence-based medicine categorizes different types of clinical evidence and rates or grades them <ref>{{cite web|url=http://www.essentialevidenceplus.com/product/ebm_loe.cfm?show=grade |title=EBM: Levels of Evidence |publisher=Essential Evidence Plus |date= |accessdate=2012-02-23}}</ref> according to the strength of their freedom from the various biases that beset medical research. For example, the strongest evidence for therapeutic interventions is provided by systematic review of [[randomized trial|randomized]], [[triple-blind]], [[placebo-controlled studies|placebo-controlled trials]] with allocation concealment and complete follow-up involving a homogeneous patient population and medical condition. In contrast, patient testimonials, case reports, and even expert opinion (however some critics have argued that expert opinion "does not belong in the rankings of the quality of empirical evidence because it does not represent a form of empirical evidence" and continue that "expert opinion would seem to be a separate, complex type of knowledge that would not fit into hierarchies otherwise limited to empirical evidence alone." <ref>{{cite journal |author=Tonelli MR |title=In defense of expert opinion |journal=Acad Med |volume=74 |issue=11 |pages=1187–92 |year=1999 |month=November |pmid=10587679 }}</ref>)  have little value as proof because of the placebo effect, the biases inherent in observation and reporting of cases, difficulties in ascertaining who is an expert, and more.
+
+===US Preventive Services Task Force===
+Systems to stratify evidence by quality have been developed, such as this one by the [[US Preventive Services Task Force|U.S. Preventive Services Task Force]]   for ranking evidence about the effectiveness of treatments or screening:<ref name="USPrevServTaskForce">{{cite book|author=U.S. Preventive Services Task Force|title=Guide to clinical preventive services: report of the U.S. Preventive Services Task Force|url=http://books.google.com/books?id=eQGJHgI_dR8C&pg=PR24 |date=August 1989|publisher=DIANE Publishing|isbn=9781568062976|pages=24–}}</ref>
+*Level I: Evidence obtained from at least one properly designed [[randomized controlled trial]].
+*Level II-1: Evidence obtained from well-designed controlled trials without [[randomization]].
+*Level II-2: Evidence obtained from well-designed [[Cohort study|cohort]] or [[case-control]] analytic studies, preferably from more than one center or research group.
+*Level II-3: Evidence obtained from multiple time series with or without the intervention. Dramatic results in uncontrolled trials might also be regarded as this type of evidence.
+*Level III: Opinions of respected authorities, based on clinical experience, descriptive studies, or reports of expert committees.
+
+===National Health Service===
+The UK [[National Health Service]] uses a similar system with categories labeled A, B, C, and D. The above Levels are only appropriate for treatment or interventions; different types of research are required for assessing diagnostic accuracy or natural history and prognosis, and hence different "levels" are required. For example, the Oxford Centre for Evidence-based Medicine suggests levels of evidence (LOE) according to the study designs and [[critical appraisal]] of prevention, diagnosis, prognosis, therapy, and harm studies:<ref name="OxfordCentreLevels">{{cite web |url=http://www.cebm.net/index.aspx?o=1025 |publisher=CEBM |title=Levels of Evidence }}</ref>
+
+*Level A: Consistent [[randomized controlled trial|Randomised Controlled Clinical Trial]], [[cohort study]], all or none (see note below), clinical decision rule validated in different populations.
+*Level B: Consistent Retrospective Cohort, Exploratory Cohort, Ecological Study, Outcomes Research, [[case-control study]]; or extrapolations from level A studies.
+*Level C: [[Case-series study]] or extrapolations from level B studies.
+*Level D: Expert opinion without explicit critical appraisal, or based on [[physiology]], bench research or first principles.
+
+===GRADE Working Group===
+A newer system is by the [[GRADE Working Group]] and takes in account more dimensions than just the quality of medical evidence.<ref>{{cite web |url=http://www.gradeworkinggroup.org/ |title=GRADE working group |accessdate=2007-09-24 }}</ref>
+"Extrapolations" are where data is used in a situation which has potentially clinically important differences than the original study situation. Thus, the quality of evidence to support a clinical decision is a combination of the quality of research data and the clinical 'directness' of the data.<ref name="pmid15205295" />
+
+Despite the differences between systems, the purposes are the same: to guide users of clinical research information about which studies are likely to be most valid. However, the individual studies still require careful critical appraisal.
+
+Note: The all or none principle is met when all patients died before the Rx became available, but some now survive on it; or when some patients died before the Rx became available, but none now die on it.
+
+===Categories of recommendations===
+In [[guideline (medical)|guidelines]] and other publications, recommendation for a clinical service is classified by the balance of risk versus benefit of the service ''and'' the level of evidence on which this information is based. The [[US Preventive Services Task Force|U.S. Preventive Services Task Force]] uses:<ref>{{cite web |url=http://www.ahrq.gov/clinic/3rduspstf/ratings.htm |title=Task Force Ratings |accessdate=2007-09-24 }}</ref>
+*Level A: Good scientific evidence suggests that the benefits of the clinical service substantially outweigh the potential risks. Clinicians should discuss the service with eligible patients.
+*Level B: At least fair scientific evidence suggests that the benefits of the clinical service outweighs the potential risks. Clinicians should discuss the service with eligible patients.
+*Level C: At least fair scientific evidence suggests that there are benefits provided by the clinical service, but the balance between benefits and risks are too close for making general recommendations. Clinicians need not offer it unless there are individual considerations.
+*Level D: At least fair scientific evidence suggests that the risks of the clinical service outweighs potential benefits. Clinicians should not routinely offer the service to asymptomatic patients.
+*Level I: Scientific evidence is lacking, of poor quality, or conflicting, such that the risk versus benefit balance cannot be assessed. Clinicians should help patients understand the uncertainty surrounding the clinical service.
+
+==Statistical measures==
+Evidence-based medicine attempts to express clinical benefits of tests and treatments using mathematical methods. Tools used by practitioners of evidence-based medicine include:
+
+===Likelihood ratio===
+{{main|Likelihood ratios in diagnostic testing}} The [[pre-test odds]] of a particular diagnosis, multiplied by the likelihood ratio, determines the [[post-test odds]].  (Odds can be calculated from, and then converted to, the [more familiar] probability.)  This reflects [[Bayes' theorem]]. The differences in likelihood ratio between clinical tests can be used to prioritize clinical tests according to their usefulness in a given clinical situation.
+
+===AUC-ROC===
+The area under the [[receiver operating characteristic]] curve (AUC-ROC) reflects the relationship between [[sensitivity and specificity]] for a given test. High-quality tests will have an AUC-ROC approaching 1, and high-quality publications about clinical tests will provide information about the AUC-ROC. Cutoff values for positive and negative tests can influence specificity and sensitivity, but they do not affect AUC-ROC.
+
+===Number needed to treat / harm===
+[[Number needed to treat]] or [[Number needed to harm]] are ways of expressing the effectiveness and safety of an intervention in a way that is clinically meaningful. In general, NNT is always computed with respect to two treatments A and B, with A typically a drug and B a placebo (in our example above, A is a 5-year treatment with the hypothetical drug, and B is no treatment). A defined endpoint has to be specified (in our example: the appearance of colon cancer in the 5 year period). If the probabilities pA and pB of this endpoint under treatments A and B, respectively, are known, then the NNT is computed as 1/(pB-pA). The NNT for breast mammography is 285; that is, 285 mammograms need to be performed to diagnose one breast cancer.{{Citation needed|date=November 2009}} As another example, an NNT of 4 means if 4 patients are treated, only one would respond.
+
+An NNT of 1 is the most effective and means each patient treated responds, e.g., in comparing antibiotics with placebo in the eradication of ''[[Helicobacter pylori]]''. An NNT of 2 or 3 indicates that a treatment is quite effective (with one patient in 2 or 3 responding to the treatment). An NNT of 20 to 40 can still be considered clinically effective.<ref>{{cite web
+| url=http://www.jr2.ox.ac.uk/bandolier/booth/painpag/NNTstuff/numeric.htm
+| title=Numbers Needed to Treat
+| last=McQuay
+| first=Henry J.
+| coauthors=Moore, R. Andrew
+| publisher=Bandolier
+| date=1997-05-01
+| accessdate=2006-06-27}}</ref>
+
+==Quality of clinical trials==
+Evidence-based medicine attempts to objectively evaluate the quality of clinical research by critically assessing techniques reported by researchers in their publications.
+
+*Trial design considerations. High-quality studies have clearly defined eligibility criteria, and have minimal missing data.
+*Generalizability considerations. Studies may only be applicable to narrowly defined patient populations, and may not be generalizable to other clinical contexts.
+*Followup. Sufficient time for defined outcomes to occur can influence the study outcomes and the [[statistical power]] of a study to detect differences between a treatment and control arm.
+*Power. A mathematical calculation can determine if the number of patients is sufficient to detect a difference between treatment arms. A negative study may reflect a lack of benefit, or simply a lack of sufficient quantities of patients to detect a difference.
+
+==Limitations==
+Although evidence-based medicine is becoming regarded as the "[[gold standard (test)|gold standard]]" for clinical practice there are a number of limitations and criticisms of its use.
+
+===Ethics===
+In some cases, such as in [[open-heart surgery]], conducting randomized, [[placebo]]-controlled trials is commonly considered to be unethical, although [[observational studies]] may address these problems to some degree.
+
+===Cost===
+The types of trials considered "gold standard" (i.e. large randomized double-blind placebo-controlled trials) are expensive, so that funding sources play a role in what gets investigated. For example, public authorities may tend to fund preventive medicine studies to improve [[public health]], while pharmaceutical companies fund studies intended to demonstrate the efficacy and safety of particular drugs.
+
+===Time===
+The conduction of a randomized controlled trial takes several years until being published, thus data is restricted from the medical community for long years and may be of less relevance at time of publication.<ref name="CaseReport">{{cite journal |author=Yitschaky O, Yitschaky M, Zadik Y |title=Case report on trial: Do you, Doctor, swear to tell the truth, the whole truth and nothing but the truth? |journal=J Med Case Reports |volume=5 |issue=1 |page=179 |year=2011 |month=May |pmid=21569508 |url=http://www.jmedicalcasereports.com/content/pdf/1752-1947-5-179.pdf| format=PDF |doi=10.1186/1752-1947-5-179 |pmc=3113995}}</ref>
+
+===Generalizability===
+Furthermore, evidence-based [[guideline (medical)|guidelines]] do not remove the problem of [[extrapolation]] to different populations or longer timeframes. Even if several top-quality studies are available, questions always remain about how far, and to which populations, their results may be generalized.{{citation}} Furthermore, skepticism about results may always be extended to areas not explicitly covered: for example, a drug may influence a "secondary endpoint" such as test result (blood pressure, glucose, or cholesterol levels) without having the power to show that it decreases overall mortality or morbidity in a population.
+
+The quality of studies performed varies, making it difficult to compare them and generalize about the results.
+
+Certain groups have been historically under-researched (racial minorities and people with many co-morbid diseases), and thus the literature is sparse in areas that do not allow for generalizing.<ref name = "orvyhi">{{cite journal |author=Rogers WA |title=Evidence based medicine and justice: a framework for looking at the impact of EBM upon vulnerable or disadvantaged groups |journal=J Med Ethics |volume=30 |issue=2 |pages=141–5 |year=2004 |month=April |pmid=15082806 |pmc=1733835 |doi=10.1136/jme.2003.007062 |url=http://jme.bmj.com/content/30/2/141.full}}</ref>
+
+===Publication bias===
+It is recognised that not all evidence is made accessible, that this can limit the effectiveness of any approach, and that efforts to reduce [[publication bias]] and retrieval bias is required.
+
+Failure to publish negative trials is the most obvious gap. Clinical Trials Registers have been established in a number of countries, and the Declaration of Helsinki 2008 (Principle 19) requires that "every clinical trial must be registered in a publicly accessible database before recruitment of the first subject".<ref>See Declaration of Helsinki 2008 at the World Medical Association website: [http://www.wma.net/en/30publications/10policies/b3/17c.pdf] accessed 11/02/2011</ref> Changes in publication methods, particularly related to the Web, should reduce the difficulty of obtaining publication for a paper on a trial that concludes it did not prove anything new, including its starting hypothesis.
+
+Treatment effectiveness reported from clinical studies may be higher than that achieved in later routine clinical practice due to the closer patient monitoring during trials that leads to much higher compliance rates.<ref name="BandolierStatins2004">"Patient Compliance with statins" ''[[Bandolier (journal)|Bandolier]] [http://www.jr2.ox.ac.uk/bandolier/booth/cardiac/patcomp.html Review] 2004</ref>
+
+The studies that are published in medical journals may not be representative of all the studies that are completed on a given topic (published and unpublished) or may be unreliable due to conflicts of interest.<ref>{{cite journal |doi=10.1111/j.1525-1497.2004.30617.x |author=Friedman LS, Richter ED |title=Relationship Between Conflicts of Interest and Research Results |journal=J Gen Intern Med |volume=19 |issue=1 |pages=51–6 |year=2004 |month=January |pmid=14748860 |pmc=1494677 }}</ref> Thus the array of evidence available on particular therapies may not be well-represented in the literature. A 2004 statement by the International Committee of Medical Journal Editors (that they will refuse to publish clinical trial results if the trial was not recorded publicly at its outset) may help with this, although this has not yet been implemented.
+
+===Ghost writers===
+{{Main|Medical ghostwriter}}
+
+===Populations, clinical experience, and dubious diagnoses===
+EBM applies to groups of people but this does not preclude clinicians from using their personal experience in deciding how to treat the person in front of them. In ''The limits of evidence-based medicine'', Tonelli advises that "the knowledge gained from clinical research does not directly answer the primary clinical question of what is best for the patient at hand."  and suggests that evidence-based medicine should not discount the value of clinical experience.<ref name=Sackett96>{{cite journal |author=Sackett DL, Rosenberg WM, Gray JA, Haynes RB, Richardson WS |title=Evidence based medicine: what it is and what it isn't |journal=BMJ |volume=312 |issue=7023 |pages=71–2 |year=1996 |month=January |pmid=8555924 |pmc=2349778 |url=http://bmj.com/cgi/pmidlookup?view=long&pmid=8555924}}</ref>
+
+[[David Sackett]] writes that "the practice of evidence based medicine means integrating individual clinical expertise with the best available external clinical evidence from systematic research".<ref name=Sackett96/>
+
+===Illegitimacy of other types of medical reports===
+Although has some usefulness in clinical practice, the [[case report]] is being suspended from most of the top-ranked [[medical literature]]. Thus data of rare [[medicine|medical]] situations, in which large randomized double-blind placebo-controlled trials cannot be conducted, may be rejected from publication and be restricted from the medical community.<ref name="CaseReport" />
+
+===Political criticism===
+There is a good deal of criticism of evidence based medicine, which is suspected of being — as against what the phrase suggests — in essence a tool not so much for [[medical science]] as for health managers, who want to introduce managerialist techniques into medical administration. Thus Dr Michael Fitzpatrick writes: "To some of its critics, in its disparagement of theory and its crude number-crunching, EBM marks a return to 'empiricist quackery' in medical practice .<ref>{{Cite book |author=Fitzpatrick M | title=The Tyranny of Health: Doctors and the Regulation of Lifestyle |publisher=Routledge |year=2000 |isbn=0415235715}}</ref> Its main appeal, as Singh and Ernst suggest,<ref>{{Cite book |title=Trick or Treatment? |publisher=Bantam Press |year=2008 |author = Sing S and Ernst E }}</ref> is to [[health economist]]s, policymakers and managers, to whom it appears useful for measuring performance and rationing resources."<ref>{{cite web
+| url=http://www.spiked-online.com/index.php/site/article/5342/
+| title= Taking a political placebo
+| last=Fitzpatrick
+| first=Michael
+| publisher=Spiked Online
+| year=2008
+| accessdate=2009-10-17
+}}</ref>
+
+===Science Based Medicine===
+Some have suggested that when examining implausible claims (such as those made by some [[alternative medicine]] proponents), it is necessary to focus more on a claim's prior plausibility rather than prioritizing just the volume of evidence. To differentiate this approach from the approach normally taken when evaluating plausible scientific claims some have labelled this science based medicine.<ref>{{cite web|url=http://www.sciencebasedmedicine.org/ |title=Science-Based Medicine |publisher=Science-Based Medicine |date= |accessdate=2012-02-23}}</ref>  It could be argued that proper use of the evidence based medicine model should produce the same conclusions.
+
+Science based medicine is based upon the idea that it is possible to make logical and rational judgements about what is likely to be true based on what is already well established scientific “fact”. This does not imply that new or radical ideas are implicitly thrown out, just that the standard of evidence must be higher for more extraordinary claims.
+
+==In psychiatry==
+
+Standard knowledge about mental illnesses, such as the [[Diagnostic and Statistical Manual of Mental Disorders]], have been criticized as incompletely justified by evidence.  In many cases, it is unknown whether a particular "disease" has one, several, or no underlying biological causes, with controversy arising over whether some diseases are merely an artifact of the attempt to construct a unified classification scheme, rather than a "real" disease.<ref name="sobo">{{cite journal |author=Sobo S |title=Pursuing treatments that are not evidence based: how DSM IV clarifies, how it blinds psychiatrists to issues in need of investigation |journal=Med. Hypotheses |volume=72 |issue=5 |pages=491–8 |year=2009 |month=May |pmid=19181456 |doi=10.1016/j.mehy.2008.12.022 |url=http://linkinghub.elsevier.com/retrieve/pii/S0306-9877(08)00660-9}}</ref>
+
+While some experts point to statistics in support of the idea that a lack of adoption of research findings results in suboptimal treatment for many patients, others emphasize the importance of the skill of the practitioner and the customization of the treatment to fit individual needs.  There is some controversy over whether mental illnesses are too complex for broad population studies to be helpful.<ref name="sobo" /><ref>{{cite web|title=Can Science Make Psychotherapy More Effective?|url=http://www.npr.org/templates/transcript/transcript.php?storyId=121092295|publisher=Science Friday / National Public Radio|accessdate=2010-02-09}}</ref>
+
+==History==
+Traces of evidence-based medicine's origin can be found in [[ancient Greece]],<ref name=Sackett96/><ref>{{cite journal |doi=10.1016/S0889-8588(05)70310-5 |author=Woolf SH, George JN |title=Evidence-based medicine. Interpreting studies and setting policy |journal=Hematol. Oncol. Clin. North Am. |volume=14 |issue=4 |pages=761–84 |year=2000 |month=August |pmid=10949772 |url=http://www.hemonc.theclinics.com/article/S0889-8588%2805%2970310-5}}</ref> Although testing medical interventions for [[efficacy]] has existed since the time of [[Avicenna]]'s ''[[The Canon of Medicine]]'' in the 11th century,<ref>{{cite journal |author=Brater DC, Daly WJ |title=Clinical pharmacology in the Middle Ages: principles that presage the 21st century |journal=Clin. Pharmacol. Ther. |volume=67 |issue=5 |pages=447–50 |year=2000 |month=May |pmid=10824622 |doi=10.1067/mcp.2000.106465 |quote=p. 449}}</ref><ref>{{cite journal |author=Daly WJ, Brater DC |title=Medieval contributions to the search for truth in clinical medicine |journal=Perspect. Biol. Med. |volume=43 |issue=4 |pages=530–40 |year=2000 |pmid=11058989 |url=http://muse.jhu.edu/cgi-bin/resolve_openurl.cgi?issn=0031-5982&volume=43&issue=4&spage=530&aulast=Daly |quote=p. 536}}</ref> it was only in the 20th century that this effort evolved to impact almost all fields of health care and policy. Professor [[Archie Cochrane]], a [[Scottish people|Scottish]] epidemiologist, through his book ''Effectiveness and Efficiency: Random Reflections on Health Services'' (1972) and subsequent advocacy, caused increasing acceptance of the concepts behind evidence-based practice.{{Citation needed|date=November 2009}}
+
+Cochrane's work was honoured through the naming of centres of evidence-based medical research — ''Cochrane Centres'' — and an international organization, the [[Cochrane Collaboration]]. The explicit methodologies used to determine "best evidence" were largely established by the [[McMaster University]] research group led by [[David Sackett]] and [[Gordon Guyatt]]. Guyatt later coined the term “evidence-based” in 1990.<ref name="Guyatt2">{{cite web |title=Gordon Guyatt |work=[[McMaster University]] Faculty Profiles}}</ref>  The term "evidence-based medicine" first appeared in the medical literature in 1992 in a paper by Guyatt ''et al.''<ref name="Guyatt">{{cite journal |title=Evidence-based medicine. A new approach to teaching the practice of medicine |journal=JAMA |volume=268 |issue=17 |pages=2420–5 |year=1992 |month=November |pmid=1404801 |doi= 10.1001/jama.268.17.2420 |author1= Evidence-Based Medicine Working Group}}</ref> Relevant journals include the British Medical Journal's ''Clinical Evidence'', the ''Journal Of Evidence-Based Healthcare'' and ''Evidence Based Health Policy''. All of these were co-founded by [[Anna Donald]], an Australian pioneer in the discipline.
+
+==EBM and ethics of experimental or risky treatments==
+Insurance companies in the United States and public insurers in other countries usually wait for drug use approval based on evidence-based guidelines before funding a treatment. Where approval for a drug has been given, and subsequent evidence based findings indicating that a drug may be less safe than originally anticipated, some insurers in the U.S. have reacted very cautiously and withdrawn funding. For example, an older generic statin drug had been shown to reduce mortality, but a newer and much more expensive statin drug was found to lower cholesterol more effectively. However, evidence came to light about safety concerns with the new drug which caused some insurers to stop funding it even though marketing approval was not withdrawn.<ref>{{cite news |url=http://www.usatoday.com/money/industries/health/drugs/2004-12-26-crestor-cover_x.htm |title= What do you believe when drug messages conflict? |work= USA Today|accessdate= 2010-05-02| first1=Julie | last1=Appleby | date=2004-12-26}}</ref>
+
+Some people are willing to take their chances to gamble their health on the success of new drugs or old drugs in new situations which may not yet have been fully tested in clinical trials. However insurance companies are reluctant to take on the job of funding such treatments, preferring instead to take the safer route of awaiting the results of clinical testing and leaving the funding of such trials to the manufacturer seeking a license.<ref>{{cite news |url=http://sfgate.com/cgi-bin/article.cgi?f=/c/a/2006/02/12/MNGD0H7AGT1.DTL&hw=stanford&sn=013&sc=110 |title=In fight for life, insurer no help |work= The San Francisco Chronicle | first=Victoria | last=Colliver | date=2006-02-12}}</ref>
+
+Sometimes caution errs in the other direction. [[Kaiser Permanente]] did not change its methods of evaluating whether or not new therapies were too "experimental" to be covered until it was successfully sued twice: once for delaying [[in vitro fertilization]] treatments for two years after the courts determined that scientific evidence of efficacy and safety had reached the "reasonable" stage; and in another case where Kaiser refused to pay for liver transplantation in infants when it had already been shown to be effective in adults, on the basis that use in infants was still "experimental."<ref>{{cite journal |author=Sugarman M |title=Permanente Physicians Determine Use of New Technology: Kaiser Permanente's Interregional New Technologies Committee |journal=The Permanente Journal
+ |volume=5 |issue=1 |date=Winter 2001 |url=http://xnet.kp.org/permanentejournal/winter01/HSnewtec.html }}</ref> Here again, the problem of induction plays a key role in arguments.
+
+==Application of the evidence based model on other public policy matters==
+There has been discussion of applying what has been learned from EBM to public policy.  In his 1996 inaugural speech as President of the Royal Statistical Society, Adrian Smith held out evidence-based medicine as an exemplar for ''all'' public policy. He proposed that "[[evidence-based policy]]" should be established for education, prisons and policing policy and all areas of government.<ref name="madcows">{{cite journal |author=Smith, A.F.M. |title=Mad cows and ecstasy: chance and choice in an evidence-based society |journal=Journal of the Royal Statistical Association, Series A |volume=159 |pages=367–83 |year=1996 |doi=10.2307/2983324 |issue=3}}</ref>
+
+==See also==
+* [[Clinical decision support system]] (CDSS)
+* [[Consensus (medical)]]
+* [[Dynamic treatment regime]]
+* [[Evidence-based Dentistry]]
+* [[Evidence-based design]]
+* [[Evidence-based management]]
+* [[Evidence-based medical ethics]]
+* [[Evidence-based nursing]]
+* [[Evidence-based pharmacy in developing countries]]
+* [[Guidelines International Network]]
+* [[Hospital accreditation]]
+* [[Improvement Science Research Network]]
+* [[Medical algorithm]]
+* [[Nocebo]]
+* [[Policy-based evidence making]]
+* [[Quality control]]
+* [[Source criticism]]
+
+==References==	
+{{Reflist|30em}}
+
+==External links==
+{{Wiktionary}}
+* [http://www.evidence.nhs.uk/ evidence.nhs.uk] NHS Evidence allows everyone working in health and social care to access a wide range of health information to help them deliver quality patient care. Launched in April 2009, NHS Evidence: has a fast, free and easy to use search engine to help users search for the information they want. Ranks search results from credible medical sources according to relevance and quality. Allows users – through My Evidence — to personalise a search and register to receive the latest health information alerts. Awards an Accreditation Mark to organisations who meet high quality standards in developing health information
+* [[Institute of Medicine]] Forum on Evidence Based Medicine' The IOM Roundtable on Evidence-Based Medicine brings together key stakeholders from multiple sectors—patients, health providers, payers, employers, manufacturers, policy makers, and researchers—for cooperative consideration of the ways that evidence can be better developed and applied to drive improvements in the effectiveness and efficiency of medical care in the United States.
+* [http://www.cochrane.org/ Cochrane.org] — 'The Cochrane Collaboration: The reliable source for evidence in healthcare' ([[systematic review]]s of the effects of health care interventions), [[Cochrane Library]] Major source of rigorous EBM evaluations.
+* [http://www.ahrq.gov/clinic/uspstfix.htm AHRQ.gov] — 'U.S. Preventive Services Task Force (USPSTF)', Agency for Health Care Research and Quality. Major source of EBM evaluations
+* '[http://www.acc.org/qualityandscience/quality/evidence.htm What Is Evidence-Based Medicine?]' — [[American College of Cardiology]]
+*{{cite journal |author=Straus SE, McAlister FA |title=Evidence-based medicine: a commentary on common criticisms |journal=CMAJ |volume=163 |issue=7 |pages=837–41 |year=2000 |month=October |pmid=11033714 |pmc=80509 |url=http://www.cmaj.ca/cgi/content/full/163/7/837 }}
+*{{cite journal |author=Craig JC, Irwig LM, Stockler MR |title=Evidence-based medicine: useful tools for decision making |journal=Med. J. Aust. |volume=174 |issue=5 |pages=248–53 |year=2001 |month=March |pmid=11280698 |url=http://www.mja.com.au/public/issues/174_05_050301/craig/craig.html}}
+*{{cite journal |title=Evidence-biased medicine: Intention-to-treat analysis less conservative? |journal=The Internet Journal of Epidemiology |volume=4 |issue=1 |year=2007 |url=http://www.ispub.com/ostia/index.php?xmlFilePath=journals/ije/vol4n1/evidence.xml}}
+* [http://www.gpnotebook.co.uk/simplepage.cfm?ID=-1596981199 GPNoteBook.co.uk] — 'Evidence-based medicine (EBM)', General Practice Notebook Free content
+* [http://www.jr2.ox.ac.uk/bandolier/ JR2.ox.ac.uk] — 'Bandolier: Evidence-based thinking about health care', ''[[Bandolier (journal)|Bandolier]]'' Free reviews online
+* [http://www.shef.ac.uk/~scharr/ir/netting/ SHEF.ac.uk] — 'Netting the Evidence: A ScHARR Introduction to Evidence Based Practice on the Internet' (resource directory), [[University of Sheffield]] Extensive bibliographies and links to online articles
+* [http://www.tripdatabase.com TRIP Database] — 'TRIP Database — EBM search engine' (resource directory), TRIP Knowledge Service. Free.
+*{{cite journal |author=Sackett DL, Rosenberg WM, Gray JA, Haynes RB, Richardson WS |title=Evidence based medicine: what it is and what it isn't |journal=BMJ |volume=312 |issue=7023 |pages=71–2 |year=1996 |month=January |pmid=8555924 |pmc=2349778 |url=http://bmj.com/cgi/pmidlookup?view=long&pmid=8555924}} (Editorial)
+*{{cite journal |author=Grahame-Smith D |title=Evidence based medicine: Socratic dissent |journal=BMJ |volume=310 |issue=6987 |pages=1126–7 |year=1995 |month=April |pmid=7742683 |pmc=2549506 |url=http://bmj.com/cgi/pmidlookup?view=long&pmid=7742683}} (Education and debate)
+* [http://www.cebm.net/ CEBM.net] — [[Oxford]] Centre for Evidence-Based Medicine (UK) Some free content
+*{{cite journal |author=Smith GC, Pell JP |title=Parachute use to prevent death and major trauma related to gravitational challenge: systematic review of randomised controlled trials |journal=BMJ |volume=327 |issue=7429 |pages=1459–61 |year=2003 |month=December |pmid=14684649 |pmc=300808 |doi=10.1136/bmj.327.7429.1459 |url=http://www.bmj.com/content/327/7429/1459.full }} (Classic argument that situations still exist where RCTs are unnecessary.)
+* [http://www.eboncall.org/ EBOnCall.org] — 'Evidence compendia' (evidence-based summaries of 38 on-call medical conditions), Evidence-Based On-Call (EBOC) Free
+* {{Dmoz|Health/Medicine/Evidence_Based_Medicine/|Evidence-based medicine}}
+* [http://www.ebpom.org www.ebpom.org — Evidence Based Perioperative Medcicine]
+* [http://www.dbskeptic.com/2008/08/17/the-limits-of-evidence-based-medicine/ DBSkeptic.com] The limits of evidence-based medicine
+* [http://www.professorebm.com/ ProfessorEBM.com] Evidence-based teaching guides for over 80 common internal medicine conditions
+*{{cite journal |author=Sobo S |title=Pursuing treatments that are not evidence based: how DSM IV clarifies, how it blinds psychiatrists to issues in need of investigation |journal=Med. Hypotheses |volume=72 |issue=5 |pages=491–8 |year=2009 |month=May |pmid=19181456 |doi=10.1016/j.mehy.2008.12.022 |url=http://linkinghub.elsevier.com/retrieve/pii/S0306-9877(08)00660-9}}
+* The [[Users’ Guides to the Medical Literature]] are a series of journal articles and more recently a comprehensive textbook, that provide invaluable tips for clinicians wishing to incorporate evidence-based medicine into their practices.
+* [http://www.isrn.net/ Improvement Science Research Network]
+{{Medical research studies}}
+
+{{DEFAULTSORT:Evidence-Based Medicine}}
+[[Category:Medical informatics]]
+[[Category:Evidence-based medicine|*]]
+[[Category:Healthcare quality]]
+
+[[ca:Medicina basada en l'evidència]]
+[[cs:Evidence Based Medicine]]
+[[da:Evidensbaseret medicin]]
+[[de:Evidenzbasierte Medizin]]
+[[et:Tõenduspõhine meditsiin]]
+[[es:Medicina basada en la evidencia]]
+[[eo:Laŭindikaĵa medicino]]
+[[eu:Ebidentzian Oinarritutako Medikuntza]]
+[[fa:پزشکی مبتنی بر شواهد]]
+[[fr:Médecine fondée sur les faits]]
+[[ga:Leigheas Fianaisebhunaithe]]
+[[it:Medicina basata su prove di efficacia]]
+[[he:רפואה מבוססת ראיות]]
+[[nl:Evidence-based medicine]]
+[[ja:根拠に基づいた医療]]
+[[no:Evidensbasert medisin]]
+[[pl:Evidence-based medicine]]
+[[pt:Medicina baseada em evidências]]
+[[ro:Medicină bazată pe dovezi]]
+[[ru:Доказательная медицина]]
+[[fi:Näyttöön perustuva lääketiede]]
+[[sv:Evidensbaserad medicin]]
+[[zh:循证医学]]
