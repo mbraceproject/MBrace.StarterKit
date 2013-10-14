@@ -64,8 +64,12 @@
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core" />
-    <Reference Include="Nessos.MBrace.Base, Version=0.4.3.26723, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Client, Version=0.4.3.26723, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
+    <Reference Include="Nessos.MBrace.Base, Version=0.4.4.14103, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Nessos.MBrace.Client, Version=0.4.4.14103, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
