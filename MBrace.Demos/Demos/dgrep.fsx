@@ -1,14 +1,13 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
-#r "Nessos.MBrace.Client"
-#r "Nessos.MBrace.Base"
-#r "Nessos.MBrace.Core"
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Store"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
+#r "Nessos.MBrace.Store"
+#r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
-
-// END PREAMBLE
 
 open System.IO
 open System.Text.RegularExpressions
@@ -50,9 +49,9 @@ let run (cseqs : #seq<string> []) (pattern : string) =
   }
 
 
-let rt = MBraceRuntime.InitLocal 4
+let runtime = MBraceRuntime.InitLocal 4
 
-let ps = rt.CreateProcess <@ run cseqs " king" @>
+let ps = runtime.CreateProcess <@ run cseqs " king" @>
 
 ps.ShowInfo()
 

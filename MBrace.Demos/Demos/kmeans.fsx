@@ -1,10 +1,12 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
 open System
 open System.Text
@@ -164,12 +166,12 @@ let centroids =
     |> Seq.take k
     |> Seq.toArray
 
-let rt = MBrace.InitLocal 3
+let runtime = MBrace.InitLocal 3
 
-let proc = rt.CreateProcess <@ kmeans refs centroids 0 @>
+let proc = runtime.CreateProcess <@ kmeans refs centroids 0 @>
 
-rt.ShowInfo(true)
-rt.ShowProcessInfo()
-rt.ShowUserLogs(proc.ProcessId)
+runtime.ShowInfo(true)
+runtime.ShowProcessInfo()
+runtime.ShowUserLogs(proc.ProcessId)
 
 let res = proc.AwaitResult()

@@ -2,7 +2,7 @@ namespace Nessos.MBrace.Lib
 
     module MapReduce =
 
-        open Nessos.MBrace.Client
+        open Nessos.MBrace
 
         /// A classic ML list implemented using CloudRefs.
         type CloudList<'T> = Nil | Cons of 'T * ICloudRef<CloudList<'T>>

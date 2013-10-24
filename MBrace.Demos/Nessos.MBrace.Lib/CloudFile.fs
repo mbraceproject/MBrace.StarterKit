@@ -10,7 +10,7 @@ module CloudFileExtensions =
     open System.Collections.Generic
     open System.Runtime.Serialization
 
-    open Nessos.MBrace.Client
+    open Nessos.MBrace
 
     let private asyncWriteLine (source : StreamWriter, line : string) : Async<unit> =
         Async.AwaitTask(source.WriteLineAsync(line))

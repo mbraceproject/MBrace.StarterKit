@@ -1,12 +1,12 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
-// END OF PREAMBLE
-
+open Nessos.MBrace
 open Nessos.MBrace.Client
 
 #r "../Nessos.MBrace.Lib/bin/Debug/Nessos.MBrace.Lib.dll"
@@ -61,15 +61,13 @@ let boot (n : int) (t : int) =
             |> Cloud.Ignore
     }
 
-let rt = MBrace.InitLocal 8
+let runtime = MBrace.InitLocal 8
 
 let n = 7          // number of 'actors'
 let token = 1000   // initial token value, number of hops
 
-let ps = rt.CreateProcess <@ boot n token @>
+let proc = runtime.CreateProcess <@ boot n token @>
 
-rt.ShowProcessInfo()
-
-ps.AwaitResult()
-
-rt.ShowUserLogs ps.ProcessId
+runtime.ShowProcessInfo()
+proc.AwaitResult()
+runtime.ShowUserLogs proc.ProcessId

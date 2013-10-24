@@ -1,12 +1,13 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
-// END PREAMBLE
 
 // This script file is a demonstration of the async-cloud computation
 // mixing.

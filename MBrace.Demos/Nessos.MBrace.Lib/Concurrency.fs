@@ -1,6 +1,6 @@
 ﻿namespace Nessos.MBrace.Lib.Concurrency
 
-open Nessos.MBrace.Client
+open Nessos.MBrace
 
 type MVar<'T> = IMutableCloudRef<'T option>
 

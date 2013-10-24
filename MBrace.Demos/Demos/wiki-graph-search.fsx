@@ -1,11 +1,13 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
-// END OF PREAMBLE
+open Nessos.MBrace
+open Nessos.MBrace.Client
 
 (* This demo is a demonstration of the MutableCloudRef primitive
  * and a graph search algorithm using {m}brace.
@@ -26,8 +28,6 @@ open System
 open System.Net
 open System.Collections.Generic
 open System.Text.RegularExpressions
-
-open Nessos.MBrace.Client
 
 
 // Define a simple type for lookups based on MutableCloudRefs.

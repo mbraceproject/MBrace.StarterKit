@@ -1,20 +1,39 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
-#r "Nessos.MBrace.Utils.dll"
-#r "Nessos.MBrace.Actors.dll"
-#r "Nessos.MBrace.Base.dll"
-#r "Nessos.MBrace.Store.dll"
-#r "Nessos.MBrace.Client.dll"
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
+#r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
+#r "Nessos.MBrace.Actors"
+#r "Nessos.MBrace.Store"
+#r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
-
-// END OF PREAMBLE
 
 // Calculates pi using the Monte Carlo method
 
-#load "Utils.fs"
 
 open System
+open System.IO
 open System.Numerics
+open System.Security.Cryptography
+
+type RandomNumberGenerator(bufsize : int) =
+    let bufsize = bufsize * 4
+    let buf = Array.zeroCreate<byte> bufsize
+    let mutable i = 0
+    let rng = new RNGCryptoServiceProvider()
+
+    do rng.GetBytes buf
+
+    member __.Next () =
+        // buffer exhausted, refill
+        if i = bufsize then
+            do rng.GetBytes buf
+            i <- 0
+
+        let n = (int buf.[i]) ||| (int buf.[i+1] <<< 8) ||| (int buf.[i+2] <<< 16) ||| (int buf.[i+3] <<< 24)
+        i <- i + 4
+        n
 
 // the classic monte carlo implementation
 // take random points and see of they are inside the circle or not

@@ -43,8 +43,8 @@
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition="(!Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')) And (Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets'))" />
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="(!Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')) And (!Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets')) And (Exists('$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets'))" />
   <ItemGroup>
-    <Compile Include="Utils.fs" />
-    <Compile Include="Primality.fs" />
+    <None Include="primality.fsx" />
+    <None Include="ExcelEnv.fsx" />
     <None Include="hello world.fsx" />
     <None Include="wordcount.fsx" />
     <None Include="mapreduce.fsx" />
@@ -58,7 +58,6 @@
     <None Include="wiki-graph-search.fsx" />
     <None Include="fibonacci-memo.fsx" />
     <None Include="async.fsx" />
-    <None Include="ExcelEnv.fsx" />
     <None Include="thread-ring.fsx" />
   </ItemGroup>
   <ItemGroup>

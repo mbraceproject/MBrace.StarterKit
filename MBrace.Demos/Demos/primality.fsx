@@ -3,6 +3,16 @@
     open System
     open System.Numerics
 
+    module Array =
+        let rec partition size (input : 'T []) =
+            let q, r = input.Length / size , input.Length % size
+            [|
+                for i in 0 .. q-1 do
+                    yield input.[ i * size .. (i + 1) * size - 1]
+
+                if r > 0 then yield input.[q * size .. ]
+            |]
+
     let naivePrimeTest (n : int) =
         if n <= 1 then false
         else
@@ -10,7 +20,7 @@
             seq { 2 .. sn } |> Seq.forall(fun i -> n % i <> 0)
 
     // enumeration of all primes
-    let primes () = Seq.infinite 2 |> Seq.filter naivePrimeTest
+    let primes () = Seq.initInfinite ((+) 2) |> Seq.filter naivePrimeTest
     let getPrimes n = 
         primes () 
         |> Seq.take n 
@@ -55,12 +65,12 @@
                    
             Array.forall theTest bases
 
+    let private samples = 5
+    let private bases = getPrimes 5
+    let private lastSample = bases.[samples - 1]
+
     /// general Miller-Rabin primality test
-    let isPrime =
-        let samples = 5
-        let bases = getPrimes 5
-        let lastSample = bases.[samples - 1]
-        fun (n : BigInteger) ->
+    let isPrime (n : BigInteger) =
             if n <= lastSample then
                 bases |> Array.exists ((=) n)
             else
@@ -71,11 +81,11 @@
         let smallPrimes = getPrimes 20
         fun (n : bigint) -> smallPrimes |> Array.exists (fun p -> n % p = 0I)
 
+    let private smallPrimes = getPrimes 100
+
     // returns true => Mp composite
     // http://primes.utm.edu/notes/proofs/MerDiv.html
-    let eulerTrialDivision =
-        let smallPrimes = getPrimes 100
-        fun (p : bigint) (Mp : bigint) ->
+    let eulerTrialDivision (p : bigint) (Mp : bigint) =
             let isDivisor (q : bigint) =
                 if q % p <> 1I || abs (q % 8I) <> 1I then false
                 else // proceed with actual divisibility test

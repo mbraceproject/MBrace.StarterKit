@@ -1,6 +1,6 @@
 ﻿namespace Nessos.MBrace.Lib
 
-    open Nessos.MBrace.Client
+    open Nessos.MBrace
 
     [<RequireQualifiedAccess>]
     module Cloud =

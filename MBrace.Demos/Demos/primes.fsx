@@ -1,15 +1,16 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
-// END PREAMBLE
 
 // Compile Demos project before adding reference
-#r "bin/Debug/Demos.dll"
+#load "primality.fsx"
 
 open Primality
 open System.Numerics
@@ -25,19 +26,6 @@ open System.Numerics
 let tryFindMersenneSeq ts = Array.tryFind isMersennePrime ts
 
 tryFindMersenneSeq [| 2500 .. 3500 |]
-
-
-//
-//  Nondeterministic approach
-//
-
-// Async Choice
-[| 2500 .. 3500 |] 
-|> Array.map (fun i -> async { return if isMersennePrime i then Some i else None })
-|> Async.Choice
-|> Async.RunSynchronously
-
-
 
 // a general-purpose non-deterministic search combinator for the cloud
 
@@ -59,7 +47,7 @@ let tryFind (f : 'T -> bool) partitionSize (inputs : 'T []) =
 
 let runtime = MBrace.InitLocal 4
 
-let proc = runtime.CreateProcess <@ tryFind isMersennePrime 100 [|500 .. 1000|] @>
+let proc = runtime.CreateProcess <@ tryFind isMersennePrime 100 [|2500 .. 3500|] @>
 
 proc
 

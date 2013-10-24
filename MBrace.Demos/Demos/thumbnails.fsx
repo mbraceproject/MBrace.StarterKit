@@ -1,12 +1,13 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
-#r @"Nessos.MBrace.Utils.dll"
-#r @"Nessos.MBrace.Actors.dll"
-#r @"Nessos.MBrace.Base.dll"
-#r @"Nessos.MBrace.Store.dll"
-#r @"Nessos.MBrace.Client.dll"
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
+#r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
+#r "Nessos.MBrace.Actors"
+#r "Nessos.MBrace.Store"
+#r "Nessos.MBrace.Client"
 
+open Nessos.MBrace
 open Nessos.MBrace.Client
-// END PREAMBLE
 
 //
 //  example : thumbnail creation
@@ -46,8 +47,7 @@ let create (bytes : byte []) =
 [<Cloud>]
 let createThumbnail (file : ICloudFile) = cloud {
         let! bytes = CloudFile.ReadAllBytes(file)
-        let s = create bytes
-        return! CloudFile.Create("Thumbs", file.Name, (fun ds -> asyncCopyTo(s, ds) ))
+        return! CloudFile.Create("Thumbs", file.Name, (fun ds -> let s = create bytes in asyncCopyTo(s, ds) ))
     }
 
 [<Cloud>]

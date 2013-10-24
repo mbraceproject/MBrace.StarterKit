@@ -1,12 +1,12 @@
-﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
+﻿// Assembly references for intellisense purposes only
+#r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
+#r "Nessos.MBrace.Common"
 #r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
 #r "Nessos.MBrace.Store"
 #r "Nessos.MBrace.Client"
 
-// END OF PREAMBLE
-
+open Nessos.MBrace
 open Nessos.MBrace.Client
 
 #r "../Nessos.MBrace.Lib/bin/Debug/Nessos.MBrace.Lib.dll"
@@ -35,14 +35,14 @@ let rec fibs () =
         string
         (fun n -> fib (fibs ()) n)
 
-let rt = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal 4
 
 // Calculate and memoize the first 22 Fibonacci numbers.
-let ps = rt.CreateProcess <@ cloud { return! fibs () 22 } @>
-ps.AwaitResult()
-ps.ShowInfo()
+let proc = runtime.CreateProcess <@ cloud { return! fibs () 22 } @>
+proc.AwaitResult()
+proc.ShowInfo()
 
 // This one should execute almost instantly.
-let ps' = rt.CreateProcess <@ cloud { return! fibs () 23 } @>
-ps'.AwaitResult()
-ps'.ShowInfo()
+let proc' = runtime.CreateProcess <@ cloud { return! fibs () 23 } @>
+proc'.AwaitResult()
+proc'.ShowInfo()
