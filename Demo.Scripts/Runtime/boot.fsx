@@ -1,8 +1,14 @@
-﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 open Nessos.MBrace.Store
+
+//
+//  The following script demonstrates how an MBrace runtime can
+//  be initialized given a collection of MBrace nodes
+//
+
 
 // a distributed runtime requires a shared store provider
 // place your UNC/local path here
@@ -12,7 +18,7 @@ let store = FileSystemStore.Create "enter a filesystem path"
 MBraceSettings.DefaultStore <- store
 
 // spawn a pair of local nodes
-let localNodes = MBraceNode.SpawnMultiple(2)
+let localNodes = MBraceNode.SpawnMultiple(nodeCount = 2)
 
 // connect to remote mbrace nodes
 let remoteNodes = 
@@ -25,7 +31,7 @@ let remoteNodes =
 remoteNodes |> List.map (fun n -> n.Ping())
 
 // boot an mbrace runtime
-let runtime = MBrace.Boot(remoteNodes @ localNodes)
+let runtime = MBrace.Boot(remoteNodes @ localNodes, store = MBraceSettings.DefaultStore)
 
 // show runtime information
 runtime.ShowInfo(true)

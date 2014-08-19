@@ -1,4 +1,4 @@
-﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -76,11 +76,11 @@ let calculatePi (iterations : bigint) (digits : int) : Cloud<string> =
         let runWorker iterations = cloud { return monteCarloPiWorker iterations }
         
         let! results = 
-            [| 
+            [ 
                 for i in 1I .. workers -> runWorker iterationsPerWorker
 
                 if rem > 0I then yield runWorker rem
-            |]
+            ]
             |> Cloud.Parallel
 
         let sum = results |> Array.sum

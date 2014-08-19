@@ -1,10 +1,10 @@
-﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 open Nessos.MBrace.Lib
 
-#r "../bin/Demo.Lib.dll"
+#r "../../bin/Demo.Lib.dll"
 open Demo.Lib
 
 /// naive mapReduce implementation

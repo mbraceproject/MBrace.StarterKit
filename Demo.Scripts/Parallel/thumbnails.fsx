@@ -1,4 +1,4 @@
-﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -11,7 +11,7 @@ open Nessos.MBrace.Lib
 //  The idea is to make the StoreProvider point to an existing directory containing
 //  your existing files. This way your files are visible as cloud files.
 
-#r "../bin/Demo.Lib.dll"
+#r "../../bin/Demo.Lib.dll"
 
 open System
 open System.IO

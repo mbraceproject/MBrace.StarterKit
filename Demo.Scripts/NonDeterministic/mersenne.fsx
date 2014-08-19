@@ -1,9 +1,9 @@
-﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-#r "../bin/Demo.Lib.dll"
+#r "../../bin/Demo.Lib.dll"
 
 open System.Numerics
 open Demo.Lib

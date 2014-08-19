@@ -54,21 +54,22 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
   <ItemGroup>
-    <None Include="hello world.fsx" />
-    <None Include="wordcount.fsx" />
-    <None Include="mapreduce.fsx" />
-    <None Include="sat solving.fsx" />
-    <None Include="mersenne.fsx" />
-    <None Include="dgrep.fsx" />
-    <None Include="monte-carlo.fsx" />
-    <None Include="thumbnails.fsx" />
-    <None Include="runtime.fsx" />
-    <None Include="kmeans.fsx" />
-    <None Include="wiki-graph-search.fsx" />
-    <None Include="fibonacci-memo.fsx" />
-    <None Include="cloudLocal.fsx" />
-    <None Include="thread-ring.fsx" />
     <Content Include="packages.config" />
+    <None Include="hello world.fsx" />
+    <None Include="Parallel\wordcount.fsx" />
+    <None Include="Parallel\mapreduce.fsx" />
+    <None Include="Parallel\dgrep.fsx" />
+    <None Include="Parallel\thumbnails.fsx" />
+    <None Include="Parallel\monte-carlo.fsx" />
+    <None Include="Parallel\local.fsx" />
+    <None Include="NonDeterministic\mersenne.fsx" />
+    <None Include="NonDeterministic\sat solving.fsx" />
+    <None Include="NonDeterministic\wiki-graph-search.fsx" />
+    <None Include="Runtime\boot.fsx" />
+    <None Include="Runtime\logging.fsx" />
+    <None Include="Concurrency\fibonacci-memo.fsx" />
+    <None Include="Concurrency\thread-ring.fsx" />
+    <None Include="Incremental\kmeans.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
