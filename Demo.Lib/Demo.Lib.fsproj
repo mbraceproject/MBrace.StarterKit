@@ -57,6 +57,7 @@
     <Compile Include="Utils.fs" />
     <Compile Include="Primality.fs" />
     <Compile Include="Excel.fs" />
+    <Compile Include="Combinators.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
   </ItemGroup>

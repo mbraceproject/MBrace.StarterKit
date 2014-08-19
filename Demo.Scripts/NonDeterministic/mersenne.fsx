@@ -6,6 +6,7 @@ open Nessos.MBrace.Client
 #r "../../bin/Demo.Lib.dll"
 
 open System.Numerics
+
 open Demo.Lib
 
 //
@@ -15,32 +16,16 @@ open Demo.Lib
 
 #time
 
-// sequential Mersenne Prime Search
+// sequential Mersenne prime search
 let tryFindMersenneSeq ts = Array.tryFind Primality.isMersennePrime ts
 
 tryFindMersenneSeq [| 2500 .. 3500 |]
 
-// a general-purpose non-deterministic search combinator for the cloud
-
-[<Cloud>]
-let tryFind (f : 'T -> bool) partitionSize (inputs : 'T []) =
-    let searchLocal (inputs : 'T []) =
-        inputs
-        |> Array.map (fun t -> cloud { return if f t then Some t else None })
-        |> Cloud.Choice
-        |> local // local combinator restricts computation to local async semantics
-
-    cloud {
-        return!
-            inputs
-            |> Array.partition partitionSize
-            |> Array.map searchLocal
-            |> Cloud.Choice
-    }
+// MBrace Mersenne prime search
 
 let runtime = MBrace.InitLocal 4
 
-let proc = runtime.CreateProcess <@ tryFind Primality.isMersennePrime 100 [|2500 .. 3500|] @>
+let proc = runtime.CreateProcess <@ Combinators.tryFind Primality.isMersennePrime 100 [|2500 .. 3500|] @>
 
 proc
 
