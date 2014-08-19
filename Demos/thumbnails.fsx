@@ -1,13 +1,9 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
+open Nessos.MBrace.Store
+open Nessos.MBrace.Lib
 
 //
 //  example : thumbnail creation
@@ -15,14 +11,16 @@ open Nessos.MBrace.Client
 //  The idea is to make the StoreProvider point to an existing directory containing
 //  your existing files. This way your files are visible as cloud files.
 
+#r "../bin/Lib.dll"
+
 open System
 open System.IO
 open System.Drawing
 open System.Drawing.Drawing2D
 
-#r "../Nessos.MBrace.Lib/bin/Debug/Nessos.MBrace.Lib.dll"
-open Nessos.MBrace.Lib
+open Demo.Lib
 
+/// creates an 128x128 thumbnail out of given file
 let create (bytes : byte []) = 
         let ms = new MemoryStream()
         ms.Write(bytes, 0, bytes.Length)
@@ -47,14 +45,14 @@ let create (bytes : byte []) =
 [<Cloud>]
 let createThumbnail (file : ICloudFile) = cloud {
         let! bytes = CloudFile.ReadAllBytes(file)
-        return! CloudFile.Create("Thumbs", file.Name, (fun ds -> let s = create bytes in asyncCopyTo(s, ds) ))
+        return! CloudFile.Create("Thumbs", file.Name, (fun ds -> let s = create bytes in Stream.AsyncCopy(s, ds) ))
     }
 
 [<Cloud>]
 let createThumbnails () = 
     cloud {
         // list all files
-        let! sourceImages = CloudFile.Get("Images")
+        let! sourceImages = CloudFile.GetFilesInContainer "Images"
 
         return!
             sourceImages 
@@ -66,11 +64,10 @@ let path = Path.Combine(__SOURCE_DIRECTORY__ ,  "../Thumbnails")
 let sourceDir = Path.Combine(path, "Images")
 let thumbDir = Path.Combine(path, "Thumbs")
 
-/// the mbrace store now points to the sourcDir and will be
+/// the mbrace store now points to the sourceDir and will be
 /// able to use the images as CloudFiles (See the CreateThumbnail function).
 // This is a client settings.
-MBraceSettings.StoreProvider <- FileSystem path
-
+MBraceSettings.DefaultStore <- FileSystemStore.Create path
 
 // In order for the StoreProvider setting to be used by the
 // runtime you need to either change the mbraced.exe configuration and restart

@@ -1,15 +1,8 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-#r "../Nessos.MBrace.Lib/bin/Debug/Nessos.MBrace.Lib.dll"
 open Nessos.MBrace.Lib
 open Nessos.MBrace.Lib.MapReduce
 
@@ -17,7 +10,6 @@ open Nessos.MBrace.Lib.MapReduce
 // Uses somewhat dynamic parallelism. It spawns a number of cloud computations proportional to the
 // number of the workers, and then creates some async computations (proportional to the number of
 // hardware threads on a machine). Finally the execution is sequential.
-
 
 let noiseWords = 
     seq [
@@ -45,12 +37,12 @@ open Nessos.MBrace.Utils
 let mapCloudTree (paths : string []) =
     cloud {
         let texts = paths |> Array.map (fun path -> File.ReadAllText (path))
-        return! newRef <| Leaf texts
+        return! CloudRef.New <| Leaf texts
     }
 [<Cloud>]
 let reduceCloudTree (left : ICloudRef<CloudTree<'T>>) (right : ICloudRef<CloudTree<'T>>) =
     cloud {
-        return! newRef <| Branch (left, right)
+        return! CloudRef.New <| Branch (left, right)
     }
 
 
@@ -81,7 +73,7 @@ let runtime = MBrace.InitLocal 4
 let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\Wikipedia")
 let files = Directory.GetFiles(fileSource) |> Seq.toArray
 
-let proc = runtime.CreateProcess <@ mapReduceArray mapCloudTree reduceCloudTree (fun () -> cloud { return! newRef Empty }) files 2 @>
+let proc = runtime.CreateProcess <@ mapReduceArray mapCloudTree reduceCloudTree (fun () -> cloud { return! CloudRef.New Empty }) files 2 @>
 let result = proc.AwaitResult()
 let proc' = runtime.CreateProcess <@ mapReduceCloudTree (Cloud.lift mapF) (Cloud.lift2 reduceF) (fun () -> cloud { return [||] }) result @>
 let result' = proc'.AwaitResult()

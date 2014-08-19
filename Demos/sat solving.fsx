@@ -1,10 +1,4 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -96,7 +90,7 @@ let rec dpll (cnf : Cnf) =
             dpll (simplify cnf l) || dpll (simplify cnf nl)
 
 [<Cloud>]
-let rec dpllCloud' (cnf : Cnf) : ICloud<Sat> = 
+let rec dpllCloud' (cnf : Cnf) : Cloud<Sat> = 
     cloud {
         let rec dpllCloud cnf d = 
             cloud {
@@ -122,7 +116,7 @@ let rec dpllCloud' (cnf : Cnf) : ICloud<Sat> =
     }
 
 [<Cloud>]
-let rec dpllCloud (cnf : Cnf) : ICloud<Sat> = cloud {
+let rec dpllCloud (cnf : Cnf) : Cloud<Sat> = cloud {
         if hasEmptyClause cnf then return None
         elif Seq.isEmpty cnf then return Some ()
         else

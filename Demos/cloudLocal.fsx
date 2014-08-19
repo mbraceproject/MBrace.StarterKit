@@ -1,10 +1,4 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -14,16 +8,6 @@ open Nessos.MBrace.Client
 
 // Create a runtime for testing.
 let runtime = MBrace.InitLocal 4
-
-
-// Define a Cloud.Sleep combinator using the Async.Sleep function
-// and the Cloud.OfAsync primitive.
-type Cloud with
-    [<Cloud>]
-    static member Sleep (interval : int) =
-        cloud {
-            do! Cloud.OfAsync <| Async.Sleep interval
-        }
 
 // Test the Cloud.Sleep function.
 // Write a (cloud) log 10 times with 1 sec interval.
@@ -39,7 +23,7 @@ let ps1 = runtime.CreateProcess <@ write () @>
 ps1.AwaitResult()
 
 // Fetch the user logs from the store, notice the timestamp.
-runtime.ShowUserLogs(ps1.ProcessId)
+ps1.ShowLogs()
 
 
 // We can also execute a Cloud computation locally using 

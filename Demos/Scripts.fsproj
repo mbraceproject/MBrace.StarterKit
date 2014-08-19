@@ -10,7 +10,7 @@
     <RootNamespace>Nessos.MBrace.MapReduceDemo</RootNamespace>
     <AssemblyName>Demos</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>Demos</Name>
+    <Name>Scripts</Name>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
@@ -54,13 +54,11 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
   <ItemGroup>
-    <None Include="primality.fsx" />
-    <None Include="ExcelEnv.fsx" />
     <None Include="hello world.fsx" />
     <None Include="wordcount.fsx" />
     <None Include="mapreduce.fsx" />
     <None Include="sat solving.fsx" />
-    <None Include="primes.fsx" />
+    <None Include="mersenne.fsx" />
     <None Include="dgrep.fsx" />
     <None Include="monte-carlo.fsx" />
     <None Include="thumbnails.fsx" />
@@ -68,8 +66,9 @@
     <None Include="kmeans.fsx" />
     <None Include="wiki-graph-search.fsx" />
     <None Include="fibonacci-memo.fsx" />
-    <None Include="async.fsx" />
+    <None Include="cloudLocal.fsx" />
     <None Include="thread-ring.fsx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -1,16 +1,11 @@
 ﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
 (* This demo is a demonstration of the MutableCloudRef primitive
- * and a graph search algorithm using {m}brace.
+ * and a graph search algorithm using {mbrace}.
  * This demo takes as input two Wikipedia urls and finds a path of 
  * links driving you from the root url to the target url.
  * You should use this only for short searches because the demo
@@ -46,8 +41,11 @@ type CloudSet = CloudSet of string * (string -> string)
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module CloudSet =
     let tryAdd (item : string) (CloudSet (set_id, encode)) = cloud {
-        let! ok = MutableCloudRef.TryNew(set_id, encode item, ())
-        return Option.isSome ok
+        try
+            let! mref = MutableCloudRef.New(set_id, encode item, ())
+            return true
+
+        with :? StoreException -> return false
     }
 
     let contains (item : string) (CloudSet (set_id, encode)) = cloud {

@@ -1,20 +1,15 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
+open Nessos.MBrace.Store
 
 // a distributed runtime requires a shared store provider
 // place your UNC/local path here
-let storeProvider = FileSystem "enter a filesystem path"
+let store = FileSystemStore.Create "enter a filesystem path"
 
 // sets the default store provider for the client
-MBraceSettings.StoreProvider <- storeProvider
+MBraceSettings.DefaultStore <- store
 
 // spawn a pair of local nodes
 let localNodes = MBraceNode.SpawnMultiple(2)
@@ -24,7 +19,7 @@ let remoteNodes =
     [
         "mbrace://host:port"
         "mbrace://host:port"
-    ] |> List.map (fun u -> MBraceNode u)
+    ] |> List.map MBraceNode.Connect
 
 // ping the nodes
 remoteNodes |> List.map (fun n -> n.Ping())

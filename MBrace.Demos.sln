@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Demos", "Demos\Demos.fsproj", "{7305971B-AD13-43FF-BAF4-1E073D8A45BF}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Scripts", "Demos\Scripts.fsproj", "{7305971B-AD13-43FF-BAF4-1E073D8A45BF}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Nessos.MBrace.Lib", "Nessos.MBrace.Lib\Nessos.MBrace.Lib.fsproj", "{255737AA-9364-4E25-88E1-EC3E3ACC650D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Standalone", "MBrace.Standalone\Standalone.fsproj", "{F85375AE-F4DA-4724-A69D-A7763BAF03B9}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MBrace.Standalone", "MBrace.Standalone\MBrace.Standalone.fsproj", "{F85375AE-F4DA-4724-A69D-A7763BAF03B9}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Lib", "Lib\Lib.fsproj", "{AD2244D4-30B0-4D86-BFAC-63164D7B93E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7305971B-AD13-43FF-BAF4-1E073D8A45BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{255737AA-9364-4E25-88E1-EC3E3ACC650D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F85375AE-F4DA-4724-A69D-A7763BAF03B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F85375AE-F4DA-4724-A69D-A7763BAF03B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F85375AE-F4DA-4724-A69D-A7763BAF03B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F85375AE-F4DA-4724-A69D-A7763BAF03B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2244D4-30B0-4D86-BFAC-63164D7B93E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2244D4-30B0-4D86-BFAC-63164D7B93E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2244D4-30B0-4D86-BFAC-63164D7B93E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2244D4-30B0-4D86-BFAC-63164D7B93E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

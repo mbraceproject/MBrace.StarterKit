@@ -1,29 +1,22 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-// Compile Demos project before adding reference
-#load "primality.fsx"
+#r "../bin/Lib.dll"
 
-open Primality
 open System.Numerics
+open Demo.Lib
 
 //
-//  Checking for Mersenne primes using {m}brace
+//  Checking for Mersenne primes using {mbrace}
 //  a Mersenne prime is a number of the form 2^p - 1 that is prime
 //  the library defines a simple checker that uses the Lucas-Lehmer test
 
 #time
 
 // sequential Mersenne Prime Search
-let tryFindMersenneSeq ts = Array.tryFind isMersennePrime ts
+let tryFindMersenneSeq ts = Array.tryFind Primality.isMersennePrime ts
 
 tryFindMersenneSeq [| 2500 .. 3500 |]
 
@@ -47,7 +40,7 @@ let tryFind (f : 'T -> bool) partitionSize (inputs : 'T []) =
 
 let runtime = MBrace.InitLocal 4
 
-let proc = runtime.CreateProcess <@ tryFind isMersennePrime 100 [|2500 .. 3500|] @>
+let proc = runtime.CreateProcess <@ tryFind Primality.isMersennePrime 100 [|2500 .. 3500|] @>
 
 proc
 

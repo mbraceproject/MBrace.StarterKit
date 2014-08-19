@@ -1,10 +1,4 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -16,7 +10,6 @@ let hello () =
     cloud {
         return "hello, world!"
     }
-
 
 // create a local-only runtime
 let runtime = MBrace.InitLocal 4

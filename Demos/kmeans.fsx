@@ -1,13 +1,10 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
+
+// kmeans implementation ; enter comments here
+
 open System
 open System.Text
 open System.IO
@@ -59,7 +56,7 @@ let kmeansLocal (points : ICloudSeq<Point>) (centroids : Point[]) (dim : int) : 
 
 // The function runs the kmeans algorithm and returns the centroids of an array of Cloud Sequences of points.
 [<Cloud>]
-let rec kmeans (points : ICloudSeq<Point>[]) (centroids : Point[]) (iteration : int) : ICloud<Point[]> =
+let rec kmeans (points : ICloudSeq<Point>[]) (centroids : Point[]) (iteration : int) : Cloud<Point[]> =
     let sumPoints (pointArr : seq<Point>) dim : Point =
         pointArr
         |> Seq.fold (fun acc elem -> let x = Array.map2 (+) acc elem in x) (Array.init dim (fun _ -> 0.0))
@@ -172,6 +169,6 @@ let proc = runtime.CreateProcess <@ kmeans refs centroids 0 @>
 
 runtime.ShowInfo(true)
 runtime.ShowProcessInfo()
-runtime.ShowUserLogs(proc.ProcessId)
+proc.ShowLogs()
 
 let res = proc.AwaitResult()

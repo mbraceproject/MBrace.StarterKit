@@ -1,16 +1,9 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
 // Calculates pi using the Monte Carlo method
-
 
 open System
 open System.IO
@@ -73,7 +66,7 @@ let rec getDigits dividend divisor = seq {
 }
 
 [<Cloud>]
-let calculatePi (iterations : bigint) (digits : int) : ICloud<string> =
+let calculatePi (iterations : bigint) (digits : int) : Cloud<string> =
     cloud {
         let! workers = Cloud.GetWorkerCount()
         let workers = bigint (2 * workers)

@@ -10,7 +10,7 @@
     <RootNamespace>MBrace.Standalone</RootNamespace>
     <AssemblyName>MBrace.Standalone</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>MBrace.Standalone</Name>
+    <Name>Standalone</Name>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -36,26 +36,6 @@
     <DocumentationFile>bin\Release\MBrace.Standalone.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="Nessos.MBrace, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Actors, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Client, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Common, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Core, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Store, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="Nessos.MBrace.Utils, Version=0.4.4.13101, Culture=neutral, PublicKeyToken=e3142f36c45d3d3d" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Program.fs" />
-    <None Include="App.config" />
-  </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
   </PropertyGroup>
@@ -72,6 +52,72 @@
     </Otherwise>
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+    <None Include="App.config" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FsPickler">
+      <HintPath>..\packages\FsPickler.0.9.9\lib\net45\FsPickler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FsPickler.Json">
+      <HintPath>..\packages\FsPickler.Json.0.9.9\lib\net45\FsPickler.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Client">
+      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Core">
+      <HintPath>..\packages\MBrace.Core.0.5.0-alpha\lib\net45\MBrace.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Lib">
+      <HintPath>..\packages\MBrace.Core.0.5.0-alpha\lib\net45\MBrace.Lib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Runtime.Base">
+      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Runtime.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Store">
+      <HintPath>..\packages\MBrace.Store.0.5.0-alpha\lib\net45\MBrace.Store.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Utils">
+      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Utils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="Thespian">
+      <HintPath>..\packages\Thespian.0.0.10-alpha\lib\net45\Thespian.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Thespian.Cluster">
+      <HintPath>..\packages\Thespian.0.0.10-alpha\lib\net45\Thespian.Cluster.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UnionArgParser">
+      <HintPath>..\packages\UnionArgParser.0.7.0\lib\net40\UnionArgParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vagrant">
+      <HintPath>..\packages\Vagrant.0.2.3\lib\net45\Vagrant.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

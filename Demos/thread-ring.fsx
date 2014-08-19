@@ -1,15 +1,8 @@
-﻿// Assembly references for intellisense purposes only
-#r "Nessos.MBrace"
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Common"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+﻿#load "../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-#r "../Nessos.MBrace.Lib/bin/Debug/Nessos.MBrace.Lib.dll"
 open Nessos.MBrace.Lib
 open Nessos.MBrace.Lib.Concurrency
 
@@ -70,4 +63,4 @@ let proc = runtime.CreateProcess <@ boot n token @>
 
 runtime.ShowProcessInfo()
 proc.AwaitResult()
-runtime.ShowUserLogs proc.ProcessId
+proc.ShowLogs()
