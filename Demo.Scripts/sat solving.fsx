@@ -148,6 +148,6 @@ let readCNF filename : Cnf * int * int  =
 
 let runtime = MBraceRuntime.InitLocal 4
 
-let f, l, c = readCNF (__SOURCE_DIRECTORY__ + @"\..\Sat-files\aim-50-6_0-yes1-4.cnf")
+let f, l, c = readCNF (__SOURCE_DIRECTORY__ + @"\..\data\Sat-files\aim-50-6_0-yes1-4.cnf")
 
 runtime.Run <@ dpllCloud f @> // None i s false, Some () is true

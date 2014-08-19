@@ -11,8 +11,12 @@ let hello () =
         return "hello, world!"
     }
 
+MBrace.RunLocal <@ hello () @> // local evaluation
+
 // create a local-only runtime
 let runtime = MBrace.InitLocal 4
+//// connect to a booted runtime
+//let runtime = MBrace.Connect "mbrace://host:port"
 
 // upload & execute
 runtime.Run <@ hello () @>

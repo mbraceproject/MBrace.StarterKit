@@ -11,7 +11,7 @@ open Nessos.MBrace.Lib
 //  The idea is to make the StoreProvider point to an existing directory containing
 //  your existing files. This way your files are visible as cloud files.
 
-#r "../bin/Lib.dll"
+#r "../bin/Demo.Lib.dll"
 
 open System
 open System.IO
@@ -60,7 +60,7 @@ let createThumbnails () =
             |> Cloud.Parallel
     }
 
-let path = Path.Combine(__SOURCE_DIRECTORY__ ,  "../Thumbnails")
+let path = Path.Combine(__SOURCE_DIRECTORY__ ,  "../data/Thumbnails")
 let sourceDir = Path.Combine(path, "Images")
 let thumbDir = Path.Combine(path, "Thumbs")
 

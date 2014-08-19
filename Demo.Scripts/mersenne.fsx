@@ -3,7 +3,7 @@
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-#r "../bin/Lib.dll"
+#r "../bin/Demo.Lib.dll"
 
 open System.Numerics
 open Demo.Lib

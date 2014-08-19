@@ -8,10 +8,10 @@
     <ProjectGuid>f85375ae-f4da-4724-a69d-a7763baf03b9</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MBrace.Standalone</RootNamespace>
-    <AssemblyName>MBrace.Standalone</AssemblyName>
+    <AssemblyName>Demo.Standalone</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>Standalone</Name>
-    <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
+    <Name>Demo.Standalone</Name>
+    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
