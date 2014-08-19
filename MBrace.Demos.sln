@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Demos", "Demos\Demos.fsproj", "{7305971B-AD13-43FF-BAF4-1E073D8A45BF}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Nessos.MBrace.Lib", "Nessos.MBrace.Lib\Nessos.MBrace.Lib.fsproj", "{255737AA-9364-4E25-88E1-EC3E3ACC650D}"
