@@ -65,11 +65,11 @@
     <None Include="NonDeterministic\mersenne.fsx" />
     <None Include="NonDeterministic\sat solving.fsx" />
     <None Include="NonDeterministic\wiki-graph-search.fsx" />
+    <None Include="Incremental\kmeans.fsx" />
     <None Include="Runtime\boot.fsx" />
     <None Include="Runtime\logging.fsx" />
     <None Include="Concurrency\fibonacci-memo.fsx" />
     <None Include="Concurrency\thread-ring.fsx" />
-    <None Include="Incremental\kmeans.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

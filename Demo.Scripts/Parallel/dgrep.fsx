@@ -8,7 +8,7 @@ open System.Text.RegularExpressions
 
 // First create cloudseqs from the local files
 // We run the computation using the RunLocal function.
-let files_dir = __SOURCE_DIRECTORY__ +  @"\..\Shakespeare\"
+let files_dir = __SOURCE_DIRECTORY__ +  @"\..\..\data\Shakespeare\"
 
 let cseqs = 
     Directory.GetFiles(files_dir)

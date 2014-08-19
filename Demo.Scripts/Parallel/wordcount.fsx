@@ -39,7 +39,7 @@ open System
 open System.IO
 
 
-let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\data\Shakespeare")
+let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Shakespeare")
 let works = Directory.EnumerateFiles fileSource |> List.ofSeq
 
 let noiseWords = 

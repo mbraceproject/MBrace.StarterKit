@@ -31,7 +31,6 @@ let noiseWords =
 
 open System
 open System.IO
-open Nessos.MBrace.Utils
 
 [<Cloud>]
 let mapCloudTree (paths : string []) =
@@ -70,7 +69,7 @@ let reduceF (left: (string * int) []) (right: (string * int) []) =
 #time
 
 let runtime = MBrace.InitLocal 4
-let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\data\Wikipedia")
+let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Wikipedia")
 let files = Directory.GetFiles(fileSource) |> Seq.toArray
 
 let proc = runtime.CreateProcess <@ mapReduceArray mapCloudTree reduceCloudTree (fun () -> cloud { return! CloudRef.New Empty }) files 2 @>

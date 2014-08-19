@@ -60,7 +60,7 @@ let createThumbnails () =
             |> Cloud.Parallel
     }
 
-let path = Path.Combine(__SOURCE_DIRECTORY__ ,  "../data/Thumbnails")
+let path = Path.Combine(__SOURCE_DIRECTORY__ ,  "../../data/Thumbnails")
 let sourceDir = Path.Combine(path, "Images")
 let thumbDir = Path.Combine(path, "Thumbs")
 
