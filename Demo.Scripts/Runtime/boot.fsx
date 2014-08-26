@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -14,11 +14,17 @@ open Nessos.MBrace.Store
 // place your UNC/local path here
 let store = FileSystemStore.Create "enter a filesystem path"
 
+// set up an azure store
+#I "../../packages/MBrace.Azure.0.5.4-alpha/lib/net45/"
+#r "MBrace.Azure.dll"
+open Nessos.MBrace.Azure
+let azureStore = AzureStore.Create(accountName = "accountName", accountKey = "accountKey")
+
 // sets the default store provider for the client
 MBraceSettings.DefaultStore <- store
 
 // spawn a pair of local nodes
-let localNodes = MBraceNode.SpawnMultiple(nodeCount = 2)
+let localNodes = MBraceNode.SpawnMultiple(nodeCount = 2, store = store)
 
 // connect to remote mbrace nodes
 let remoteNodes = 

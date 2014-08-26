@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Name>Demo.Standalone</Name>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +54,13 @@
     </Otherwise>
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <ItemGroup>
     <Compile Include="Program.fs" />
     <None Include="App.config" />
@@ -62,59 +71,63 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FsPickler">
-      <HintPath>..\packages\FsPickler.0.9.9\lib\net45\FsPickler.dll</HintPath>
+      <HintPath>..\packages\FsPickler.0.9.11\lib\net45\FsPickler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FsPickler.Json">
-      <HintPath>..\packages\FsPickler.Json.0.9.9\lib\net45\FsPickler.Json.dll</HintPath>
+      <HintPath>..\packages\FsPickler.Json.0.9.11\lib\net45\FsPickler.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Client">
-      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Client.dll</HintPath>
+      <HintPath>..\packages\MBrace.Client.0.5.4-alpha\lib\net45\MBrace.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Core">
-      <HintPath>..\packages\MBrace.Core.0.5.0-alpha\lib\net45\MBrace.Core.dll</HintPath>
+      <HintPath>..\packages\MBrace.Core.0.5.4-alpha\lib\net45\MBrace.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Lib">
-      <HintPath>..\packages\MBrace.Core.0.5.0-alpha\lib\net45\MBrace.Lib.dll</HintPath>
+      <HintPath>..\packages\MBrace.Core.0.5.4-alpha\lib\net45\MBrace.Lib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Runtime.Base">
-      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Runtime.Base.dll</HintPath>
+      <HintPath>..\packages\MBrace.Client.0.5.4-alpha\lib\net45\MBrace.Runtime.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Store">
-      <HintPath>..\packages\MBrace.Store.0.5.0-alpha\lib\net45\MBrace.Store.dll</HintPath>
+      <HintPath>..\packages\MBrace.Store.0.5.4-alpha\lib\net45\MBrace.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Utils">
-      <HintPath>..\packages\MBrace.Client.0.5.0-alpha\lib\net45\MBrace.Utils.dll</HintPath>
+      <HintPath>..\packages\MBrace.Client.0.5.4-alpha\lib\net45\MBrace.Utils.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="Thespian">
-      <HintPath>..\packages\Thespian.0.0.10-alpha\lib\net45\Thespian.dll</HintPath>
+      <HintPath>..\packages\Thespian.0.0.11-alpha\lib\net45\Thespian.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Thespian.Cluster">
-      <HintPath>..\packages\Thespian.0.0.10-alpha\lib\net45\Thespian.Cluster.dll</HintPath>
+      <HintPath>..\packages\Thespian.0.0.11-alpha\lib\net45\Thespian.Cluster.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UnionArgParser">
-      <HintPath>..\packages\UnionArgParser.0.7.0\lib\net40\UnionArgParser.dll</HintPath>
+      <HintPath>..\packages\UnionArgParser.0.7.1\lib\net40\UnionArgParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unquote">
+      <HintPath>..\packages\Unquote.2.2.2\lib\net40\Unquote.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vagrant">
-      <HintPath>..\packages\Vagrant.0.2.3\lib\net45\Vagrant.dll</HintPath>
+      <HintPath>..\packages\Vagrant.0.2.5\lib\net45\Vagrant.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

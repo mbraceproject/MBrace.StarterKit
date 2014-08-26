@@ -1,13 +1,15 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx"
+﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 open Nessos.MBrace.Lib
 
-#r "../../bin/Demo.Lib.dll"
+#I "../../bin/"
+#r "Demo.Lib.dll"
 open Demo.Lib
 
 /// naive mapReduce implementation
+
 [<Cloud>]
 let rec mapReduce (mapF: 'T -> Cloud<'R>) 
                   (reduceF: 'R -> 'R -> Cloud<'R>) 
@@ -94,13 +96,8 @@ let runtime = MBrace.InitLocal 4
 let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] works @>
 
 proc.ShowInfo()
-proc.AwaitResult()
 runtime.ShowProcessInfo()
+let results = proc.AwaitResult()
 
-// Excel visualization
-#r "Microsoft.Office.Interop.Excel.dll"
-open Demo.Lib.Excel
-
-let chart = Excel.newChart() // need to open excel and a new spreadsheet before calling
-
-proc.AwaitResult() |> Seq.take 10 |> Excel.draw chart XlChartType.xl3DPie "WordCount" |> ignore
+// visualise results
+results |> Seq.take 5 |> Chart.bar "wordcount"

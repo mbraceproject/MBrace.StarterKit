@@ -1,29 +1,19 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
+open Nessos.MBrace.Lib
 open Nessos.MBrace.Client
 
 open System.IO
 open System.Text.RegularExpressions
-
-// First create cloudseqs from the local files
-// We run the computation using the RunLocal function.
-let files_dir = __SOURCE_DIRECTORY__ +  @"\..\..\data\Shakespeare\"
-
-let cseqs = 
-    Directory.GetFiles(files_dir)
-    |> Seq.take 2
-    |> Seq.toArray
-    |> Array.map (fun file ->
-         cloud { return! CloudSeq.New(File.ReadLines(file)) })
-    |> Array.map MBrace.RunLocal
 
 // This function takes a seq<string> and 
 // returns the lines matching the pattern (slightly modified),
 // as well as the line number (starting from 0 of course ;-) )
 // A CloudSeq is used to return the result.
 [<Cloud>]
-let grep (pattern : string) (text : seq<string>) = cloud {
+let grep (pattern : string) (file : ICloudFile) = cloud {
+    let! text = CloudFile.ReadLines file
     let is_match line = Regex.IsMatch(line, pattern)
     let highlight line = Regex.Replace(line, pattern, sprintf "*%s*" (pattern.ToUpper()))
     return!
@@ -35,17 +25,29 @@ let grep (pattern : string) (text : seq<string>) = cloud {
 
 // Orchestrate the cloud execution; simple map
 [<Cloud>]
-let run (cseqs : #seq<string> []) (pattern : string) =
+let run (files : ICloudFile []) (pattern : string) =
   cloud {
-    return! cseqs |> Array.map (fun s -> 
-                        cloud { return! grep pattern s })
-                  |> Cloud.Parallel
+    return! 
+        files
+        |> Array.map (fun s -> cloud { return! grep pattern s })
+        |> Cloud.Parallel
   }
-
 
 let runtime = MBraceRuntime.InitLocal 4
 
-let ps = runtime.CreateProcess <@ run cseqs " king" @>
+// First create cloudseqs from the local files
+// We run the computation using the RunLocal function.
+let source = __SOURCE_DIRECTORY__ +  @"\..\..\data\Shakespeare\"
+let files = 
+    Directory.GetFiles source
+    |> Seq.take 5
+    |> Seq.toArray
+
+// upload files to store
+let client = runtime.GetStoreClient()
+let cFiles = client.UploadFiles files
+
+let ps = runtime.CreateProcess <@ run cFiles " king" @>
 
 ps.ShowInfo()
 

@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx"
+﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -6,13 +6,19 @@ open Nessos.MBrace.Client
 open Nessos.MBrace.Lib
 open Nessos.MBrace.Lib.MapReduce
 
+#r "../../bin/Demo.Lib.dll"
+open Demo.Lib
+
+open System
+open System.IO
+
 // An implementation of the mapReduce function (see wordcount example).
 // Uses somewhat dynamic parallelism. It spawns a number of cloud computations proportional to the
 // number of the workers, and then creates some async computations (proportional to the number of
 // hardware threads on a machine). Finally the execution is sequential.
 
 let noiseWords = 
-    seq [
+    set [
         "a"; "about"; "above"; "all"; "along"; "also"; "although"; "am"; "an"; "any"; "are"; "aren't"; "as"; "at";
         "be"; "because"; "been"; "but"; "by"; "can"; "cannot"; "could"; "couldn't"; "did"; "didn't"; "do"; "does"; 
         "doesn't"; "e.g."; "either"; "etc"; "etc."; "even"; "ever";"for"; "from"; "further"; "get"; "gets"; "got"; 
@@ -26,53 +32,46 @@ let noiseWords =
         "which"; "while"; "who"; "whom"; "whose"; "why"; "with"; "without"; "would"; "you"; "your" ; "have"; "thou"; "will"; 
         "shall"
     ]
-    |> fun words -> new Set<string>(words)
 
-
-open System
-open System.IO
+// map function
 
 [<Cloud>]
-let mapCloudTree (paths : string []) =
+let mapF (file : ICloudFile) =
     cloud {
-        let texts = paths |> Array.map (fun path -> File.ReadAllText (path))
-        return! CloudRef.New <| Leaf texts
+        let! text = CloudFile.ReadAllText file
+        let words = text.Split([|' '; '.'; ','|], StringSplitOptions.RemoveEmptyEntries)
+        let wordRegex = new System.Text.RegularExpressions.Regex("^[a-zA-Z]*$")
+        return 
+            words
+            |> Seq.map (fun word -> word.Trim().ToLower())
+            |> Seq.filter (fun word -> Seq.length word > 3 && wordRegex.IsMatch word && not <| noiseWords.Contains word)
+            |> Seq.groupBy id
+            |> Seq.map (fun (key, values) -> (key, values |> Seq.length))
+            |> Seq.toArray
     }
+
+// reduce function
+
 [<Cloud>]
-let reduceCloudTree (left : ICloudRef<CloudTree<'T>>) (right : ICloudRef<CloudTree<'T>>) =
-    cloud {
-        return! CloudRef.New <| Branch (left, right)
-    }
-
-
-let mapF (texts : string[]) =
-        let words = texts |> Array.map (fun text -> text.Split([|' '; '.'; ','|], StringSplitOptions.RemoveEmptyEntries)) |> Seq.concat
-        words
-        |> Seq.map (fun word -> word.ToLower())
-        |> Seq.map (fun t -> t.Trim())
-        |> Seq.filter (fun word -> Seq.length word > 3 && not <| noiseWords.Contains(word) )
-        |> Seq.groupBy id
-        |> Seq.map (fun (key, values) -> (key, values |> Seq.length))
-        |> Seq.sortBy (fun (_,t) -> -t)
-        |> Seq.toArray
-    
-
-
 let reduceF (left: (string * int) []) (right: (string * int) []) = 
-    Seq.append left right 
-    |> Seq.groupBy fst 
-    |> Seq.map (fun (key, value) -> (key, value |> Seq.sumBy snd ))
-    |> Seq.sortBy (fun (_,t) -> -t)
-    |> Seq.toArray
-
-
-#time
+    cloud {
+        return 
+            Seq.append left right 
+            |> Seq.groupBy fst 
+            |> Seq.map (fun (key, value) -> (key, value |> Seq.sumBy snd ))
+            |> Seq.sortBy (fun (_,t) -> -t)
+            |> Seq.toArray
+    }
 
 let runtime = MBrace.InitLocal 4
-let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Wikipedia")
-let files = Directory.GetFiles(fileSource) |> Seq.toArray
 
-let proc = runtime.CreateProcess <@ mapReduceArray mapCloudTree reduceCloudTree (fun () -> cloud { return! CloudRef.New Empty }) files 2 @>
+// data source is an array of local CloudFiles
+let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Wikipedia")
+let files = Directory.GetFiles fileSource |> Seq.toArray
+
+// upload local files to runtime
+let client = runtime.GetStoreClient()
+let cloudFiles = client.UploadFiles files
+
+let proc = runtime.CreateProcess <@ Seq.mapReduce mapF reduceF (fun () -> cloud { return [||] }) cloudFiles @>
 let result = proc.AwaitResult()
-let proc' = runtime.CreateProcess <@ mapReduceCloudTree (Cloud.lift mapF) (Cloud.lift2 reduceF) (fun () -> cloud { return [||] }) result @>
-let result' = proc'.AwaitResult()

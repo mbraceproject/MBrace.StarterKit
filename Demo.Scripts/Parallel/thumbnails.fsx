@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.0-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -45,14 +45,14 @@ let create (bytes : byte []) =
 [<Cloud>]
 let createThumbnail (file : ICloudFile) = cloud {
         let! bytes = CloudFile.ReadAllBytes(file)
-        return! CloudFile.Create("Thumbs", file.Name, (fun ds -> let s = create bytes in Stream.AsyncCopy(s, ds) ))
+        return! CloudFile.New("Thumbs", file.Name, (fun ds -> let s = create bytes in Stream.AsyncCopy(s, ds) ))
     }
 
 [<Cloud>]
 let createThumbnails () = 
     cloud {
         // list all files
-        let! sourceImages = CloudFile.GetFilesInContainer "Images"
+        let! sourceImages = CloudFile.Enumerate "Images"
 
         return!
             sourceImages 
