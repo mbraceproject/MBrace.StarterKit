@@ -64,6 +64,9 @@
   </Target>
   <ItemGroup>
     <None Include="hello world.fsx" />
+    <None Include="Runtime\boot.fsx" />
+    <None Include="Runtime\azure.fsx" />
+    <None Include="Runtime\logging.fsx" />
     <None Include="Parallel\wordcount.fsx" />
     <None Include="Parallel\wikipedia.fsx" />
     <None Include="Parallel\dgrep.fsx" />
@@ -74,9 +77,6 @@
     <None Include="NonDeterministic\sat solving.fsx" />
     <None Include="NonDeterministic\wiki-graph-search.fsx" />
     <None Include="Incremental\kmeans.fsx" />
-    <None Include="Runtime\boot.fsx" />
-    <None Include="Runtime\azure.fsx" />
-    <None Include="Runtime\logging.fsx" />
     <None Include="Concurrency\fibonacci-memo.fsx" />
     <None Include="Concurrency\thread-ring.fsx" />
     <Content Include="packages.config" />
