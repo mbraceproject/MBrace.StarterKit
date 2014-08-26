@@ -3,20 +3,19 @@
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
+//  Wikipedia wordcount
+//
+//  Performs wordcount computation on a downloaded wikipedia dataset.
+//  Makes use of CloudFiles and the Library MapReduce implementation.
+//
+
 open Nessos.MBrace.Lib
 open Nessos.MBrace.Lib.MapReduce
-
-#r "../../bin/Demo.Lib.dll"
-open Demo.Lib
 
 open System
 open System.IO
 
-// An implementation of the mapReduce function (see wordcount example).
-// Uses somewhat dynamic parallelism. It spawns a number of cloud computations proportional to the
-// number of the workers, and then creates some async computations (proportional to the number of
-// hardware threads on a machine). Finally the execution is sequential.
-
+/// words ignored by wordcount
 let noiseWords = 
     set [
         "a"; "about"; "above"; "all"; "along"; "also"; "although"; "am"; "an"; "any"; "are"; "aren't"; "as"; "at";
@@ -33,8 +32,7 @@ let noiseWords =
         "shall"
     ]
 
-// map function
-
+/// map function: reads a CloudFile from given path and computes its wordcount
 [<Cloud>]
 let mapF (file : ICloudFile) =
     cloud {
@@ -50,8 +48,7 @@ let mapF (file : ICloudFile) =
             |> Seq.toArray
     }
 
-// reduce function
-
+/// reduce function : combines two wordcount frequencies.
 [<Cloud>]
 let reduceF (left: (string * int) []) (right: (string * int) []) = 
     cloud {

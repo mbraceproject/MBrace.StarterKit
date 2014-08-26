@@ -63,10 +63,10 @@
 
         /// general Miller-Rabin primality test
         let isPrime (n : BigInteger) =
-                if n <= lastSample then
-                    bases |> Array.exists ((=) n)
-                else
-                    millerRabinTest bases n
+            if n <= lastSample then
+                bases |> Array.exists ((=) n)
+            else
+                millerRabinTest bases n
 
         // trial division; true => input is composite
         let trialDivision =
@@ -95,7 +95,7 @@
 
             s = 0I
 
-        // the actual test algorithm
+        /// Lucas - Lehmer Mersenne primality checker
         let isMersennePrime (p : int) =
             if not <| isPrime (bigint p) then false
             else

@@ -9,16 +9,9 @@ open Nessos.MBrace.Store
 //  be initialized given a collection of MBrace nodes
 //
 
-
 // a distributed runtime requires a shared store provider
 // place your UNC/local path here
 let store = FileSystemStore.Create "enter a filesystem path"
-
-// set up an azure store
-#I "../../packages/MBrace.Azure.0.5.4-alpha/lib/net45/"
-#r "MBrace.Azure.dll"
-open Nessos.MBrace.Azure
-let azureStore = AzureStore.Create(accountName = "accountName", accountKey = "accountKey")
 
 // sets the default store provider for the client
 MBraceSettings.DefaultStore <- store

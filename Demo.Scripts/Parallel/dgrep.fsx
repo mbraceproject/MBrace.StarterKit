@@ -4,53 +4,55 @@ open Nessos.MBrace
 open Nessos.MBrace.Lib
 open Nessos.MBrace.Client
 
+//  Distributed Grep
+//
+//  Implements a distributed Grep-like workflow that operates on collections of files.
+//  A collection of Cloud sequences containing the mathing occurrences is returned.
+
 open System.IO
 open System.Text.RegularExpressions
 
-// This function takes a seq<string> and 
-// returns the lines matching the pattern (slightly modified),
-// as well as the line number (starting from 0 of course ;-) )
-// A CloudSeq is used to return the result.
+#I "../../bin/"
+#r "Demo.Lib.dll"
+open Demo.Lib
+
+/// grep a single file
 [<Cloud>]
-let grep (pattern : string) (file : ICloudFile) = cloud {
+let grepSingle (pattern : string) (file : ICloudFile) = cloud {
+    let name = file.Name
     let! text = CloudFile.ReadLines file
-    let is_match line = Regex.IsMatch(line, pattern)
-    let highlight line = Regex.Replace(line, pattern, sprintf "*%s*" (pattern.ToUpper()))
+    let regex = new Regex(pattern)
     return!
-        text |> Seq.mapi (fun i l -> i,l)
-             |> Seq.filter (snd >> is_match)
-             |> Seq.map (fun (i,l) -> i, (highlight l).Trim())
-             |> CloudSeq.New
+        text 
+        |> Seq.mapi (fun i l -> (i,l))
+        |> Seq.filter (snd >> regex.IsMatch)
+        |> Seq.map (fun (i,l) -> sprintf "%s(%d):\t%s" name i l)
+        |> CloudSeq.New
     }
 
-// Orchestrate the cloud execution; simple map
+/// Grep multiple files
 [<Cloud>]
-let run (files : ICloudFile []) (pattern : string) =
-  cloud {
-    return! 
-        files
-        |> Array.map (fun s -> cloud { return! grep pattern s })
-        |> Cloud.Parallel
-  }
+let grep (files : ICloudFile []) (pattern : string) = cloud {
+    // granularity: files to be split into chunks of 5 in each job sent to workers
+    return! Combinators.chunkMap (grepSingle pattern) 5 files
+}
 
 let runtime = MBraceRuntime.InitLocal 4
 
 // First create cloudseqs from the local files
 // We run the computation using the RunLocal function.
 let source = __SOURCE_DIRECTORY__ +  @"\..\..\data\Shakespeare\"
-let files = 
-    Directory.GetFiles source
-    |> Seq.take 5
-    |> Seq.toArray
+let files = Directory.GetFiles source |> Seq.toArray
 
 // upload files to store
 let client = runtime.GetStoreClient()
 let cFiles = client.UploadFiles files
 
-let ps = runtime.CreateProcess <@ run cFiles " king" @>
+// look for sentences ending in -king.
+let ps = runtime.CreateProcess <@ grep cFiles "king\." @>
 
 ps.ShowInfo()
 
 ps.AwaitResult()
 |> Seq.concat
-|> Seq.iter (fun (i,l) -> printfn "%i\t%s" i l)
+|> Seq.iter (printfn "%s")

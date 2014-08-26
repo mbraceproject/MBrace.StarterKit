@@ -2,48 +2,51 @@
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
-open Nessos.MBrace.Lib
+
+//  MapReduce example
+//
+//  Provides a simplistic divide-and-conquer distributed MapReduce implementation 
+//  using cloud workflows and the binary parallel decomposition operator (<||>).
+//  This implementation is relatively naive since:
+//
+//      * Data is captured in closures and passed around continually between workers.
+//      * Cluster size and multicore capacity of worker nodes not taken into consideration.
+//  
+//  For improved MapReduce implementations, please refer to the MBrace.Lib assembly.
+//
+
 
 #I "../../bin/"
 #r "Demo.Lib.dll"
 open Demo.Lib
 
-/// naive mapReduce implementation
-
 [<Cloud>]
-let rec mapReduce (mapF: 'T -> Cloud<'R>) 
-                  (reduceF: 'R -> 'R -> Cloud<'R>) 
-                  (identity: 'R) 
-                  (input: 'T list) =
-    cloud {
+let mapReduce (mapF: 'T -> Cloud<'R>) 
+                (reduceF: 'R -> 'R -> Cloud<'R>)
+                (identity: 'R) (input: 'T list) =
+
+    let rec aux input = cloud {
         match input with
         | [] -> return identity
         | [value] -> return! mapF value
         | _ ->
-            let firstHalf, secondHalf = List.split input
-
-            // (<||>) : Cloud<'a> -> Cloud<'b> -> Cloud<'a * 'b>
-            //  mbrace's binary parallel decomposition operator
-            let! first, second =
-                (mapReduce mapF reduceF identity firstHalf)
-                  <||> (mapReduce mapF reduceF identity secondHalf)
-
-            return! reduceF first second
+            let left, right = List.split input
+            let! r1, r2 = aux left <||> aux right
+            return! reduceF r1 r2
     }
+
+    aux input
 
 
 
 //
-//  mapReduce example : Shakespeare word count
+//  Example : wordcount on the works of Shakespeare.
 //
 
 open System
 open System.IO
 
-
-let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Shakespeare")
-let works = Directory.EnumerateFiles fileSource |> List.ofSeq
-
+/// words ignored by wordcount
 let noiseWords = 
     set [
         "a"; "about"; "above"; "all"; "along"; "also"; "although"; "am"; "an"; "any"; "are"; "aren't"; "as"; "at";
@@ -60,8 +63,7 @@ let noiseWords =
         "shall"
     ]
 
-// map function
-
+/// map function: reads file from given path and computes its wordcount
 [<Cloud>]
 let mapF (path : string) =
     cloud {
@@ -77,8 +79,7 @@ let mapF (path : string) =
             |> Seq.toArray
     }
 
-// reduce function
-
+/// reduce function : combines two wordcount frequencies.
 [<Cloud>]
 let reduceF (left: (string * int) []) (right: (string * int) []) = 
     cloud {
@@ -93,11 +94,15 @@ let reduceF (left: (string * int) []) (right: (string * int) []) =
 
 let runtime = MBrace.InitLocal 4
 
+// fetch files from the data source
+let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Shakespeare")
+let works = Directory.EnumerateFiles fileSource |> List.ofSeq
+
+// start a cloud process
 let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] works @>
 
 proc.ShowInfo()
 runtime.ShowProcessInfo()
 let results = proc.AwaitResult()
 
-// visualise results
-results |> Seq.take 5 |> Chart.bar "wordcount"
+results |> Seq.take 6 |> Chart.bar "wordcount" // visualise results

@@ -75,6 +75,7 @@
     <None Include="NonDeterministic\wiki-graph-search.fsx" />
     <None Include="Incremental\kmeans.fsx" />
     <None Include="Runtime\boot.fsx" />
+    <None Include="Runtime\azure.fsx" />
     <None Include="Runtime\logging.fsx" />
     <None Include="Concurrency\fibonacci-memo.fsx" />
     <None Include="Concurrency\thread-ring.fsx" />
