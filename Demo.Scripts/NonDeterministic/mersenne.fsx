@@ -8,7 +8,8 @@ open Nessos.MBrace.Client
 //  a Mersenne prime is a number of the form 2^p - 1 that is prime
 //  the library defines a simple checker that uses the Lucas-Lehmer test
 
-#r "../../bin/Demo.Lib.dll"
+#I "../../bin"
+#r "Demo.Lib.dll"
 
 open Demo.Lib
 
@@ -23,7 +24,7 @@ tryFindMersenneSeq [| 2500 .. 3500 |]
 
 let runtime = MBrace.InitLocal 4
 
-let proc = runtime.CreateProcess <@ Combinators.tryFind Primality.isMersennePrime 20 [|2500 .. 3500|] @>
+let proc = runtime.CreateProcess <@ Combinators.tryFind Primality.isMersennePrime 100 [|2500 .. 3500|] @>
 
 proc
 
