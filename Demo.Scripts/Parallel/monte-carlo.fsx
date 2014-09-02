@@ -6,39 +6,18 @@ open Nessos.MBrace.Client
 // Calculates pi using the Monte Carlo method
 
 open System
-open System.IO
 open System.Numerics
-open System.Security.Cryptography
-
-type RandomNumberGenerator(bufsize : int) =
-    let bufsize = bufsize * 4
-    let buf = Array.zeroCreate<byte> bufsize
-    let mutable i = 0
-    let rng = new RNGCryptoServiceProvider()
-
-    do rng.GetBytes buf
-
-    member __.Next () =
-        // buffer exhausted, refill
-        if i = bufsize then
-            do rng.GetBytes buf
-            i <- 0
-
-        let n = (int buf.[i]) ||| (int buf.[i+1] <<< 8) ||| (int buf.[i+2] <<< 16) ||| (int buf.[i+3] <<< 24)
-        i <- i + 4
-        n
 
 // the classic monte carlo implementation
 // take random points and see of they are inside the circle or not
 let monteCarloPiWorker (iterations : bigint) =
-//    let rng = new System.Random()
-    let rng = new RandomNumberGenerator (bufsize = 256)
+    let rng = new System.Random()
 
     // the actual test for a single point
     let inline checkNextSample () =
         let r = int64 Int32.MaxValue
-        let x = int64 (rng.Next())
-        let y = int64 (rng.Next())
+        let x = int64 <| rng.Next()
+        let y = int64 <| rng.Next()
         x * x + y * y <= r * r
 
     // iterates through native ints for performance
@@ -96,7 +75,7 @@ let calculatePi (iterations : bigint) (digits : int) : Cloud<string> =
 
 // test
 
-let runtime = MBrace.InitLocal 6
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // run for 1000000000 iterations and get 10 digits
 runtime.Run <@ calculatePi 1000000000I 10 @>

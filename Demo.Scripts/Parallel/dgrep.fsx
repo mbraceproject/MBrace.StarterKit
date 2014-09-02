@@ -37,7 +37,7 @@ let grep (files : ICloudFile []) (pattern : string) = cloud {
     return! Combinators.chunkMap (grepSingle pattern) 5 files
 }
 
-let runtime = MBraceRuntime.InitLocal 4
+let runtime = MBraceRuntime.InitLocal(totalNodes = 4)
 
 // First create cloudseqs from the local files
 // We run the computation using the RunLocal function.

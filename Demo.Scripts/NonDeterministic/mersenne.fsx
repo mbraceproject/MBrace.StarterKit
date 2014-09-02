@@ -22,7 +22,7 @@ tryFindMersenneSeq [| 2500 .. 3500 |]
 
 // MBrace Mersenne prime search
 
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 let proc = runtime.CreateProcess <@ Combinators.tryFind Primality.isMersennePrime 100 [|2500 .. 3500|] @>
 

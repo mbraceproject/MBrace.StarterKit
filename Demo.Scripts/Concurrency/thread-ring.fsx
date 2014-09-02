@@ -54,7 +54,7 @@ let boot (n : int) (t : int) =
             |> Cloud.Ignore
     }
 
-let runtime = MBrace.InitLocal 8
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 let n = 7          // number of 'actors'
 let token = 1000   // initial token value, number of hops

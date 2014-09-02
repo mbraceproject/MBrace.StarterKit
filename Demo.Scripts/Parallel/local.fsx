@@ -7,7 +7,7 @@ open Nessos.MBrace.Client
 // mixing.
 
 // Create a runtime for testing.
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // Test the Cloud.Sleep function.
 // Write a (cloud) log 10 times with 1 sec interval.

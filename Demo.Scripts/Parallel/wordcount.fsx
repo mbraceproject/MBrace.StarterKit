@@ -92,7 +92,7 @@ let reduceF (left: (string * int) []) (right: (string * int) []) =
     }
 
 
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // fetch files from the data source
 let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Shakespeare")

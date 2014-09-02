@@ -27,7 +27,7 @@ let rec fibs () =
         string
         (fun n -> fib (fibs ()) n)
 
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // Calculate and memoize the first 22 Fibonacci numbers.
 let proc = runtime.CreateProcess <@ cloud { return! fibs () 22 } @>

@@ -14,7 +14,7 @@ let hello () =
 MBrace.RunLocal <@ hello () @> // local evaluation
 
 // create a local-only runtime
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 //// connect to a booted runtime
 //let runtime = MBrace.Connect "mbrace://host:port"
 

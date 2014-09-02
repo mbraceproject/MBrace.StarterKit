@@ -156,7 +156,7 @@ let main root target = cloud {
 }
 
 
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 runtime.Run <@ main "http://en.wikipedia.org/wiki/Fsharp"
                     "http://en.wikipedia.org/wiki/Science" @>

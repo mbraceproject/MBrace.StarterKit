@@ -60,7 +60,7 @@ let reduceF (left: (string * int) []) (right: (string * int) []) =
             |> Seq.toArray
     }
 
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // data source is an array of local CloudFiles
 let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Wikipedia")

@@ -17,7 +17,7 @@ let log i = cloud {
 MBrace.RunLocal(log 0, showLogs = true)
 
 // run remotely
-let runtime = MBrace.InitLocal 3
+let runtime = MBrace.InitLocal(totalNodes = 3)
 
 let proc = runtime.CreateProcess <@ log 0 @>
 proc.ShowLogs()

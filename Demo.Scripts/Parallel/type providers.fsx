@@ -7,7 +7,7 @@ open Nessos.MBrace.Client
 
 open FSharp.Data
 
-let runtime = MBrace.InitLocal 3
+let runtime = MBrace.InitLocal(totalNodes = 3)
 
 [<Cloud>]
 let atmCount () = cloud {

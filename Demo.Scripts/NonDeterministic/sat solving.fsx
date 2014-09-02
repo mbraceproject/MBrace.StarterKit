@@ -146,7 +146,7 @@ let readCNF filename : Cnf * int * int  =
                           |> Set.ofArray)
     |> List.ofSeq :> _, l , c
 
-let runtime = MBraceRuntime.InitLocal 4
+let runtime = MBraceRuntime.InitLocal(totalNodes = 4)
 
 let f, l, c = readCNF (__SOURCE_DIRECTORY__ + @"\..\..\data\Sat-files\aim-50-6_0-yes1-4.cnf")
 

@@ -163,7 +163,7 @@ let centroids =
     |> Seq.take k
     |> Seq.toArray
 
-let runtime = MBrace.InitLocal 3
+let runtime = MBrace.InitLocal(totalNodes = 3)
 
 let proc = runtime.CreateProcess <@ kmeans refs centroids 0 @>
 

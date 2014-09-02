@@ -73,7 +73,7 @@ MBraceSettings.DefaultStore <- FileSystemStore.Create path
 // runtime you need to either change the mbraced.exe configuration and restart
 // or just kill you current runtime and initialize a new one.
 // the new store configuration will be used by the new runtime.
-let runtime = MBrace.InitLocal 4
+let runtime = MBrace.InitLocal(totalNodes = 4)
 
 let ps = runtime.CreateProcess <@ createThumbnails () @>
 
