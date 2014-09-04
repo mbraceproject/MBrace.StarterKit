@@ -21,21 +21,21 @@ open Nessos.MBrace.Client
 open Demo.Lib
 
 [<Cloud>]
-let mapReduce (mapF: 'T -> Cloud<'R>) 
-                (reduceF: 'R -> 'R -> Cloud<'R>)
-                (identity: 'R) (input: 'T list) =
-
-    let rec aux input = cloud {
+let rec mapReduce (mapF: 'T -> Cloud<'R>) 
+                    (reduceF: 'R -> 'R -> Cloud<'R>)
+                    (id : 'R) (input: 'T list) =         
+    cloud {
         match input with
-        | [] -> return identity
+        | [] -> return id
         | [value] -> return! mapF value
         | _ ->
             let left, right = List.split input
-            let! r1, r2 = aux left <||> aux right
+            let! r1, r2 = 
+                (mapReduce mapF reduceF id left)
+                    <||> 
+                (mapReduce mapF reduceF id right)
             return! reduceF r1 r2
     }
-
-    aux input
 
 
 
