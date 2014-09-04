@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.4-alpha/bootstrap.fsx"
+﻿#load "../../packages/MBrace.Runtime.0.5.5-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
