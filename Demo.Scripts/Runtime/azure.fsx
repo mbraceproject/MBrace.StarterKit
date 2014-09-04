@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.5-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.6-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -8,7 +8,7 @@ open Nessos.MBrace.Store
 //
 //  Please refer to http://nessos.github.io/MBrace/azure-tutorial.html for more information
 
-#I "../../packages/MBrace.Azure.0.5.5-alpha/lib/net45/"
+#I "../../packages/MBrace.Azure.0.5.6-alpha/lib/net45/"
 #r "MBrace.Azure.dll"
 
 open Nessos.MBrace.Azure

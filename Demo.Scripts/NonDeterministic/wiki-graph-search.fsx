@@ -1,5 +1,5 @@
 ﻿// Assembly references for intellisense purposes only
-#load "../../packages/MBrace.Runtime.0.5.5-alpha/bootstrap.fsx"
+#load "../../packages/MBrace.Runtime.0.5.6-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
