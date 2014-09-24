@@ -1,9 +1,5 @@
 ﻿// BEGIN PREAMBLE -- do not evaluate, for intellisense only
-#r "Nessos.MBrace.Utils"
-#r "Nessos.MBrace.Actors"
-#r "Nessos.MBrace.Base"
-#r "Nessos.MBrace.Store"
-#r "Nessos.MBrace.Client"
+#load "../packages/MBrace.Runtime.0.5.6-alpha/bootstrap.fsx" 
 
 // END OF PREAMBLE
 
