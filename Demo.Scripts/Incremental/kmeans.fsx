@@ -120,17 +120,19 @@ let createFiles intArray folder =
     for i in intArray do
         let r = System.Random(i);
 
-        use tw = new StreamWriter(Path.Combine(folder, string i + ".txt"), false, Encoding.GetEncoding(1252)) in
-            [|1..64|]
-            |> Seq.map (fun _ ->
-                let b = StringBuilder()
+        use tw = new StreamWriter(Path.Combine(folder, string i + ".txt")) 
+        [|1..64|]
+        |> Seq.map (fun _ ->
+            let b = StringBuilder()
 
-                [|1..40000|]
-                |> Seq.iter (fun _ -> b.Append(r.NextDouble() * 40.0 - 20.0).Append(" ") |> ignore)
+            [|1..40000|]
+            |> Seq.iter (fun _ -> b.Append(r.NextDouble() * 40.0 - 20.0).Append(" ") |> ignore)
     
-                b.ToString()
-            )
-            |> Seq.iter tw.WriteLine
+            b.ToString()
+        )
+        |> Seq.iter tw.WriteLine
+        tw.Flush()
+        tw.Close()
 
 Directory.CreateDirectory(folder)
 createFiles [|1..fileno|] folder
@@ -150,8 +152,7 @@ let refs =
         Array.map (fun i ->
             Path.Combine(folder, sprintf "%d.txt" i)
             |> parseFile
-            |> CloudSeq.New
-            |> MBrace.RunLocal
+            |> StoreClient.Default.CreateCloudSeq
         )
     )
     |> Array.concat
