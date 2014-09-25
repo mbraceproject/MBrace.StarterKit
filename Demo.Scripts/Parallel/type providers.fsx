@@ -1,9 +1,9 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.6-alpha/bootstrap.fsx" 
+﻿#load "../../packages/MBrace.Runtime.0.5.7-alpha/bootstrap.fsx" 
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
 
-#r "../../packages/FSharp.Data.2.0.10/lib/net40/FSharp.Data.dll"
+#r "../../packages/FSharp.Data.2.0.15/lib/net40/FSharp.Data.dll"
 
 open FSharp.Data
 
