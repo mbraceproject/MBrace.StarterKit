@@ -2,6 +2,7 @@
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
+open Nessos.MBrace.Lib
 
 //  MapReduce example
 //
@@ -63,11 +64,11 @@ let noiseWords =
         "shall"
     ]
 
-/// map function: reads file from given path and computes its wordcount
+/// map function: reads cloud file and computes its wordcount
 [<Cloud>]
-let mapF (path : string) =
+let mapF (file : ICloudFile) =
     cloud {
-        let text = System.IO.File.ReadAllText(path)
+        let! text = CloudFile.ReadAllText file
         let words = text.Split([|' '; '.'; ','|], StringSplitOptions.RemoveEmptyEntries)
         return 
             words
@@ -96,10 +97,14 @@ let runtime = MBrace.InitLocal(totalNodes = 4)
 
 // fetch files from the data source
 let fileSource = Path.Combine(__SOURCE_DIRECTORY__, @"..\..\data\Shakespeare")
-let works = Directory.EnumerateFiles fileSource |> List.ofSeq
+let files = Directory.EnumerateFiles fileSource |> Array.ofSeq
+
+// upload cloud files to runtime store
+let client = runtime.GetStoreClient()
+let cloudFiles = client.UploadFiles files |> List.ofArray
 
 // start a cloud process
-let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] works @>
+let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] cloudFiles @>
 
 proc.ShowInfo()
 runtime.ShowProcessInfo()
