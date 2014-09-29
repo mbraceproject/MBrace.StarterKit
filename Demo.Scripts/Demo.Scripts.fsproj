@@ -69,6 +69,7 @@
     <None Include="Runtime\logging.fsx" />
     <None Include="Parallel\type providers.fsx" />
     <None Include="Parallel\wordcount.fsx" />
+    <None Include="Parallel\Shakespeare.fsx" />
     <None Include="Parallel\wikipedia.fsx" />
     <None Include="Parallel\dgrep.fsx" />
     <None Include="Parallel\thumbnails.fsx" />
