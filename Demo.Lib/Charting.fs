@@ -1,9 +1,5 @@
 ﻿namespace Demo.Lib
 
-    open System
-    open System.Drawing
-    open System.Windows.Forms.DataVisualization.Charting
-
     open FSharp.Charting
 
     module Chart =

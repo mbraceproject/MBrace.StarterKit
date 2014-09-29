@@ -12,7 +12,12 @@
 
         [<RequireQualifiedAccess>]
         module List =
-            /// split list at given length
+
+            /// <summary>
+            ///     split list at given length
+            /// </summary>
+            /// <param name="n">splitting point.</param>
+            /// <param name="xs">input list.</param>
             let splitAt n (xs : 'a list) =
                 let rec splitter n (left : 'a list) right =
                     match n, right with
@@ -21,12 +26,20 @@
 
                 splitter n [] xs
 
-            /// split list in half
+            /// <summary>
+            ///     split list in half
+            /// </summary>
+            /// <param name="xs">input list</param>
             let split (xs : 'a list) = splitAt (xs.Length / 2) xs
 
         [<RequireQualifiedAccess>]
         module Array =
-            /// partitions an array into chunks of given size
+
+            /// <summary>
+            ///     partitions an array into chunks of given size
+            /// </summary>
+            /// <param name="chunkSize">chunk size.</param>
+            /// <param name="input">Input array.</param>
             let partition chunkSize (input : 'T []) =
                 let q, r = input.Length / chunkSize , input.Length % chunkSize
                 [|

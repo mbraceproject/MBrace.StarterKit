@@ -2,7 +2,6 @@
 
     module Primality =
 
-        open System
         open System.Numerics
 
         let naivePrimeTest (n : int) =
