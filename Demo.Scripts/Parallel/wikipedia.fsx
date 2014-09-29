@@ -19,11 +19,10 @@ open Wordcount
 
 /// map function: reads a CloudFile from given path and computes its wordcount
 [<Cloud>]
-let mapF (file : ICloudFile) =
-    cloud {
-        let! text = CloudFile.ReadAllText file
-        return WordCount.compute text
-    }
+let mapF (file : ICloudFile) = cloud {
+    let! text = CloudFile.ReadAllText file
+    return WordCount.compute text
+}
 
 /// reduce function : combines two wordcount frequencies.
 [<Cloud>]
