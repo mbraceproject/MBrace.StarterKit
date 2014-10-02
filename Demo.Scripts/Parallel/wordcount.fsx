@@ -45,6 +45,7 @@ let rec mapReduce (mapF: 'T -> Cloud<'R>)
 
 open System
 open System.IO
+open System.Text.RegularExpressions
 
 /// words ignored by wordcount
 let noiseWords = 
@@ -63,12 +64,16 @@ let noiseWords =
         "shall"
     ]
 
+let splitWords =
+    let regex = new Regex(@"[\W]+", RegexOptions.Compiled)
+    fun word -> regex.Split(word)
+
 /// map function: reads file from given path and computes its wordcount
 [<Cloud>]
 let mapF (path : string) =
     cloud {
         let text = System.IO.File.ReadAllText(path)
-        let words = text.Split([|' '; '.'; ','|], StringSplitOptions.RemoveEmptyEntries)
+        let words = splitWords text
         return 
             words
             |> Seq.map (fun word -> word.ToLower())
