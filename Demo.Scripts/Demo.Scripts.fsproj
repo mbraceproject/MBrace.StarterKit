@@ -70,6 +70,7 @@
     <None Include="Parallel\type providers.fsx" />
     <None Include="Parallel\wordcount.fsx" />
     <None Include="Parallel\Shakespeare.fsx" />
+    <None Include="Parallel\CloudStream.fsx" />
     <None Include="Parallel\wikipedia.fsx" />
     <None Include="Parallel\dgrep.fsx" />
     <None Include="Parallel\thumbnails.fsx" />
@@ -94,6 +95,14 @@
     </Reference>
     <Reference Include="MBrace.Azure">
       <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\MBrace.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Core">
+      <HintPath>..\packages\MBrace.Core.0.5.7-alpha\lib\net45\MBrace.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MBrace.Lib">
+      <HintPath>..\packages\MBrace.Core.0.5.7-alpha\lib\net45\MBrace.Lib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Store">
@@ -123,6 +132,14 @@
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Streams.Cloud">
+      <HintPath>..\packages\Streams.Cloud.0.1.0-alpha\lib\Streams.Cloud.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Streams.Core">
+      <HintPath>..\packages\Streams.0.2.0\lib\Streams.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

@@ -11,6 +11,16 @@
                 task.ContinueWith ignore |> Async.AwaitTask
 
         [<RequireQualifiedAccess>]
+        module CloudArray =
+            
+            /// <summary>
+            ///     Composes a collection of distributed cloud arrays into one
+            /// </summary>
+            /// <param name="ts"></param>
+            let inline concat< ^CloudArray when ^CloudArray : (member Append : ^CloudArray -> ^CloudArray)> (ts : seq< ^CloudArray>) =
+                Seq.reduce (fun t t' -> ( ^CloudArray : (member Append : ^CloudArray -> ^CloudArray) (t, t'))) ts
+
+        [<RequireQualifiedAccess>]
         module List =
 
             /// <summary>
