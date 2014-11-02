@@ -94,59 +94,59 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Azure">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\MBrace.Azure.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\MBrace.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Core">
-      <HintPath>..\packages\MBrace.Core.0.5.7-alpha\lib\net45\MBrace.Core.dll</HintPath>
+      <HintPath>..\packages\MBrace.Core.0.5.10-alpha\lib\net45\MBrace.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Lib">
-      <HintPath>..\packages\MBrace.Core.0.5.7-alpha\lib\net45\MBrace.Lib.dll</HintPath>
+      <HintPath>..\packages\MBrace.Core.0.5.10-alpha\lib\net45\MBrace.Lib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MBrace.Store">
-      <HintPath>..\packages\MBrace.Store.0.5.7-alpha\lib\net45\MBrace.Store.dll</HintPath>
+      <HintPath>..\packages\MBrace.Store.0.5.10-alpha\lib\net45\MBrace.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Microsoft.Data.Edm.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Microsoft.Data.Edm.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.OData">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Microsoft.Data.OData.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Microsoft.Data.OData.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Microsoft.Data.Services.Client.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Microsoft.WindowsAzure.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Streams.Cloud">
-      <HintPath>..\packages\Streams.Cloud.0.1.0-alpha\lib\Streams.Cloud.dll</HintPath>
+      <HintPath>..\packages\Streams.Cloud.0.2.0-alpha\lib\Streams.Cloud.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Streams.Core">
-      <HintPath>..\packages\Streams.0.2.0\lib\Streams.Core.dll</HintPath>
+      <HintPath>..\packages\Streams.0.2.3\lib\Streams.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Spatial">
-      <HintPath>..\packages\MBrace.Azure.0.5.7-alpha\lib\net45\System.Spatial.dll</HintPath>
+      <HintPath>..\packages\MBrace.Azure.0.5.10-alpha\lib\net45\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />

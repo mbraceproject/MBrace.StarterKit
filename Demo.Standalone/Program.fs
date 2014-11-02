@@ -5,7 +5,8 @@ open Nessos.MBrace
 open Nessos.MBrace.Store
 open Nessos.MBrace.Client
 
-let mbracedExe = __SOURCE_DIRECTORY__ + "/../packages/MBrace.Runtime.0.5.7-alpha/tools/mbraced.exe"
+let version = typeof<Cloud>.Assembly.GetName().Version.ToString(3)
+let mbracedExe = __SOURCE_DIRECTORY__ + "/../packages/MBrace.Runtime." + version + "-alpha/tools/mbraced.exe"
 
 [<EntryPoint>]
 let main argv =
