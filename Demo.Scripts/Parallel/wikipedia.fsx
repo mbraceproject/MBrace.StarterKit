@@ -26,7 +26,7 @@ let mapF (file : ICloudFile) = cloud {
 
 /// reduce function : combines two wordcount frequencies.
 [<Cloud>]
-let reduceF (wc : WordCount) (wc' : WordCount) = cloud { return WordCount.reduce wc wc' }
+let reduceF (wc : WordCount) (wc' : WordCount) = cloud { return WordCount.combine wc wc' }
 
 let runtime = MBrace.InitLocal(totalNodes = 4)
 
