@@ -1,4 +1,4 @@
-﻿#load "../../packages/MBrace.Runtime.0.5.10-alpha/bootstrap.fsx"
+﻿#load "../../packages/MBrace.Runtime.0.5.13-alpha/bootstrap.fsx"
 
 open Nessos.MBrace
 open Nessos.MBrace.Client
@@ -9,8 +9,8 @@ open Nessos.MBrace.Client
 #r "Demo.Lib.dll"
 open Demo.Lib
 
-#r "../../packages/Streams.0.2.3/lib/Streams.Core.dll"
-#r "../../packages/Streams.Cloud.0.2.0-alpha/lib/Streams.Cloud.dll"
+#r "../../packages/Streams.0.2.5/lib/Streams.Core.dll"
+#r "../../packages/Streams.Cloud.0.2.1-alpha/lib/Streams.Cloud.dll"
 
 open Nessos.Streams
 open Nessos.Streams.Cloud
