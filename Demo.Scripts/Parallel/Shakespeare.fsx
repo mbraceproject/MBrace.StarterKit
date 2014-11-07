@@ -68,10 +68,12 @@ let files = Directory.EnumerateFiles fileSource |> Array.ofSeq
 
 // upload cloud files to runtime store
 let client = runtime.GetStoreClient()
-let cloudFiles = client.UploadFiles files |> List.ofArray
+let cloudFiles = client.UploadFiles files
 
 // start a cloud process
-let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] cloudFiles @>
+let proc = runtime.CreateProcess <@ mapReduce mapF reduceF [||] (Array.toList cloudFiles) @>
+// uncomment to use the library mapReduce implementation
+//let proc = runtime.CreateProcess <@ Combinators.mapReduce mapF reduceF (fun () -> [||]) cloudFiles @>
 
 proc.ShowInfo()
 runtime.ShowProcessInfo()

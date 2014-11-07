@@ -46,17 +46,41 @@
         module Array =
 
             /// <summary>
+            ///     partitions an array into a predetermined number of uniformly sized chunks.
+            /// </summary>5 
+            /// <param name="partitions">number of partitions.</param>
+            /// <param name="input">Input array.</param>
+            let splitByPartitionCount partitions (ts : 'T []) =
+                if partitions < 1 then invalidArg "partitions" "invalid number of partitions."
+                elif partitions = 1 then [| ts |]
+                elif partitions > ts.Length then invalidArg "partitions" "partitions exceed array length."
+                else
+                    let chunkSize = ts.Length / partitions
+                    let r = ts.Length % partitions
+                    [|
+                        for i in 0 .. r - 1 do
+                            yield ts.[i * (chunkSize + 1) .. (i + 1) * (chunkSize + 1) - 1]
+
+                        let I = r * (chunkSize + 1)
+
+                        for i in 0 .. partitions - r - 1 do
+                            yield ts.[I + i * chunkSize .. I + (i + 1) * chunkSize - 1]
+                    |]
+
+            /// <summary>
             ///     partitions an array into chunks of given size
             /// </summary>
             /// <param name="chunkSize">chunk size.</param>
-            /// <param name="input">Input array.</param>
-            let partition chunkSize (input : 'T []) =
-                let q, r = input.Length / chunkSize , input.Length % chunkSize
+            /// <param name="ts">Input array.</param>
+            let splitByChunkSize chunkSize (ts : 'T []) =
+                if chunkSize <= 0 then invalidArg "chunkSize" "must be positive."
+                elif chunkSize > ts.Length then invalidArg "chunkSize" "chunk size greater than array size."
+                let q, r = ts.Length / chunkSize , ts.Length % chunkSize
                 [|
                     for i in 0 .. q-1 do
-                        yield input.[ i * chunkSize .. (i + 1) * chunkSize - 1]
+                        yield ts.[ i * chunkSize .. (i + 1) * chunkSize - 1]
 
-                    if r > 0 then yield input.[q * chunkSize .. ]
+                    if r > 0 then yield ts.[q * chunkSize .. ]
                 |]
 
         type Stream with
