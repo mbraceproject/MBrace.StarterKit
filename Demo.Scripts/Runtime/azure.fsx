@@ -8,7 +8,7 @@ open Nessos.MBrace.Store
 //
 //  Please refer to http://nessos.github.io/MBrace/azure-tutorial.html for more information
 
-#I "../../packages/MBrace.Azure.0.5.7-alpha/lib/net45/"
+#I "../../packages/MBrace.Azure.0.5.13-alpha/lib/net45/"
 #r "MBrace.Azure.dll"
 
 open Nessos.MBrace.Azure
