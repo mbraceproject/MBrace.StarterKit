@@ -1,4 +1,4 @@
-# MBrace.Demos [Deprecated]
+# MBrace.Demos
 
 A collection of demos for the [{mbrace}](http://www.m-brace.net/) framework.
 
