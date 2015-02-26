@@ -53,10 +53,6 @@
   <ItemGroup>
     <DiagnosticsConfiguration Include="MBraceAzureRoleContent\diagnostics.wadcfgx" />
   </ItemGroup>
-  <ItemGroup>
-    <PublishProfile Include="Profiles\mbrace-scaleProduction.azurePubxml" />
-    <PublishProfile Include="Profiles\mbrace-scaleProduction1.azurePubxml" />
-  </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
