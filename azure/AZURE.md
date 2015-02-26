@@ -5,4 +5,4 @@
 3. Insert your Service Bus and Azure Storage connection strings in the [service configuration](MBraceAzureService/ServiceConfiguration.Cloud.cscfg).
 4. Build the three projects.
 5. Publish the MBraceAzureService project.
-6. Insert the same connection strings in [client.fsx](MBraceAzureClient/client.fsx#15) and connect to your runtime.
+6. Insert the same connection strings in [client.fsx](MBraceAzureClient/client.fsx#L15) and connect to your runtime.
