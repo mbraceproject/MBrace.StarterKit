@@ -1,5 +1,5 @@
 ﻿
-#I "bin/Debug/"
+#I @"..\..\packages\MBrace.Azure.Client.0.6.0-alpha\tools\"
 
 #r "MBrace.Core.dll"
 #r "FsPickler.dll"
@@ -19,7 +19,7 @@ let config =
 
 
 let runtime = Runtime.GetHandle(config)
-runtime.AttachLogger(new Common.ConsoleLogger()) 
+runtime.AttachClientLogger(new Common.ConsoleLogger()) 
 
 
 runtime.ShowWorkers()
