@@ -1,5 +1,4 @@
-﻿
-#I @"..\..\packages\MBrace.Azure.Client.0.6.0-alpha\tools\"
+﻿#I @"..\..\packages\MBrace.Azure.Client.0.6.0-alpha\tools\"
 
 #r "MBrace.Core.dll"
 #r "FsPickler.dll"
@@ -14,8 +13,8 @@ open MBrace.Azure.Client
 
 let config = 
     { Configuration.Default with
-        StorageConnectionString = ""
-        ServiceBusConnectionString = "" }
+        StorageConnectionString = "your connection string"
+        ServiceBusConnectionString = "your connection string" }
 
 
 let runtime = Runtime.GetHandle(config)
