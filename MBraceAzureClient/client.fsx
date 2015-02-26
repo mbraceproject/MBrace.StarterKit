@@ -38,3 +38,11 @@ let parallelJob =
 parallelJob.ShowInfo()
 
 parallelJob.AwaitResult()
+
+
+
+let ps = 
+    Cloud.Parallel(cloud { return System.Environment.MachineName })
+    |> runtime.CreateProcess
+
+ps.AwaitResult()
