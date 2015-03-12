@@ -10,7 +10,7 @@ using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
 using MBrace.Azure.Runtime;
-using MBrace.Azure.Runtime.Common;
+using MBrace.Azure;
 
 namespace MBraceAzureRole
 {

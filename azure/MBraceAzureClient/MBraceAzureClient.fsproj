@@ -59,7 +59,6 @@
   </Target>
   <ItemGroup>
     <None Include="client.fsx" />
-    <Content Include="packages.config" />
     <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,13 @@
-﻿#I @"..\..\packages\MBrace.Azure.Client.0.6.0-alpha\tools\"
+﻿#I @"..\..\packages\MBrace.Azure.Client.0.6.3-alpha\tools\"
 
 #r "MBrace.Core.dll"
 #r "FsPickler.dll"
 #r "Vagabond.dll"
-#r "MBrace.Azure.Runtime.Common.dll"
 #r "MBrace.Azure.Runtime.dll"
 #r "MBrace.Azure.Client.dll"
 
 open MBrace
-open MBrace.Azure.Runtime
+open MBrace.Azure
 open MBrace.Azure.Client
 
 let config = 
@@ -18,7 +17,7 @@ let config =
 
 
 let runtime = Runtime.GetHandle(config)
-runtime.AttachClientLogger(new Common.ConsoleLogger()) 
+runtime.AttachClientLogger(new ConsoleLogger()) 
 
 
 runtime.ShowWorkers()
@@ -41,7 +40,7 @@ parallelJob.AwaitResult()
 
 
 let ps = 
-    Cloud.Parallel(cloud { return System.Environment.MachineName })
+    Cloud.ParallelEverywhere(cloud { return System.Environment.MachineName })
     |> runtime.CreateProcess
 
 ps.AwaitResult()
