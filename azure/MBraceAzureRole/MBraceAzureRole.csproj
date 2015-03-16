@@ -41,25 +41,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\FsPickler.1.0.13\lib\net45\FsPickler.dll</HintPath>
     </Reference>
-    <Reference Include="MBrace.Azure.Client, Version=0.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MBrace.Azure.0.6.3-alpha\lib\net45\MBrace.Azure.Client.dll</HintPath>
+    <Reference Include="MBrace.Azure.Client">
+      <HintPath>..\..\packages\MBrace.Azure.0.6.4-alpha\lib\net45\MBrace.Azure.Client.dll</HintPath>
     </Reference>
-    <Reference Include="MBrace.Azure.Runtime, Version=0.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MBrace.Azure.0.6.3-alpha\lib\net45\MBrace.Azure.Runtime.dll</HintPath>
+    <Reference Include="MBrace.Azure.Runtime">
+      <HintPath>..\..\packages\MBrace.Azure.0.6.4-alpha\lib\net45\MBrace.Azure.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="MBrace.Azure.Store, Version=0.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MBrace.Azure.0.6.3-alpha\lib\net45\MBrace.Azure.Store.dll</HintPath>
+    <Reference Include="MBrace.Azure.Store">
+      <HintPath>..\..\packages\MBrace.Azure.0.6.4-alpha\lib\net45\MBrace.Azure.Store.dll</HintPath>
     </Reference>
-    <Reference Include="MBrace.Core, Version=0.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MBrace.Core.0.9.4-alpha\lib\net45\MBrace.Core.dll</HintPath>
+    <Reference Include="MBrace.Core">
+      <HintPath>..\..\packages\MBrace.Core.0.9.5-alpha\lib\net45\MBrace.Core.dll</HintPath>
     </Reference>
-    <Reference Include="MBrace.Runtime.Core, Version=0.9.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MBrace.Runtime.Core.0.9.4-alpha\lib\net45\MBrace.Runtime.Core.dll</HintPath>
+    <Reference Include="MBrace.Runtime.Core">
+      <HintPath>..\..\packages\MBrace.Runtime.Core.0.9.5-alpha\lib\net45\MBrace.Runtime.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
