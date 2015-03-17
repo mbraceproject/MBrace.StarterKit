@@ -12,11 +12,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "azure", "azure", "{922110AA-B0CE-4E15-9D6B-680C2B9EB9FF}"
 	ProjectSection(SolutionItems) = preProject
 		azure\azure.md = azure\azure.md
+		azure\brisk-tutorial.md = azure\brisk-tutorial.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomCloudService", "CustomCloudService", "{A22110AA-B0CE-4E15-9D6B-680C2B9EB9FF}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MBraceAzureClient", "azure\CustomCloudService\MBraceAzureClient\MBraceAzureClient.fsproj", "{1FC572E2-17F4-4771-9261-8433BFBEB526}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBraceAzureRole", "azure\CustomCloudService\MBraceAzureRole\MBraceAzureRole.csproj", "{35465652-47E8-4410-8EBC-8986B0867227}"
 EndProject
@@ -30,16 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{DBC7CA
 		.paket\paket.targets = .paket\paket.targets
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Demos", "azure\Demos\Demos.fsproj", "{DF4661CC-A8B7-418F-A977-51A4B6CBC803}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1FC572E2-17F4-4771-9261-8433BFBEB526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FC572E2-17F4-4771-9261-8433BFBEB526}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FC572E2-17F4-4771-9261-8433BFBEB526}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FC572E2-17F4-4771-9261-8433BFBEB526}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35465652-47E8-4410-8EBC-8986B0867227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35465652-47E8-4410-8EBC-8986B0867227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35465652-47E8-4410-8EBC-8986B0867227}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,14 +45,18 @@ Global
 		{D2E22F3F-B562-471F-B4EB-AC2E5D44434A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E22F3F-B562-471F-B4EB-AC2E5D44434A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2E22F3F-B562-471F-B4EB-AC2E5D44434A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A22110AA-B0CE-4E15-9D6B-680C2B9EB9FF} = {922110AA-B0CE-4E15-9D6B-680C2B9EB9FF}
-		{1FC572E2-17F4-4771-9261-8433BFBEB526} = {A22110AA-B0CE-4E15-9D6B-680C2B9EB9FF}
 		{35465652-47E8-4410-8EBC-8986B0867227} = {A22110AA-B0CE-4E15-9D6B-680C2B9EB9FF}
 		{D2E22F3F-B562-471F-B4EB-AC2E5D44434A} = {A22110AA-B0CE-4E15-9D6B-680C2B9EB9FF}
+		{DF4661CC-A8B7-418F-A977-51A4B6CBC803} = {922110AA-B0CE-4E15-9D6B-680C2B9EB9FF}
 	EndGlobalSection
 EndGlobal

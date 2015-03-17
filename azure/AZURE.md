@@ -1,4 +1,10 @@
-# MBrace.Azure 
+## MBrace on Azure
+
+An MBrace cluster can be provisioned on Azure using the following methods
+
+## Use Brisk by Elastacloud
+
+Go to http://www.briskengine.com/ and follow the on-screen instructions.
 
 ## Creating a Custom Azure Cloud Service with MBrace Worker Roles
 
