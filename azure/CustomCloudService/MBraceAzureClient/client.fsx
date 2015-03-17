@@ -1,10 +1,4 @@
-﻿#I @"..\..\packages\MBrace.Azure.Client.0.6.3-alpha\tools\"
-
-#r "MBrace.Core.dll"
-#r "FsPickler.dll"
-#r "Vagabond.dll"
-#r "MBrace.Azure.Runtime.dll"
-#r "MBrace.Azure.Client.dll"
+﻿#load "../../../packages/MBrace.Azure.Client.0.6.4-alpha/bootstrap.fsx"
 
 open MBrace
 open MBrace.Azure
