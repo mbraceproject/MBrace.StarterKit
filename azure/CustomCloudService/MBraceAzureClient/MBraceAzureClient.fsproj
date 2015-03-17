@@ -60,6 +60,7 @@
   <ItemGroup>
     <None Include="client.fsx" />
     <Content Include="app.config" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
