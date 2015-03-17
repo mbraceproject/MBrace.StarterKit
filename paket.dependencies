@@ -1,0 +1,19 @@
+source https://www.nuget.org/api/v2/
+source C:\Users\eirik\SkyDrive\Development\Nuget
+
+nuget Nuget.CommandLine 2.8.3
+nuget FsPickler 1.0.13
+nuget MBrace.Azure 0.6.4-alpha
+nuget MBrace.Azure.Client 0.6.4-alpha
+nuget MBrace.Core 0.9.5-alpha
+nuget MBrace.Runtime.Core 0.9.5-alpha
+nuget Microsoft.Data.Edm 5.6.3
+nuget Microsoft.Data.OData 5.6.3
+nuget Microsoft.Data.Services.Client 5.6.3
+nuget Microsoft.WindowsAzure.ConfigurationManager 2.0.3
+nuget Newtonsoft.Json 6.0.6
+nuget System.Spatial 5.6.3
+nuget Unquote 2.2.2
+nuget Vagabond 0.3.2
+nuget WindowsAzure.ServiceBus 2.5.2.0
+nuget WindowsAzure.Storage 4.3.0

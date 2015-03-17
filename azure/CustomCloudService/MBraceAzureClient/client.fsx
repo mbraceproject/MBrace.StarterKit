@@ -1,4 +1,4 @@
-﻿#load "../../../packages/MBrace.Azure.Client.0.6.4-alpha/bootstrap.fsx"
+﻿#load "../../../packages/MBrace.Azure.Client/bootstrap.fsx"
 
 open MBrace
 open MBrace.Azure
