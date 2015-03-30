@@ -24,8 +24,14 @@ open MBrace.Flow
 // Before running, edit credentials.fsx to enter your connection strings.
 let cluster = Runtime.GetHandle(config)
 
+// attach console logger to client object
+//cluster.AttachClientLogger(new ConsoleLogger())
+
 // We can connect to the cluster and get details of the workers in the pool etc.
 cluster.ShowWorkers()
+
+// Attach a local worker to the cluster state
+//cluster.AttachLocalWorker()
 
 // We can view the history of processes
 cluster.ShowProcesses()

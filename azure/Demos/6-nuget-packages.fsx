@@ -86,7 +86,7 @@ let managedMathJob =
 managedMathJob.ShowInfo()
 
 
-// Await the result, we epxect ~100.0
+// Await the result, we expect ~100.0
 let managedMathResults = managedMathJob.AwaitResult()
 
 
@@ -100,7 +100,8 @@ cluster.ShowProcesses()
 cluster.ShowWorkers()
 
 
-// To upload DLLs, we simply read the local 64-bit version of the DLL
+// To upload DLLs, register their paths as native dependencies
+// These will be included with all uploaded dependencies of the session
 let contentDir = __SOURCE_DIRECTORY__ + @"/script-packages/packages/MathNet.Numerics.MKL.Win-x64/content/"
 Runtime.RegisterNativeDependency <| contentDir + "libiomp5md.dll"
 Runtime.RegisterNativeDependency <| contentDir + "MathNet.Numerics.MKL.dll"
@@ -108,7 +109,7 @@ Runtime.NativeDependencies
 
 let UseNative() = Control.UseNativeMKL()
 
-// This can take a while first time you run it, because 'bytes2' is 41MB and needs to be uploaded
+// This can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded
 let firstMklJob = 
    cloud { UseNative()
            let m = Matrix<double>.Build.Random(200,200) 
@@ -144,5 +145,3 @@ let timeNative  = nativeMathJob.ExecutionTime.TotalSeconds / 1000.0
 let timeManaged = managedMathJob.ExecutionTime.TotalSeconds / 100.0  
 
 timeManaged/timeNative
-
-
