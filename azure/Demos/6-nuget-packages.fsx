@@ -26,8 +26,8 @@ open MBrace.Flow
 //------------------------------------------
 // Step 0. Get the package bootstrap. This is standard F# boiler plate for scripts that also get packages.
 
-System.IO.Directory.CreateDirectory( __SOURCE_DIRECTORY__ + "/script-packages")
-System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__ + "/script-packages"
+Directory.CreateDirectory( __SOURCE_DIRECTORY__ + "/script-packages")
+Environment.CurrentDirectory <- __SOURCE_DIRECTORY__ + "/script-packages"
 
 if not (File.Exists "paket.exe") then
     let url = "https://github.com/fsprojects/Paket/releases/download/0.27.2/paket.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.exe");;

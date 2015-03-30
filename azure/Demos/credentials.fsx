@@ -20,8 +20,8 @@ module ConnectionStrings =
     // The serice bus connection string is of the form
     //    Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s
 
-    let myStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mbracedon8storage;AccountKey=6rXHsuFoUG/myLQskJXg/KIiH7RiKbVt3ldDHcLy8VJKN5vf4rrPLRUrydySewbjT4g9Fi7AkiXaOi2MRhPoGQ=="
-    let myServiceBusConnectionString = "Endpoint=sb://mbracedon8bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=2E4j70gep1B/7udFuKYdC3bPyeo3iKWuCmTps0RFby4="
+    let myStorageConnectionString = "your storage connection string here"
+    let myServiceBusConnectionString = "your service bus connection string here"
 
     // Alternatively you can specify the connection strings by calling the functions below
     //
