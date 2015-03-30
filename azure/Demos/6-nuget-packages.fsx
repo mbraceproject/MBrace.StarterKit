@@ -101,19 +101,12 @@ cluster.ShowWorkers()
 
 
 // To upload DLLs, we simply read the local 64-bit version of the DLL
+let contentDir = __SOURCE_DIRECTORY__ + @"/script-packages/packages/MathNet.Numerics.MKL.Win-x64/content/"
+Runtime.RegisterNativeDependency <| contentDir + "libiomp5md.dll"
+Runtime.RegisterNativeDependency <| contentDir + "MathNet.Numerics.MKL.dll"
+Runtime.NativeDependencies
 
-let bytes1 = File.ReadAllBytes(__SOURCE_DIRECTORY__ + @"/script-packages/packages/MathNet.Numerics.MKL.Win-x64/content/libiomp5md.dll")
-let bytes2 = File.ReadAllBytes(__SOURCE_DIRECTORY__ + @"/script-packages/packages/MathNet.Numerics.MKL.Win-x64/content/MathNet.Numerics.MKL.dll")
-let UseNative() = 
-    let tmpPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)
-    if not (File.Exists(tmpPath + "/libiomp5md.dll")) then
-        File.WriteAllBytes(tmpPath + "/libiomp5md.dll", bytes1)
-    if not (File.Exists(tmpPath + "/MathNet.Numerics.MKL.dll")) then
-        File.WriteAllBytes(tmpPath + "/MathNet.Numerics.MKL.dll", bytes2)
-    let path = Environment.GetEnvironmentVariable("Path")
-    if not (path.Contains(";"+tmpPath)) then 
-        Environment.SetEnvironmentVariable("Path", path + ";" + tmpPath)
-    Control.UseNativeMKL()
+let UseNative() = Control.UseNativeMKL()
 
 // This can take a while first time you run it, because 'bytes2' is 41MB and needs to be uploaded
 let firstMklJob = 
