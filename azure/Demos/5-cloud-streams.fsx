@@ -6,13 +6,12 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
+
 
 (**
- This tutorial illustrates using the CloudStream programming model that is part of MBrace for cloud-scheduled
+ This tutorial illustrates using the CloudFlow programming model that is part of MBrace for cloud-scheduled
  streamed data flow tasks.
  
  Before running, edit credentials.fsx to enter your connection strings.
@@ -25,12 +24,12 @@ let cluster = Runtime.GetHandle(config)
 // the input work between all available workers.
 let streamComputationJob = 
     [| 1..100 |]
-    |> CloudStream.ofArray
-    |> CloudStream.map (fun num -> num * num)
-    |> CloudStream.filter (fun num -> num < 2500)
-    |> CloudStream.map (fun num -> if num % 2 = 0 then "Even" else "Odd")
-    |> CloudStream.countBy id
-    |> CloudStream.toArray
+    |> CloudFlow.ofArray
+    |> CloudFlow.map (fun num -> num * num)
+    |> CloudFlow.filter (fun num -> num < 2500)
+    |> CloudFlow.map (fun num -> if num % 2 = 0 then "Even" else "Odd")
+    |> CloudFlow.countBy id
+    |> CloudFlow.toArray
     |> cluster.CreateProcess
 
 // Check progress
@@ -49,14 +48,14 @@ let numbers = [| for i in 1 .. 30 -> 50000000 |]
 
 // The default is to partition the input array between all available workers.
 //
-// You can also use CloudStream.withDegreeOfParallelism to specify the degree
+// You can also use CloudFlow.withDegreeOfParallelism to specify the degree
 // of partitioning of the stream at any point in the pipeline.
 let computePrimesJob = 
     numbers
-    |> CloudStream.ofArray
-    |> CloudStream.map Sieve.getPrimes
-    |> CloudStream.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
-    |> CloudStream.toArray
+    |> CloudFlow.ofArray
+    |> CloudFlow.map Sieve.getPrimes
+    |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
+    |> CloudFlow.toArray
     |> cluster.CreateProcess // alteratively you can block on the result using cluster.Run
 
 // Check if the work is done

@@ -5,10 +5,9 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
+
 
 (**
  This tutorial illustrates using other nuget packages.  You download and reference the packages as normal
@@ -75,12 +74,12 @@ cluster.ShowWorkers()
 // Invert 100 150x150 matrices using managed code
 let managedMathJob = 
     [| 1 .. 100 |]
-    |> CloudStream.ofArray
-    |> CloudStream.map (fun i -> 
+    |> CloudFlow.ofArray
+    |> CloudFlow.map (fun i -> 
             Control.UseManaged()
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
-    |> CloudStream.sum
+    |> CloudFlow.sum
     |> cluster.CreateProcess
 
 // Show the progress
@@ -131,12 +130,12 @@ let nativeMathJob =
     cloud { 
         let! r = 
             [| 1 .. 1000 |]
-            |> CloudStream.ofArray
-            |> CloudStream.map (fun i -> 
+            |> CloudFlow.ofArray
+            |> CloudFlow.map (fun i -> 
                   UseNative()
                   let m = Matrix<double>.Build.Random(200,200) 
                   (m * m.Inverse()).Determinant())
-            |> CloudStream.sum
+            |> CloudFlow.sum
         return r / 1000.0 }
     |> cluster.CreateProcess
 

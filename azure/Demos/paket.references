@@ -1,1 +1,3 @@
-MBrace.Azure.Client
+MBrace.Core
+MBrace.Flow
+MBrace.Azure.Standalone

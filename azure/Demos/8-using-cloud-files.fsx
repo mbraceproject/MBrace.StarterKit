@@ -5,10 +5,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This tutorial illustrates creating and using cloud files, and then processing them using cloud streams.
@@ -36,10 +34,10 @@ let numberOfLinesInFile =
     |> cluster.Run
 
 // Get all the directories in the cloud file system
-let directories = cluster.DefaultStoreClient.FileStore.Directory.Enumerate()
+let directories = cluster.StoreClient.FileStore.Directory.Enumerate()
 
 // Create a directory in the cloud file system
-let dp = cluster.DefaultStoreClient.FileStore.Directory.Create()
+let dp = cluster.StoreClient.FileStore.Directory.Create()
 
 // Upload data to a cloud file (held in blob storage) where we give the cloud file a name.
 let namedCloudFile = 
@@ -87,9 +85,9 @@ let namedCloudFiles = namedCloudFilesJob.AwaitResult()
 // Compute 
 let sumOfLengthsOfLinesJob =
     namedCloudFiles 
-    |> CloudStream.ofCloudFiles CloudFileReader.ReadAllLines
-    |> CloudStream.map (fun lines -> lines.Length)
-    |> CloudStream.sum
+    |> CloudFlow.ofCloudFiles CloudFileReader.ReadAllLines
+    |> CloudFlow.map (fun lines -> lines.Length)
+    |> CloudFlow.sum
     |> cluster.CreateProcess
 
 

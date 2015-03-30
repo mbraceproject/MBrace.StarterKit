@@ -7,10 +7,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
 
@@ -22,6 +20,10 @@ open Nessos.Streams
 
 // First connect to the cluster
 let cluster = Runtime.GetHandle(config)
+
+let getThread () = System.Threading.Thread.CurrentThread.ManagedThreadId
+
+let numbers = [|1 .. 10000|]
 
 // Run in the cluster, single threaded, on a single random worker.
 //
@@ -60,20 +62,21 @@ let clusterSingleWorkerMultiThreaded =
 // We do the partitioning up-front.  
 //
 // Sample time: Real: 00:00:11.475, CPU: 00:00:01.921, GC gen0: 22, gen1: 12, gen2: 0
-let clusterMultiWorkerMultiThreaded =
-    numbers
-    |> Array.splitInto clusterWorkerCount
-    |> Array.map(fun nums -> 
-         cloud { 
-           return
-               nums
-               |> Array.splitInto System.Environment.ProcessorCount
-               |> Array.Parallel.collect(fun nums -> 
-                 [| for n in nums do 
-                     let primes = Sieve.getPrimes n 
-                     yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
-          })
-    |> Cloud.Parallel
-    |> cluster.Run
-
-
+let clusterMultiWorkerMultiThreaded = 
+    cloud {
+        let! clusterWorkerCount = Cloud.GetWorkerCount()
+        return!
+            numbers
+            |> Array.splitInto clusterWorkerCount
+            |> Array.map(fun nums -> 
+                 cloud { 
+                   return
+                       nums
+                       |> Array.splitInto System.Environment.ProcessorCount
+                       |> Array.Parallel.collect(fun nums -> 
+                         [| for n in nums do 
+                             let primes = Sieve.getPrimes n 
+                             yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
+                  })
+            |> Cloud.Parallel
+        } |> cluster.Run

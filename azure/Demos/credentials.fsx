@@ -1,4 +1,6 @@
-﻿#load "../../packages/MBrace.Azure.Client/bootstrap.fsx"
+﻿#load "../../packages/MBrace.Azure.Standalone/MBrace.Azure.fsx"
+#r "../../packages/Streams/lib/net45/Streams.Core.dll"
+#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
 namespace global
 
@@ -35,5 +37,3 @@ module ConnectionStrings =
         { Configuration.Default with
             StorageConnectionString = myStorageConnectionString
             ServiceBusConnectionString = myServiceBusConnectionString }
-
-    

@@ -1,5 +1,4 @@
-﻿#I "../../packages/MBrace.Azure.Client/tools"
-#r "MBrace.Core.dll"
+﻿#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
 
 open MBrace
 

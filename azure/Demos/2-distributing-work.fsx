@@ -5,10 +5,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This demo shows how to start performing distributed workloads on MBrace clusters.

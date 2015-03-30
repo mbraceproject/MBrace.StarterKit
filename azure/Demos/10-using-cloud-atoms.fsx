@@ -5,10 +5,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This tutorial illustrates creating and using cloud atoms, which allow you to store data transactionally

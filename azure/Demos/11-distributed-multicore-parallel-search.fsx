@@ -7,10 +7,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  In this tutorial you learn how to use Cloud.Choice to do a nondeterministic parallel computation using 

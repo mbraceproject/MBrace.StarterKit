@@ -1,13 +1,12 @@
-﻿
-#load "credentials.fsx"
+﻿#load "credentials.fsx"
 
+open System
+open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This script tests cloud file perf
@@ -19,7 +18,7 @@ open Nessos.Streams
 let cluster = Runtime.GetHandle(config)
 
 // Create a directory in the cloud file system
-let dp = cluster.DefaultStoreClient.FileStore.Directory.Create("perf-files")
+let dp = cluster.StoreClient.FileStore.Directory.Create("perf-files")
 
 //--------------------------------------------------------------------
 // Stress test some data storage

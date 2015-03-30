@@ -8,10 +8,8 @@ open System.Text.RegularExpressions
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This tutorial demonstrates a word count example via Norvig's Spelling Corrector (http://norvig.com/spell-correct.html)
@@ -71,11 +69,11 @@ let fileSizes = fileSizesJob.AwaitResult()
 let regex = Regex("[a-zA-Z]+", RegexOptions.Compiled)
 let wordCountJob = 
     files
-    |> CloudStream.ofCloudFiles (fun s -> async { let sr = new StreamReader(s) in return sr.ReadToEnd() })
-    |> CloudStream.collect (fun text -> regex.Matches(text) |> Seq.cast |> Stream.ofSeq)
-    |> CloudStream.map (fun (m:Match) -> m.Value.ToLower()) 
-    |> CloudStream.countBy id 
-    |> CloudStream.toArray
+    |> CloudFlow.ofCloudFiles (fun s -> async { let sr = new StreamReader(s) in return sr.ReadToEnd() })
+    |> CloudFlow.collect (fun text -> regex.Matches(text) |> Seq.cast)
+    |> CloudFlow.map (fun (m:Match) -> m.Value.ToLower()) 
+    |> CloudFlow.countBy id 
+    |> CloudFlow.toArray
     |> cluster.CreateProcess
 
 wordCountJob.ShowInfo()

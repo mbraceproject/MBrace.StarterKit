@@ -7,10 +7,8 @@ open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Azure.Runtime
-open MBrace.Streams
 open MBrace.Workflows
-open Nessos.Streams
+open MBrace.Flow
 
 (**
  This demo illustrates the different way of calculating scalable workloads
@@ -76,5 +74,5 @@ let clusterProcesorCountOfRandomWorker =
 // Check how many workers there are
 let clusterWorkerCount = cluster.GetWorkers() |> Seq.length
 
-// To complete the picture, you can also use a CloudStream programming model, see "5-cloud-streams.fsx"
+// To complete the picture, you can also use a CloudFlow programming model, see "5-cloud-streams.fsx"
 
