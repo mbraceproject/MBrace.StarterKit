@@ -1,6 +1,6 @@
-# MBrace.StarterKits
+# MBrace.StarterKit
 
-A collection of demos for the [MBrace](http://www.m-brace.net/) framework.
+A collection of demos and tutorials for [MBrace](http://www.m-brace.net/).
 
 ## Contents
 
