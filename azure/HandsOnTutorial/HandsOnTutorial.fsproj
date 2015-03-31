@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
-    <Name>Demos</Name>
+    <Name>HandsOnTutorial</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +56,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <None Include="credentials.fsx" />
     <None Include="1-hello-world.fsx">
       <SubType>
       </SubType>
@@ -71,7 +72,6 @@
     <None Include="10-using-cloud-atoms.fsx" />
     <None Include="11-distributed-multicore-parallel-search.fsx" />
     <None Include="12-norvig%27s-spelling-corrector.fsx" />
-    <None Include="credentials.fsx" />
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
