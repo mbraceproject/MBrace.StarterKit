@@ -7,7 +7,7 @@ hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
 
 1. Provision your cluster, see below.
 2. Open and build the solution ``MBrace.StarterKit.sln`` before working with the scripts
-to restore the necessary packages.
+   to restore the necessary packages.
 
 ## Provisioning Your Cluster
 
