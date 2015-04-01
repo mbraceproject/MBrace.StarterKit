@@ -36,12 +36,10 @@ cluster.ShowWorkers()
 // We can view the history of processes
 cluster.ShowProcesses()
 
-
-// Create a cloud workflow, don't execute it
-let workflow = cloud { return "Hello world!" }
-
-// Actually execute the workflow and get a handle to the overall job
-let job = workflow |> cluster.CreateProcess
+// Execute a cloud workflow and get a handle to the running job
+let job = 
+    cloud { return "Hello world!" } 
+    |> cluster.CreateProcess
 
 // You can evaluate helloWorldProcess to get details on it
 let isJobComplete = job.Completed
@@ -50,7 +48,9 @@ let isJobComplete = job.Completed
 let text = job.AwaitResult()
 
 // Alternatively we can do this all in one line
-let quickText = cloud { return "Hello world!" } |> cluster.Run
+let quickText = 
+    cloud { return "Hello world!" } 
+    |> cluster.Run
 
 // This can be used to clear all process records in the cluster
 //

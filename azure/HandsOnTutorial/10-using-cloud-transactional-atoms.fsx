@@ -45,7 +45,7 @@ cloud {
 } |> cluster.Run
 
 // Delete the cloud atom
-atom  |> CloudAtom.Delete |> cluster.Run
+CloudAtom.Delete atom  |> cluster.Run
 
 cluster.ShowProcesses()
 

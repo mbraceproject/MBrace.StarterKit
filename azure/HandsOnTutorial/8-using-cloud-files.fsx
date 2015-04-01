@@ -20,39 +20,57 @@ let cluster = Runtime.GetHandle(config)
 cluster.ShowProcesses()
 cluster.ShowWorkers()
 
-// Here's some data
-let linesOfFile = ["Hello World"; "How are you" ] 
+// Here's some data that simulates a log file for user click events
+let linesOfFile = 
+     [ for i in 1 .. 1000 do 
+          let time = DateTime.Now.Date.AddSeconds(float i)
+          let text = sprintf "click user%d %s" (i%10) (time.ToString())
+          yield text ]
 
 // Upload the data to a cloud file (held in blob storage). A fresh name is generated 
 // for the could file.
-let anonCloudFile = linesOfFile |> CloudFile.WriteAllLines |> cluster.Run
+let anonCloudFile = 
+     cloud { 
+         let! file = CloudFile.WriteAllLines linesOfFile
+         return file 
+     }
+     |> cluster.Run
 
-// Run a cloud job which reads all the lines of a cloud file:
+// Run a cloud job which reads all the lines of a cloud file.
+
 let numberOfLinesInFile = 
-    cloud { let! data = CloudFile.ReadAllLines anonCloudFile
-            return data.Length }
+    cloud { 
+        let! data = CloudFile.ReadAllLines anonCloudFile
+        return data.Length 
+    }
     |> cluster.Run
 
 // Get all the directories in the cloud file system
 let directories = cluster.StoreClient.FileStore.Directory.Enumerate()
 
 // Create a directory in the cloud file system
-let dp = cluster.StoreClient.FileStore.Directory.Create()
+let freshDirectory = cluster.StoreClient.FileStore.Directory.Create()
 
+// By default, CloudFile.WriteAllLines uses a fresh random file name
+// in the "user data" directory.  Below, you give an exact name to the 
+// file.
+//
 // Upload data to a cloud file (held in blob storage) where we give the cloud file a name.
 let namedCloudFile = 
     cloud { 
-        let lines = [for i in 0 .. 1000 -> "Item " + string i + ", " + string (i * 100) ] 
-        let fileName = dp.Path + "/file1"
+        let fileName = freshDirectory.Path + "/file1"
         do! CloudFile.Delete(fileName) 
-        let! file = CloudFile.WriteAllLines(lines, path = fileName) 
+        let! file = CloudFile.WriteAllLines(linesOfFile, path = fileName) 
         return file
-    } |> cluster.Run
+    } 
+    |> cluster.Run
 
-// Access the cloud file as part of a cloud job
+// Read the named cloud file as part of a cloud job
 let numberOfLinesInNamedFile = 
-    cloud { let! data = CloudFile.ReadAllLines namedCloudFile 
-            return data.Length }
+    cloud { 
+        let! data = CloudFile.ReadAllLines namedCloudFile 
+        return data.Length 
+    }
     |> cluster.Run
 
 cluster.ShowLogs(240.0)
@@ -69,7 +87,7 @@ let namedCloudFilesJob =
         // Note that we generate the contents of the files in the cloud - this cloud
         // computation below only captures and sends an integer.
         cloud { let lines = [for j in 1 .. 100 -> "File " + string i + ", Item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
-                let nm = dp.Path + "/file" + string i
+                let nm = freshDirectory.Path + "/file" + string i
                 do! CloudFile.Delete(path=nm) 
                 let! file = CloudFile.WriteAllLines(lines,path=nm) 
                 return file } ]
@@ -82,7 +100,8 @@ namedCloudFilesJob.ShowInfo()
 // Get the result
 let namedCloudFiles = namedCloudFilesJob.AwaitResult()
 
-// Compute 
+// A collection of cloud files can be used as input to a cloud
+// parallel data flow. 
 let sumOfLengthsOfLinesJob =
     namedCloudFiles 
     |> CloudFlow.ofCloudFiles CloudFileReader.ReadAllLines

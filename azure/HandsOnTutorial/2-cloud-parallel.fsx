@@ -17,7 +17,8 @@ open MBrace.Flow
 // First connect to the cluster
 let cluster = Runtime.GetHandle(config)
 
-// Now we can make 50 jobs and compose them in parallel.
+// You now use Cloud.Parallel to run 50 cloud workflows in parallel using a 
+// fork-join pattern.
 let resultsJob = 
     [ 1 .. 50 ] 
     |> List.map(fun i -> cloud { return sprintf "i'm job %d" i })
@@ -36,11 +37,14 @@ let quickResults =
     |> Cloud.Parallel
     |> cluster.Run
 
-// This shows the next composition combinator: Cloud.Choice, which does
-// non-deterministic choice among a collection of workers.
-let quickSearch =
+// Next you use Cloud.Choice: the first cloud workflow to return "Some" wins.
+let searchJob =
     [ 1 .. 50 ]
     |> List.map(fun i -> cloud { if i % 10 = 0 then return Some i else return None } )
     |> Cloud.Choice
-    |> cluster.Run
+    |> cluster.CreateProcess
 
+searchJob.ShowInfo()
+
+// Get the result of the search
+let searchResult = searchJob.AwaitResult()

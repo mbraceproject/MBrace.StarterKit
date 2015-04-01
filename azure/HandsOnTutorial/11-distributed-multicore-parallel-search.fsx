@@ -11,8 +11,10 @@ open MBrace.Workflows
 open MBrace.Flow
 
 (**
- In this tutorial you learn how to use Cloud.Choice to do a nondeterministic parallel computation using 
- Mersenne prime number searches.
+ In this tutorial you learn how to define a new cloud combinator that
+ does a nondeterministic, distributed, multi-core parallel search, 
+ dividing work first by the number of workers in the cluster, and 
+ secondly by the number of cores on each worker.
   
  Before running, edit credentials.fsx to enter your connection strings.
 **)
@@ -26,34 +28,29 @@ let cluster = Runtime.GetHandle(config)
 /// first dividing according to the number of available workers, and then
 /// according to the number of available cores, and then performing sequential
 /// search on each machine.
-let distributedMultiCoreTryFind (predicate : 'T -> bool) (ts : 'T []) =
+let distributedMultiCoreTryFind (predicate : 'T -> bool) (array : 'T[]) =
 
-    // sequential single-threaded search
-    let sequentialTryFind (ts : 'T []) = local { return Array.tryFind predicate ts }
-
-    // local multicore parallel search
-    let localmultiCoreTryFind (ts : 'T []) = local {
-        if ts.Length <= 1 then return! sequentialTryFind ts
-        else
+    // A local function to do local multicore parallel search
+    let localMultiCoreTryFind ts = 
+        local {
             // Divide inputs by processor count and evaluate using Local.Choice
-            let tss = Array.splitInto System.Environment.ProcessorCount ts
+            let coreCount = Environment.ProcessorCount
+            let tss = Array.splitInto coreCount ts
             return!
                 tss
-                |> Array.map sequentialTryFind
+                |> Array.map (fun ts -> local { return Array.tryFind predicate ts })
                 |> Local.Choice
-    }
+        }
     
-    // distributed parallel search
+    // The distributed parallel search, using the local function on each worker
     cloud {
-        if ts.Length <= 1 then return! sequentialTryFind ts
-        else
-            // Divide inputs by cluster size and evaluate using Parallel.Choice
-            let! clusterSize = Cloud.GetWorkerCount()
-            let tss = Array.splitInto clusterSize ts
-            return!
-                tss
-                |> Array.map localmultiCoreTryFind
-                |> Cloud.Choice
+        // Divide inputs by cluster size and evaluate using Parallel.Choice
+        let! workerCount = Cloud.GetWorkerCount()
+        let tss = Array.splitInto workerCount array
+        return!
+            tss
+            |> Array.map localMultiCoreTryFind
+            |> Cloud.Choice
     }
 
 #time
