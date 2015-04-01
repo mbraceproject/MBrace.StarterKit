@@ -38,8 +38,6 @@ let numbers = [| for i in 1 .. 30 -> 100000000 |]
 **)
 
 
-// Run this work in different ways on the local machine and cluster
-
 // Run on your local machine, single-threaded.
 //
 // Performance will depend on the spec of your machine. Note that it is possible that 
@@ -63,16 +61,9 @@ let clusterPrimesJob =
     |> cluster.CreateProcess
 
 
-cluster.ShowProcesses()
+clusterPrimesJob.ShowInfo()
+
 let clusterPrimes = clusterPrimesJob.AwaitResult()
-
-
-// Check how many cores one of the machines in the cluster has
-let clusterProcesorCountOfRandomWorker =
-    cloud { return System.Environment.ProcessorCount } |>  cluster.Run
-
-// Check how many workers there are
-let clusterWorkerCount = cluster.GetWorkers() |> Seq.length
 
 // To complete the picture, you can also use a CloudFlow programming model, see "5-cloud-streams.fsx"
 

@@ -14,10 +14,10 @@ open MBrace.Flow
  in your F# scripting, and the DLLs for the packages are automatically uploaded to the cloud workers
  as needed.
 
- In this sample, we use paket (http://fsprojects.fsharp.io/paket) as the tool to fetch packages from NuGet.
+ In this sample, you use paket (http://fsprojects.fsharp.io/paket) as the tool to fetch packages from NuGet.
  You can alternatively just reference any DLLs you like using normal nuget commands.
 
- Later in the tutorial you learn how to get native binaries to target machines should you need to do this.
+ You also learn how to get native binaries to target machines should you need to do this.
   
  Before running, edit credentials.fsx to enter your connection strings.
 **)
@@ -107,13 +107,14 @@ Runtime.RegisterNativeDependency <| contentDir + "libiomp5md.dll"
 Runtime.RegisterNativeDependency <| contentDir + "MathNet.Numerics.MKL.dll"
 Runtime.NativeDependencies
 
-let UseNative() = Control.UseNativeMKL()
 
 // This can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded
 let firstMklJob = 
-   cloud { UseNative()
-           let m = Matrix<double>.Build.Random(200,200) 
-           return m.LU().Determinant }
+    cloud { 
+        Control.UseNativeMKL()
+        let m = Matrix<double>.Build.Random(200,200) 
+        return (m * m.Inverse()).Determinant()
+    }
     |> cluster.CreateProcess
 
 firstMklJob.ShowInfo()
@@ -121,16 +122,13 @@ firstMklJob.AwaitResult()
 
 // 1000 200x200 matrices, inverted using the MKL implementation
 let nativeMathJob = 
-    cloud { 
-        let! r = 
-            [| 1 .. 1000 |]
-            |> CloudFlow.ofArray
-            |> CloudFlow.map (fun i -> 
-                  UseNative()
-                  let m = Matrix<double>.Build.Random(200,200) 
-                  (m * m.Inverse()).Determinant())
-            |> CloudFlow.sum
-        return r / 1000.0 }
+    [| 1 .. 1000 |]
+    |> CloudFlow.ofArray
+    |> CloudFlow.map (fun i -> 
+            Control.UseNativeMKL()
+            let m = Matrix<double>.Build.Random(200,200) 
+            (m * m.Inverse()).Determinant())
+    |> CloudFlow.sum
     |> cluster.CreateProcess
 
 
