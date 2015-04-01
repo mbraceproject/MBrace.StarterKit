@@ -61,15 +61,15 @@
       <SubType>
       </SubType>
     </None>
-    <None Include="2-distributing-work.fsx" />
-    <None Include="3-comparing-threads-and-workers.fsx" />
-    <None Include="4-parallel-web-download.fsx" />
-    <None Include="5-cloud-streams.fsx" />
+    <None Include="2-cloud-parallel.fsx" />
+    <None Include="3-cloud-parallel-primes.fsx" />
+    <None Include="4-cloud-parallel-web-download.fsx" />
+    <None Include="5-cloud-parallel-data-flow.fsx" />
     <None Include="6-nuget-packages.fsx" />
     <None Include="7-using-cloud-data.fsx" />
     <None Include="8-using-cloud-files.fsx" />
     <None Include="9-using-cloud-channels.fsx" />
-    <None Include="10-using-cloud-atoms.fsx" />
+    <None Include="10-using-cloud-transactional-atoms.fsx" />
     <None Include="11-distributed-multicore-parallel-search.fsx" />
     <None Include="12-norvig%27s-spelling-corrector.fsx" />
     <None Include="lib\collections.fsx" />

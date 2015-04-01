@@ -110,9 +110,11 @@ Runtime.NativeDependencies
 
 // This can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded
 let firstMklJob = 
-   cloud { Control.UseNativeMKL()
-           let m = Matrix<double>.Build.Random(200,200) 
-           return (m * m.Inverse()).Determinant()) }
+    cloud { 
+        Control.UseNativeMKL()
+        let m = Matrix<double>.Build.Random(200,200) 
+        return (m * m.Inverse()).Determinant()
+    }
     |> cluster.CreateProcess
 
 firstMklJob.ShowInfo()
@@ -120,16 +122,13 @@ firstMklJob.AwaitResult()
 
 // 1000 200x200 matrices, inverted using the MKL implementation
 let nativeMathJob = 
-    cloud { 
-        let! r = 
-            [| 1 .. 1000 |]
-            |> CloudFlow.ofArray
-            |> CloudFlow.map (fun i -> 
-                  Control.UseNativeMKL()
-                  let m = Matrix<double>.Build.Random(200,200) 
-                  (m * m.Inverse()).Determinant())
-            |> CloudFlow.sum
-        return r / 1000.0 }
+    [| 1 .. 1000 |]
+    |> CloudFlow.ofArray
+    |> CloudFlow.map (fun i -> 
+            Control.UseNativeMKL()
+            let m = Matrix<double>.Build.Random(200,200) 
+            (m * m.Inverse()).Determinant())
+    |> CloudFlow.sum
     |> cluster.CreateProcess
 
 
