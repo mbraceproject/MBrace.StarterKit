@@ -11,7 +11,7 @@ open MBrace.Workflows
 open MBrace.Flow
 
 (**
- This demo illustrates the different way of calculating scalable workloads
+ You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
 
  Before running, edit credentials.fsx to enter your connection strings.
 **)
@@ -64,6 +64,4 @@ let clusterPrimesJob =
 clusterPrimesJob.ShowInfo()
 
 let clusterPrimes = clusterPrimesJob.AwaitResult()
-
-// To complete the picture, you can also use a CloudFlow programming model, see "5-cloud-streams.fsx"
 

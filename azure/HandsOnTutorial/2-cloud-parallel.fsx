@@ -9,7 +9,7 @@ open MBrace.Workflows
 open MBrace.Flow
 
 (**
- This demo shows how to start performing distributed workloads on MBrace clusters.
+ You now perform a very simple parallel distributed job on your MBrace cluster.
 
  Before running, edit credentials.fsx to enter your connection strings.
  **)

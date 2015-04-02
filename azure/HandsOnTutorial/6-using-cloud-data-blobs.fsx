@@ -10,8 +10,7 @@ open MBrace.Flow
 
 
 (**
- This tutorial illustrates uploading data to Azure Blob Storage using 
- CloudCell and CloudVector and then using the data.
+ You now learn how to upload data to Azure Blob Storage using CloudCell.
 
  When using MBrace, data is implicitly uploaded if it is
  part of the closure of a cloud workflow - for example, if a value is
@@ -67,7 +66,10 @@ let vectorOfData =
 
 
 // Upload it as a partitioned CloudArray, 100000 bytes/chunk
-let cloudVector = CloudVector.New(vectorOfData,100000L) |> cluster.Run
+let cloudVector = 
+    cloud { let! cv = CloudVector.New(vectorOfData,100000L) 
+            return cv }
+    |> cluster.Run
 
 
 // Check the partition count - it should be about 34 partitions
