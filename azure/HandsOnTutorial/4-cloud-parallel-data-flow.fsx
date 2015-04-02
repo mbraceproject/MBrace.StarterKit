@@ -29,11 +29,18 @@ let cluster = Runtime.GetHandle(config)
 // implemented by a final cloud task. 
 let streamComputationJob = 
     [| 1..100 |]
+    // Convert the data into multiple cloud-parallel data streams
     |> CloudFlow.ofArray
+
+    // Map/filter/map
     |> CloudFlow.map (fun num -> num * num)
     |> CloudFlow.filter (fun num -> num < 2500)
     |> CloudFlow.map (fun num -> if num % 2 = 0 then "Even" else "Odd")
+
+    // Reduce
     |> CloudFlow.countBy id
+
+    // Collect the results back to a single array
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
@@ -67,10 +74,12 @@ let numbers = [| for i in 1 .. 30 -> 50000000 |]
 let computePrimesJob = 
     numbers
     |> CloudFlow.ofArray
+    // Split input amongst six tasks, giving six parallel data streams
+    |> CloudFlow.withDegreeOfParallelism 6
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
     |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
     |> CloudFlow.toArray
-    |> cluster.CreateProcess // alteratively you can block on the result using cluster.Run
+    |> cluster.CreateProcess 
 
 // Check if the work is done
 computePrimesJob.ShowInfo()
