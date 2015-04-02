@@ -20,8 +20,10 @@ open MBrace.Flow
 // First connect to the cluster
 let cluster = Runtime.GetHandle(config)
 
-// Parallel distributed data workflows. The default is to partition
-// the input work between all available workers.
+// Parallel distributed data workflows. 
+//
+// CloudFlow.ofArray partitions the input array based on the number of 
+// available workers.
 let streamComputationJob = 
     [| 1..100 |]
     |> CloudFlow.ofArray
