@@ -10,13 +10,13 @@ open MBrace.Flow
 
 
 (**
- This tutorial illustrates using other nuget packages.  You download and reference the packages as normal
- in your F# scripting, and the DLLs for the packages are automatically uploaded to the cloud workers
- as needed.
+ You now learn how to use C# DLLs and any nuget packages in your cloud computations.
+ This is very simple - you just download and reference the packages as normal
+ in your F# scripting, and the DLLs for the packages are automatically uploaded to 
+ the cloud workers as needed.  In a sense, you don't need to do anything special.
 
- In this sample, you use paket (http://fsprojects.fsharp.io/paket) as the tool to fetch packages from NuGet.
+ In this sample, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
  You can alternatively just reference any DLLs you like using normal nuget commands.
-
  You also learn how to get native binaries to target machines should you need to do this.
   
  Before running, edit credentials.fsx to enter your connection strings.
@@ -26,8 +26,9 @@ open MBrace.Flow
 //------------------------------------------
 // Step 0. Get the package bootstrap. This is standard F# boiler plate for scripts that also get packages.
 
-Directory.CreateDirectory( __SOURCE_DIRECTORY__ + "/script-packages")
-Environment.CurrentDirectory <- __SOURCE_DIRECTORY__ + "/script-packages"
+let packagesDir = __SOURCE_DIRECTORY__ + "/script-packages"
+Directory.CreateDirectory(packagesDir)
+Environment.CurrentDirectory <- packagesDir
 
 if not (File.Exists "paket.exe") then
     let url = "https://github.com/fsprojects/Paket/releases/download/0.27.2/paket.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.exe");;
@@ -96,16 +97,12 @@ let managedMathResults = managedMathJob.AwaitResult()
 // them in the temporary storage on the worker.  
 
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
-
 
 // To upload DLLs, register their paths as native dependencies
 // These will be included with all uploaded dependencies of the session
-let contentDir = __SOURCE_DIRECTORY__ + @"/script-packages/packages/MathNet.Numerics.MKL.Win-x64/content/"
-Runtime.RegisterNativeDependency <| contentDir + "libiomp5md.dll"
-Runtime.RegisterNativeDependency <| contentDir + "MathNet.Numerics.MKL.dll"
-Runtime.NativeDependencies
+let contentDir = packagesDir + "/packages/MathNet.Numerics.MKL.Win-x64/content/"
+Runtime.RegisterNativeDependency (contentDir + "libiomp5md.dll")
+Runtime.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
 
 // This can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded
@@ -117,7 +114,10 @@ let firstMklJob =
     }
     |> cluster.CreateProcess
 
+// Check progress
 firstMklJob.ShowInfo()
+
+// Wait for the result
 firstMklJob.AwaitResult()
 
 // 1000 200x200 matrices, inverted using the MKL implementation
@@ -132,11 +132,14 @@ let nativeMathJob =
     |> cluster.CreateProcess
 
 
-
+// Check progress
 nativeMathJob.ShowInfo()
+
 cluster.ShowWorkers()
+
 cluster.ShowProcesses()
 
+// Wait for the result
 nativeMathJob.AwaitResult()
 
 let timeNative  = nativeMathJob.ExecutionTime.TotalSeconds / 1000.0 

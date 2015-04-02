@@ -22,31 +22,26 @@ let cluster = Runtime.GetHandle(config)
 
 
 
-/// helper : write all text to provided stream
-let write (text: string) (stream: Stream) = async { 
-    use writer = new StreamWriter(stream)
-    writer.Write(text)
-}
-
 /// Step 1: download text file from source, 
 /// saving it to blob storage chunked into smaller files of 10000 lines each
-let download (uri: string) = cloud {
-    let webClient = new WebClient()
-    do! Cloud.Log "Begin file download" 
-    let! text = webClient.AsyncDownloadString(Uri(uri)) |> Cloud.OfAsync 
-    do! Cloud.Log "file downloaded" 
-    // Partition the big text into smaller files 
-    let! files = 
-        text.Split('\n')
-        |> Array.chunkBySize 10000
-        |> Array.mapi (fun index lines -> 
-             local { 
-                do! CloudFile.Delete(path = sprintf "text/%d.txt" index) 
-                let! file = CloudFile.WriteAllLines(lines, path = sprintf "text/%d.txt" index) 
-                return file })
-        |> Local.Parallel
-    return files
-}
+let download (uri: string) = 
+    cloud {
+        let webClient = new WebClient()
+        do! Cloud.Log "Begin file download" 
+        let! text = webClient.AsyncDownloadString(Uri(uri)) |> Cloud.OfAsync 
+        do! Cloud.Log "file downloaded" 
+        // Partition the big text into smaller files 
+        let! files = 
+            text.Split('\n')
+            |> Array.chunkBySize 10000
+            |> Array.mapi (fun index lines -> 
+                 local { 
+                    do! CloudFile.Delete(path = sprintf "text/%d.txt" index) 
+                    let! file = CloudFile.WriteAllLines(lines, path = sprintf "text/%d.txt" index) 
+                    return file })
+            |> Local.Parallel
+        return files
+    }
 
 let downloadJob = download "http://norvig.com/big.txt" |> cluster.CreateProcess
 
@@ -54,9 +49,11 @@ downloadJob.ShowInfo()
 
 let files = downloadJob.AwaitResult()
 
+// Take a look at the sizes of the files
 let fileSizesJob = 
     files
-    |> DivideAndConquer.map CloudFile.GetSize
+    |> Array.map CloudFile.GetSize
+    |> Cloud.Parallel 
     |> cluster.CreateProcess 
 
 fileSizesJob.Completed
@@ -64,7 +61,7 @@ fileSizesJob.ShowInfo()
 
 let fileSizes = fileSizesJob.AwaitResult()
 
-// Step 2. Use MBrace.Streams to perform a parallel word 
+// Step 2. Use cloud data flow to perform a parallel word 
 // frequency count on the stored text
 let regex = Regex("[a-zA-Z]+", RegexOptions.Compiled)
 let wordCountJob = 
@@ -83,6 +80,10 @@ cluster.ShowProcesses()
 
 // Step 3. Use calculated frequency counts to compute suggested spelling corrections 
 let NWORDS = wordCountJob.AwaitResult() |> Map.ofArray
+
+// Now we have the commputed the frequency table, all the 
+// rest of this example is run locally.
+
 
 let isKnown word = NWORDS.ContainsKey word 
 

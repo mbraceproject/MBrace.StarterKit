@@ -9,9 +9,11 @@ open MBrace.Workflows
 open MBrace.Flow
 
 (**
- This demo shows how to send a simple computation to an mbrace cluster
+ First you send a simple computation to an mbrace cluster using F# Interactive scripting.
+ You can also send computations from a compiled F# project, though using scripting is very 
+ common with MBrace.
 
- A guide to creating the cluster is here: https://github.com/elastacloud/mbrace-on-brisk-starter/
+ A guide to creating the cluster is here: https://github.com/mbraceproject/MBrace.StarterKit/blob/master/azure/brisk-tutorial.md#get-started-with-brisk
 
  Before you create your cluster you will need an Azure account and an Azure Cloud Storage connection.
 
@@ -24,14 +26,11 @@ open MBrace.Flow
 // Before running, edit credentials.fsx to enter your connection strings.
 let cluster = Runtime.GetHandle(config)
 
-// attach console logger to client object
+// Optionally, attach console logger to client object
 //cluster.AttachClientLogger(new ConsoleLogger())
 
 // We can connect to the cluster and get details of the workers in the pool etc.
 cluster.ShowWorkers()
-
-// Attach a local worker to the cluster state
-//cluster.AttachLocalWorker()
 
 // We can view the history of processes
 cluster.ShowProcesses()
@@ -63,4 +62,10 @@ let quickText =
 //
 // cluster.Reset()
 
+// You can add your local machine to be a worker in the cluster.
+//
+// cluster.AttachLocalWorker()
 
+// You can optionally look at logs for the last 5 minutes.
+//
+// cluster.ShowLogs(300.0)

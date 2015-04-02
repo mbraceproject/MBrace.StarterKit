@@ -22,10 +22,10 @@ cluster.ShowWorkers()
 
 // Here's some data that simulates a log file for user click events
 let linesOfFile = 
-     [ for i in 1 .. 1000 do 
-          let time = DateTime.Now.Date.AddSeconds(float i)
-          let text = sprintf "click user%d %s" (i%10) (time.ToString())
-          yield text ]
+    [ for i in 1 .. 1000 do 
+         let time = DateTime.Now.Date.AddSeconds(float i)
+         let text = sprintf "click user%d %s" (i%10) (time.ToString())
+         yield text ]
 
 // Upload the data to a cloud file (held in blob storage). A fresh name is generated 
 // for the could file.
@@ -86,11 +86,13 @@ let namedCloudFilesJob =
     [ for i in 1 .. 100 ->
         // Note that we generate the contents of the files in the cloud - this cloud
         // computation below only captures and sends an integer.
-        cloud { let lines = [for j in 1 .. 100 -> "File " + string i + ", Item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
-                let nm = freshDirectory.Path + "/file" + string i
-                do! CloudFile.Delete(path=nm) 
-                let! file = CloudFile.WriteAllLines(lines,path=nm) 
-                return file } ]
+        cloud { 
+            let lines = [for j in 1 .. 100 -> "File " + string i + ", Item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
+            let nm = freshDirectory.Path + "/file" + string i
+            do! CloudFile.Delete(path=nm) 
+            let! file = CloudFile.WriteAllLines(lines,path=nm) 
+            return file 
+        } ]
    |> Cloud.Parallel 
    |> cluster.CreateProcess
 
@@ -101,14 +103,13 @@ namedCloudFilesJob.ShowInfo()
 let namedCloudFiles = namedCloudFilesJob.AwaitResult()
 
 // A collection of cloud files can be used as input to a cloud
-// parallel data flow. 
+// parallel data flow. This is a very powerful feature.
 let sumOfLengthsOfLinesJob =
     namedCloudFiles 
     |> CloudFlow.ofCloudFiles CloudFileReader.ReadAllLines
     |> CloudFlow.map (fun lines -> lines.Length)
     |> CloudFlow.sum
     |> cluster.CreateProcess
-
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()
