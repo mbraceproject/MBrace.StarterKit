@@ -9,14 +9,7 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
    automatically take you to the Azure page that downloads a settings file.  
    You then load those settings into Brisk to complete creating your account.
 
-2. Create a new storage account in the [Azure Console](https://manage.windowsazure.com) (any name) or use 
-   an existing storage account.  Keep an eye on which data center you created your storage account in.
-
-   ![pic3](https://cloud.githubusercontent.com/assets/7204669/6285351/a8257724-b8f2-11e4-9955-ceb19c53b7b4.jpg)
-
-3. Create a new MBrace cluster in [Brisk console](https://www.briskengine.com/#/dash) (use any name). 
-   Specify the right data centre (the same one as the storage account) and the right storage account.  
-   This will take 5-10 minutes.
+2. Create a new MBrace cluster in [Brisk console](https://www.briskengine.com/#/dash) (use any name). This will take 5-10 minutes. You can specify specific storage and service bus endpoints if you wish or simply have Brisk automatically generate ones for you.
 
    ![pic4](https://cloud.githubusercontent.com/assets/7204669/6285354/b0620876-b8f2-11e4-84c9-58e7acee52ab.jpg)
 
@@ -24,14 +17,14 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
 
    ![pic4c](https://cloud.githubusercontent.com/assets/7204669/6285357/b55bcf4c-b8f2-11e4-905c-b782ae7b9c6a.png)
 
-4. Fetch the connection string details for your cluster  from Brisk 
+3. Fetch the connection string details for your cluster  from Brisk 
    by clicking on your cluster details, and looking at the Connection Strings tab. 
    These will be needed in the next step.
 
-5. Download the contents of this repository as a ZIP (or clone) and open in 
+4. Download the contents of this repository as a ZIP (or clone) and open in 
    Visual Studio 2013.  If you don't have Visual Studio 2013, see http://fsharp.org/use/windows to get it.
 
-6. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``credentials.fsx``  script:
+5. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``credentials.fsx``  script:
 
         let myStorageConnectionString = "DefaultEndpointsProtocol=..."
         let myServiceBusConnectionString = "Endpoint=sb://brisk..."
