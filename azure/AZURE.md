@@ -30,7 +30,7 @@ for Azure where the worker roles include MBrace worker roles.
 3. Insert your Service Bus and Azure Storage connection strings in the [service configuration](CustomCloudService/MBraceAzureService/ServiceConfiguration.Cloud.cscfg).
 4. Build the three projects.
 5. Publish the MBraceAzureService project.
-6. Of using the hands-on tutorials, insert the same connection 
-   strings in [client.fsx](MBraceAzureClient/client.fsx#L15) and connect 
-   to your runtime.
+6. If using the hands-on tutorials, insert the same connection 
+   strings in [credentials.fsx](HandsOnTutorial/credentials.fsx#L29) and connect 
+   to your runtime (see [hello-world.fsx](HandsOnTutorial/1-hello-world.fsx) as an example).
 
