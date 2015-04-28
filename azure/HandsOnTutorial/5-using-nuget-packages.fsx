@@ -32,7 +32,7 @@ Directory.CreateDirectory(packagesDir)
 Environment.CurrentDirectory <- packagesDir
 
 if not (File.Exists "paket.exe") then
-    let url = "https://github.com/fsprojects/Paket/releases/download/0.27.2/paket.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.exe");;
+    let url = "https://github.com/fsprojects/Paket/releases/download/1.2.0/paket.bootstrapper.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.bootstrapper.exe"); System.Diagnostics.Process.Start("paket.bootstrapper.exe") |> ignore;;
 
 //------------------------------------------
 // Step 1. Resolve and install the Math.NET Numerics packages. You 
