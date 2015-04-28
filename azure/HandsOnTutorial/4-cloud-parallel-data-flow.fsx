@@ -1,5 +1,6 @@
 ﻿#load "credentials.fsx"
 #load "lib/sieve.fsx"
+#r "MBrace.Flow.dll"
 
 open System
 open System.IO

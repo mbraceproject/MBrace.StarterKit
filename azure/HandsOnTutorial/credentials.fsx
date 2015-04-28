@@ -1,12 +1,7 @@
-﻿#I "../../packages"
-#load "MBrace.Azure.Standalone/MBrace.Azure.fsx"
-#r @"Streams/lib/net45/Streams.Core.dll"
-#r @"MBrace.Flow/lib/net45/MBrace.Flow.dll"
-#I @"..\..\packages\Newtonsoft.Json\lib\net45"
-#I @"..\..\packages\Microsoft.Data.Edm\lib\net40"
-#I @"..\..\packages\Microsoft.Data.Services.Client\lib\net40"
-#I @"..\..\packages\Microsoft.Data.OData\lib\net40"
-#I @"..\..\packages\System.Spatial\lib\net40"
+﻿#I "../../packages/MBrace.Azure.Standalone/tools"
+#I "../../packages/Streams/lib/net45"
+#I "../../packages/MBrace.Flow/lib/net45"
+#load "../../packages/MBrace.Azure.Standalone/MBrace.Azure.fsx"
 
 namespace global
 

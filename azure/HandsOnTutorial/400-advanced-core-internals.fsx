@@ -1,4 +1,5 @@
 ﻿#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
+#r "MBrace.Flow.dll"
 
 open MBrace
 

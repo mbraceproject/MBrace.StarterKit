@@ -1,4 +1,5 @@
 ﻿#load "credentials.fsx"
+#r "MBrace.Flow.dll"
 
 open System
 open System.IO
