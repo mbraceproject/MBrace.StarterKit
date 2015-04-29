@@ -100,7 +100,7 @@ let sortJob =
     cloudVector
     |> CloudFlow.ofCloudVector
     |> CloudFlow.sortByDescending (fun (i,j) -> i + j.Length) 10
-    |> CloudFlow.toCloudVector
+    |> CloudFlow.toArray
     |> cluster.CreateProcess
 
 
