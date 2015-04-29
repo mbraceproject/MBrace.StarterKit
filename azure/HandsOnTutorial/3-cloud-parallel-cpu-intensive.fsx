@@ -1,14 +1,12 @@
 ﻿#load "credentials.fsx"
 #load "lib/collections.fsx"
 #load "lib/sieve.fsx"
-#r "MBrace.Flow.dll"
 
 open System
 open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Workflows
 open MBrace.Flow
 
 (**
@@ -26,9 +24,6 @@ let cluster = Runtime.GetHandle(config)
 
 #time "on"
 
-// Specifies 30 jobs, each computing all the primes up to 100 million 
-let numbers = [| for i in 1 .. 30 -> 100000000 |]
-
 
 (**
 
@@ -44,20 +39,21 @@ let numbers = [| for i in 1 .. 30 -> 100000000 |]
 // Performance will depend on the spec of your machine. Note that it is possible that 
 // your machine is more efficient than each individual machine in the cluster.
 let locallyComputedPrimes =
-    numbers
-    |> Array.map(fun num -> 
-         let primes = Sieve.getPrimes num
-         sprintf "calculated %d primes: %A" primes.Length primes )
+    [| for i in 1 .. 30 do
+         let primes = Sieve.getPrimes 10000000
+         yield sprintf "calculated %d primes: %A" primes.Length primes  |]
 
 // Run in parallel on the cluster, on multiple workers, each single-threaded. This exploits the
 // the multiple machines (workers) in the cluster.
 //
 // Sample time: Real: 00:00:16.269, CPU: 00:00:02.906, GC gen0: 47, gen1: 44, gen2: 1
 let clusterPrimesJob =
-    numbers
-    |> Array.map(fun num -> 
-         cloud { let primes = Sieve.getPrimes num
-                 return sprintf "calculated %d primes %A on machine '%s'" primes.Length primes Environment.MachineName })
+    [| for i in 1 .. 30 -> 
+         cloud { 
+            let primes = Sieve.getPrimes 100000000
+            return sprintf "calculated %d primes %A on machine '%s'" primes.Length primes Environment.MachineName 
+         }
+    |]
     |> Cloud.Parallel
     |> cluster.CreateProcess
 

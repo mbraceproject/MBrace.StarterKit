@@ -1,7 +1,7 @@
-﻿#I "../../packages/MBrace.Azure.Standalone/tools"
-#I "../../packages/Streams/lib/net45"
-#I "../../packages/MBrace.Flow/lib/net45"
+﻿#I __SOURCE_DIRECTORY__
+#r "../../packages/Streams/lib/net45/Streams.Core.dll"
 #load "../../packages/MBrace.Azure.Standalone/MBrace.Azure.fsx"
+#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
 namespace global
 
@@ -31,8 +31,8 @@ module ConnectionStrings =
     // serviceBusName: the one you specified when you created cluster.
     // serviceBusKey: found under "Configure" for the service bus in the Azure portal
     
-    let createStorageConnectionString(storageName, storageAccessKey) = sprintf "DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s" storageName storageAccessKey
-    let createServiceBusConnectionString(serviceBusName, serviceBusKey) = sprintf "Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s" serviceBusName serviceBusKey
+    // let createStorageConnectionString(storageName, storageAccessKey) = sprintf "DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s" storageName storageAccessKey
+    // let createServiceBusConnectionString(serviceBusName, serviceBusKey) = sprintf "Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s" serviceBusName serviceBusKey
 
     let config =
         { Configuration.Default with

@@ -1,5 +1,4 @@
 ﻿#load "credentials.fsx"
-#r "MBrace.Flow.dll"
 #r "System.Runtime.Serialization"
 
 open System

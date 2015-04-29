@@ -1,12 +1,10 @@
 ﻿#load "credentials.fsx"
-#r "MBrace.Flow.dll"
 
 open System
 open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Workflows
 open MBrace.Flow
 
 

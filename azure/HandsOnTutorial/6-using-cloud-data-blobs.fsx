@@ -1,12 +1,10 @@
 ﻿#load "credentials.fsx"
-#r "MBrace.Flow.dll"
 
 open System
 open System.IO
 open MBrace
 open MBrace.Azure
 open MBrace.Azure.Client
-open MBrace.Workflows
 open MBrace.Flow
 
 
@@ -102,7 +100,7 @@ let sortJob =
     cloudVector
     |> CloudFlow.ofCloudVector
     |> CloudFlow.sortByDescending (fun (i,j) -> i + j.Length) 10
-    |> CloudFlow.toArray
+    |> CloudFlow.toCloudVector
     |> cluster.CreateProcess
 
 
