@@ -69,6 +69,7 @@
     <None Include="7-using-cloud-data-files.fsx" />
     <None Include="8-cloud-parallel-web-download.fsx" />
     <None Include="9-norvig%27s-spelling-corrector.fsx" />
+    <None Include="10-using-cloud-dictionary.fsx" />
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
