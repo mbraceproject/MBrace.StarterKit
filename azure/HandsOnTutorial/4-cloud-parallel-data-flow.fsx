@@ -3,7 +3,7 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -28,7 +28,7 @@ let cluster = Runtime.GetHandle(config)
 // implemented by a final cloud task. 
 let streamComputationJob = 
     [| 1..100 |]
-    |> CloudFlow.ofArray
+    |> CloudFlow.OfArray
     |> CloudFlow.map (fun num -> num * num)
     |> CloudFlow.map (fun num -> num % 10)
     |> CloudFlow.countBy id
@@ -64,7 +64,7 @@ let numbers = [| for i in 1 .. 30 -> 50000000 |]
 // of partitioning of the stream at any point in the pipeline.
 let computePrimesJob = 
     numbers
-    |> CloudFlow.ofArray
+    |> CloudFlow.OfArray
     |> CloudFlow.withDegreeOfParallelism 6
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
     |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
@@ -77,3 +77,23 @@ computePrimesJob.ShowInfo()
 // Wait for the result
 let computePrimes = computePrimesJob.AwaitResult()
 
+(**
+
+Results of a flow computation can be persisted to store by terminating
+with a call to CloudFlow.persist/persistaCached. 
+This creates a PersistedCloudFlow instance that can be reused without
+performing recomputations of the original flow.
+
+**)
+
+let persistedCloudFlow =
+    [|1 .. 10|]
+    |> CloudFlow.OfArray
+    |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i, string j) })
+    |> CloudFlow.groupBy snd
+    |> CloudFlow.persist
+    |> cluster.Run
+
+
+let length = persistedCloudFlow |> CloudFlow.length |> cluster.Run
+let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.Run

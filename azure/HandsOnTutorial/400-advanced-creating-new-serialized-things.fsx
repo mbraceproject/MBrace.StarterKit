@@ -5,7 +5,7 @@ open System
 open System.IO
 open System.Runtime.Serialization
 
-open MBrace
+open MBrace.Core
 open MBrace.Azure
 
 (** 

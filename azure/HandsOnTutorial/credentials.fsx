@@ -10,7 +10,7 @@ namespace global
 [<AutoOpen>]
 module ConnectionStrings = 
 
-    open MBrace
+    open MBrace.Core
     open MBrace.Azure
     open MBrace.Azure.Client
     open MBrace.Azure.Runtime

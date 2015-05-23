@@ -5,7 +5,8 @@ open System
 open System.IO
 open System.Net
 open System.Text.RegularExpressions
-open MBrace
+open MBrace.Core
+open MBrace.Store
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -36,7 +37,7 @@ let download (uri: string) =
             |> Array.mapi (fun index lines -> 
                  local { 
                     do! CloudFile.Delete(path = sprintf "text/%d.txt" index) 
-                    let! file = CloudFile.WriteAllLines(lines, path = sprintf "text/%d.txt" index) 
+                    let! file = CloudFile.WriteAllLines(path = sprintf "text/%d.txt" index, lines = lines) 
                     return file })
             |> Local.Parallel
         return files
@@ -51,7 +52,7 @@ let files = downloadJob.AwaitResult()
 // Take a look at the sizes of the files
 let fileSizesJob = 
     files
-    |> Array.map CloudFile.GetSize
+    |> Array.map (fun f -> CloudFile.GetSize f.Path)
     |> Cloud.Parallel 
     |> cluster.CreateProcess 
 
@@ -65,7 +66,8 @@ let fileSizes = fileSizesJob.AwaitResult()
 let regex = Regex("[a-zA-Z]+", RegexOptions.Compiled)
 let wordCountJob = 
     files
-    |> CloudFlow.ofCloudFiles (fun s -> async { let sr = new StreamReader(s) in return sr.ReadToEnd() })
+    |> Seq.map (fun f -> f.Path)
+    |> CloudFlow.OfCloudFilesByLine
     |> CloudFlow.collect (fun text -> regex.Matches(text) |> Seq.cast)
     |> CloudFlow.map (fun (m:Match) -> m.Value.ToLower()) 
     |> CloudFlow.countBy id 

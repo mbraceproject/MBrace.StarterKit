@@ -2,7 +2,8 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
+open MBrace.Store
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -31,7 +32,7 @@ let download (name: string, uri: string) =
         let webClient = new WebClient()
         let! text = webClient.AsyncDownloadString(Uri(uri)) |> Cloud.OfAsync
         do! CloudFile.Delete(sprintf "pages/%s.html" name)
-        let! file = CloudFile.WriteAllText(text,path=sprintf "pages/%s.html" name)
+        let! file = CloudFile.WriteAllText(path = sprintf "pages/%s.html" name, text = text)
         return file
     }
 
@@ -51,7 +52,7 @@ let files = filesJob.AwaitResult()
 let contentsOfFiles = 
     files
     |> Array.map (fun file ->
-        cloud { let! text = CloudFile.ReadAllText(file)
+        cloud { let! text = CloudFile.ReadAllText(file.Path)
                 return (file.Path, text.Length) })
     |> Cloud.Parallel
     |> cluster.Run

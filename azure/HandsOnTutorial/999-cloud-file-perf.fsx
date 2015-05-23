@@ -2,7 +2,8 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
+open MBrace.Store
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -17,7 +18,7 @@ open MBrace.Flow
 let cluster = Runtime.GetHandle(config)
 
 // Create a directory in the cloud file system
-let dp = cluster.StoreClient.FileStore.Directory.Create("perf-files")
+let dp = cluster.StoreClient.Directory.Create("perf-files")
 
 //--------------------------------------------------------------------
 // Stress test some data storage
@@ -46,7 +47,7 @@ let lineWritePerf, bigCloudTextFiles =
         cloud { let lines = [| for i in 0 .. 10000 * sz-> "Some text that takes about one hundred bytes to store in default encoding if you look you can check" |] 
                 // This delete is needed because of https://github.com/mbraceproject/MBrace.Azure/issues/21
                 do! CloudFile.Delete(path=dp.Path + sprintf "/big-lines-%d" sz) 
-                let! file = CloudFile.WriteAllLines(lines,path=dp.Path + sprintf "/big-lines-%d" sz)  
+                let! file = CloudFile.WriteAllLines(path=dp.Path + sprintf "/big-lines-%d" sz, lines = lines)  
                 return file }
 
 // [(1, 0.6813008); (10, 1.200415); (100, 6.4491432)]
@@ -56,7 +57,7 @@ let textWritePerf, _ =
         cloud { let text = System.String(' ', sz * 1024 * 1024)
                 // This delete is needed because of https://github.com/mbraceproject/MBrace.Azure/issues/21
                 do! CloudFile.Delete(path=dp.Path + sprintf "/big-text-%d" sz) 
-                let! file = CloudFile.WriteAllText(text,path=dp.Path + sprintf "/big-text-%d" sz)  
+                let! file = CloudFile.WriteAllText(path=dp.Path + sprintf "/big-text-%d" sz, text = text)  
                 return file }
 
 // #1   [(1, 0.5426625); (10, 2.0498235); (100, 21.1039728)]
@@ -68,7 +69,7 @@ let bytesWritePerf, bigCloudByteFiles =
         cloud { let data = [| for i in 0 .. sz * 1024 * 1024 -> byte i |] 
                 // This delete is needed because of https://github.com/mbraceproject/MBrace.Azure/issues/21
                 do! CloudFile.Delete(path=dp.Path + sprintf "/big-bytes-%d" sz) 
-                let! file = CloudFile.WriteAllBytes (data,path=dp.Path + sprintf "/big-bytes-%d" sz)  
+                let! file = CloudFile.WriteAllBytes (path=dp.Path + sprintf "/big-bytes-%d" sz, buffer = data)  
                 return file }
 
 // #1   [(1, 3.1591611); (10, 0.5312207); (100, 3.0732776)]
@@ -77,7 +78,7 @@ let bytesWritePerf, bigCloudByteFiles =
 let lineReadPerf, lineReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
         cloud { let cloudFile =  CloudFile(dp.Path + sprintf "/big-lines-%d" sz) 
-                let! lines =  CloudFile.ReadAllLines(cloudFile)   
+                let! lines =  CloudFile.ReadAllLines(cloudFile.Path)   
                 return lines.Length }
 
 // #1 [(1, 0.3036431); (10, 0.397323); (100, 8.2052502)]
@@ -87,7 +88,7 @@ let lineReadPerf, lineReadResults =
 let textReadPerf, textReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
         cloud { let cloudFile =  CloudFile(dp.Path + sprintf "/big-text-%d" sz) 
-                let! text =  CloudFile.ReadAllText(cloudFile)   
+                let! text =  CloudFile.ReadAllText(cloudFile.Path)   
                 return text.Length }
 
 
@@ -99,6 +100,6 @@ let textReadPerf, textReadResults =
 let bytesReadPerf, bytesReadResults = 
     timeSizes [ 1; 10; 100; 1000 ] <| fun sz -> 
         cloud { let cloudFile = CloudFile(dp.Path + sprintf "/big-bytes-%d" sz)
-                let! bytes =  CloudFile.ReadAllBytes(cloudFile)   
+                let! bytes =  CloudFile.ReadAllBytes(cloudFile.Path)   
                 return bytes.Length }
 

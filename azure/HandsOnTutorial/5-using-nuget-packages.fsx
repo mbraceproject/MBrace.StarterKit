@@ -2,7 +2,7 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -74,7 +74,7 @@ cluster.ShowWorkers()
 // Invert 100 150x150 matrices using managed code
 let managedMathJob = 
     [| 1 .. 100 |]
-    |> CloudFlow.ofArray
+    |> CloudFlow.OfArray
     |> CloudFlow.map (fun i -> 
             Control.UseManaged()
             let m = Matrix<double>.Build.Random(200,200) 
@@ -122,7 +122,7 @@ firstMklJob.AwaitResult()
 // 1000 200x200 matrices, inverted using the MKL implementation
 let nativeMathJob = 
     [| 1 .. 1000 |]
-    |> CloudFlow.ofArray
+    |> CloudFlow.OfArray
     |> CloudFlow.map (fun i -> 
             Control.UseNativeMKL()
             let m = Matrix<double>.Build.Random(200,200) 

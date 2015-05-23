@@ -2,7 +2,7 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
@@ -49,6 +49,16 @@ let text = job.AwaitResult()
 // Alternatively we can do this all in one line
 let quickText = 
     cloud { return "Hello world!" } 
+    |> cluster.Run
+
+// We can test a workflow by running locally using async semantics
+let localResult =
+    cloud { printfn "hello, world" ; return Environment.MachineName }
+    |> cluster.RunLocally
+
+// Compare behaviour against remote execution
+let remoteResult =
+    cloud { printfn "hello, world" ; return Environment.MachineName }
     |> cluster.Run
 
 // This can be used to clear all process records in the cluster

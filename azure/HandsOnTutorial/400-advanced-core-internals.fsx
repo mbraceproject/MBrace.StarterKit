@@ -1,6 +1,6 @@
 ﻿#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
 
-open MBrace
+open MBrace.Core
 
 (**
 
@@ -14,10 +14,10 @@ let hello = cloud { printfn "hello world" }
 
 // 2. Execute the workflow locally
 
-open MBrace.Continuation // access continuation internals
+open MBrace.Core.Internals // access MBrace internals
 
 // create a simple System.Threading.CancellationTokenSource wrapper
-let mkCTS () = MBrace.Runtime.InMemory.InMemoryCancellationTokenSource()
+let mkCTS () = new InMemoryRuntime.InMemoryCancellationTokenSource()
 
 //#nowarn "444" // uncomment to disable warnings
 

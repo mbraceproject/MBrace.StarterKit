@@ -4,7 +4,7 @@
 
 open System
 open System.IO
-open MBrace
+open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
