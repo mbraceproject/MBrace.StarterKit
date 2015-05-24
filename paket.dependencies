@@ -5,3 +5,4 @@ nuget MBrace.Azure.Standalone 0.6.8-alpha
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget Streams
+nuget Mono.Cecil 0.9.5.4
