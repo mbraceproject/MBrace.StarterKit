@@ -63,7 +63,7 @@ let freshDirectory = cluster.StoreClient.Directory.Create(directory)
 // Upload data to a cloud file (held in blob storage) where we give the cloud file a name.
 let namedCloudFile = 
     cloud { 
-        let! fileName = CloudPath.Combine(freshDirectory.Path, "file1")
+        let fileName = freshDirectory.Path + "/file1"
         do! CloudFile.Delete(fileName)
         let! file = CloudFile.WriteAllLines(fileName, linesOfFile)
         return file
