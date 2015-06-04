@@ -25,19 +25,21 @@ let dict =
     } |> cluster.Run
 
 // add an entry to the dictionary
-cluster.StoreClient.Dictionary.Add "key0" 42 dict
-cluster.StoreClient.Dictionary.ContainsKey "key0" dict
-cluster.StoreClient.Dictionary.TryFind "key0" dict
+dict.Add("key0", 42) |> cluster.Run
+dict.ContainsKey "key0" |> cluster.Run
+dict.TryFind "key0" |> cluster.Run
+dict.TryFind "key-not-there" |> cluster.Run
 
 // contested, distributed updates
 let key = "contestedKey"
 let contestJob = 
     [|1 .. 100|]
     |> CloudFlow.OfArray
-    |> CloudFlow.iterLocal(fun i -> CloudDictionary.AddOrUpdate key (function None -> i | Some v -> i + v) dict |> Local.Ignore)
+    |> CloudFlow.iterLocal(fun i -> dict.AddOrUpdate(key, function None -> i | Some v -> i + v) |> Local.Ignore)
     |> cluster.CreateProcess
 
 contestJob.ShowInfo()
 
 // verify result is correct
-cluster.StoreClient.Dictionary.TryFind key dict
+dict.TryFind key |> cluster.Run
+
