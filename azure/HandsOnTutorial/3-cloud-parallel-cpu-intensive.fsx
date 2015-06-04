@@ -40,7 +40,7 @@ let cluster = Runtime.GetHandle(config)
 // your machine is more efficient than each individual machine in the cluster.
 let locallyComputedPrimes =
     [| for i in 1 .. 30 do
-         let primes = Sieve.getPrimes 10000000
+         let primes = Sieve.getPrimes 100000000
          yield sprintf "calculated %d primes: %A" primes.Length primes  |]
 
 // Run in parallel on the cluster, on multiple workers, each single-threaded. This exploits the
