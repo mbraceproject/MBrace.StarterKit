@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="MBraceAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
   <Role name="MBraceAzureRole">
-    <Instances count="4" />
+    <Instances count="2" />
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" value="your connection string" />
-      <Setting name="MBrace.StorageConnectionString" value="your connection string" />
+      <Setting name="MBrace.ServiceBusConnectionString" value="Endpoint=sb://eirikur-localtests.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=2Vq0BO5h4xPUJ55RzXR+A6ptqRLClpyudvM73uLyFKI=" />
+      <Setting name="MBrace.StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=eirikurlocaltests;AccountKey=Fyu09Ufho4v+3IiDE2yGgcLW/3iFUfFn0NsmhrFQd4+L+kSGEwrUD1VEalitP5u/sPsCf+ciGcX88skksfvL5g==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

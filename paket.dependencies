@@ -1,8 +1,8 @@
 source https://www.nuget.org/api/v2
 
-nuget MBrace.Azure 0.6.8-alpha
-nuget MBrace.Azure.Standalone 0.6.8-alpha
+nuget MBrace.Azure 0.6.10-alpha
+nuget MBrace.Azure.Standalone 0.6.10-alpha
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget Streams
-nuget Mono.Cecil 0.9.5.4
+nuget FsPickler.Json 1.2.7

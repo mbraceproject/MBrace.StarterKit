@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="MBraceAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
-  <WorkerRole name="MBraceAzureRole" vmsize="Medium">
+  <WorkerRole name="MBraceAzureRole" vmsize="ExtraLarge">
     <LocalResources>
       <LocalStorage name="LocalMBraceCache" cleanOnRoleRecycle="true" sizeInMB="409600" />
     </LocalResources>

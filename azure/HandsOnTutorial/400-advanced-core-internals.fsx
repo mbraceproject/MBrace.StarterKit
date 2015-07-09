@@ -19,7 +19,7 @@ open MBrace.Core.Internals // access MBrace internals
 // create a simple System.Threading.CancellationTokenSource wrapper
 let mkCTS () = new InMemoryRuntime.InMemoryCancellationTokenSource()
 
-//#nowarn "444" // uncomment to disable warnings
+//#nowarn "444" // uncomment to disable compiler warnings
 
 Cloud.RunSynchronously(hello, ResourceRegistry.Empty, mkCTS().Token)
 Cloud.Start(hello, ResourceRegistry.Empty, mkCTS().Token)
