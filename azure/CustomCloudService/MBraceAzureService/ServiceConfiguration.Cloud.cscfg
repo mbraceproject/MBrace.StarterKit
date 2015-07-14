@@ -3,8 +3,8 @@
   <Role name="MBraceAzureRole">
     <Instances count="2" />
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" value="Endpoint=sb://eirikur-localtests.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=2Vq0BO5h4xPUJ55RzXR+A6ptqRLClpyudvM73uLyFKI=" />
-      <Setting name="MBrace.StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=eirikurlocaltests;AccountKey=Fyu09Ufho4v+3IiDE2yGgcLW/3iFUfFn0NsmhrFQd4+L+kSGEwrUD1VEalitP5u/sPsCf+ciGcX88skksfvL5g==" />
+      <Setting name="MBrace.ServiceBusConnectionString" value="" />
+      <Setting name="MBrace.StorageConnectionString" value="" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
