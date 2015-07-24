@@ -18,7 +18,7 @@ You just download and reference the packages as normal
 in your F# scripting or other client application. The DLLs for the packages are automatically uploaded to 
 the cloud workers as needed.  In a sense, you don't need to do anything special.
 
-In this sample, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
+In this tutorial, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
 You can alternatively just reference any DLLs you like using normal nuget commands.
 You also learn how to get native binaries to target machines should you need to do this.
   
@@ -123,3 +123,6 @@ let timeManaged = managedMathJob.ExecutionTime.TotalSeconds / 100.0
 
 timeManaged/timeNative
 
+(** In this tutorial, you've learned how to use C# DLLs, NuGet packages and 
+native DLLs in your MBrace computations. Continue with further samples to learn more about the
+MBrace programming model.  *)

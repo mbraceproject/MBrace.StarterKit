@@ -13,7 +13,6 @@ open MBrace.Flow
 # Simple Cloud Parallelism with MBrace.Azure
 
 You now perform a very simple parallel distributed job on your MBrace cluster.
-
 Before running, edit credentials.fsx to enter your connection strings.
 
 *)
@@ -41,17 +40,6 @@ let quickResults =
     |> Cloud.Parallel
     |> cluster.Run
 
-(** Alternatively, you could have started 50 independent jobs.  This can be handy if you want to 
-track each one independently: *)
-
-let jobs =  
-    [ for i in 1 .. 50 -> 
-        cloud { return sprintf "i'm job %d" i } 
-        |> cluster.CreateProcess ]
-
-let jobResults = 
-    [ for job in jobs -> job.AwaitResult() ]
-
 (** Next you use Cloud.Choice: the first cloud workflow to return "Some" wins. *)
 let searchJob =
     [ for i in 1 .. 50 -> cloud { if i % 10 = 0 then return Some i else return None } ]
@@ -62,3 +50,7 @@ searchJob.ShowInfo()
 
 (** Await the result of the search: *)
 let searchResult = searchJob.AwaitResult()
+
+(** In this tutorial, you've learned about `Cloud.Parallel` and `Cloud.Choice`
+as ways of composing cloud workflows Continue with further samples to learn more about the
+MBrace programming model.  *)

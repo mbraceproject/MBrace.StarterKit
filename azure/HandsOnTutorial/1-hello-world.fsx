@@ -85,3 +85,7 @@ management console).
 (** You can optionally look at worker (not client) logs for the last 5 minutes. *)
 
 // cluster.ShowLogs(300.0)
+
+(** In this tutorial, you've run your very first work on an MBrace cluster.
+Continue with further samples to learn more about the
+MBrace programming model.  *)

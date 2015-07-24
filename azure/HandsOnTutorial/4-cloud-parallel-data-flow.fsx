@@ -112,3 +112,8 @@ let persistedCloudFlow =
 
 let length = persistedCloudFlow |> CloudFlow.length |> cluster.Run
 let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.Run
+
+(** In this tutorial, you've learned the basics of the CloudFlow programming
+model, a powerful data-flow model for scalable pipelines of data. 
+Continue with further samples to learn more about the
+MBrace programming model.  *)

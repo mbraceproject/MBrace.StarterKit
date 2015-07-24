@@ -11,32 +11,34 @@ open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
-# Creating and Using Cloud Values as Blobs
+# Creating and Using Cloud Values and Cloud Sequences
 
- You now learn how to upload data to Azure Blob Storage using CloudValue and
- then process it using MBrace cloud tasks.
+# Using Cloud Values 
 
- When using MBrace, data is implicitly uploaded if it is
- part of the closure of a cloud workflow - for example, if a value is
- referenced in a cloud { ... } block.  That data is a transient part of the 
- process specification.  This is often the most convenient way to get 
- small amounts (KB-MB) of data to the cloud: just use the data as part
- of a cloud workflow and run that work in the cloud.
+You now learn how to upload data to Azure Blob Storage using CloudValue and
+then process it using MBrace cloud tasks.
 
- If you wish to _persist_ data in the cloud - for example, if it is too big
- to upload multiple times - then you can use one or more of the
- cloud data constructs that MBrace provides. 
+When using MBrace, data is implicitly uploaded if it is
+part of the closure of a cloud workflow - for example, if a value is
+referenced in a cloud { ... } block.  That data is a transient part of the 
+process specification.  This is often the most convenient way to get 
+small amounts (KB-MB) of data to the cloud: just use the data as part
+of a cloud workflow and run that work in the cloud.
+
+If you wish to _persist_ data in the cloud - for example, if it is too big
+to upload multiple times - then you can use one or more of the
+cloud data constructs that MBrace provides. 
  
- Note you can alternatively you use any existing cloud storage 
- APIs or SDKs you already have access to. For example, if you wish you 
- can read/write using the .NET Azure storage SDKs directly rather than 
- using MBrace primitives.
+Note you can alternatively you use any existing cloud storage 
+APIs or SDKs you already have access to. For example, if you wish you 
+can read/write using the .NET Azure storage SDKs directly rather than 
+using MBrace primitives.
  
- You can copy larger data to Azure using the AzCopy.exe command line tool, see
- https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
+You can copy larger data to Azure using the AzCopy.exe command line tool, see
+https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
  
- You can manage storage using the "azure" command line tool, see
- https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
+You can manage storage using the "azure" command line tool, see
+https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
 
  Before running, edit credentials.fsx to enter your connection strings.
  
@@ -63,14 +65,17 @@ let lengthOfData =
     |> cluster.Run
 
 
-(** Next persist an array of data (each element a tuple) as a CloudSequence.
+(** 
 
-Here is the data we're going to upload, it's 1000 tuples: *) 
-let dataGen = seq {
-    for i in 1 .. 1000 do 
+# Using Cloud Sequences
+
+Next persist an array of data (each element a tuple) as a CloudSequence.
+
+Here is the data we're going to upload, it's an array of 1000 tuples: *) 
+let dataGen = 
+    [| for i in 1 .. 1000 do 
         let text = sprintf "%d quick brown foxes jumped over %d lazy dogs." i (2*i + 1)
-        yield (i, text)
-}
+        yield (i, text) |]
 
 (** Upload it as a CloudSequence;  this persists all data to creates a single file 
 on store that can be dereferenced on-demand. *)
@@ -87,9 +92,36 @@ let first10 =
         return e |> Seq.take 10 |> Seq.toArray
     } |> cluster.Run
 
-(** Aggregate all elements to a local array: *) 
+(** The next example runs a cloud job that aggregate all elements to an array
+and returns the results to the server: *) 
 let allData = 
     cloud {
         let! array = cloudSequence.ToArray()
         return array
     } |> cluster.Run
+
+
+(** The next sample shows how a collection of cloud sequences can be used
+as input into a CloudFlow data flow:
+*)
+
+let cloudSequences = 
+    [ for i in 1 .. 10 -> 
+        cloud {
+            let! seq = CloudSequence.New dataGen
+            return seq
+        } ]
+    |> Cloud.Parallel
+    |> cluster.Run
+
+let results = 
+    cloudSequences
+      |> CloudFlow.OfCloudSequences
+      |> CloudFlow.groupBy (fun (k,v) -> k)
+      |> CloudFlow.toArray
+      |> cluster.Run
+
+(** In this tutorial, you've learned how to persist data values into
+cloud storage using the `CloudValue` and `CloudSequence` types.
+Continue with further samples to learn more about the
+MBrace programming model.  *)
