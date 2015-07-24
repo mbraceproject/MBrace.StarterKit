@@ -1,5 +1,17 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "credentials.fsx"
 #load "lib/collections.fsx"
+
+
+(**
+# Training Machine Learning in the Cloud
+
+ This tutorial demonstrates a word count example via Norvig's Spelling Corrector (http://norvig.com/spell-correct.html).
+ It is a prototypical workflow for training machine learning in the cloud, and extracting the results
+ to use locally in your client.
+ 
+ Before running, edit credentials.fsx to enter your connection strings.
+**)
 
 open System
 open System.IO
@@ -11,19 +23,14 @@ open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
 
-(**
- This tutorial demonstrates a word count example via Norvig's Spelling Corrector (http://norvig.com/spell-correct.html)
- 
- Before running, edit credentials.fsx to enter your connection strings.
-**)
-
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
 
-
-/// Step 1: download text file from source, 
-/// saving it to blob storage chunked into smaller files of 10000 lines each
+(**
+Step 1: download text file from source, 
+saving it to blob storage chunked into smaller files of 10000 lines each. 
+*) 
 let download (uri: string) = 
     cloud {
         let webClient = new WebClient()
@@ -49,7 +56,7 @@ downloadJob.ShowInfo()
 
 let files = downloadJob.AwaitResult()
 
-// Take a look at the sizes of the files
+(** Now, take a look at the sizes of the files. *) 
 let fileSizesJob = 
     files
     |> Array.map (fun f -> CloudFile.GetSize f.Path)
@@ -61,12 +68,15 @@ fileSizesJob.ShowInfo()
 
 let fileSizes = fileSizesJob.AwaitResult()
 
-// Step 2. Use cloud data flow to perform a parallel word 
-// frequency count on the stored text
+(**
+In the second step, use cloud data flow to perform a parallel word 
+frequency count on the stored text. 
+*) 
+
 let regex = Regex("[a-zA-Z]+", RegexOptions.Compiled)
 let wordCountJob = 
     files
-    |> Seq.map (fun f -> f.Path)
+    |> Array.map (fun f -> f.Path)
     |> CloudFlow.OfCloudFilesByLine
     |> CloudFlow.collect (fun text -> regex.Matches(text) |> Seq.cast)
     |> CloudFlow.map (fun (m:Match) -> m.Value.ToLower()) 
@@ -78,17 +88,17 @@ wordCountJob.ShowInfo()
 
 cluster.ShowProcesses()
 
-
-// Step 3. Use calculated frequency counts to compute suggested spelling corrections 
 let NWORDS = wordCountJob.AwaitResult() |> Map.ofArray
 
-// Now we have the commputed the frequency table, all the 
-// rest of this example is run locally.
+(** In the final step, use the calculated frequency counts to compute suggested spelling corrections in your client.
+At this point, you've finished using the cluster and no longer need it.  
+We have the commputed the frequency table, all the rest of this example is run locally.
+*) 
 
 
 let isKnown word = NWORDS.ContainsKey word 
 
-/// Compute the 1-character edits of the word
+(** Compute the 1-character edits of the word: *) 
 let edits1 (word: string) = 
     let splits = [for i in 0 .. word.Length do yield (word.[0..i-1], word.[i..])]
     let deletes = [for a, b in splits do if b <> "" then yield a + b.[1..]]
@@ -100,7 +110,7 @@ let edits1 (word: string) =
 edits1 "speling"
 edits1 "pgantom"
 
-/// Compute the 1-character edits of the word which are actually words
+(** Compute the 1-character edits of the word which are actually words *) 
 let knownEdits1 word = 
     let result = [for w in edits1 word do if Map.containsKey w NWORDS then yield w] |> Set.ofList
     if result.IsEmpty then None else Some result 
@@ -108,7 +118,7 @@ let knownEdits1 word =
 knownEdits1 "fantom"
 knownEdits1 "pgantom"
 
-/// Compute the 2-character edits of the word which are actually words
+(** Compute the 2-character edits of the word which are actually words *) 
 let knownEdits2 word = 
     let result = [for e1 in edits1 word do for e2 in edits1 e1 do if Map.containsKey e2 NWORDS then yield e2] |> Set.ofList
     if result.IsEmpty then None else Some result 
@@ -117,8 +127,7 @@ knownEdits2 "pgantom"
 knownEdits2 "quyck"
 
 
-/// Find the best correction for a word, preferring 0-edit, over 1-edit, over 
-/// 2-edit, and sorting by frequency.
+(** Find the best correction for a word, preferring 0-edit, over 1-edit, over 2-edit, and sorting by frequency. *) 
 let findBestCorrection (word: string) = 
     let words = 
         if isKnown word then Set.ofList [word] 

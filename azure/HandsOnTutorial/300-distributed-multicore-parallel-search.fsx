@@ -18,7 +18,7 @@ open MBrace.Flow
  Before running, edit credentials.fsx to enter your connection strings.
 **)
 
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
 /// Distributed tryFind combinator with multicore balancing.
