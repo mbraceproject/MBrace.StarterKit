@@ -54,12 +54,12 @@ Paket.Dependencies.Install """
 open MathNet.Numerics
 open MathNet.Numerics.LinearAlgebra
 
-let m1 = Matrix<double>.Build.Random(10,10)
-let v1 = Vector<double>.Build.Random(10)
+let matrix1 = Matrix<double>.Build.Random(10,10)
+let vector1 = Vector<double>.Build.Random(10)
 
-v1 * m1 
+let product = vector1 * matrix1 
 
-(m1 * m1.Inverse()).Determinant()
+let check = (matrix1 * matrix1.Inverse()).Determinant()
 
 //------------------------------------------
 // Step 3. Run the code on MBrace. Note that the DLLs from the packages are uploaded
