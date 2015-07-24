@@ -5,15 +5,13 @@
 (**
 # Your First Cloud Work
 
- First you send a simple computation to an mbrace cluster using F# Interactive scripting.
- You can also send computations from a compiled F# project, though using scripting is very 
- common with MBrace.
+First you send a simple computation to an mbrace cluster using F# Interactive scripting.
+You can also send computations from a compiled F# project, though using scripting is very 
+common with MBrace.
 
- A guide to creating the cluster is [here](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/azure/brisk-tutorial.md#get-started-with-brisk)
+A guide to creating the cluster is [here](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/azure/brisk-tutorial.md#get-started-with-brisk).
 
- Before you create your cluster you will need an Azure account and an Azure Cloud Storage connection.
-
- Before running, edit credentials.fsx to enter your connection strings.
+> NOTE: Before running, build this solution to get the required nuget packages, and edit credentials.fsx to enter your Azure connection strings.
 
  **)
 
