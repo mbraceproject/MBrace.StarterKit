@@ -102,7 +102,8 @@ let allData =
 
 
 (** The next sample shows how a collection of cloud sequences can be used
-as input into a CloudFlow data flow:
+as input into a CloudFlow data flow. Each cloud sequence can be used as a 
+partition of data flowing into the CloudFlow.
 *)
 
 let cloudSequences = 
@@ -117,7 +118,7 @@ let cloudSequences =
 let results = 
     cloudSequences
       |> CloudFlow.OfCloudSequences
-      |> CloudFlow.groupBy (fun (k,v) -> k)
+      |> CloudFlow.countBy (fun (k,v) -> k)
       |> CloudFlow.toArray
       |> cluster.Run
 

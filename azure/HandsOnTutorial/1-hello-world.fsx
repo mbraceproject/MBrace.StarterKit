@@ -68,7 +68,7 @@ In case you run into trouble, this can be used to clear all process
 records in the cluster: 
 *)
 
-// cluster.ClearAllProcesses()
+cluster.ClearAllProcesses()
 
 (**
 If you need to get really heavy, you can reset the cluster, which clears 
@@ -86,6 +86,8 @@ management console).
 
 // cluster.ShowLogs(300.0)
 
-(** In this tutorial, you've run your very first work on an MBrace cluster.
+(** In this tutorial, you've run your very first work on an MBrace cluster
+and learned the basics of controlling the cluster programatically.
+You can also control the cluster from the Azure management portal.
 Continue with further samples to learn more about the
 MBrace programming model.  *)
