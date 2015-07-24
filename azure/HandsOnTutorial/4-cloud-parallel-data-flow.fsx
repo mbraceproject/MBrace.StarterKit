@@ -1,6 +1,13 @@
 ﻿(*** hide ***)
 #load "credentials.fsx"
 
+open System
+open System.IO
+open MBrace.Core
+open MBrace.Azure
+open MBrace.Azure.Client
+open MBrace.Flow
+
 
 (**
 # Using Cloud Flows
@@ -12,13 +19,6 @@
  Before running, edit credentials.fsx to enter your connection strings.
 *)
 #load "lib/sieve.fsx"
-
-open System
-open System.IO
-open MBrace.Core
-open MBrace.Azure
-open MBrace.Azure.Client
-open MBrace.Flow
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)

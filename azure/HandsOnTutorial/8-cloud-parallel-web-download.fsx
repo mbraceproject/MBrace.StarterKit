@@ -9,7 +9,7 @@ open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
-# Cloud Parallel Web Downloader 
+# Example: Cloud Parallel Web Downloader 
 
  This example illustrates doing I/O tasks in parallel using the workers in the cluster
  
@@ -59,3 +59,8 @@ let contentsOfFiles =
                 return (file.Path, text.Length) })
     |> Cloud.Parallel
     |> cluster.Run
+
+
+(** In this example, you've seen how cloud tasks can perform I/O to web data sources. 
+Continue with further samples to learn more about the
+MBrace programming model.   *)

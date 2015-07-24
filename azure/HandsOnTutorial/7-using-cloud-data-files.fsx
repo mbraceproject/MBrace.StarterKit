@@ -40,7 +40,6 @@ let anonCloudFile =
      |> cluster.Run
 
 (** Run a cloud job which reads all the lines of a cloud file: *) 
-
 let numberOfLinesInFile = 
     cloud { 
         let! data = CloudFile.ReadAllLines anonCloudFile.Path
@@ -120,4 +119,8 @@ sumOfLengthsOfLinesJob.ShowInfo()
 // Get the result
 let sumOfLengthsOfLines = sumOfLengthsOfLinesJob.AwaitResult()
 
+(** In this tutorial, you've learned how to use cloud files
+including as partitioned inputs into CloudFlow programming.
+Continue with further samples to learn more about the
+MBrace programming model.  *)
 

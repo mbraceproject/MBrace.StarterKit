@@ -3,16 +3,6 @@
 #load "lib/collections.fsx"
 
 
-(**
-# Training Machine Learning in the Cloud
-
- This tutorial demonstrates a word count example via Norvig's Spelling Corrector (http://norvig.com/spell-correct.html).
- It is a prototypical workflow for training machine learning in the cloud, and extracting the results
- to use locally in your client.
- 
- Before running, edit credentials.fsx to enter your connection strings.
-*)
-
 open System
 open System.IO
 open System.Net
@@ -22,6 +12,18 @@ open MBrace.Store
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
+
+(**
+# Example: Training in the Cloud
+
+This example demonstrates Norvig's Spelling Corrector (http://norvig.com/spell-correct.html).
+It is a prototypical workflow for training and learning in the cloud - we use the cloud to extract statistical
+information from a body of text, and the statistical summary is used locally in your client application.
+ 
+Before running, edit credentials.fsx to enter your connection strings.
+
+## Part 1 - Extract Statistics in the Cloud 
+*)
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
@@ -90,9 +92,16 @@ cluster.ShowProcesses()
 
 let NWORDS = wordCountJob.AwaitResult() |> Map.ofArray
 
-(** In the final step, use the calculated frequency counts to compute suggested spelling corrections in your client.
+(** 
+
+## Part 2 - Use the Frequency Counts in our Application
+
+In the final step, use the calculated frequency counts to compute suggested spelling corrections in your client.
 At this point, you've finished using the cluster and no longer need it.  
-We have the commputed the frequency table, all the rest of this example is run locally.
+We have the computed the frequency table, all the rest of this example is run locally.
+
+The statistics could be saved to disk for use in an application. We will use
+them directly in the client.
 *) 
 
 
@@ -147,3 +156,7 @@ findBestCorrection "korrecter"
 findBestCorrection "fantom"
 findBestCorrection "pgantom"
 
+(** In this example, you've seen how cloud tasks can be used to 
+extract statistical information returned to the client.
+Continue with further samples to learn more about the
+MBrace programming model.   *)

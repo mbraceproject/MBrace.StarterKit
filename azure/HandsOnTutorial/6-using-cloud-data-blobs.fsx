@@ -77,8 +77,10 @@ let dataGen =
         let text = sprintf "%d quick brown foxes jumped over %d lazy dogs." i (2*i + 1)
         yield (i, text) |]
 
-(** Upload it as a CloudSequence;  this persists all data to creates a single file 
-on store that can be dereferenced on-demand. *)
+(** 
+Upload it as a CloudSequence;  this persists all data to creates a single file 
+on store that can be dereferenced on-demand. 
+*)
 let cloudSequence = 
     cloud {
         let! seq = CloudSequence.New dataGen
