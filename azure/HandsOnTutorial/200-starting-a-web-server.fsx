@@ -17,21 +17,6 @@ This tutorial illustrates creating a cloud process which
 acts as a web server to monitor the cluster.
 **)
 
-(** First, fetch the package which is the web server Suave: *)
-
-System.IO.Directory.CreateDirectory( __SOURCE_DIRECTORY__ + "/999-web-server")
-System.Environment.CurrentDirectory <- __SOURCE_DIRECTORY__ + "/999-web-server"
-
-if not (File.Exists "paket.exe") then
-    let url = "https://github.com/fsprojects/Paket/releases/download/0.27.2/paket.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.exe");;
-
-#r "999-web-server/paket.exe"
-
-Paket.Dependencies.Install """
-    source https://nuget.org/api/v2
-    nuget Suave
-""";;
-
 #load "webserver.fsx"
 
 open Suave

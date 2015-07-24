@@ -26,26 +26,9 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 
-(** First, resolve and install the Math.NET Numerics packages. You 
-can add any additional packages you like to this step. *) 
+(** First, reference and use the packages on the local machine *) 
 
-#r "../../.paket/paket.exe"
-
-let packagesDir = __SOURCE_DIRECTORY__ + "/script-packages"
-Directory.CreateDirectory(packagesDir)
-Environment.CurrentDirectory <- packagesDir
-
-Paket.Dependencies.Install """
-    source https://nuget.org/api/v2
-    nuget MathNet.Numerics
-    nuget MathNet.Numerics.FSharp
-    nuget MathNet.Numerics.MKL.Win-x64
-""";;
-
-
-(** Next, reference and use the packages on the local machine *) 
-
-#load @"script-packages/packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
+#load @"../../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
 
 open MathNet.Numerics
 open MathNet.Numerics.LinearAlgebra
@@ -92,7 +75,7 @@ To upload DLLs, register their paths as native dependencies
 These will be included with all uploaded dependencies of the session 
 *)
 
-let contentDir = packagesDir + "/packages/MathNet.Numerics.MKL.Win-x64/content/"
+let contentDir = "../../packages/MathNet.Numerics.MKL.Win-x64/content/"
 Runtime.RegisterNativeDependency (contentDir + "libiomp5md.dll")
 Runtime.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
