@@ -1,4 +1,16 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "credentials.fsx"
+
+
+(**
+# Using Cloud Flows
+
+ You now learn the CloudFlow programming model, for cloud-scheduled
+ parallel data flow tasks.  This model is similar to Hadoop, Spark
+ and/or Dryad LINQ.
+ 
+ Before running, edit credentials.fsx to enter your connection strings.
+**)
 #load "lib/sieve.fsx"
 
 open System
@@ -8,26 +20,20 @@ open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
 
-
-(**
- You now learn the CloudFlow programming model, for cloud-scheduled
- parallel data flow tasks.  This model is similar to Hadoop, Spark
- and/or Dryad LINQ.
- 
- Before running, edit credentials.fsx to enter your connection strings.
-**)
-
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
-// Parallel distributed data workflows. 
-//
-// CloudFlow.ofArray partitions the input array based on the number of 
-// available workers.  The parts of the array are then fed into cloud tasks
-// implementing the map and filter stages.  The final 'countBy' stage is
-// implemented by a final cloud task. 
+(**
+CloudFlow.ofArray partitions the input array based on the number of 
+available workers.  The parts of the array are then fed into cloud tasks
+implementing the map and filter stages.  The final 'countBy' stage is
+implemented by a final cloud task. 
+*)
+
+let inputs = [| 1..100 |]
+
 let streamComputationJob = 
-    [| 1..100 |]
+    inputs
     |> CloudFlow.OfArray
     |> CloudFlow.map (fun num -> num * num)
     |> CloudFlow.map (fun num -> num % 10)
@@ -35,13 +41,15 @@ let streamComputationJob =
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
-// Check progress - note the number of cloud tasks involved, which
-// should be the number of workers + 1.  This indicates
-// the input array has been partitioned and the work carried out 
-// in a distributed way.
+(**
+Check progress - note the number of cloud tasks involved, which
+should be the number of workers + 1.  This indicates
+the input array has been partitioned and the work carried out 
+ in a distributed way.
+*)
 streamComputationJob.ShowInfo()
 
-// Look at the result
+(** Await the result *)
 streamComputationJob.AwaitResult()
 
 (** 
@@ -56,12 +64,17 @@ any CPU-intensive computation, using any DLLs on your disk.
 
 **)
 
+(**
+
+## Changing the degree of parallelism
+
+The default is to partition the input array between all available workers.
+
+You can also use CloudFlow.withDegreeOfParallelism to specify the degree
+of partitioning of the stream at any point in the pipeline.
+*)
 let numbers = [| for i in 1 .. 30 -> 50000000 |]
 
-// The default is to partition the input array between all available workers.
-//
-// You can also use CloudFlow.withDegreeOfParallelism to specify the degree
-// of partitioning of the stream at any point in the pipeline.
 let computePrimesJob = 
     numbers
     |> CloudFlow.OfArray
@@ -71,13 +84,15 @@ let computePrimesJob =
     |> CloudFlow.toArray
     |> cluster.CreateProcess 
 
-// Check if the work is done
+(** Check if the work is done *) 
 computePrimesJob.ShowInfo()
 
-// Wait for the result
+(**  Await for the result *) 
 let computePrimes = computePrimesJob.AwaitResult()
 
 (**
+
+## Persisting intermediate results to cloud storage
 
 Results of a flow computation can be persisted to store by terminating
 with a call to CloudFlow.persist/persistaCached. 
@@ -87,7 +102,7 @@ performing recomputations of the original flow.
 **)
 
 let persistedCloudFlow =
-    [|1 .. 10|]
+    inputs
     |> CloudFlow.OfArray
     |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i, string j) })
     |> CloudFlow.groupBy snd

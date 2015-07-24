@@ -43,7 +43,7 @@ type CloudThing (data:string) =
 //---------------------------------------------------------------------------
 // Now use the serializable thing on the cluster
 
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = MBrace.Azure.Client.Runtime.GetHandle(config)
 
 

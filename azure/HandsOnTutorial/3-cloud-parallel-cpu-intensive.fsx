@@ -1,6 +1,13 @@
-﻿#load "credentials.fsx"
-#load "lib/collections.fsx"
-#load "lib/sieve.fsx"
+﻿(*** hide ***)
+#load "credentials.fsx"
+
+(**
+# Using MBrace.Azure for CPU-intensive work
+
+ You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
+
+ Before running, edit credentials.fsx to enter your connection strings.
+**)
 
 open System
 open System.IO
@@ -9,20 +16,13 @@ open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
 
-(**
- You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
 
- Before running, edit credentials.fsx to enter your connection strings.
-**)
-
-
-// First connect to the cluster
-let cluster = Runtime.GetHandle(config)
-
-//---------------------------------------------------------------------------
-// Specify some work 
-
+#load "lib/collections.fsx"
+#load "lib/sieve.fsx"
 #time "on"
+
+(** First you connect to the cluster: *)
+let cluster = Runtime.GetHandle(config)
 
 
 (**
@@ -34,19 +34,19 @@ let cluster = Runtime.GetHandle(config)
 **)
 
 
-// Run on your local machine, single-threaded.
-//
-// Performance will depend on the spec of your machine. Note that it is possible that 
-// your machine is more efficient than each individual machine in the cluster.
+(** 
+First, run on your local machine, single-threaded.
+
+Performance will depend on the spec of your machine. Note that it is possible that 
+your machine is more efficient than each individual machine in the cluster.
+*)
 let locallyComputedPrimes =
     [| for i in 1 .. 30 do
          let primes = Sieve.getPrimes 100000000
          yield sprintf "calculated %d primes: %A" primes.Length primes  |]
 
-// Run in parallel on the cluster, on multiple workers, each single-threaded. This exploits the
-// the multiple machines (workers) in the cluster.
-//
-// Sample time: Real: 00:00:16.269, CPU: 00:00:02.906, GC gen0: 47, gen1: 44, gen2: 1
+(** Next, run in parallel on the cluster, on multiple workers, each single-threaded. This exploits the
+    the multiple machines (workers) in the cluster. *)
 let clusterPrimesJob =
     [| for i in 1 .. 30 -> 
          cloud { 

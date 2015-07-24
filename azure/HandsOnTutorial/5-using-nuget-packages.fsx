@@ -1,4 +1,6 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "credentials.fsx"
+#nowarn "1571"
 
 open System
 open System.IO
@@ -7,24 +9,25 @@ open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
 
-
 (**
- You now learn how to use C# DLLs and any nuget packages in your cloud computations.
- This is very simple - you just download and reference the packages as normal
- in your F# scripting, and the DLLs for the packages are automatically uploaded to 
- the cloud workers as needed.  In a sense, you don't need to do anything special.
 
- In this sample, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
- You can alternatively just reference any DLLs you like using normal nuget commands.
- You also learn how to get native binaries to target machines should you need to do this.
+# Using C# DLLs, Native Components and Nuget Packages
+
+It is very simple to use C# DLLs and any nuget packages in your cloud computations.
+You just download and reference the packages as normal
+in your F# scripting or other client application. The DLLs for the packages are automatically uploaded to 
+the cloud workers as needed.  In a sense, you don't need to do anything special.
+
+In this sample, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
+You can alternatively just reference any DLLs you like using normal nuget commands.
+You also learn how to get native binaries to target machines should you need to do this.
   
- Before running, edit credentials.fsx to enter your connection strings.
-**)
+Before running, edit credentials.fsx to enter your connection strings.
+*)
 
 
-//------------------------------------------
-// Step 1. Resolve and install the Math.NET Numerics packages. You 
-// can add any additional packages you like to this step.
+(** First, resolve and install the Math.NET Numerics packages. You 
+can add any additional packages you like to this step. *) 
 
 #r "../../.paket/paket.exe"
 
@@ -40,8 +43,7 @@ Paket.Dependencies.Install """
 """;;
 
 
-//------------------------------------------
-// Step 2. Reference and use the packages on the local machine
+(** Next, reference and use the packages on the local machine *) 
 
 #load @"script-packages/packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
 
@@ -55,17 +57,15 @@ let product = vector1 * matrix1
 
 let check = (matrix1 * matrix1.Inverse()).Determinant()
 
-//------------------------------------------
-// Step 3. Run the code on MBrace. Note that the DLLs from the packages are uploaded
-// automatically.
+(** Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. *)
 
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
 cluster.ShowProcesses()
 cluster.ShowWorkers()
 
-// Invert 100 150x150 matrices using managed code
+(** Invert 100 150x150 matrices using managed code: *) 
 let managedMathJob = 
     [| 1 .. 100 |]
     |> CloudFlow.OfArray
@@ -84,21 +84,20 @@ managedMathJob.ShowInfo()
 let managedMathResults = managedMathJob.AwaitResult()
 
 
-//------------------------------------------
-// Step 4. Run the code on MBrace using the MKL native DLLs. Note that 
-// for the moment we manage the upload of the native DLLs explicitly, placing
-// them in the temporary storage on the worker.  
+(** Next, run the code on MBrace using the MKL native DLLs. Note that 
+for the moment we manage the upload of the native DLLs explicitly, placing
+them in the temporary storage on the worker.   
 
+To upload DLLs, register their paths as native dependencies
+These will be included with all uploaded dependencies of the session 
+*)
 
-
-// To upload DLLs, register their paths as native dependencies
-// These will be included with all uploaded dependencies of the session
 let contentDir = packagesDir + "/packages/MathNet.Numerics.MKL.Win-x64/content/"
 Runtime.RegisterNativeDependency (contentDir + "libiomp5md.dll")
 Runtime.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
 
-// This can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded
+(** The first MKL job can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded: *) 
 let firstMklJob = 
     cloud { 
         Control.UseNativeMKL()
@@ -113,7 +112,7 @@ firstMklJob.ShowInfo()
 // Wait for the result
 firstMklJob.AwaitResult()
 
-// 1000 200x200 matrices, inverted using the MKL implementation
+(** Now run a much larger job: 1000 200x200 matrices, inverted using Intel MKL: *)
 let nativeMathJob = 
     [| 1 .. 1000 |]
     |> CloudFlow.OfArray
@@ -135,6 +134,7 @@ cluster.ShowProcesses()
 // Wait for the result
 nativeMathJob.AwaitResult()
 
+(** Now compare the execution times: *) 
 let timeNative  = nativeMathJob.ExecutionTime.TotalSeconds / 1000.0 
 let timeManaged = managedMathJob.ExecutionTime.TotalSeconds / 100.0  
 

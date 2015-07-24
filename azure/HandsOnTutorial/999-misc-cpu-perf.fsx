@@ -17,7 +17,7 @@ open MBrace.Flow
 
 **)
 
-// First connect to the cluster
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
 let getThread () = System.Threading.Thread.CurrentThread.ManagedThreadId

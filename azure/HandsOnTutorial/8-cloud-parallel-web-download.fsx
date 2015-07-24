@@ -1,5 +1,5 @@
-﻿#load "credentials.fsx"
-
+﻿(*** hide ***)
+#load "credentials.fsx"
 open System
 open System.IO
 open MBrace.Core
@@ -9,12 +9,15 @@ open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
+# Cloud Parallel Web Downloader 
+
  This example illustrates doing I/O tasks in parallel using the workers in the cluster
  
  Before running, edit credentials.fsx to enter your connection strings.
 **)
 
-// First connect to the cluster
+
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
 
 // Cloud parallel url-downloader

@@ -73,8 +73,9 @@
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
-    <None Include="200-distributed-multicore-parallel-search.fsx" />
     <None Include="200-using-cloud-transactional-atoms.fsx" />
+    <None Include="200-starting-a-web-server.fsx" />
+    <None Include="300-distributed-multicore-parallel-search.fsx" />
     <None Include="400-using-cloud-channels.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
     <None Include="400-advanced-creating-new-serialized-things.fsx" />

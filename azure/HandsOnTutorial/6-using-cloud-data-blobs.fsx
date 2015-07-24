@@ -1,4 +1,6 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "credentials.fsx"
+
 
 open System
 open System.IO
@@ -8,8 +10,9 @@ open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
 
-
 (**
+# Creating and Using Cloud Values as Blobs
+
  You now learn how to upload data to Azure Blob Storage using CloudValue and
  then process it using MBrace cloud tasks.
 
@@ -39,54 +42,52 @@ open MBrace.Flow
  
 **)
 
-// First connect to the cluster
+
+(** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
  
-// Here's some data (~1.0MB)
+(** Here's some data (~1.0MB) *)
 let data = String.replicate 10000 "The quick brown fox jumped over the lazy dog\r\n" 
 
 
-// Upload the data to blob storage and return a handle to the stored data
-//
+(** Upload the data to blob storagand return a handle to the stored data *)
 let persistedCloudData = 
     cloud { let! cell = CloudValue.New data 
             return cell }
     |> cluster.Run
 
-// Run a cloud job which reads the blob and processes the data
+(** Run a cloud job which reads the blob and processes the data *)
 let lengthOfData = 
     cloud { let! data = CloudValue.Read persistedCloudData 
             return data.Length }
     |> cluster.Run
 
 
-(**
- Next we persist and array of data (each element a tuple) as a CloudSequence
-**)
+(** Next persist an array of data (each element a tuple) as a CloudSequence.
 
-// Here is the data we're going to upload, it's 1000 tuples
+Here is the data we're going to upload, it's 1000 tuples: *) 
 let dataGen = seq {
     for i in 1 .. 1000 do 
         let text = sprintf "%d quick brown foxes jumped over %d lazy dogs." i (2*i + 1)
         yield (i, text)
 }
 
-// Upload it as a CloudSequence; 
-// this persists all data to creates a single file on store that can be dereferenced on-demand.
+(** Upload it as a CloudSequence;  this persists all data to creates a single file 
+on store that can be dereferenced on-demand. *)
 let cloudSequence = 
     cloud {
         let! seq = CloudSequence.New dataGen
         return seq
     } |> cluster.Run
 
-// only read the 10 first elements from store
+(** For this sample we only read the 10 first elements from store: *)
 let first10 =
     cloud {
         let! e = cloudSequence.ToEnumerable()
         return e |> Seq.take 10 |> Seq.toArray
     } |> cluster.Run
 
-// aggregate all elements to a local array
+(** Aggregate all elements to a local array: *) 
 let allData = 
     cloud {
         let! array = cloudSequence.ToArray()
