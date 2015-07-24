@@ -23,20 +23,14 @@ open MBrace.Flow
 
 
 //------------------------------------------
-// Step 0. Get the package bootstrap. This is standard F# boiler plate for scripts that also get packages.
+// Step 1. Resolve and install the Math.NET Numerics packages. You 
+// can add any additional packages you like to this step.
+
+#r "../../.paket/paket.exe"
 
 let packagesDir = __SOURCE_DIRECTORY__ + "/script-packages"
 Directory.CreateDirectory(packagesDir)
 Environment.CurrentDirectory <- packagesDir
-
-if not (File.Exists "paket.exe") then
-    let url = "https://github.com/fsprojects/Paket/releases/download/1.2.0/paket.bootstrapper.exe" in use wc = new System.Net.WebClient() in let tmp = Path.GetTempFileName() in wc.DownloadFile(url, tmp); File.Move(tmp,"paket.bootstrapper.exe"); System.Diagnostics.Process.Start("paket.bootstrapper.exe") |> ignore;;
-
-//------------------------------------------
-// Step 1. Resolve and install the Math.NET Numerics packages. You 
-// can add any additional packages you like to this step.
-
-#r "script-packages/paket.exe"
 
 Paket.Dependencies.Install """
     source https://nuget.org/api/v2
@@ -145,3 +139,4 @@ let timeNative  = nativeMathJob.ExecutionTime.TotalSeconds / 1000.0
 let timeManaged = managedMathJob.ExecutionTime.TotalSeconds / 100.0  
 
 timeManaged/timeNative
+

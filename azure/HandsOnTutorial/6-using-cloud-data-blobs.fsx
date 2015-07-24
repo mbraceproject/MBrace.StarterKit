@@ -10,7 +10,8 @@ open MBrace.Flow
 
 
 (**
- You now learn how to upload data to Azure Blob Storage using CloudValue.
+ You now learn how to upload data to Azure Blob Storage using CloudValue and
+ then process it using MBrace cloud tasks.
 
  When using MBrace, data is implicitly uploaded if it is
  part of the closure of a cloud workflow - for example, if a value is
@@ -28,7 +29,14 @@ open MBrace.Flow
  can read/write using the .NET Azure storage SDKs directly rather than 
  using MBrace primitives.
  
+ You can copy larger data to Azure using the AzCopy.exe command line tool, see
+ https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
+ 
+ You can manage storage using the "azure" command line tool, see
+ https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
+
  Before running, edit credentials.fsx to enter your connection strings.
+ 
 **)
 
 // First connect to the cluster

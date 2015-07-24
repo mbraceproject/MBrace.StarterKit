@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="MBraceAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-06.2.4">
   <Role name="MBraceAzureRole">
-    <Instances count="4" />
+    <Instances count="2" />
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" value="your connection string" />
-      <Setting name="MBrace.StorageConnectionString" value="your connection string" />
+      <Setting name="MBrace.ServiceBusConnectionString" value="" />
+      <Setting name="MBrace.StorageConnectionString" value="" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
