@@ -3,6 +3,7 @@
 #r "../../packages/Streams/lib/net45/Streams.Core.dll"
 #I "../../packages/MBrace.Flow/lib/net45" 
 #r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+#r "../../packages/FsPickler.Json/lib/net45/FsPickler.Json.dll"
 #load "../../packages/MBrace.Azure.Standalone/MBrace.Azure.fsx"
 
 namespace global
