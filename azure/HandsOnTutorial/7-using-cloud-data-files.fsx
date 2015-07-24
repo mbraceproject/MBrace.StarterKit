@@ -15,7 +15,7 @@ open MBrace.Flow
  This tutorial illustrates creating and using cloud files, and then processing them using cloud streams.
  
  Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)
@@ -82,7 +82,7 @@ cluster.ShowLogs(240.0)
 
 Now we generate a collection of cloud files and process them using cloud streams.
 
-**)
+*)
 
 let namedCloudFilesJob = 
     [ for i in 1 .. 100 ->

@@ -1,20 +1,21 @@
 ﻿(*** hide ***)
 #load "credentials.fsx"
 
-(**
-# Using MBrace.Azure for CPU-intensive work
-
- You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
-
- Before running, edit credentials.fsx to enter your connection strings.
-**)
-
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
+
+
+(**
+# Using MBrace.Azure for CPU-intensive work
+
+You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
+
+Before running, edit credentials.fsx to enter your connection strings.
+*)
 
 
 #load "lib/collections.fsx"
@@ -31,7 +32,7 @@ let cluster = Runtime.GetHandle(config)
 
  In each case, you calculate a whole bunch of primes.
 
-**)
+*)
 
 
 (** 

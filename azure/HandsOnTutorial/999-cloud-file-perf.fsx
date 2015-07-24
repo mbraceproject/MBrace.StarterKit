@@ -12,7 +12,7 @@ open MBrace.Flow
  This script tests cloud file perf
  
  Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)

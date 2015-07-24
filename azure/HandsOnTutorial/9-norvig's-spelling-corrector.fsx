@@ -11,7 +11,7 @@
  to use locally in your client.
  
  Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 
 open System
 open System.IO

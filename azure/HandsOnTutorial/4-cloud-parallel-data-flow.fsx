@@ -10,7 +10,7 @@
  and/or Dryad LINQ.
  
  Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 #load "lib/sieve.fsx"
 
 open System
@@ -62,7 +62,7 @@ For now, you use CloudFlow to do some CPU-intensive work.
 Once again, you compute primes, though you can replace this with
 any CPU-intensive computation, using any DLLs on your disk. 
 
-**)
+*)
 
 (**
 
@@ -99,7 +99,7 @@ with a call to CloudFlow.persist/persistaCached.
 This creates a PersistedCloudFlow instance that can be reused without
 performing recomputations of the original flow.
 
-**)
+*)
 
 let persistedCloudFlow =
     inputs

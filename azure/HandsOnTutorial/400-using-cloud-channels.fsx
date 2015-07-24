@@ -16,7 +16,7 @@ This tutorial illustrates creating and using cloud channels, which allow you to 
 cloud workflows.
  
 Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)

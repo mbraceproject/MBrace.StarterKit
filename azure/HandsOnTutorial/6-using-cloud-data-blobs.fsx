@@ -40,7 +40,7 @@ open MBrace.Flow
 
  Before running, edit credentials.fsx to enter your connection strings.
  
-**)
+*)
 
 
 (** First you connect to the cluster: *)

@@ -13,7 +13,7 @@ open MBrace.Azure
 This tutorial shows you how to build a new serializable abstraction, e.g. 
 for another cloud asset referred to by name.  
 
-**)
+*)
 
 
 [<AutoSerializable(true) ; Sealed; DataContract>]

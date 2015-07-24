@@ -14,8 +14,8 @@ open MBrace.Workflows
 # Starting a Web Server in your Cluster
 
 This tutorial illustrates creating a cloud process which 
-acts as a web server to monitor the cluster.
-**)
+acts as a web server to monitor and control the cluster.
+*)
 
 #load "webserver.fsx"
 

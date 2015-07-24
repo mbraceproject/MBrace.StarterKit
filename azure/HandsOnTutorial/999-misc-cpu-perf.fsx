@@ -15,7 +15,7 @@ open MBrace.Flow
 
  In each case, you still calculate a whole bunch of primes.
 
-**)
+*)
 
 (** First you connect to the cluster: *)
 let cluster = Runtime.GetHandle(config)

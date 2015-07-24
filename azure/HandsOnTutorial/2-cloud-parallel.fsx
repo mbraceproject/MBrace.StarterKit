@@ -1,20 +1,22 @@
 ﻿(*** hide ***)
 #load "credentials.fsx"
 
-(**
-# Simple Cloud Parallelism
-
- You now perform a very simple parallel distributed job on your MBrace cluster.
-
- Before running, edit credentials.fsx to enter your connection strings.
- **)
-
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
 open MBrace.Azure.Client
 open MBrace.Flow
+
+
+(**
+# Simple Cloud Parallelism with MBrace.Azure
+
+You now perform a very simple parallel distributed job on your MBrace cluster.
+
+Before running, edit credentials.fsx to enter your connection strings.
+
+*)
 
 
 (** First you connect to the cluster: *)

@@ -14,7 +14,7 @@ open MBrace.Flow
  This example illustrates doing I/O tasks in parallel using the workers in the cluster
  
  Before running, edit credentials.fsx to enter your connection strings.
-**)
+*)
 
 
 (** First you connect to the cluster: *)

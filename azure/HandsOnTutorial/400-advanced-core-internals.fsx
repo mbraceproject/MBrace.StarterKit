@@ -6,7 +6,7 @@ open MBrace.Core
 
  This tutorial demonstrates MBrace workflow internals and offers a simple, thread-pool runtime implementation.
 
-**)
+*)
 
 // 1. Create a simple workflow
 
