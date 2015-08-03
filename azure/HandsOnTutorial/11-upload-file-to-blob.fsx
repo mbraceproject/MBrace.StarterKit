@@ -9,6 +9,8 @@ open MBrace.Azure
 open MBrace.Azure.Client
 
 (**
+#Uploading local files to Azure blob.
+
 This tutorial illustrates how to upload local files to Azure blob storage and 
 process the files in the cloud using MBrace.
 
