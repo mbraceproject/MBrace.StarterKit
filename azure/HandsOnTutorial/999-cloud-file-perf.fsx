@@ -5,7 +5,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -15,7 +14,7 @@ open MBrace.Flow
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 // Create a directory in the cloud file system
 let dp = cluster.StoreClient.Directory.Create("perf-files")
@@ -23,7 +22,7 @@ let dp = cluster.StoreClient.Directory.Create("perf-files")
 //--------------------------------------------------------------------
 // Stress test some data storage
 
-let timeSizes sizes f = 
+let timeSizes sizes (f : int -> Cloud<'T>) = 
  [ for sz in sizes do 
     printfn "starting size %d" sz
     let job = 
@@ -34,8 +33,8 @@ let timeSizes sizes f =
         |> cluster.CreateProcess 
     printfn "awaiting result for size %d" sz
     let res = job.AwaitResult() 
-    printfn "size %d took %fs" sz job.ExecutionTime.TotalSeconds
-    yield (sz, job.ExecutionTime.TotalSeconds), res ]
+    printfn "size %d took %fs" sz job.ExecutionTime.Value.TotalSeconds
+    yield (sz, job.ExecutionTime.Value.TotalSeconds), res ]
     |> List.unzip
 
 

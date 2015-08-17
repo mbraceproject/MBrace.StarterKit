@@ -21,7 +21,7 @@ open MBrace.Flow
 #load "lib/sieve.fsx"
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 (**
 CloudFlow.ofArray partitions the input array based on the number of 
@@ -50,7 +50,7 @@ the input array has been partitioned and the work carried out
 streamComputationJob.ShowInfo()
 
 (** Await the result *)
-streamComputationJob.AwaitResult()
+streamComputationJob.Result
 
 (** 
 
@@ -88,7 +88,7 @@ let computePrimesJob =
 computePrimesJob.ShowInfo()
 
 (**  Await for the result *) 
-let computePrimes = computePrimesJob.AwaitResult()
+let computePrimes = computePrimesJob.Result
 
 (**
 

@@ -5,7 +5,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 
@@ -23,7 +22,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 #time "on"
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 
 (**
@@ -55,7 +54,7 @@ let clusterPrimesJob =
 
 clusterPrimesJob.ShowInfo()
 
-let clusterPrimes = clusterPrimesJob.AwaitResult()
+let clusterPrimes = clusterPrimesJob.Result
 
 (** Alternatively, you could have started 30 independent jobs.  
 This can be handy if you want to track each one independently: *)
@@ -69,7 +68,7 @@ let jobs =
         |> cluster.CreateProcess ]
 
 let jobResults = 
-    [ for job in jobs -> job.AwaitResult() ]
+    [ for job in jobs -> job.Result ]
 
 
 

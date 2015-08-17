@@ -22,7 +22,7 @@ namespace MBraceAzureRole
 
         public override void Run()
         {
-            _svc.Start();
+            _svc.Run();
         }
 
         public override bool OnStart()
@@ -37,9 +37,7 @@ namespace MBraceAzureRole
 
             bool result = base.OnStart();
 
-            _config = Configuration.Default
-                        .WithStorageConnectionString(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"))
-                        .WithServiceBusConnectionString(CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
+            _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
 
             _svc =
                 RoleEnvironment.IsEmulated ?
@@ -68,9 +66,7 @@ namespace MBraceAzureRole
                 if (item.ConfigurationSettingName == "MBrace.ServiceBusConnectionString"
                     || item.ConfigurationSettingName == "MBrace.StorageConnectionString")
                 {
-                    _config = Configuration.Default
-                                .WithStorageConnectionString(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"))
-                                .WithServiceBusConnectionString(CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
+                    _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
                     _svc.Stop();
                     _svc.Configuration = _config;
                     _svc.Start();

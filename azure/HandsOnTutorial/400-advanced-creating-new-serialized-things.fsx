@@ -44,7 +44,7 @@ type CloudThing (data:string) =
 // Now use the serializable thing on the cluster
 
 (** First you connect to the cluster: *)
-let cluster = MBrace.Azure.Client.Runtime.GetHandle(config)
+let cluster = MBrace.Azure.MBraceAzure.GetHandle(config)
 
 
 // The values to serialize
@@ -58,5 +58,5 @@ let job =
      
 
 job.ShowInfo()
-job.Completed
+job.Status
 job.AwaitResult()

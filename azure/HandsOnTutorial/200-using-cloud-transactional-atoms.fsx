@@ -5,7 +5,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -16,7 +15,7 @@ open MBrace.Flow
 **)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 
 /// Create an anoymous cloud atom with an initial value
@@ -47,6 +46,6 @@ cloud {
 // Delete the cloud atom
 CloudAtom.Delete atom  |> cluster.Run
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
-cluster.ShowLogs()
+cluster.ShowSystemLogs()

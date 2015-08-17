@@ -35,9 +35,9 @@ rather take the time to execute each piece of code and understand what it's doin
 
 Some examples of using the hands-on tutorials are below:
 
-* Call runtime.GetHandle(config):
+* Call MBraceAzure.GetHandle(config):
 
-        let runtime = Runtime.GetHandle(config)
+        let runtime = MBraceAzure.GetHandle(config)
 
   giving
 

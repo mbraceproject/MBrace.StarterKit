@@ -6,7 +6,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -19,7 +18,7 @@ open MBrace.Flow
 **)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 /// Distributed tryFind combinator with multicore balancing.
 ///
@@ -70,7 +69,7 @@ let tryFindMersenneCloud ts = distributedMultiCoreTryFind Primality.isMersennePr
 let searchJob = tryFindMersenneCloud exponentRange |> cluster.CreateProcess
 
 searchJob.ShowInfo()
-cluster.ShowWorkers()
+cluster.ShowWorkerInfo()
 
 searchJob.AwaitResult()
 

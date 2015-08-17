@@ -10,7 +10,6 @@ open System.Text.RegularExpressions
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -26,7 +25,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 
 (**
@@ -56,7 +55,7 @@ let downloadJob = download "http://norvig.com/big.txt" |> cluster.CreateProcess
 
 downloadJob.ShowInfo()
 
-let files = downloadJob.AwaitResult()
+let files = downloadJob.Result
 
 (** Now, take a look at the sizes of the files. *) 
 let fileSizesJob = 
@@ -65,10 +64,10 @@ let fileSizesJob =
     |> Cloud.Parallel 
     |> cluster.CreateProcess 
 
-fileSizesJob.Completed
+fileSizesJob.Status
 fileSizesJob.ShowInfo()
 
-let fileSizes = fileSizesJob.AwaitResult()
+let fileSizes = fileSizesJob.Result
 
 (**
 In the second step, use cloud data flow to perform a parallel word 
@@ -88,9 +87,9 @@ let wordCountJob =
 
 wordCountJob.ShowInfo()
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
-let NWORDS = wordCountJob.AwaitResult() |> Map.ofArray
+let NWORDS = wordCountJob.Result |> Map.ofArray
 
 (** 
 
