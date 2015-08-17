@@ -1,6 +1,6 @@
 ﻿#load "credentials.fsx"
 
-#r "999-web-server/packages/Suave/lib/net40/Suave.dll"
+#r "../../packages/Suave/lib/net40/Suave.dll"
 #r "Microsoft.WindowsAzure.ServiceRuntime.dll"
 
 #nowarn "443"
@@ -10,7 +10,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 open MBrace.Client
 open Suave
