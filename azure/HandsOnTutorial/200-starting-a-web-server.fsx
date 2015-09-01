@@ -6,7 +6,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Azure.Runtime
 open MBrace.Workflows
 
@@ -40,7 +39,7 @@ let helloRequest ctxt =
     async { return! OK "hello" ctxt }
 
 let getCluster() = 
-    Runtime.GetHandle(config) 
+    MBraceAzure.GetHandle(config) 
 
 (**
 This Suave request is executed in response to a GET on 
@@ -51,13 +50,13 @@ It uses cluster.GetWorkers to access information from the cluster.
 *)
 let getWorkersRequest ctxt = 
     async { let cluster = getCluster()
-            let workers = cluster.GetWorkers() |> Seq.toArray
+            let workers = cluster.Workers
             let msg = 
               [ yield "<html>"
                 yield Angular.header
                 yield "<body>"
                 yield! workers |> Angular.table ["ID";"Heartbeat"] (fun w -> 
-                    [ w.Id; sprintf "%A" w.HeartbeatTime ])
+                    [ w.Id; sprintf "%A" w.LastHeartbeat ])
                 yield "</body>"
                 yield "</html>" ]
               |> String.concat "\n"
@@ -72,7 +71,7 @@ It uses cluster.GetLogs to access information from the cluster.
 *)
 let getLogsRequest ctxt = 
     async { let cluster = getCluster()
-            let logs = cluster.GetLogs()
+            let logs = cluster.GetSystemLogs()
             let msg = 
               [ yield "<html>"
                 yield Angular.header
@@ -90,7 +89,7 @@ let getLogsRequest ctxt =
 // It uses cluster.CreateProcess to create a new job in the cluster.
 let computePrimesRequest n ctxt = 
     async { let cluster = getCluster()
-            let logs = cluster.GetLogs()
+            let logs = cluster.GetSystemLogs()
             let job = 
               cluster.CreateProcess 
                 (cloud { let primes = Sieve.getPrimes n
@@ -111,13 +110,13 @@ let computePrimesRequest n ctxt =
 // It uses cluster.GetProcess to create a new job in the cluster.
 let getJobRequest v ctxt = 
     async { let cluster = getCluster()
-            let logs = cluster.GetLogs()
-            let job = cluster.GetProcess(v)
+            let logs = cluster.GetSystemLogs()
+            let job = cluster.TryGetProcessById(v).Value
             let msg = 
                 [ yield "<html>"
                   yield Angular.header
                   yield "<body>"
-                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" job.Id job.Completed (try if job.Completed then sprintf "%A" (job.AwaitResultBoxed()) else "" with _ -> "<err>") )
+                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" job.Id job.Status (try if job.Status = MBrace.Runtime.CloudTaskStatus.Completed then sprintf "%A" (job.AwaitResultBoxed()) else "" with _ -> "<err>") )
                   yield "</body>"
                   yield "</html>" ]
                 |> String.concat "\n"
@@ -140,9 +139,9 @@ let webServerSpec () =
 Now connect to the cluster: 
 *)
 
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
 // Use this to inspect the endpoints we can bind to in the cluster
 let endPointNames = 
@@ -176,13 +175,13 @@ serverJob.ShowInfo()
 
 (** If the webserver doesn't start, then use this to see the logging output from webserver.fsx: *) 
 
-serverJob.ShowLogs()
+cluster.ShowCloudLogs(serverJob)
 
 (** Use this to cancel the web server (via the distributed cancellationToken being cancelled): *)
-// serverJob.Kill()
+// serverJob.Cancel()
 
 (** Use this to wait for the web server to exit after cancellation: *)
-// serverJob.AwaitResult()
+// serverJob.Resut
 
 
 

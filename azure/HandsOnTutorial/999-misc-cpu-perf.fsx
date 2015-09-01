@@ -6,7 +6,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -18,7 +17,7 @@ open MBrace.Flow
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 let getThread () = System.Threading.Thread.CurrentThread.ManagedThreadId
 

@@ -5,7 +5,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 
@@ -19,7 +18,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 (** You now use Cloud.Parallel to run 50 cloud workflows in parallel using fork-join pattern. *)
 let resultsJob = 
@@ -27,11 +26,11 @@ let resultsJob =
     |> Cloud.Parallel
     |> cluster.CreateProcess
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
 
 (** Get the results *)
-let results = resultsJob.AwaitResult()
+let results = resultsJob.Result
 
 
 (** Again, in shorthand *)
@@ -49,7 +48,7 @@ let searchJob =
 searchJob.ShowInfo()
 
 (** Await the result of the search: *)
-let searchResult = searchJob.AwaitResult()
+let searchResult = searchJob.Result
 
 (** In this tutorial, you've learned about `Cloud.Parallel` and `Cloud.Choice`
 as ways of composing cloud workflows Continue with further samples to learn more about the

@@ -1,13 +1,12 @@
 source https://www.nuget.org/api/v2
 
-nuget MBrace.Azure 0.6.10-alpha
-nuget MBrace.Azure.Standalone 0.6.10-alpha
+nuget MBrace.Azure 0.7.0-alpha
+nuget MBrace.Azure.Standalone 0.7.0-alpha
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget MathNet.Numerics
 nuget MathNet.Numerics.FSharp
 nuget MathNet.Numerics.MKL.Win-x64
 nuget Streams
-nuget FsPickler.Json 1.2.7
 nuget Suave
 nuget FSharp.Core < 4

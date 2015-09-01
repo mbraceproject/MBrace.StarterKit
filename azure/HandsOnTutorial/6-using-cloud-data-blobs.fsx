@@ -7,7 +7,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -46,7 +45,7 @@ https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
 
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
  
 (** Here's some data (~1.0MB) *)
 let data = String.replicate 10000 "The quick brown fox jumped over the lazy dog\r\n" 

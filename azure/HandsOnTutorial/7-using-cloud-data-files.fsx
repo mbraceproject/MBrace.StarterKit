@@ -6,7 +6,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -18,10 +17,10 @@ open MBrace.Flow
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
+cluster.ShowProcessInfo()
+cluster.ShowWorkerInfo()
 
 (** Here's some data that simulates a log file for user click events: *)
 let linesOfFile = 
@@ -75,7 +74,7 @@ let numberOfLinesInNamedFile =
     }
     |> cluster.Run
 
-cluster.ShowLogs(240.0)
+cluster.ShowSystemLogs(240.0)
 
 (** 
 
@@ -101,7 +100,7 @@ let namedCloudFilesJob =
 namedCloudFilesJob.ShowInfo()
 
 // Get the result
-let namedCloudFiles = namedCloudFilesJob.AwaitResult()
+let namedCloudFiles = namedCloudFilesJob.Result
 
 (** A collection of cloud files can be used as input to a cloud
 parallel data flow. This is a very powerful feature. *)
@@ -117,7 +116,7 @@ let sumOfLengthsOfLinesJob =
 sumOfLengthsOfLinesJob.ShowInfo()
 
 // Get the result
-let sumOfLengthsOfLines = sumOfLengthsOfLinesJob.AwaitResult()
+let sumOfLengthsOfLines = sumOfLengthsOfLinesJob.Result
 
 (** In this tutorial, you've learned how to use cloud files
 including as partitioned inputs into CloudFlow programming.

@@ -6,7 +6,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -22,27 +21,27 @@ A guide to creating a cluster is [here](http://www.m-brace.net/#try).
 
 First connect to the cluster using a configuration to bind to your storage and service bus on Azure.
 *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 // Optionally, attach console logger to client object 
-cluster.AttachClientLogger(new ConsoleLogger())
+cluster.EnableClientConsoleLogger <- true
 
 // You can connect to the cluster and get details of the workers in the pool:
-cluster.ShowWorkers()
+cluster.ShowWorkerInfo()
 
 // You can view the history of processes:
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
 (** Now execute your first cloud workflow and get a handle to the running job: *)
 let job = 
     cloud { return "Hello world!" } 
     |> cluster.CreateProcess
 
-// You can evaluate helloWorldProcess to get details on it.
-let isJobComplete = job.Completed
+// You can get details for the process.
+job.ShowInfo()
 
 // Block until the result is computed by the cluster
-let text = job.AwaitResult()
+let text = job.Result
 
 (** Alternatively we can do this all in one line: *)
 let quickText = 
@@ -80,11 +79,11 @@ management console).
 
 (** You can add your local machine to be a worker in the cluster. *)
 
-// cluster.AttachLocalWorker()
+// MBraceAzure.SpawnLocal(config, 4)
 
 (** You can optionally look at worker (not client) logs for the last 5 minutes. *)
 
-// cluster.ShowLogs(300.0)
+// cluster.ShowSystemLogs(300.0)
 
 (** In this tutorial, you've run your very first work on an MBrace cluster
 and learned the basics of controlling the cluster programatically.

@@ -6,7 +6,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -19,7 +18,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 (** Create an anonymous cloud channel: *) 
 let send1,recv1 = CloudChannel.New<string>() |> cluster.Run
@@ -47,7 +46,7 @@ let receiveJob =
      |> cluster.CreateProcess
 
 receiveJob.ShowInfo() 
-receiveJob.AwaitResult()
+receiveJob.Result
 
 
 

@@ -4,10 +4,9 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 let ps = 
  [let time = ref System.DateTime.Now.TimeOfDay
@@ -18,4 +17,4 @@ let ps =
    cloud { return System.DateTime.Now }
     |> cluster.CreateProcess ]
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()

@@ -6,7 +6,6 @@ open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -43,10 +42,10 @@ let check = (matrix1 * matrix1.Inverse()).Determinant()
 (** Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
+cluster.ShowProcessInfo()
+cluster.ShowWorkerInfo()
 
 (** Invert 100 150x150 matrices using managed code: *) 
 let managedMathJob = 
@@ -64,7 +63,7 @@ managedMathJob.ShowInfo()
 
 
 // Await the result, we expect ~100.0
-let managedMathResults = managedMathJob.AwaitResult()
+let managedMathResults = managedMathJob.Result
 
 
 (** Next, run the code on MBrace using the MKL native DLLs. Note that 
@@ -79,7 +78,6 @@ let contentDir = "../../packages/MathNet.Numerics.MKL.Win-x64/content/"
 Runtime.RegisterNativeDependency (contentDir + "libiomp5md.dll")
 Runtime.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
-
 (** The first MKL job can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded: *) 
 let firstMklJob = 
     cloud { 
@@ -93,7 +91,7 @@ let firstMklJob =
 firstMklJob.ShowInfo()
 
 // Wait for the result
-firstMklJob.AwaitResult()
+firstMklJob.Result
 
 (** Now run a much larger job: 1000 200x200 matrices, inverted using Intel MKL: *)
 let nativeMathJob = 
@@ -110,16 +108,16 @@ let nativeMathJob =
 // Check progress
 nativeMathJob.ShowInfo()
 
-cluster.ShowWorkers()
+cluster.ShowWorkerInfo()
 
-cluster.ShowProcesses()
+cluster.ShowProcessInfo()
 
 // Wait for the result
-nativeMathJob.AwaitResult()
+nativeMathJob.Result
 
 (** Now compare the execution times: *) 
-let timeNative  = nativeMathJob.ExecutionTime.TotalSeconds / 1000.0 
-let timeManaged = managedMathJob.ExecutionTime.TotalSeconds / 100.0  
+let timeNative  = nativeMathJob.ExecutionTime.Value.TotalSeconds / 1000.0 
+let timeManaged = managedMathJob.ExecutionTime.Value.TotalSeconds / 100.0  
 
 timeManaged/timeNative
 

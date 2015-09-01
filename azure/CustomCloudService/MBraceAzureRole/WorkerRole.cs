@@ -22,7 +22,7 @@ namespace MBraceAzureRole
 
         public override void Run()
         {
-            _svc.Start();
+            _svc.Run();
         }
 
         public override bool OnStart()
@@ -37,16 +37,13 @@ namespace MBraceAzureRole
 
             bool result = base.OnStart();
 
-            _config = Configuration.Default
-                        .WithStorageConnectionString(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"))
-                        .WithServiceBusConnectionString(CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
+            _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
 
             _svc =
                 RoleEnvironment.IsEmulated ?
                 new Service(_config) : // Avoid long service names when using emulator
                 new Service(_config, serviceId: RoleEnvironment.CurrentRoleInstance.Id.Split('.').Last());
-
-            _svc.AttachLogger(new CustomLogger(s => Trace.WriteLine(String.Format("{0} : {1}", DateTime.UtcNow, s))));
+            _svc.MaxConcurrentJobs = Environment.ProcessorCount * 8;
 
             RoleEnvironment.Changed += RoleEnvironment_Changed;
 
@@ -68,9 +65,7 @@ namespace MBraceAzureRole
                 if (item.ConfigurationSettingName == "MBrace.ServiceBusConnectionString"
                     || item.ConfigurationSettingName == "MBrace.StorageConnectionString")
                 {
-                    _config = Configuration.Default
-                                .WithStorageConnectionString(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"))
-                                .WithServiceBusConnectionString(CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
+                    _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
                     _svc.Stop();
                     _svc.Configuration = _config;
                     _svc.Start();

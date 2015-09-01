@@ -5,7 +5,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 open MBrace.Flow
 
 (**
@@ -18,7 +17,7 @@ open MBrace.Flow
 
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 // Cloud parallel url-downloader
 open System.Net
@@ -49,7 +48,7 @@ let filesJob =
 filesJob.ShowInfo()
 
 // Get the result of the job
-let files = filesJob.AwaitResult()
+let files = filesJob.Result
 
 // Read the files we just downloaded
 let contentsOfFiles = 
