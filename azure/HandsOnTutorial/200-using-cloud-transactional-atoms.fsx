@@ -1,11 +1,17 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
  This tutorial illustrates creating and using cloud atoms, which allow you to store data transactionally
@@ -14,21 +20,18 @@ open MBrace.Flow
  Before running, edit credentials.fsx to enter your connection strings.
 **)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
 
 /// Create an anoymous cloud atom with an initial value
-let atom = CloudAtom.New(100) |> cluster.Run
+let atom = CloudAtom.New(100) |> cluster.RunOnCloud
 
 // Check the unique ID of the atom
 atom.Id
 
 // Get the value of the atom.
-let atomValue = atom |> CloudAtom.Read |> cluster.Run
+let atomValue = atom |> CloudAtom.Read |> cluster.RunOnCloud
 
 // Transactionally update the value of the atom and output a result
-let atomUpdateResult = CloudAtom.Transact (atom, fun x -> string x,x*x) |> cluster.Run
+let atomUpdateResult = CloudAtom.Transact (atom, fun x -> string x,x*x) |> cluster.RunOnCloud
 
 // Have all workers atomically increment the counter in parallel
 cloud {
@@ -41,11 +44,9 @@ cloud {
         |> Cloud.Ignore
 
     return! CloudAtom.Read atom
-} |> cluster.Run
+} |> cluster.RunOnCloud
 
 // Delete the cloud atom
-CloudAtom.Delete atom  |> cluster.Run
+CloudAtom.Delete atom  |> cluster.RunOnCloud
 
-cluster.ShowProcessInfo()
-
-cluster.ShowSystemLogs()
+cluster.ShowCloudTaskInfo()

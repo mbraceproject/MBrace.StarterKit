@@ -1,7 +1,7 @@
 FSharp.Core
 MBrace.Core
 MBrace.Flow
-MBrace.Azure.Standalone
+MBrace.Azure
 MathNet.Numerics
 MathNet.Numerics.FSharp
 MathNet.Numerics.MKL.Win-x64

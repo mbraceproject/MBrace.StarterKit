@@ -1,11 +1,17 @@
-﻿#load "credentials.fsx"
+﻿(*** hide ***)
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
  This script tests cloud file perf
@@ -13,11 +19,8 @@ open MBrace.Flow
  Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
 // Create a directory in the cloud file system
-let dp = cluster.StoreClient.Directory.Create("perf-files")
+let dp = cluster.Store.Directory.Create("perf-files")
 
 //--------------------------------------------------------------------
 // Stress test some data storage
@@ -30,7 +33,7 @@ let timeSizes sizes (f : int -> Cloud<'T>) =
           let! res = f sz
           return res
         }
-        |> cluster.CreateProcess 
+        |> cluster.CreateCloudTask 
     printfn "awaiting result for size %d" sz
     let res = job.AwaitResult() 
     printfn "size %d took %fs" sz job.ExecutionTime.Value.TotalSeconds
@@ -76,7 +79,7 @@ let bytesWritePerf, bigCloudByteFiles =
 // #3   [(1, 0.8718545); (10, 1.1114111); (100, 2.6215714)]
 let lineReadPerf, lineReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
-        cloud { let cloudFile =  CloudFile(dp.Path + sprintf "/big-lines-%d" sz) 
+        cloud { let! cloudFile = CloudFile.FromPath (dp.Path + sprintf "/big-lines-%d" sz) 
                 let! lines =  CloudFile.ReadAllLines(cloudFile.Path)   
                 return lines.Length }
 
@@ -86,8 +89,8 @@ let lineReadPerf, lineReadResults =
 // =  approx 100MB/sec
 let textReadPerf, textReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
-        cloud { let cloudFile =  CloudFile(dp.Path + sprintf "/big-text-%d" sz) 
-                let! text =  CloudFile.ReadAllText(cloudFile.Path)   
+        cloud { let! cloudFile = CloudFile.FromPath(dp.Path + sprintf "/big-text-%d" sz) 
+                let! text = CloudFile.ReadAllText(cloudFile.Path)   
                 return text.Length }
 
 
@@ -98,7 +101,7 @@ let textReadPerf, textReadResults =
 // #5 -   [(1, 0.5175206); (10, 0.3935077); (100, 1.4001587); (1000, 10.5389589)]
 let bytesReadPerf, bytesReadResults = 
     timeSizes [ 1; 10; 100; 1000 ] <| fun sz -> 
-        cloud { let cloudFile = CloudFile(dp.Path + sprintf "/big-bytes-%d" sz)
-                let! bytes =  CloudFile.ReadAllBytes(cloudFile.Path)   
+        cloud { let! cloudFile = CloudFile.FromPath(dp.Path + sprintf "/big-bytes-%d" sz)
+                let! bytes = CloudFile.ReadAllBytes(cloudFile.Path)   
                 return bytes.Length }
 

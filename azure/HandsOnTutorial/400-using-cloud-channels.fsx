@@ -1,12 +1,17 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 # Using Cloud Queues
@@ -17,36 +22,30 @@ cloud workflows.
 Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
 (** Create an anonymous cloud channel: *) 
-let send1,recv1 = CloudChannel.New<string>() |> cluster.Run
+let queue = CloudQueue.New<string>() |> cluster.RunOnCloud
 
 (** Send to the channel by scheduling a cloud process to do the send: *)
-CloudChannel.Send (send1, "hello") |> cluster.Run
+CloudQueue.Enqueue (queue, "hello") |> cluster.RunOnCloud
 
 (**  Receive from the channel by scheduling a cloud process to do the receive: *)
-let msg = CloudChannel.Receive(recv1) |> cluster.Run
+let msg = CloudQueue.Dequeue(queue) |> cluster.RunOnCloud
 
-let sendJob = 
+let sendTask = 
     cloud { for i in [ 0 .. 100 ] do 
-                do! send1.Send (sprintf "hello%d" i) }
-     |> cluster.CreateProcess
+                do! queue.Enqueue (sprintf "hello%d" i) }
+     |> cluster.CreateCloudTask
 
-sendJob.ShowInfo() 
+sendTask.ShowInfo() 
 
 (** Wait for the 100 messages: *)
-let receiveJob = 
+let receiveTask = 
     cloud { let results = new ResizeArray<_>()
             for i in [ 0 .. 100 ] do 
-               let! msg = CloudChannel.Receive(recv1)
+               let! msg = CloudQueue.Dequeue(queue)
                results.Add msg
             return results.ToArray() }
-     |> cluster.CreateProcess
+     |> cluster.CreateCloudTask
 
-receiveJob.ShowInfo() 
-receiveJob.Result
-
-
-
+receiveTask.ShowInfo() 
+receiveTask.Result

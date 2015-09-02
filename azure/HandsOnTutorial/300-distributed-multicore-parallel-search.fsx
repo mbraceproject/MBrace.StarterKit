@@ -1,12 +1,17 @@
-﻿#load "credentials.fsx"
-#load "lib/collections.fsx"
-#load "lib/mersenne.fsx"
+﻿(*** hide ***)
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
  In this tutorial you learn how to define a new cloud combinator that
@@ -17,8 +22,8 @@ open MBrace.Flow
  Before running, edit credentials.fsx to enter your connection strings.
 **)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
+#load "lib/collections.fsx"
+#load "lib/mersenne.fsx"
 
 /// Distributed tryFind combinator with multicore balancing.
 ///
@@ -66,7 +71,7 @@ tryFindMersenneLocal exponentRange
 let tryFindMersenneCloud ts = distributedMultiCoreTryFind Primality.isMersennePrime ts
 
 // ExecutionTime = 00:00:38.2472020, 3 small instance cluster
-let searchJob = tryFindMersenneCloud exponentRange |> cluster.CreateProcess
+let searchJob = tryFindMersenneCloud exponentRange |> cluster.CreateCloudTask
 
 searchJob.ShowInfo()
 cluster.ShowWorkerInfo()
