@@ -93,6 +93,7 @@
     <None Include="paket.references" />
     <None Include="packages.config" />
     <None Include="app.config" />
+    <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AForge">
