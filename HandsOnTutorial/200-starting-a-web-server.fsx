@@ -111,7 +111,7 @@ let computePrimesRequest n ctxt =
 let getJobRequest v ctxt = 
     async {
             let cluster = getCluster()
-            let task = cluster.GetAllCloudTasks() |> Array.find (fun t -> t.Id = v)
+            let task = cluster.TryGetCloudTaskById(v) |> Option.get
             let msg = 
                 [ yield "<html>"
                   yield Angular.header
