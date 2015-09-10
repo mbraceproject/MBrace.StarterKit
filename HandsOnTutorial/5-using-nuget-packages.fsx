@@ -31,7 +31,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 (** First, reference and use the packages on the local machine *) 
 
-#load @"../../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
+#load @"../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
 
 open MathNet.Numerics
 open MathNet.Numerics.LinearAlgebra
