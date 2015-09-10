@@ -1,11 +1,17 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
+open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 #Uploading local files to Azure blob.
@@ -16,10 +22,7 @@ process the files in the cloud using MBrace.
 Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 cluster.ShowWorkerInfo()
 
 
@@ -46,7 +49,7 @@ let cFile =
     local {
         return! CloudFile.Upload(tmpFile, sprintf "tmp/%s" (Path.GetFileName tmpFile))     
     }    
-    |> cluster.RunLocally
+    |> cluster.RunOnCurrentProcess
 
 (** After uploading the file, you remove the local file. *)
 DeleteTempFile tmpFile
@@ -57,7 +60,7 @@ let lines =
         let! lines = CloudFile.ReadAllLines cFile.Path 
         return lines.Length
     } 
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
 (** In this tutorial, you've learnt how to upload local files into Azure blob storage and then
 process the uploaded files in the MBrace cluster. *)

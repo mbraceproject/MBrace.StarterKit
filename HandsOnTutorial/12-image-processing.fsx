@@ -1,20 +1,17 @@
 ﻿(*** hide ***)
-
-#load "credentials.fsx"
-#r "../../packages/AForge/lib/AForge.dll" 
-#r "../../packages/AForge.Math/lib/AForge.Math.dll" 
-#r "../../packages/AForge.Imaging/lib/AForge.Imaging.dll" 
+#load "Thespian.fsx"
+#load "Azure.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
+open MBrace.Flow
 
-open System.Drawing
-open AForge.Imaging.Filters
-open System.Net
-open System.IO
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 # Using MBrace for image processing
@@ -24,8 +21,14 @@ In this tutorial, you use the AForge (you can install AForge from Nuget) to turn
 Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
+#r "../../packages/AForge/lib/AForge.dll" 
+#r "../../packages/AForge.Math/lib/AForge.Math.dll" 
+#r "../../packages/AForge.Imaging/lib/AForge.Imaging.dll" 
+
+open System.Drawing
+open AForge.Imaging.Filters
+open System.Net
+open System.IO
 
 (** Next, you define a method to download an image from a url, and return a stream containing the downloaded image. *)
 let GetStreamFromUrl (url : string) =
@@ -62,7 +65,7 @@ let urls = [|
 let tasks = 
     [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath))) |] 
     |> Cloud.Parallel
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
 
 (** 
