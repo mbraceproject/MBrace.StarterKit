@@ -1,3 +1,4 @@
+redirects: on
 source https://www.nuget.org/api/v2
 
 nuget MBrace.Azure 0.7.0-alpha
@@ -8,5 +9,6 @@ nuget MathNet.Numerics
 nuget MathNet.Numerics.FSharp
 nuget MathNet.Numerics.MKL.Win-x64
 nuget Streams
-nuget Suave
+nuget Suave 0.32.0
 nuget FSharp.Core < 4
+

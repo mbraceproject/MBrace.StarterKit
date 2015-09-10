@@ -89,6 +89,7 @@
     <None Include="999-process-create-perf.fsx" />
     <None Include="999-misc-cpu-perf.fsx" />
     <None Include="paket.references" />
+    <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
