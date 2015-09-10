@@ -1,12 +1,16 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Store
-open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 # Creating and Using Cloud Files
@@ -16,10 +20,7 @@ open MBrace.Flow
  Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 cluster.ShowWorkerInfo()
 
 (** Here's some data that simulates a log file for user click events: *)
@@ -36,7 +37,7 @@ let anonCloudFile =
          let! file = CloudFile.WriteAllLines(path, linesOfFile)
          return file 
      }
-     |> cluster.Run
+     |> cluster.RunOnCloud
 
 (** Run a cloud job which reads all the lines of a cloud file: *) 
 let numberOfLinesInFile = 
@@ -44,17 +45,17 @@ let numberOfLinesInFile =
         let! data = CloudFile.ReadAllLines anonCloudFile.Path
         return data.Length 
     }
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
 (** Get the default directory of the store client: *)
-let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunLocally
+let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunOnCurrentProcess
 
 (** Enumerate all subdirectories in the store client: *) 
-cluster.StoreClient.Directory.Enumerate(defaultDirectory)
+cluster.Store.Directory.Enumerate(defaultDirectory)
 
 (** Create a directory in the cloud file system: *)
-let directory = cluster.StoreClient.Path.GetRandomDirectoryName()
-let freshDirectory = cluster.StoreClient.Directory.Create(directory)
+let directory = cluster.Store.Path.GetRandomDirectoryName()
+let freshDirectory = cluster.Store.Directory.Create(directory)
 
 (** Upload data to a cloud file (held in blob storage) where we give the cloud file a name. *) 
 let namedCloudFile = 
@@ -64,7 +65,7 @@ let namedCloudFile =
         let! file = CloudFile.WriteAllLines(fileName, linesOfFile)
         return file
     } 
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
 (** Read the named cloud file as part of a cloud job: *)
 let numberOfLinesInNamedFile = 
@@ -72,9 +73,9 @@ let numberOfLinesInNamedFile =
         let! data = CloudFile.ReadAllLines namedCloudFile.Path
         return data.Length 
     }
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
-cluster.ShowSystemLogs(240.0)
+//cluster.ShowSystemLogs(240.0)
 
 (** 
 
@@ -94,7 +95,7 @@ let namedCloudFilesJob =
             return file 
         } ]
    |> Cloud.Parallel 
-   |> cluster.CreateProcess
+   |> cluster.CreateCloudTask
 
 // Check progress
 namedCloudFilesJob.ShowInfo()
@@ -107,10 +108,10 @@ parallel data flow. This is a very powerful feature. *)
 let sumOfLengthsOfLinesJob =
     namedCloudFiles
     |> Array.map (fun f -> f.Path)
-    |> CloudFlow.OfCloudFilesByLine
+    |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun lines -> lines.Length)
     |> CloudFlow.sum
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()

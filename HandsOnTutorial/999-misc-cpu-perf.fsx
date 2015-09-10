@@ -1,12 +1,17 @@
-﻿#load "credentials.fsx"
-#load "lib/collections.fsx"
-#load "lib/sieve.fsx"
+﻿(*** hide ***)
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 
@@ -16,8 +21,8 @@ open MBrace.Flow
 
 *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
+#load "lib/collections.fsx"
+#load "lib/sieve.fsx"
 
 let getThread () = System.Threading.Thread.CurrentThread.ManagedThreadId
 
@@ -35,7 +40,7 @@ let clusterSingleMachineSingleThreaded =
      return numbers |> Array.map(fun n -> 
              let primes = Sieve.getPrimes n 
              sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()))
-     } |>  cluster.Run
+     } |>  cluster.RunOnCloud
 
 
 // Run in the cluster, on a single randome worker, multi-threaded. This exploits the
@@ -52,7 +57,7 @@ let clusterSingleWorkerMultiThreaded =
          [| for n in nums do 
              let primes = Sieve.getPrimes n 
              yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
-     } |>  cluster.Run
+     } |>  cluster.RunOnCloud
 
 // Run in the cluster, on multiple workers, each multi-threaded. This exploits the
 // the multiple machines (workers) in the cluster and each worker is running multi-threaded.
@@ -77,4 +82,4 @@ let clusterMultiWorkerMultiThreaded =
                              yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
                   })
             |> Cloud.Parallel
-        } |> cluster.Run
+        } |> cluster.RunOnCloud

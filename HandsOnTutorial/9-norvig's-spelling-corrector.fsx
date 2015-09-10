@@ -1,5 +1,6 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 #load "lib/collections.fsx"
 
 
@@ -8,9 +9,13 @@ open System.IO
 open System.Net
 open System.Text.RegularExpressions
 open MBrace.Core
-open MBrace.Store
 open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 # Example: Training in the Cloud
@@ -23,10 +28,6 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 ## Part 1 - Extract Statistics in the Cloud 
 *)
-
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
 
 (**
 Step 1: download text file from source, 
@@ -51,18 +52,18 @@ let download (uri: string) =
         return files
     }
 
-let downloadJob = download "http://norvig.com/big.txt" |> cluster.CreateProcess
+let downloadTask = download "http://norvig.com/big.txt" |> cluster.CreateCloudTask
 
-downloadJob.ShowInfo()
+downloadTask.ShowInfo()
 
-let files = downloadJob.Result
+let files = downloadTask.Result
 
 (** Now, take a look at the sizes of the files. *) 
 let fileSizesJob = 
     files
     |> Array.map (fun f -> CloudFile.GetSize f.Path)
     |> Cloud.Parallel 
-    |> cluster.CreateProcess 
+    |> cluster.CreateCloudTask 
 
 fileSizesJob.Status
 fileSizesJob.ShowInfo()
@@ -78,16 +79,16 @@ let regex = Regex("[a-zA-Z]+", RegexOptions.Compiled)
 let wordCountJob = 
     files
     |> Array.map (fun f -> f.Path)
-    |> CloudFlow.OfCloudFilesByLine
+    |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.collect (fun text -> regex.Matches(text) |> Seq.cast)
     |> CloudFlow.map (fun (m:Match) -> m.Value.ToLower()) 
     |> CloudFlow.countBy id 
     |> CloudFlow.toArray
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 wordCountJob.ShowInfo()
 
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 
 let NWORDS = wordCountJob.Result |> Map.ofArray
 

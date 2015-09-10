@@ -1,4 +1,4 @@
-﻿#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
+﻿#r "../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
 
 open MBrace.Core
 
@@ -16,13 +16,10 @@ let hello = cloud { printfn "hello world" }
 
 open MBrace.Core.Internals // access MBrace internals
 
-// create a simple System.Threading.CancellationTokenSource wrapper
-let mkCTS () = new InMemoryRuntime.InMemoryCancellationTokenSource()
-
 //#nowarn "444" // uncomment to disable compiler warnings
 
-Cloud.RunSynchronously(hello, ResourceRegistry.Empty, mkCTS().Token)
-Cloud.Start(hello, ResourceRegistry.Empty, mkCTS().Token)
+Cloud.RunSynchronously(hello, ResourceRegistry.Empty)
+Cloud.Start(hello, ResourceRegistry.Empty)
 
 // 3. Run cloud workflow with user-defined continuations
 
@@ -33,20 +30,20 @@ let cont<'T> =
         Cancellation = fun _ _ -> printfn "Canceled"
     }
 
-Cloud.StartWithContinuations(cloud { return 42 }, cont, ResourceRegistry.Empty, mkCTS().Token)
-Cloud.StartWithContinuations(cloud { failwith "boom"}, cont, ResourceRegistry.Empty, mkCTS().Token)
+Cloud.StartWithContinuations(cloud { return 42 }, cont, ResourceRegistry.Empty)
+Cloud.StartWithContinuations(cloud { failwith "boom"}, cont, ResourceRegistry.Empty)
 
 // 5. Cloud.FromContinuations
 
 let ret t = Cloud.FromContinuations(fun ctx cont -> printfn "returning %A" t ; cont.Success ctx t)
 
-Cloud.RunSynchronously(ret 42, ResourceRegistry.Empty, mkCTS().Token)
+Cloud.RunSynchronously(ret 42, ResourceRegistry.Empty)
 
 // 5. Cloud.Parallel:
 
 let parallelWorkflow = Cloud.Parallel [ cloud { return 42 } ; cloud { return 42 } ]
 
-Cloud.RunSynchronously(parallelWorkflow, ResourceRegistry.Empty, mkCTS().Token) // fails with ResourceNotFoundException
+Cloud.RunSynchronously(parallelWorkflow, ResourceRegistry.Empty) // fails with ResourceNotFoundException
 
 // 6. Example: implementing our own brand of parallelism
 
@@ -101,7 +98,7 @@ type Cloud with
     static member Run(workflow : Cloud<'T>) =
         // populate a resource registry with our own thread pool parallel provider implementation
         let resources = ResourceRegistry.Empty.Register<IParallelProvider>(new ThreadPoolParallel())
-        Cloud.RunSynchronously(workflow, resources, mkCTS().Token)
+        Cloud.RunSynchronously(workflow, resources)
 
 
 // test the workflow

@@ -1,13 +1,11 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
-#load "lib/sieve.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Azure
-open MBrace.Azure.Runtime
-open MBrace.Workflows
+open MBrace.Flow
 
 (**
 # Starting a Web Server in your Cluster
@@ -16,7 +14,8 @@ This tutorial illustrates creating a cloud process which
 acts as a web server to monitor and control the cluster.
 *)
 
-#load "webserver.fsx"
+#load "lib/webserver.fsx"
+#load "lib/sieve.fsx"
 
 open Suave
 open Suave.Types
@@ -39,7 +38,7 @@ let helloRequest ctxt =
     async { return! OK "hello" ctxt }
 
 let getCluster() = 
-    MBraceAzure.GetHandle(config) 
+    MBraceCluster.GetHandle(config) 
 
 (**
 This Suave request is executed in response to a GET on 
@@ -49,7 +48,8 @@ This Suave request is executed in response to a GET on
 It uses cluster.GetWorkers to access information from the cluster. 
 *)
 let getWorkersRequest ctxt = 
-    async { let cluster = getCluster()
+    async {
+            let cluster = getCluster()
             let workers = cluster.Workers
             let msg = 
               [ yield "<html>"
@@ -70,14 +70,14 @@ This Suave request is executed in response to a GET on
 It uses cluster.GetLogs to access information from the cluster. 
 *)
 let getLogsRequest ctxt = 
-    async { let cluster = getCluster()
-            let logs = cluster.GetSystemLogs()
+    async {
+//            let logs = cluster.GetSystemLogs()
             let msg = 
               [ yield "<html>"
                 yield Angular.header
                 yield "<body>"
-                yield! logs |> Angular.table ["Time";"Message"] (fun w -> 
-                    [ sprintf "%A" w.Time; w.Message ])
+//                yield! logs |> Angular.table ["Time";"Message"] (fun w -> 
+//                    [ sprintf "%A" w.Time; w.Message ])
                 yield "</body>"
                 yield "</html>" ]
               |> String.concat "\n"
@@ -86,19 +86,19 @@ let getLogsRequest ctxt =
 // This Suave request is executed in response to a GET on 
 //   http://nn.nn.nn.nn/cluster/submit/primes/%d
 //
-// It uses cluster.CreateProcess to create a new job in the cluster.
+// It uses cluster.CreateCloudTask to create a new job in the cluster.
 let computePrimesRequest n ctxt = 
-    async { let cluster = getCluster()
-            let logs = cluster.GetSystemLogs()
-            let job = 
-              cluster.CreateProcess 
+    async {
+            let cluster = getCluster()
+            let task = 
+              cluster.CreateCloudTask 
                 (cloud { let primes = Sieve.getPrimes n
                          return sprintf "calculated %d primes: %A" primes.Length primes })
             let msg = 
               [ yield "<html>"
                 yield Angular.header
                 yield "<body>"
-                yield (sprintf "<p>Created job %s</p>" job.Id)
+                yield (sprintf "<p>Created job %s</p>" task.Id)
                 yield "</body>"
                 yield "</html>" ]
               |> String.concat "\n"
@@ -109,14 +109,14 @@ let computePrimesRequest n ctxt =
 //
 // It uses cluster.GetProcess to create a new job in the cluster.
 let getJobRequest v ctxt = 
-    async { let cluster = getCluster()
-            let logs = cluster.GetSystemLogs()
-            let job = cluster.TryGetProcessById(v).Value
+    async {
+            let cluster = getCluster()
+            let task = cluster.TryGetCloudTaskById(v) |> Option.get
             let msg = 
                 [ yield "<html>"
                   yield Angular.header
                   yield "<body>"
-                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" job.Id job.Status (try if job.Status = MBrace.Runtime.CloudTaskStatus.Completed then sprintf "%A" (job.AwaitResultBoxed()) else "" with _ -> "<err>") )
+                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" task.Id task.Status (try if task.Status = MBrace.Runtime.CloudTaskStatus.Completed then sprintf "%A" (task.AwaitResultBoxed()) else "" with _ -> "<err>") )
                   yield "</body>"
                   yield "</html>" ]
                 |> String.concat "\n"
@@ -139,14 +139,14 @@ let webServerSpec () =
 Now connect to the cluster: 
 *)
 
-let cluster = MBraceAzure.GetHandle(config)
+let cluster = getCluster()
 
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 
 // Use this to inspect the endpoints we can bind to in the cluster
 let endPointNames = 
     cloud { return Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.CurrentRoleInstance.InstanceEndpoints.Keys |> Seq.toArray }
-    |> cluster.Run
+    |> cluster.RunOnCloud
 
 (**
 By default, MBrace.Azure clusters created using Brisk engine on Azure allow us to bind to 
@@ -157,7 +157,7 @@ By default, MBrace.Azure clusters created using Brisk engine on Azure allow us t
 
 Here we bind to DefaultHttpEndpoint.  
 *)
-let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateProcess
+let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateCloudTask
 
 (**
 After you start the webserver (by binding to this internal endpoint), the website will 
@@ -175,14 +175,10 @@ serverJob.ShowInfo()
 
 (** If the webserver doesn't start, then use this to see the logging output from webserver.fsx: *) 
 
-cluster.ShowCloudLogs(serverJob)
+serverJob.ShowLogs()
 
 (** Use this to cancel the web server (via the distributed cancellationToken being cancelled): *)
 // serverJob.Cancel()
 
 (** Use this to wait for the web server to exit after cancellation: *)
 // serverJob.Resut
-
-
-
-

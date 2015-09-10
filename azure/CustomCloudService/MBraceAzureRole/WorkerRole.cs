@@ -30,6 +30,8 @@ namespace MBraceAzureRole
             // Set the maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 512;
 
+            Config.InitGlobalState(populateDirs: true, isClientInstance: false);
+
             // Increase disk quota for mbrace filesystem cache.
             string customTempLocalResourcePath = RoleEnvironment.GetLocalResource("LocalMBraceCache").RootPath;
             Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath);

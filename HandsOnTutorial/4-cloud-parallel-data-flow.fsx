@@ -1,11 +1,16 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 
 (**
@@ -19,9 +24,6 @@ open MBrace.Flow
 *)
 #load "lib/sieve.fsx"
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
 (**
 CloudFlow.ofArray partitions the input array based on the number of 
 available workers.  The parts of the array are then fed into cloud tasks
@@ -31,14 +33,14 @@ implemented by a final cloud task.
 
 let inputs = [| 1..100 |]
 
-let streamComputationJob = 
+let streamComputationTask = 
     inputs
     |> CloudFlow.OfArray
     |> CloudFlow.map (fun num -> num * num)
     |> CloudFlow.map (fun num -> num % 10)
     |> CloudFlow.countBy id
     |> CloudFlow.toArray
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 (**
 Check progress - note the number of cloud tasks involved, which
@@ -46,10 +48,10 @@ should be the number of workers + 1.  This indicates
 the input array has been partitioned and the work carried out 
  in a distributed way.
 *)
-streamComputationJob.ShowInfo()
+streamComputationTask.ShowInfo()
 
 (** Await the result *)
-streamComputationJob.Result
+streamComputationTask.Result
 
 (** 
 
@@ -74,20 +76,20 @@ of partitioning of the stream at any point in the pipeline.
 *)
 let numbers = [| for i in 1 .. 30 -> 50000000 |]
 
-let computePrimesJob = 
+let computePrimesTask = 
     numbers
     |> CloudFlow.OfArray
     |> CloudFlow.withDegreeOfParallelism 6
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
     |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
     |> CloudFlow.toArray
-    |> cluster.CreateProcess 
+    |> cluster.CreateCloudTask 
 
 (** Check if the work is done *) 
-computePrimesJob.ShowInfo()
+computePrimesTask.ShowInfo()
 
 (**  Await for the result *) 
-let computePrimes = computePrimesJob.Result
+let computePrimes = computePrimesTask.Result
 
 (**
 
@@ -105,12 +107,12 @@ let persistedCloudFlow =
     |> CloudFlow.OfArray
     |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i, string j) })
     |> CloudFlow.groupBy snd
-    |> CloudFlow.persist
-    |> cluster.Run
+    |> CloudFlow.persist StorageLevel.MemoryAndDisk
+    |> cluster.RunOnCloud
 
 
-let length = persistedCloudFlow |> CloudFlow.length |> cluster.Run
-let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.Run
+let length = persistedCloudFlow |> CloudFlow.length |> cluster.RunOnCloud
+let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.RunOnCloud
 
 (** In this tutorial, you've learned the basics of the CloudFlow programming
 model, a powerful data-flow model for scalable pipelines of data. 

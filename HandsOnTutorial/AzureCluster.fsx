@@ -1,17 +1,17 @@
-﻿#I "../../packages/MBrace.Azure.Standalone/tools" 
-#I "../../packages/Streams/lib/net45" 
-#r "../../packages/Streams/lib/net45/Streams.Core.dll"
-#I "../../packages/MBrace.Flow/lib/net45" 
-#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
-#r "../../packages/FsPickler.Json/lib/net45/FsPickler.Json.dll"
-#load "../../packages/MBrace.Azure.Standalone/MBrace.Azure.fsx"
+﻿#I "../packages/MBrace.Azure/tools" 
+#I "../packages/Streams/lib/net45" 
+#r "../packages/Streams/lib/net45/Streams.Core.dll"
+#I "../packages/MBrace.Flow/lib/net45" 
+#r "../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+#load "../packages/MBrace.Azure/MBrace.Azure.fsx"
 
 namespace global
 
 [<AutoOpen>]
-module ConnectionStrings = 
+module MBraceAzure = 
 
     open MBrace.Core
+    open MBrace.Runtime
     open MBrace.Azure
 
     // Both of the connection strings can be found under "Cloud Service" --> "Configure" --> scroll down to "MBraceWorkerRole"
@@ -36,3 +36,7 @@ module ConnectionStrings =
     // let createServiceBusConnectionString(serviceBusName, serviceBusKey) = sprintf "Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s" serviceBusName serviceBusKey
 
     let config = new Configuration(myStorageConnectionString, myServiceBusConnectionString)
+
+    let getAzureClient() =
+        let cluster = MBraceCluster.GetHandle(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+        cluster :> MBraceClient

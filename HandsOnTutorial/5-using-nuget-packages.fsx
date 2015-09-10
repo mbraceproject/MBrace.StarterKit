@@ -1,12 +1,16 @@
 ﻿(*** hide ***)
-#load "credentials.fsx"
-#nowarn "1571"
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
+
+// Initialize client object to an MBrace cluster:
+let cluster = 
+//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
+    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
 
 (**
 
@@ -27,7 +31,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 (** First, reference and use the packages on the local machine *) 
 
-#load @"../../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
+#load @"../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
 
 open MathNet.Numerics
 open MathNet.Numerics.LinearAlgebra
@@ -41,10 +45,7 @@ let check = (matrix1 * matrix1.Inverse()).Determinant()
 
 (** Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. *)
 
-(** First you connect to the cluster: *)
-let cluster = MBraceAzure.GetHandle(config)
-
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 cluster.ShowWorkerInfo()
 
 (** Invert 100 150x150 matrices using managed code: *) 
@@ -56,7 +57,7 @@ let managedMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 // Show the progress
 managedMathJob.ShowInfo()
@@ -77,8 +78,8 @@ These will be included with all uploaded dependencies of the session
 *)
 
 let contentDir = "../../packages/MathNet.Numerics.MKL.Win-x64/content/"
-Runtime.RegisterNativeDependency (contentDir + "libiomp5md.dll")
-Runtime.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
+cluster.RegisterNativeDependency (contentDir + "libiomp5md.dll")
+cluster.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
 (** The first MKL job can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded: *) 
 let firstMklJob = 
@@ -87,7 +88,7 @@ let firstMklJob =
         let m = Matrix<double>.Build.Random(200,200) 
         return (m * m.Inverse()).Determinant()
     }
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 // Check progress
 firstMklJob.ShowInfo()
@@ -104,7 +105,7 @@ let nativeMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.CreateProcess
+    |> cluster.CreateCloudTask
 
 
 // Check progress
@@ -112,7 +113,7 @@ nativeMathJob.ShowInfo()
 
 cluster.ShowWorkerInfo()
 
-cluster.ShowProcessInfo()
+cluster.ShowCloudTaskInfo()
 
 // Wait for the result
 nativeMathJob.Result
