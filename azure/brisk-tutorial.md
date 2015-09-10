@@ -1,4 +1,4 @@
-# Get Started With Brisk
+# Get Started With MBrace.Azure using Brisk
 
 Steps to create an [MBrace](http://m-brace.net/) Cluster on [Azure](https://windowsazure.com) using [Elastacloud Brisk Engine](https://www.briskengine.com/#/dash).
 
@@ -21,13 +21,11 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
    by clicking on your cluster details, and looking at the Connection Strings tab. 
    These will be needed in the next step.
 
-4. Download the contents of this repository as a ZIP and open in 
-   Visual Studio 2013 (If you don't have Visual Studio 2013, see http://fsharp.org/use/windows to get it).
-   You must use the appropriate tag for the MBrace  version you installed on your cluster
+4. [Download the contents of this StarterKit repository as a ZIP](brisk-versions.md) and open in 
+   Visual Studio 2013. If you don't have Visual Studio 2013, see http://fsharp.org/use/windows to get it.
 
-   * [StarterKit for 0.7.0 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.7.0.zip)
-   * [StarterKit for 0.6.10 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.6.10.zip)
-   * [StarterKit for 0.6.8 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.6.8.zip)
+   Note: You must use the appropriate version tag for the MBrace version you installed on your cluster. See the link above
+   for different versions.
 
 5. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``credentials.fsx``  script:
 
