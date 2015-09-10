@@ -1,3 +1,4 @@
+redirects: on
 source https://www.nuget.org/api/v2
 
 nuget MBrace.Core prerelease
@@ -10,3 +11,8 @@ nuget MathNet.Numerics.MKL.Win-x64
 nuget Streams
 nuget Suave
 nuget FSharp.Core < 4
+nuget WindowsAzure.ServiceBus 2.7.6
+nuget WindowsAzure.Storage 5.0.0
+nuget AForge
+nuget AForge.Imaging 
+nuget AForge.Math

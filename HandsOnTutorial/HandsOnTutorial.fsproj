@@ -56,6 +56,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Content Include="app.config" />
     <Content Include="libiomp5md.dll">
       <Paket>True</Paket>
     </Content>
@@ -77,6 +78,8 @@
     <None Include="8-cloud-parallel-web-download.fsx" />
     <None Include="9-norvig%27s-spelling-corrector.fsx" />
     <None Include="10-using-cloud-dictionary.fsx" />
+    <None Include="11-upload-file-to-blob.fsx" />
+    <None Include="12-image-processing.fsx" />
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
@@ -90,6 +93,8 @@
     <None Include="999-task-create-perf.fsx" />
     <None Include="999-misc-cpu-perf.fsx" />
     <None Include="paket.references" />
+    <None Include="packages.config" />
+    <Content Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -109,7 +114,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\.paket\paket.targets" />
+  <Import Project="..\..\.paket\paket.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v3.5'">
       <ItemGroup>
