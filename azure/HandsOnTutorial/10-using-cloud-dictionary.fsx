@@ -37,7 +37,7 @@ let key = "contestedKey"
 let contestJob = 
     [|1 .. 100|]
     |> CloudFlow.OfArray
-    |> CloudFlow.iterLocal(fun i -> dict.AddOrUpdate(key, function None -> i | Some v -> i + v) |> Cloud.OfAsync |> Local.Ignore)
+    |> CloudFlow.iterLocal(fun i -> dict.Transact(key, function None -> (),i | Some v -> (),i + v) |> Cloud.OfAsync)
     |> cluster.CreateProcess
 
 contestJob.ShowInfo()
