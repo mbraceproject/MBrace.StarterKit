@@ -6,3 +6,6 @@ MathNet.Numerics
 MathNet.Numerics.FSharp
 MathNet.Numerics.MKL.Win-x64
 Suave
+AForge
+AForge.Imaging
+AForge.Math

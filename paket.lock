@@ -1,6 +1,13 @@
+REDIRECTS: ON
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    AForge (2.2.5)
+    AForge.Imaging (2.2.5)
+      AForge (>= 2.2.5)
+      AForge.Math (>= 2.2.5)
+    AForge.Math (2.2.5)
+      AForge (>= 2.2.5)
     FSharp.Core (3.1.2.5)
     FsPickler (1.2.9)
     FsPickler.Json (1.2.9)
@@ -39,8 +46,8 @@ NUGET
     Mono.Cecil (0.9.6.1)
     Newtonsoft.Json (6.0.8)
     Streams (0.3.0)
-    Suave (0.30.0)
-      FSharp.Core (>= 3.1.2.1)
+    Suave (0.31.2)
+      FSharp.Core (>= 3.1.2.5)
       FsPickler (>= 1.2.5)
     System.Spatial (5.6.4)
     TaskParallelLibrary (1.0.2856.0) - framework: >= net35 < net40
