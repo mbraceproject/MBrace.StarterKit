@@ -6,7 +6,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 
 (**
 #Uploading local files to Azure blob.
@@ -18,10 +17,10 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
+cluster.ShowProcessInfo()
+cluster.ShowWorkerInfo()
 
 
 (** Now you define functions to create and remove temp files. *)

@@ -1,16 +1,15 @@
 ﻿(*** hide ***)
 
 #load "credentials.fsx"
-#r "../../packages/AForge.2.2.5/lib/AForge.dll" 
-#r "../../packages/AForge.Math.2.2.5/lib/AForge.Math.dll" 
-#r "../../packages/AForge.Imaging.2.2.5\lib\AForge.Imaging.dll" 
+#r "../../packages/AForge/lib/AForge.dll" 
+#r "../../packages/AForge.Math/lib/AForge.Math.dll" 
+#r "../../packages/AForge.Imaging/lib/AForge.Imaging.dll" 
 
 open System
 open System.IO
 open MBrace.Core
 open MBrace.Store
 open MBrace.Azure
-open MBrace.Azure.Client
 
 open System.Drawing
 open AForge.Imaging.Filters
@@ -26,7 +25,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** First you connect to the cluster: *)
-let cluster = Runtime.GetHandle(config)
+let cluster = MBraceAzure.GetHandle(config)
 
 (** Next, you define a method to download an image from a url, and return a stream containing the downloaded image. *)
 let GetStreamFromUrl (url : string) =
