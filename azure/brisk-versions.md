@@ -1,4 +1,7 @@
 
+
+# Choose the version of the StarterKit to match your MBrace cluster version
+
 As of 10/09/2015, the following versions of the Starter Kit are avaialble.   See also the tags and branches and check the "master" branch
 
    * [StarterKit for MBrace.Azure 0.7.0](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.7.0.zip)
