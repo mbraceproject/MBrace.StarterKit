@@ -21,7 +21,7 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
    by clicking on your cluster details, and looking at the Connection Strings tab. 
    These will be needed in the next step.
 
-4. [Download the contents of this StarterKit repository as a ZIP](brisk-versions.md) and open in 
+4. [Download the contents of this StarterKit repository as a ZIP](brisk-versions.md#choose-the-version-of-the-starterkit-to-match-your-mbrace-cluster-version) and open in 
    Visual Studio 2013. If you don't have Visual Studio 2013, see http://fsharp.org/use/windows to get it.
 
    Note: You must use the appropriate version tag for the MBrace version you installed on your cluster. See the link above
