@@ -57,12 +57,6 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Content Include="app.config" />
-    <Content Include="libiomp5md.dll">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="MathNet.Numerics.MKL.dll">
-      <Paket>True</Paket>
-    </Content>
     <None Include="credentials.fsx" />
     <None Include="1-hello-world.fsx">
       <SubType>
