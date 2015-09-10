@@ -12,5 +12,5 @@ nuget Streams
 nuget Suave
 nuget FSharp.Core < 4
 nuget AForge
-nuget AForge.Imaging 
+nuget AForge.Imaging
 nuget AForge.Math

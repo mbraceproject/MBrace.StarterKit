@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "Thespian.fsx"
-#load "Azure.fsx"
+#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 #load "lib/collections.fsx"
 
 

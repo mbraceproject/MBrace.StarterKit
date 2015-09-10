@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "Azure.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
