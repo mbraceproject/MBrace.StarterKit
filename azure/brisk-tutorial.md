@@ -27,7 +27,7 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
 
    * [StarterKit for 0.7.0 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.7.0.zip)
    * [StarterKit for 0.6.10 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.6.10.zip)
-   * [StarterKit for 0.6.10 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.6.8.zip)
+   * [StarterKit for 0.6.8 ](https://github.com/mbraceproject/MBrace.StarterKit/archive/brisk-0.6.8.zip)
 
 5. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``credentials.fsx``  script:
 
