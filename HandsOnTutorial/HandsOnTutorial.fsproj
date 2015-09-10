@@ -66,7 +66,7 @@
     <None Include="3-cloud-parallel-cpu-intensive.fsx" />
     <None Include="4-cloud-parallel-data-flow.fsx" />
     <None Include="5-using-nuget-packages.fsx" />
-    <None Include="6-using-cloud-data-blobs.fsx" />
+    <None Include="6-using-cloud-values.fsx" />
     <None Include="7-using-cloud-data-files.fsx" />
     <None Include="8-cloud-parallel-web-download.fsx" />
     <None Include="9-norvig%27s-spelling-corrector.fsx" />
