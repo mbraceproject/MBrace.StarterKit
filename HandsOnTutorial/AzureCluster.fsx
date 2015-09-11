@@ -7,8 +7,7 @@
 
 namespace global
 
-[<AutoOpen>]
-module MBraceAzure = 
+module Config =
 
     open MBrace.Core
     open MBrace.Runtime
@@ -35,8 +34,8 @@ module MBraceAzure =
     // let createStorageConnectionString(storageName, storageAccessKey) = sprintf "DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s" storageName storageAccessKey
     // let createServiceBusConnectionString(serviceBusName, serviceBusKey) = sprintf "Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s" serviceBusName serviceBusKey
 
-    let config = new Configuration(myStorageConnectionString, myServiceBusConnectionString)
+    let config = Configuration(myStorageConnectionString, myServiceBusConnectionString)
 
-    let getAzureClient() =
+    let GetCluster() =
         let cluster = MBraceCluster.GetHandle(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
         cluster :> MBraceClient

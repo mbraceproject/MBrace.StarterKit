@@ -1,10 +1,10 @@
 ﻿(*** hide ***)
-#load "AzureCluster.fsx"
+#load "ThespianCluster.fsx"
+//#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 (**
@@ -38,7 +38,7 @@ let helloRequest ctxt =
     async { return! OK "hello" ctxt }
 
 let getCluster() = 
-    MBraceCluster.GetHandle(config) 
+    Config.GetCluster() 
 
 (**
 This Suave request is executed in response to a GET on 
