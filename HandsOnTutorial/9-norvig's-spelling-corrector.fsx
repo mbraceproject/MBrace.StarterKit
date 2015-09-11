@@ -1,7 +1,6 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
-#load "lib/collections.fsx"
+//#load "AzureCluster.fsx"
 
 
 open System
@@ -9,13 +8,10 @@ open System.IO
 open System.Net
 open System.Text.RegularExpressions
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster:
-let cluster = 
-//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
-    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
+// Initialize client object to an MBrace cluster
+let cluster = Config.GetCluster() 
 
 (**
 # Example: Training in the Cloud
@@ -28,6 +24,7 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 ## Part 1 - Extract Statistics in the Cloud 
 *)
+#load "lib/collections.fsx"
 
 (**
 Step 1: download text file from source, 

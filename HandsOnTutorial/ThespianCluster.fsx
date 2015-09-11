@@ -7,13 +7,17 @@
 
 namespace global
 
-[<AutoOpen>]
-module MBraceThespian = 
+module Config = 
 
     open MBrace.Core
     open MBrace.Runtime
     open MBrace.Thespian
 
-    let initThespianCluster (workerCount : int) =
-        let cluster = MBraceCluster.InitOnCurrentMachine(workerCount, logger = new ConsoleLogger(), logLevel = LogLevel.Info)
-        cluster :> MBraceClient
+    let private workerCount = 4
+    
+    let mutable private thespian = None
+    let GetCluster() = 
+        match thespian with 
+        | None -> thespian <- Some (MBraceCluster.InitOnCurrentMachine(workerCount, logger = new ConsoleLogger(), logLevel = LogLevel.Info))
+        | Some t -> ()
+        thespian.Value :> MBraceClient

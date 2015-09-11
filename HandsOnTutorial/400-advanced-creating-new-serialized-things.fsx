@@ -1,19 +1,16 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+//#load "AzureCluster.fsx"
 #r "System.Runtime.Serialization.dll"
 
 open System
 open System.IO
 open System.Runtime.Serialization
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster:
-let cluster = 
-//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
-    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
+// Initialize client object to an MBrace cluster
+let cluster = Config.GetCluster() 
 
 (** 
 

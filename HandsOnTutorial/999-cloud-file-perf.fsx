@@ -1,17 +1,14 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+//#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster:
-let cluster = 
-//    getAzureClient() // comment out to use an MBrace.Azure cluster; don't forget to set the proper connection strings in Azure.fsx
-    initThespianCluster(4) // use a local cluster based on MBrace.Thespian; configuration can be adjusted using Thespian.fsx
+// Initialize client object to an MBrace cluster
+let cluster = Config.GetCluster() 
 
 (**
  This script tests cloud file perf
@@ -79,8 +76,7 @@ let bytesWritePerf, bigCloudByteFiles =
 // #3   [(1, 0.8718545); (10, 1.1114111); (100, 2.6215714)]
 let lineReadPerf, lineReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
-        cloud { let! cloudFile = CloudFile.FromPath (dp.Path + sprintf "/big-lines-%d" sz) 
-                let! lines =  CloudFile.ReadAllLines(cloudFile.Path)   
+        cloud { let! lines =  CloudFile.ReadAllLines(dp.Path + sprintf "/big-lines-%d" sz)   
                 return lines.Length }
 
 // #1 [(1, 0.3036431); (10, 0.397323); (100, 8.2052502)]
@@ -89,8 +85,7 @@ let lineReadPerf, lineReadResults =
 // =  approx 100MB/sec
 let textReadPerf, textReadResults = 
     timeSizes [ 1; 10; 100 ] <| fun sz -> 
-        cloud { let! cloudFile = CloudFile.FromPath(dp.Path + sprintf "/big-text-%d" sz) 
-                let! text = CloudFile.ReadAllText(cloudFile.Path)   
+        cloud { let! text = CloudFile.ReadAllText(dp.Path + sprintf "/big-text-%d" sz)   
                 return text.Length }
 
 
@@ -101,7 +96,6 @@ let textReadPerf, textReadResults =
 // #5 -   [(1, 0.5175206); (10, 0.3935077); (100, 1.4001587); (1000, 10.5389589)]
 let bytesReadPerf, bytesReadResults = 
     timeSizes [ 1; 10; 100; 1000 ] <| fun sz -> 
-        cloud { let! cloudFile = CloudFile.FromPath(dp.Path + sprintf "/big-bytes-%d" sz)
-                let! bytes = CloudFile.ReadAllBytes(cloudFile.Path)   
+        cloud { let! bytes = CloudFile.ReadAllBytes(dp.Path + sprintf "/big-bytes-%d" sz)   
                 return bytes.Length }
 
