@@ -10,7 +10,6 @@ nuget MathNet.Numerics.FSharp
 nuget MathNet.Numerics.MKL.Win-x64
 nuget Streams
 nuget Suave
-nuget FSharp.Core < 4
 nuget AForge
 nuget AForge.Imaging
 nuget AForge.Math
