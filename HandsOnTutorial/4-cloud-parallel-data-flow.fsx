@@ -38,7 +38,7 @@ let streamComputationTask =
     |> CloudFlow.map (fun num -> num % 10)
     |> CloudFlow.countBy id
     |> CloudFlow.toArray
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 (**
 Check progress - note the number of cloud tasks involved, which
@@ -81,7 +81,7 @@ let computePrimesTask =
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
     |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
     |> CloudFlow.toArray
-    |> cluster.CreateCloudTask 
+    |> cluster.CreateTask 
 
 (** Check if the work is done *) 
 computePrimesTask.ShowInfo()
@@ -106,11 +106,11 @@ let persistedCloudFlow =
     |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i, string j) })
     |> CloudFlow.groupBy snd
     |> CloudFlow.persist StorageLevel.MemoryAndDisk
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 
-let length = persistedCloudFlow |> CloudFlow.length |> cluster.RunOnCloud
-let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.RunOnCloud
+let length = persistedCloudFlow |> CloudFlow.length |> cluster.Run
+let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.Run
 
 (** In this tutorial, you've learned the basics of the CloudFlow programming
 model, a powerful data-flow model for scalable pipelines of data. 

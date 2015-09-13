@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -24,7 +23,7 @@ let dict =
     cloud {
         let! dict = CloudDictionary.New<int> ()
         return dict
-    } |> cluster.RunOnCloud
+    } |> cluster.Run
 
 (** Next, add an entry to the dictionary: *)
 dict.Add("key0", 42) |> Async.RunSynchronously
@@ -38,7 +37,7 @@ let contestTask =
     [|1 .. 100|]
     |> CloudFlow.OfArray
     |> CloudFlow.iterLocal(fun i -> CloudDictionary.AddOrUpdate key (function None -> i | Some v -> i + v) dict |> Local.Ignore)
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 contestTask.ShowInfo()
 

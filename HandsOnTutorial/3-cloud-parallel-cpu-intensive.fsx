@@ -47,7 +47,7 @@ let clusterPrimesTask =
          }
     |]
     |> Cloud.Parallel
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 
 clusterPrimesTask.ShowInfo()
@@ -63,7 +63,7 @@ let jobs =
             let primes = Sieve.getPrimes 100000000
             return sprintf "calculated %d primes %A on machine '%s'" primes.Length primes Environment.MachineName 
          }
-        |> cluster.CreateCloudTask ]
+        |> cluster.CreateTask ]
 
 let jobResults = 
     [ for job in jobs -> job.Result ]

@@ -20,11 +20,11 @@ Before running, edit credentials.fsx to enter your connection strings.
 
 (** You now use Cloud.Parallel to run 50 cloud workflows in parallel using fork-join pattern. *)
 let resultsTask = 
-    [ for i in 1 .. 50 -> cloud { return sprintf "i'm job %d" i } ]
+    [ for i in 1 .. 50 -> cloud { return sprintf "i'm work item %d" i } ]
     |> Cloud.Parallel
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
-cluster.ShowCloudTaskInfo()
+cluster.ShowTasks()
 
 
 (** Get the results *)
@@ -33,15 +33,15 @@ let results = resultsTask.Result
 
 (** Again, in shorthand *)
 let quickResults =
-    [ for i in 1 .. 50 -> cloud { return sprintf "i'm job %d" i } ]
+    [ for i in 1 .. 50 -> cloud { return sprintf "i'm work item %d" i } ]
     |> Cloud.Parallel
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** Next you use Cloud.Choice: the first cloud workflow to return "Some" wins. *)
 let searchTask =
     [ for i in 1 .. 50 -> cloud { if i % 10 = 0 then return Some i else return None } ]
     |> Cloud.Choice
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 searchTask.ShowInfo()
 

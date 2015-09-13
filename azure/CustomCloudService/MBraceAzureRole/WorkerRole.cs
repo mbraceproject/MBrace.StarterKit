@@ -30,7 +30,8 @@ namespace MBraceAzureRole
             // Set the maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 512;
 
-            Config.InitGlobalState(populateDirs: true, isClientInstance: false);
+            /// Initialize global state for the current process
+            Config.InitWorkerGlobalState();
 
             // Increase disk quota for mbrace filesystem cache.
             string customTempLocalResourcePath = RoleEnvironment.GetLocalResource("LocalMBraceCache").RootPath;
@@ -45,7 +46,7 @@ namespace MBraceAzureRole
                 RoleEnvironment.IsEmulated ?
                 new Service(_config) : // Avoid long service names when using emulator
                 new Service(_config, serviceId: RoleEnvironment.CurrentRoleInstance.Id.Split('.').Last());
-            _svc.MaxConcurrentJobs = Environment.ProcessorCount * 8;
+            _svc.MaxConcurrentWorkItems = Environment.ProcessorCount * 8;
 
             RoleEnvironment.Changed += RoleEnvironment_Changed;
 

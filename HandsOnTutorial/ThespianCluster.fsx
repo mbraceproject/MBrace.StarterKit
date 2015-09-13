@@ -13,11 +13,19 @@ module Config =
     open MBrace.Runtime
     open MBrace.Thespian
 
+    // change to alter cluster size
     let private workerCount = 4
     
     let mutable private thespian = None
+    /// Gets or creates a new Thespian cluster session.
     let GetCluster() = 
         match thespian with 
         | None -> thespian <- Some (MBraceCluster.InitOnCurrentMachine(workerCount, logger = new ConsoleLogger(), logLevel = LogLevel.Info))
         | Some t -> ()
-        thespian.Value :> MBraceClient
+        thespian.Value
+
+    /// Kills the current cluster session
+    let KillCluster() =
+        match thespian with
+        | None -> ()
+        | Some t -> t.KillAllWorkers() ; thespian <- None

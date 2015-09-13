@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -20,8 +19,8 @@ process the files in the cloud using MBrace.
 Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-cluster.ShowCloudTaskInfo()
-cluster.ShowWorkerInfo()
+cluster.ShowTasks()
+cluster.ShowWorkers()
 
 
 (** Now you define functions to create and remove temp files. *)
@@ -58,7 +57,7 @@ let lines =
         let! lines = CloudFile.ReadAllLines cFile.Path 
         return lines.Length
     } 
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** In this tutorial, you've learnt how to upload local files into Azure blob storage and then
 process the uploaded files in the MBrace cluster. *)

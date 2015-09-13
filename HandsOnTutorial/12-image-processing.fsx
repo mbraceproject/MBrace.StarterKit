@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -63,7 +62,7 @@ let urls = [|
 let tasks = 
     [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath))) |] 
     |> Cloud.Parallel
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 
 (** 

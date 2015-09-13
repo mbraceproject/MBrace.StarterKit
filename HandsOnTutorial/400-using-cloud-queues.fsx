@@ -21,18 +21,18 @@ Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** Create an anonymous cloud channel: *) 
-let queue = CloudQueue.New<string>() |> cluster.RunOnCloud
+let queue = CloudQueue.New<string>() |> cluster.Run
 
 (** Send to the channel by scheduling a cloud process to do the send: *)
-CloudQueue.Enqueue (queue, "hello") |> cluster.RunOnCloud
+CloudQueue.Enqueue (queue, "hello") |> cluster.Run
 
 (**  Receive from the channel by scheduling a cloud process to do the receive: *)
-let msg = CloudQueue.Dequeue(queue) |> cluster.RunOnCloud
+let msg = CloudQueue.Dequeue(queue) |> cluster.Run
 
 let sendTask = 
     cloud { for i in [ 0 .. 100 ] do 
                 do! queue.Enqueue (sprintf "hello%d" i) }
-     |> cluster.CreateCloudTask
+     |> cluster.CreateTask
 
 sendTask.ShowInfo() 
 
@@ -43,7 +43,7 @@ let receiveTask =
                let! msg = CloudQueue.Dequeue(queue)
                results.Add msg
             return results.ToArray() }
-     |> cluster.CreateCloudTask
+     |> cluster.CreateTask
 
 receiveTask.ShowInfo() 
 receiveTask.Result

@@ -25,12 +25,12 @@ First connect to the cluster using a configuration to bind to your storage and s
 *)    
 
 // You can connect to the cluster and get details of the workers in the pool:
-cluster.ShowWorkerInfo()
+cluster.ShowWorkers()
 
 (** Now execute your first cloud workflow and get a handle to the running job: *)
 let task = 
     cloud { return "Hello world!" } 
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 // You can get details for the task.
 task.ShowInfo()
@@ -41,10 +41,10 @@ let text = task.Result
 (** Alternatively we can do this all in one line: *)
 let quickText = 
     cloud { return "Hello world!" } 
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 // You can view the history of processes:
-cluster.ShowCloudTaskInfo()
+cluster.ShowTasks()
 
 (** To check that you are running in the cloud, compre
 a workflow by running locally (using async semantics) with one
@@ -55,7 +55,7 @@ let localResult =
 
 let remoteResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** 
 
@@ -65,4 +65,4 @@ In case you run into trouble, this can be used to clear all process
 records in the cluster: 
 *)
 
-cluster.ClearAllCloudTasks()
+cluster.ClearAllTasks()

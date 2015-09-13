@@ -43,8 +43,8 @@ let check = (matrix1 * matrix1.Inverse()).Determinant()
 
 (** Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. *)
 
-cluster.ShowCloudTaskInfo()
-cluster.ShowWorkerInfo()
+cluster.ShowTasks()
+cluster.ShowWorkers()
 
 (** Invert 100 150x150 matrices using managed code: *) 
 let managedMathJob = 
@@ -55,7 +55,7 @@ let managedMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 // Show the progress
 managedMathJob.ShowInfo()
@@ -86,7 +86,7 @@ let firstMklJob =
         let m = Matrix<double>.Build.Random(200,200) 
         return (m * m.Inverse()).Determinant()
     }
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 // Check progress
 firstMklJob.ShowInfo()
@@ -103,15 +103,15 @@ let nativeMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 
 // Check progress
 nativeMathJob.ShowInfo()
 
-cluster.ShowWorkerInfo()
+cluster.ShowWorkers()
 
-cluster.ShowCloudTaskInfo()
+cluster.ShowTasks()
 
 // Wait for the result
 nativeMathJob.Result

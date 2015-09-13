@@ -18,8 +18,8 @@ let cluster = Config.GetCluster()
  Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-cluster.ShowCloudTaskInfo()
-cluster.ShowWorkerInfo()
+cluster.ShowTasks()
+cluster.ShowWorkers()
 
 (** Here's some data that simulates a log file for user click events: *)
 let linesOfFile = 
@@ -35,7 +35,7 @@ let anonCloudFile =
          let! file = CloudFile.WriteAllLines(path, linesOfFile)
          return file 
      }
-     |> cluster.RunOnCloud
+     |> cluster.Run
 
 (** Run a cloud job which reads all the lines of a cloud file: *) 
 let numberOfLinesInFile = 
@@ -43,7 +43,7 @@ let numberOfLinesInFile =
         let! data = CloudFile.ReadAllLines anonCloudFile.Path
         return data.Length 
     }
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** Get the default directory of the store client: *)
 let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunOnCurrentProcess
@@ -63,7 +63,7 @@ let namedCloudFile =
         let! file = CloudFile.WriteAllLines(fileName, linesOfFile)
         return file
     } 
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** Read the named cloud file as part of a cloud job: *)
 let numberOfLinesInNamedFile = 
@@ -71,7 +71,7 @@ let numberOfLinesInNamedFile =
         let! data = CloudFile.ReadAllLines namedCloudFile.Path
         return data.Length 
     }
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 //cluster.ShowSystemLogs(240.0)
 
@@ -93,7 +93,7 @@ let namedCloudFilesJob =
             return file 
         } ]
    |> Cloud.Parallel 
-   |> cluster.CreateCloudTask
+   |> cluster.CreateTask
 
 // Check progress
 namedCloudFilesJob.ShowInfo()
@@ -109,7 +109,7 @@ let sumOfLengthsOfLinesJob =
     |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun lines -> lines.Length)
     |> CloudFlow.sum
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()

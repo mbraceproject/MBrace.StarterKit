@@ -37,5 +37,5 @@ module Config =
     let config = Configuration(myStorageConnectionString, myServiceBusConnectionString)
 
     let GetCluster() =
-        let cluster = MBraceCluster.GetHandle(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
-        cluster :> MBraceClient
+        let cluster = AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+        cluster

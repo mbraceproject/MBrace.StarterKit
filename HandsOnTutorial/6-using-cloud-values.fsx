@@ -52,10 +52,10 @@ let data = String.replicate 10000 "The quick brown fox jumped over the lazy dog\
 let persistedCloudData = 
     cloud { let! cell = CloudValue.New data 
             return cell }
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (** Run a cloud job which reads the blob and processes the data *)
 let lengthOfData = 
     cloud { let! data = CloudValue.Read persistedCloudData 
             return data.Length }
-    |> cluster.RunOnCloud
+    |> cluster.Run

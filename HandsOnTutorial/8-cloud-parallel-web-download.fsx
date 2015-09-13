@@ -42,7 +42,7 @@ let filesTask =
     urls 
     |> Array.map download
     |> Cloud.Parallel
-    |> cluster.CreateCloudTask
+    |> cluster.CreateTask
 
 // Check on progress...
 filesTask.ShowInfo()
@@ -57,7 +57,7 @@ let contentsOfFiles =
         cloud { let! text = CloudFile.ReadAllText(file.Path)
                 return (file.Path, text.Length) })
     |> Cloud.Parallel
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 
 (** In this example, you've seen how cloud tasks can perform I/O to web data sources. 

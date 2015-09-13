@@ -1,11 +1,10 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+//#load "AzureCluster.fsx"
 
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -20,16 +19,16 @@ let cluster = Config.GetCluster()
 
 
 /// Create an anoymous cloud atom with an initial value
-let atom = CloudAtom.New(100) |> cluster.RunOnCloud
+let atom = CloudAtom.New(100) |> cluster.Run
 
 // Check the unique ID of the atom
 atom.Id
 
 // Get the value of the atom.
-let atomValue = atom |> CloudAtom.Read |> cluster.RunOnCloud
+let atomValue = atom |> CloudAtom.Read |> cluster.Run
 
 // Transactionally update the value of the atom and output a result
-let atomUpdateResult = CloudAtom.Transact (atom, fun x -> string x,x*x) |> cluster.RunOnCloud
+let atomUpdateResult = CloudAtom.Transact (atom, fun x -> string x,x*x) |> cluster.Run
 
 // Have all workers atomically increment the counter in parallel
 cloud {
@@ -42,9 +41,9 @@ cloud {
         |> Cloud.Ignore
 
     return! CloudAtom.Read atom
-} |> cluster.RunOnCloud
+} |> cluster.Run
 
 // Delete the cloud atom
-CloudAtom.Delete atom  |> cluster.RunOnCloud
+CloudAtom.Delete atom  |> cluster.Run
 
-cluster.ShowCloudTaskInfo()
+cluster.ShowTasks()

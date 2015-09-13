@@ -86,12 +86,12 @@ let getLogsRequest ctxt =
 // This Suave request is executed in response to a GET on 
 //   http://nn.nn.nn.nn/cluster/submit/primes/%d
 //
-// It uses cluster.CreateCloudTask to create a new job in the cluster.
+// It uses cluster.CreateTask to create a new job in the cluster.
 let computePrimesRequest n ctxt = 
     async {
             let cluster = getCluster()
             let task = 
-              cluster.CreateCloudTask 
+              cluster.CreateTask 
                 (cloud { let primes = Sieve.getPrimes n
                          return sprintf "calculated %d primes: %A" primes.Length primes })
             let msg = 
@@ -141,12 +141,12 @@ Now connect to the cluster:
 
 let cluster = getCluster()
 
-cluster.ShowCloudTaskInfo()
+cluster.ShowTasks()
 
 // Use this to inspect the endpoints we can bind to in the cluster
 let endPointNames = 
     cloud { return Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.CurrentRoleInstance.InstanceEndpoints.Keys |> Seq.toArray }
-    |> cluster.RunOnCloud
+    |> cluster.Run
 
 (**
 By default, MBrace.Azure clusters created using Brisk engine on Azure allow us to bind to 
@@ -157,7 +157,7 @@ By default, MBrace.Azure clusters created using Brisk engine on Azure allow us t
 
 Here we bind to DefaultHttpEndpoint.  
 *)
-let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateCloudTask
+let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateTask
 
 (**
 After you start the webserver (by binding to this internal endpoint), the website will 

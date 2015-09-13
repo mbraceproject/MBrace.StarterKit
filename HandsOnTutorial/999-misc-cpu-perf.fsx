@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -38,7 +37,7 @@ let clusterSingleMachineSingleThreaded =
      return numbers |> Array.map(fun n -> 
              let primes = Sieve.getPrimes n 
              sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()))
-     } |>  cluster.RunOnCloud
+     } |>  cluster.Run
 
 
 // Run in the cluster, on a single randome worker, multi-threaded. This exploits the
@@ -55,7 +54,7 @@ let clusterSingleWorkerMultiThreaded =
          [| for n in nums do 
              let primes = Sieve.getPrimes n 
              yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
-     } |>  cluster.RunOnCloud
+     } |>  cluster.Run
 
 // Run in the cluster, on multiple workers, each multi-threaded. This exploits the
 // the multiple machines (workers) in the cluster and each worker is running multi-threaded.
@@ -80,4 +79,4 @@ let clusterMultiWorkerMultiThreaded =
                              yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
                   })
             |> Cloud.Parallel
-        } |> cluster.RunOnCloud
+        } |> cluster.Run
