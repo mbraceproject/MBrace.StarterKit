@@ -47,7 +47,7 @@ NUGET
       Thespian.Core (0.1.6-alpha)
       Vagabond (>= 0.8.5 < 0.9.0)
     Microsoft.Data.Edm (5.6.4)
-    Microsoft.Data.OData (5.6.4)
+    Microsoft.Data.OData (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Edm (5.6.4)
       System.Spatial (5.6.4)
     Microsoft.Data.Services.Client (5.6.4) - framework: >= net40
@@ -69,7 +69,7 @@ NUGET
     WindowsAzure.ServiceBus (2.5.4)
       Microsoft.WindowsAzure.ConfigurationManager
     WindowsAzure.Storage (4.3.0)
-      Microsoft.Data.OData (>= 5.6.2)
+      Microsoft.Data.OData (>= 5.6.2) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
       Newtonsoft.Json (>= 5.0.8) - framework: wpv8.0, >= net40
