@@ -21,7 +21,7 @@ NUGET
       MathNet.Numerics (3.7.0)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (0.10.3-alpha)
+    MBrace.Azure (0.10.4-alpha)
       FsPickler (>= 1.3.7)
       FsPickler.Json (>= 1.3.7)
       MBrace.Core (0.10.6-alpha)
