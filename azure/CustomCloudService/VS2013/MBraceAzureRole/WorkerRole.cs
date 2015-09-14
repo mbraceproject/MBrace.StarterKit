@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.Azure;
+using MBrace.Azure;
+using MBrace.Azure.Runtime;
 
 namespace MBraceAzureRole
 {
