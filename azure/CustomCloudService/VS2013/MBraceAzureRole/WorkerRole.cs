@@ -32,16 +32,16 @@ namespace MBraceAzureRole
         {
             try
             {
+                // Increase disk quota for mbrace filesystem cache.
+                string customTempLocalResourcePath = RoleEnvironment.GetLocalResource("LocalMBraceCache").RootPath;
+                Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath);
+                Environment.SetEnvironmentVariable("TEMP", customTempLocalResourcePath);
+
                 // Set the maximum number of concurrent connections
                 ServicePointManager.DefaultConnectionLimit = 512;
 
                 /// Initialize global state for the current process
                 Config.InitWorkerGlobalState();
-
-                // Increase disk quota for mbrace filesystem cache.
-                string customTempLocalResourcePath = RoleEnvironment.GetLocalResource("LocalMBraceCache").RootPath;
-                Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath);
-                Environment.SetEnvironmentVariable("TEMP", customTempLocalResourcePath);
 
                 bool result = base.OnStart();
 
