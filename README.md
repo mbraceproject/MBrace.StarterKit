@@ -1,9 +1,22 @@
 # MBrace.StarterKit
 
-A collection of demos and tutorials for [MBrace](http://m-brace.net/).
+A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/).
 
 ## Contents
 
-* Deploying MBrace on Brisk [tutorial](azure/brisk-tutorial.md#get-started-with-brisk)
-* MBrace on Azure [hands-on tutorial](azure/HandsOnTutorial)
-* MBrace on Azure [Custom Cloud Service](azure/AZURE.md)
+### Hands On Tutorials
+
+The directory [HandsOnTutorial](HandsOnTutorial) contains a set of scripted 
+hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
+
+1. Provision your cluster, see below.
+2. Open and build the solution ``MBrace.StarterKit.sln`` before working with the scripts
+   to restore the necessary packages.
+
+### Azure Worker Role Templates & Tutorials.
+
+See also [AZURE.md](azure/AZURE.md)
+
+* [Tutorial](azure/brisk-tutorial.md) on provisioning MBrace using Brisk.
+* [Azure Service Template](azure/MBrace.Azure.Service.VS2013.sln) for provisioning MBrace clusters usings F# 3.1/VS 2013.
+* [Azure Service Template](azure/MBrace.Azure.Service.VS2015.sln) for provisioning MBrace clusters usings F# 4.0/VS 2015.
