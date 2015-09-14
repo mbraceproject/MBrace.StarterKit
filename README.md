@@ -15,7 +15,7 @@ hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
 
 ### Azure Worker Role Templates & Tutorials.
 
-See also [AZURE.md](azure/AZURE.md)
+See also [azure/README.md](azure/README.md)
 
 * [Tutorial](azure/brisk-tutorial.md) on provisioning MBrace using Brisk.
 * [Azure Service Template](azure/MBrace.Azure.Service.VS2013.sln) for provisioning MBrace clusters usings F# 3.1/VS 2013.
