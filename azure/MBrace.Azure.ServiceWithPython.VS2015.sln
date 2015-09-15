@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".project", ".project", "{73
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBraceAzureRole", "CustomCloudService\VS2015\MBraceAzureRole\MBraceAzureRole.csproj", "{35465652-47E8-4410-8EBC-8986B0867227}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBraceAzureRole", "ProvisionWithPython\VS2015\MBraceAzureRole\MBraceAzureRole.csproj", "{35465652-47E8-4410-8EBC-8986B0867227}"
 EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MBraceAzureService", "CustomCloudService\VS2015\MBraceAzureService\MBraceAzureService.ccproj", "{D2E22F3F-B562-471F-B4EB-AC2E5D44434A}"
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MBraceAzureService", "ProvisionWithPython\VS2015\MBraceAzureService\MBraceAzureService.ccproj", "{D2E22F3F-B562-471F-B4EB-AC2E5D44434A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{D2950040-04C7-4684-9633-EE33F715F9B7}"
 	ProjectSection(SolutionItems) = preProject
