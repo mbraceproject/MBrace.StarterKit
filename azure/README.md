@@ -41,7 +41,7 @@ You can create a service bus from Azure web portal.  After creating the service 
 
 #### Creating a custom MBrace cluster with Python installed
 
-The demo code to create a custom MBrace cluster is located at the ProvisionWithPython folder. It is adapted from the default custom provision solution at the azuer folder and has the following additional steps:
+The demo code to create a custom MBrace cluster is located at the `ProvisionWithPython` folder. It is adapted from the default custom provision solution at the `CustomCloudService` folder and has the following additional steps:
 
 1. The MBrace cluster is implemented as an Azure worker role. A worker role can be configured to launch a startup script when it is initialized.  I follow the steps [here](http://blogs.msdn.com/b/cclayton/archive/2012/05/17/windows-azure-start-up-tasks-part-1.aspx) to enable the startup script:
 
