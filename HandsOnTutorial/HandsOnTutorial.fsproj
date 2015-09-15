@@ -87,6 +87,7 @@
     <None Include="lib\webserver.fsx" />
     <None Include="200-using-cloud-transactional-atoms.fsx" />
     <None Include="200-starting-a-web-server.fsx" />
+    <None Include="200-launching-python.fsx" />
     <None Include="300-distributed-multicore-parallel-search.fsx" />
     <None Include="400-using-cloud-queues.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
