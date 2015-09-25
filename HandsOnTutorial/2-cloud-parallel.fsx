@@ -22,9 +22,9 @@ Before running, edit credentials.fsx to enter your connection strings.
 let resultsTask = 
     [ for i in 1 .. 50 -> cloud { return sprintf "i'm work item %d" i } ]
     |> Cloud.Parallel
-    |> cluster.CreateTask
+    |> cluster.Submit
 
-cluster.ShowTasks()
+cluster.ShowProcesses()
 
 
 (** Get the results *)
@@ -41,7 +41,7 @@ let quickResults =
 let searchTask =
     [ for i in 1 .. 50 -> cloud { if i % 10 = 0 then return Some i else return None } ]
     |> Cloud.Choice
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 searchTask.ShowInfo()
 

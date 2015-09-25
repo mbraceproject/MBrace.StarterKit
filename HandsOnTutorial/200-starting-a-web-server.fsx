@@ -86,12 +86,12 @@ let getLogsRequest ctxt =
 // This Suave request is executed in response to a GET on 
 //   http://nn.nn.nn.nn/cluster/submit/primes/%d
 //
-// It uses cluster.CreateTask to create a new job in the cluster.
+// It uses cluster.Submit to create a new job in the cluster.
 let computePrimesRequest n ctxt = 
     async {
             let cluster = getCluster()
             let task = 
-              cluster.CreateTask 
+              cluster.Submit 
                 (cloud { let primes = Sieve.getPrimes n
                          return sprintf "calculated %d primes: %A" primes.Length primes })
             let msg = 
@@ -111,12 +111,12 @@ let computePrimesRequest n ctxt =
 let getJobRequest v ctxt = 
     async {
             let cluster = getCluster()
-            let task = cluster.TryGetCloudTaskById(v) |> Option.get
+            let task = cluster.GetProcessById v
             let msg = 
                 [ yield "<html>"
                   yield Angular.header
                   yield "<body>"
-                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" task.Id task.Status (try if task.Status = MBrace.Runtime.CloudTaskStatus.Completed then sprintf "%A" (task.AwaitResultBoxed()) else "" with _ -> "<err>") )
+                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" task.Id task.Status (try if task.Status = MBrace.Runtime.CloudProcessStatus.Completed then sprintf "%A" (task.AwaitResultBoxed()) else "" with _ -> "<err>") )
                   yield "</body>"
                   yield "</html>" ]
                 |> String.concat "\n"
@@ -141,7 +141,7 @@ Now connect to the cluster:
 
 let cluster = getCluster()
 
-cluster.ShowTasks()
+cluster.ShowProcesses()
 
 // Use this to inspect the endpoints we can bind to in the cluster
 let endPointNames = 
@@ -157,7 +157,7 @@ By default, MBrace.Azure clusters created using Brisk engine on Azure allow us t
 
 Here we bind to DefaultHttpEndpoint.  
 *)
-let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateTask
+let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.Submit
 
 (**
 After you start the webserver (by binding to this internal endpoint), the website will 

@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -69,7 +68,7 @@ tryFindMersenneLocal exponentRange
 let tryFindMersenneCloud ts = distributedMultiCoreTryFind Primality.isMersennePrime ts
 
 // ExecutionTime = 00:00:38.2472020, 3 small instance cluster
-let searchJob = tryFindMersenneCloud exponentRange |> cluster.CreateTask
+let searchJob = tryFindMersenneCloud exponentRange |> cluster.Submit
 
 searchJob.ShowInfo()
 cluster.ShowWorkers()

@@ -20,7 +20,7 @@ module Config =
     /// Gets or creates a new Thespian cluster session.
     let GetCluster() = 
         match thespian with 
-        | None -> thespian <- Some (MBraceCluster.InitOnCurrentMachine(workerCount, logger = new ConsoleLogger(), logLevel = LogLevel.Info))
+        | None -> thespian <- Some (ThespianCluster.InitOnCurrentMachine(workerCount, logger = new ConsoleLogger(), logLevel = LogLevel.Info))
         | Some t -> ()
         thespian.Value
 

@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
  Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-cluster.ShowTasks()
+cluster.ShowProcesses()
 cluster.ShowWorkers()
 
 (** Here's some data that simulates a log file for user click events: *)
@@ -93,7 +93,7 @@ let namedCloudFilesJob =
             return file 
         } ]
    |> Cloud.Parallel 
-   |> cluster.CreateTask
+   |> cluster.Submit
 
 // Check progress
 namedCloudFilesJob.ShowInfo()
@@ -109,7 +109,7 @@ let sumOfLengthsOfLinesJob =
     |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun lines -> lines.Length)
     |> CloudFlow.sum
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()

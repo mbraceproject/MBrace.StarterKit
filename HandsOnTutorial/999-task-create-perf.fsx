@@ -17,6 +17,6 @@ let ps =
    printfn "starting %d, diff = %A" i (time.Value - newTime)
    time := newTime
    cloud { return System.DateTime.Now }
-    |> cluster.CreateTask ]
+    |> cluster.Submit ]
 
-cluster.ShowTasks()
+cluster.ShowProcesses()

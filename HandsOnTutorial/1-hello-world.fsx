@@ -30,7 +30,7 @@ cluster.ShowWorkers()
 (** Now execute your first cloud workflow and get a handle to the running job: *)
 let task = 
     cloud { return "Hello world!" } 
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 // You can get details for the task.
 task.ShowInfo()
@@ -44,7 +44,7 @@ let quickText =
     |> cluster.Run
 
 // You can view the history of processes:
-cluster.ShowTasks()
+cluster.ShowProcesses()
 
 (** To check that you are running in the cloud, compre
 a workflow by running locally (using async semantics) with one
@@ -65,4 +65,4 @@ In case you run into trouble, this can be used to clear all process
 records in the cluster: 
 *)
 
-cluster.ClearAllTasks()
+cluster.ClearAllProcesses()

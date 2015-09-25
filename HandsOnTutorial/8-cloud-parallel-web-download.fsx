@@ -42,7 +42,7 @@ let filesTask =
     urls 
     |> Array.map download
     |> Cloud.Parallel
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 // Check on progress...
 filesTask.ShowInfo()

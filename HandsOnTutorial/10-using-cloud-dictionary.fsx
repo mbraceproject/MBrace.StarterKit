@@ -37,7 +37,7 @@ let contestTask =
     [|1 .. 100|]
     |> CloudFlow.OfArray
     |> CloudFlow.iterLocal(fun i -> CloudDictionary.AddOrUpdate key (function None -> i | Some v -> i + v) dict |> Local.Ignore)
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 contestTask.ShowInfo()
 

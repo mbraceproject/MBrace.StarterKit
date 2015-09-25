@@ -53,7 +53,7 @@ let data2 = CloudThing("goodbye")
 let job = 
   cloud { do! Cloud.Sleep 1000
           return data1.Data, data1.DerivedData, data2 }
-   |> cluster.CreateTask
+   |> cluster.Submit
      
 
 job.ShowInfo()

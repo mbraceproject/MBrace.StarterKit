@@ -38,7 +38,7 @@ let streamComputationTask =
     |> CloudFlow.map (fun num -> num % 10)
     |> CloudFlow.countBy id
     |> CloudFlow.toArray
-    |> cluster.CreateTask
+    |> cluster.Submit
 
 (**
 Check progress - note the number of cloud tasks involved, which
@@ -81,7 +81,7 @@ let computePrimesTask =
     |> CloudFlow.map (fun n -> Sieve.getPrimes n)
     |> CloudFlow.map (fun primes -> sprintf "calculated %d primes: %A" primes.Length primes)
     |> CloudFlow.toArray
-    |> cluster.CreateTask 
+    |> cluster.Submit 
 
 (** Check if the work is done *) 
 computePrimesTask.ShowInfo()

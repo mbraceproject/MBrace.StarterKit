@@ -19,7 +19,7 @@ process the files in the cloud using MBrace.
 Before running, edit credentials.fsx to enter your connection strings.
 *)
 
-cluster.ShowTasks()
+cluster.ShowProcesses()
 cluster.ShowWorkers()
 
 

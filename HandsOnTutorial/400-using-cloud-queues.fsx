@@ -5,7 +5,6 @@
 open System
 open System.IO
 open MBrace.Core
-open MBrace.Azure
 open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
@@ -32,7 +31,7 @@ let msg = CloudQueue.Dequeue(queue) |> cluster.Run
 let sendTask = 
     cloud { for i in [ 0 .. 100 ] do 
                 do! queue.Enqueue (sprintf "hello%d" i) }
-     |> cluster.CreateTask
+     |> cluster.Submit
 
 sendTask.ShowInfo() 
 
@@ -43,7 +42,7 @@ let receiveTask =
                let! msg = CloudQueue.Dequeue(queue)
                results.Add msg
             return results.ToArray() }
-     |> cluster.CreateTask
+     |> cluster.Submit
 
 receiveTask.ShowInfo() 
 receiveTask.Result
