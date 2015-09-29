@@ -92,6 +92,7 @@
     <None Include="400-using-cloud-queues.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
     <None Include="400-advanced-creating-new-serialized-things.fsx" />
+    <None Include="400-stock-trade-analysis.fsx" />
     <None Include="999-cloud-file-perf.fsx" />
     <None Include="999-task-create-perf.fsx" />
     <None Include="999-misc-cpu-perf.fsx" />
