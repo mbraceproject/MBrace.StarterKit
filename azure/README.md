@@ -105,3 +105,29 @@ Then, you can follow the usual worker role publishing steps to publish the MBrac
 ### Using Mbrace client to connect to the custom MBrace cluster
 Now, you can now go to the 200-launching-python tutorial in the HandsOnTutorial, and see how to use the newly built custom provision.
 
+### Example startup PowerShell script to intall Java
+
+```
+# Download JDK.
+# Instructions are taken from http://stackoverflow.com/questions/24430141/downloading-jdk-using-powershell.
+echo "Downloading JDK."
+$source = "http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-windows-x64.exe"
+$destination = "c:\jdk.exe"
+$client = new-object System.Net.WebClient 
+$cookie = "oraclelicense=accept-securebackup-cookie"
+$client.Headers.Add([System.Net.HttpRequestHeader]::Cookie, $cookie) 
+$client.downloadFile($source, $destination)
+
+# Install JDK.
+# Following the instruction here: http://docs.oracle.com/javase/7/docs/webnotes/install/windows/jdk-installation-windows.html
+c:\jdk.exe /s ADDLOCAL="ToolsFeature,SourceFeature,PublicjreFeature"
+# Sleep for 60 seconds, waiting for the JDK installation to finish.
+# This is needed because the non-interactive installation terminates immediately while the installation is working in background.
+sleep 60
+
+# Set JDK folder in PATH
+$newPath = $env:Path + ";C:\Program Files\Java\jdk1.8.0_60\bin"
+[Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+
+echo "Done."
+```
