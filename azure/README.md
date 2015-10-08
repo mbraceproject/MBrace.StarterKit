@@ -126,7 +126,7 @@ c:\jdk.exe /s ADDLOCAL="ToolsFeature,SourceFeature,PublicjreFeature"
 sleep 60
 
 # Set JDK folder in PATH
-$newPath = $env:Path + ";C:\Program Files\Java\jdk1.8.0_60\bin"
+$newPath = $env:Path + ";" + $env:programfiles + "\Java\jdk1.8.0_60\bin"
 [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
 
 echo "Done."
