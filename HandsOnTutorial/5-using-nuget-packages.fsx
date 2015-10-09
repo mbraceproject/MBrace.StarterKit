@@ -65,8 +65,6 @@ managedMathJob.ShowInfo()
 let managedMathResults = managedMathJob.Result
 
 
-// This is only available in MBrace 0.10.* (i.e. MBrace 1.0)
-#if MBRACE_1_0
 (** Next, run the code on MBrace using the MKL native DLLs. Note that 
 for the moment we manage the upload of the native DLLs explicitly, placing
 them in the temporary storage on the worker.   
@@ -121,7 +119,6 @@ let timeNative  = nativeMathJob.ExecutionTime.Value.TotalSeconds / 1000.0
 let timeManaged = managedMathJob.ExecutionTime.Value.TotalSeconds / 100.0  
 
 timeManaged/timeNative
-#endif
 
 (** In this tutorial, you've learned how to use C# DLLs, NuGet packages and 
 native DLLs in your MBrace computations. Continue with further samples to learn more about the
