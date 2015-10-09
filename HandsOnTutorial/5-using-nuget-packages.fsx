@@ -75,7 +75,7 @@ To upload DLLs, register their paths as native dependencies
 These will be included with all uploaded dependencies of the session 
 *)
 
-let contentDir = "../../packages/MathNet.Numerics.MKL.Win-x64/content/"
+let contentDir = __SOURCE_DIRECTORY__ + "/../packages/MathNet.Numerics.MKL.Win-x64/content/"
 cluster.RegisterNativeDependency (contentDir + "libiomp5md.dll")
 cluster.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
