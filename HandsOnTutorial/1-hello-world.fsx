@@ -48,7 +48,7 @@ cluster.ShowProcesses()
 
 (** To check that you are running in the cloud, compare a workflow by running locally 
 (using async semantics) with one using remote execution. (Note, if using Thespian, these will 
-be idential since your cloud is simulated.) *)
+be identical since your cloud is simulated.) *)
 let localResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }
     |> cluster.RunOnCurrentProcess
