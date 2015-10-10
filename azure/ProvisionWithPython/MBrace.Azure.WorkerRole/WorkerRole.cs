@@ -1,19 +1,16 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.ServiceRuntime;
+using System.Diagnostics;
 using Microsoft.Azure;
-using MBrace.Azure;
-using MBrace.Azure.Runtime;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using MBrace.Azure.Service;
 
-namespace MBraceAzureRole
+namespace MBrace.Azure.CloudService.WorkerRole
 {
     public class WorkerRole : RoleEntryPoint
     {
-        private Service _svc;
         private Configuration _config;
+        private WorkerService _svc;
 
         public override void Run()
         {
@@ -23,7 +20,7 @@ namespace MBraceAzureRole
             }
             catch (Exception ex)
             {
-                Trace.TraceError("MBrace Azure Role unhandled exception: {0}", ex);
+                Trace.TraceError("MBrace.Azure.WorkerRole Run unhandled exception: {0}", ex);
                 throw;
             }
         }
@@ -32,35 +29,30 @@ namespace MBraceAzureRole
         {
             try
             {
-                // Set the maximum number of concurrent connections
-                ServicePointManager.DefaultConnectionLimit = 512;
-
-                /// Initialize global state for the current process
-                Config.InitWorkerGlobalState();
-
                 // Increase disk quota for mbrace filesystem cache.
                 string customTempLocalResourcePath = RoleEnvironment.GetLocalResource("LocalMBraceCache").RootPath;
-                Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath);
-                Environment.SetEnvironmentVariable("TEMP", customTempLocalResourcePath);
+                string storageConnectionString = CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString");
+                string serviceBusConnectionString = CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString");
 
                 bool result = base.OnStart();
 
-                _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
-
+                _config = new Configuration(storageConnectionString, serviceBusConnectionString);
                 _svc =
                     RoleEnvironment.IsEmulated ?
-                    new Service(_config) : // Avoid long service names when using emulator
-                    new Service(_config, serviceId: RoleEnvironment.CurrentRoleInstance.Id.Split('.').Last());
+                    new WorkerService(_config, String.Format("computeEmulator-{0}", Guid.NewGuid().ToString("N").Substring(0, 30))) :
+                    new WorkerService(_config, workerId: Environment.MachineName);
+
+                _svc.WorkingDirectory = customTempLocalResourcePath;
+                _svc.LogFile = "logs.txt";
                 _svc.MaxConcurrentWorkItems = Environment.ProcessorCount * 8;
 
                 RoleEnvironment.Changed += RoleEnvironment_Changed;
 
                 return result;
-
             }
             catch (Exception ex)
             {
-                Trace.TraceError("MBrace Azure Role unhandled exception: {0}", ex);
+                Trace.TraceError("MBrace.Azure.WorkerRole OnStart unhandled exception: {0}", ex);
                 throw;
             }
         }
@@ -82,7 +74,9 @@ namespace MBraceAzureRole
                     if (item.ConfigurationSettingName == "MBrace.ServiceBusConnectionString"
                         || item.ConfigurationSettingName == "MBrace.StorageConnectionString")
                     {
-                        _config = new Configuration(CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString"), CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString"));
+                        string storageConnectionString = CloudConfigurationManager.GetSetting("MBrace.StorageConnectionString");
+                        string serviceBusConnectionString = CloudConfigurationManager.GetSetting("MBrace.ServiceBusConnectionString");
+                        _config = new Configuration(storageConnectionString, serviceBusConnectionString);
                         _svc.Stop();
                         _svc.Configuration = _config;
                         _svc.Start();
@@ -91,7 +85,7 @@ namespace MBraceAzureRole
             }
             catch (Exception ex)
             {
-                Trace.TraceError("MBrace Azure Role unhandled exception: {0}", ex);
+                Trace.TraceError("MBrace.Azure.WorkerRole RoleEnvironment_Changed unhandled exception: {0}", ex);
                 throw;
             }
         }
@@ -105,7 +99,7 @@ namespace MBraceAzureRole
             }
             catch (Exception ex)
             {
-                Trace.TraceError("MBrace Azure Role unhandled exception: {0}", ex);
+                Trace.TraceError("MBrace.Azure.WorkerRole OnStop unhandled exception: {0}", ex);
                 throw;
             }
         }
