@@ -3,7 +3,7 @@
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
-// If necessary, edit credentials.fsx to enter your connection strings.
+// If necessary, edit AzureCluster.fsx to enter your connection strings.
 
 open System
 open System.IO
@@ -49,3 +49,14 @@ contestTask.ShowInfo()
 
 (** Next, verify result is correct: *) 
 dict.TryFind key |> Async.RunSynchronously
+
+(** 
+## Summary
+
+In this tutorial, you've learned how to use key-value stores (i.e. dictionaries) in cloud storage.
+Continue with further samples to learn more about the MBrace programming model.  
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)

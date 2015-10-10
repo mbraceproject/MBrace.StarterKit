@@ -3,7 +3,7 @@
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
-// If necessary, edit credentials.fsx to enter your connection strings.
+// If necessary, edit AzureCluster.fsx to enter your connection strings.
 
 open System
 open System.IO
@@ -13,17 +13,15 @@ open MBrace.Flow
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
 
+#load "lib/sieve.fsx"
+
 
 (**
-# Using Cloud Flows
+# Using Data Parallel Cloud Flows
 
 You now learn the CloudFlow programming model, for cloud-scheduled
 parallel data flow tasks.  This model is similar to Hadoop and Spark.
  
-*)
-#load "lib/sieve.fsx"
-
-(**
 CloudFlow.ofArray partitions the input array based on the number of 
 available workers.  The parts of the array are then fed into cloud tasks
 implementing the map and filter stages.  The final 'countBy' stage is
@@ -42,14 +40,14 @@ let streamComputationTask =
     |> cluster.CreateProcess
 
 (**
-Check progress - note the number of cloud tasks involved, which
-should be the number of workers + 1.  This indicates
-the input array has been partitioned and the work carried out 
- in a distributed way.
+Next, check the progress of your job.
+
+> Note: the number of cloud tasks involved, which should be the number of workers + 1.  This indicates
+> the input array has been partitioned and the work carried out in a distributed way.
 *)
 streamComputationTask.ShowInfo()
 
-(** Await the result *)
+(** Next, await the result *)
 streamComputationTask.Result
 
 (** 
@@ -58,13 +56,6 @@ Data parallel cloud flows can be used for all sorts of things.
 Later, you will see how to source the inputs to the data flow from
 a collection of cloud files, or from a partitioned cloud vector.
 
-For now, you use CloudFlow to do some CPU-intensive work. 
-Once again, you compute primes, though you can replace this with
-any CPU-intensive computation, using any DLLs on your disk. 
-
-*)
-
-(**
 
 ## Changing the degree of parallelism
 
@@ -84,10 +75,10 @@ let computePrimesTask =
     |> CloudFlow.toArray
     |> cluster.CreateProcess 
 
-(** Check if the work is done *) 
+(** Next, check if the work is done *) 
 computePrimesTask.ShowInfo()
 
-(**  Await for the result *) 
+(** Next, await the result *) 
 let computePrimes = computePrimesTask.Result
 
 (**
@@ -113,7 +104,14 @@ let persistedCloudFlow =
 let length = persistedCloudFlow |> CloudFlow.length |> cluster.Run
 let max = persistedCloudFlow |> CloudFlow.maxBy fst |> cluster.Run
 
-(** In this tutorial, you've learned the basics of the CloudFlow programming
+(** 
+## Summary
+
+In this tutorial, you've learned the basics of the CloudFlow programming
 model, a powerful data-flow model for scalable pipelines of data. 
 Continue with further samples to learn more about the
-MBrace programming model.  *)
+MBrace programming model. 
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+ *)

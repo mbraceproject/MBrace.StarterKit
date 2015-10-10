@@ -73,3 +73,9 @@ by executing the following from your scripting client:
 *)
 
 cluster.ClearAllProcesses()
+
+(**
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+**)

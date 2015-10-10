@@ -3,7 +3,7 @@
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
-// If necessary, edit credentials.fsx to enter your connection strings.
+// If necessary, edit AzureCluster.fsx to enter your connection strings.
 
 open System
 open System.IO
@@ -25,10 +25,9 @@ the cloud workers as needed.  In a sense, you don't need to do anything special.
 In this tutorial, you first reference some C# DLLs from the Math.NET NuGet package.
 You also use native binaries from the Intel MKL library.
   
-*)
+## Using C# DLLs Locally
 
-
-(** First, reference and use the packages on the local machine *) 
+First, you reference and use the packages on the local machine: *) 
 
 #load @"../packages/MathNet.Numerics.FSharp/MathNet.Numerics.fsx"
 
@@ -42,85 +41,90 @@ let product = vector1 * matrix1
 
 let check = (matrix1 * matrix1.Inverse()).Determinant()
 
-(** Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. *)
+(** 
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
+## Using C# DLLs on the cluster
 
-(** Invert 100 150x150 matrices using managed code: *) 
-let managedMathJob = 
-    [| 1 .. 100 |]
-    |> CloudFlow.OfArray
-    |> CloudFlow.map (fun i -> 
-            Control.UseManaged()
-            let m = Matrix<double>.Build.Random(200,200) 
-            (m * m.Inverse()).Determinant())
-    |> CloudFlow.sum
+Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. 
+
+The following nverts 100 150x150 matrices using C# code on the cluster. 
+
+*) 
+let csharpMathJob = 
+    [ for i in 1 .. 100 -> 
+         cloud { 
+            let m = Matrix<double>.Build.Random(250,250) 
+            return (m * m.Inverse()).Determinant()
+         } ]
+    |> Cloud.Parallel
     |> cluster.CreateProcess
 
 // Show the progress
-managedMathJob.ShowInfo()
+csharpMathJob.ShowInfo()
 
 
 // Await the result, we expect ~100.0
-let managedMathResults = managedMathJob.Result
+let csharpMathResults = csharpMathJob.Result
 
 
-(** Next, run the code on MBrace using the MKL native DLLs. Note that 
-for the moment we manage the upload of the native DLLs explicitly, placing
-them in the temporary storage on the worker.   
+(** 
+## Running Native Code on the Cluster
 
-To upload DLLs, register their paths as native dependencies
-These will be included with all uploaded dependencies of the session 
+Next, you run the same work using the Interl MKL native DLLs. 
+
+> To upload native DLLs, register their paths as native dependencies. These will be included with all uploaded dependencies of the session.
 *)
 
 let contentDir = __SOURCE_DIRECTORY__ + "/../packages/MathNet.Numerics.MKL.Win-x64/content/"
 cluster.RegisterNativeDependency (contentDir + "libiomp5md.dll")
 cluster.RegisterNativeDependency (contentDir + "MathNet.Numerics.MKL.dll")
 
-(** The first MKL job can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' is 41MB and needs to be uploaded: *) 
-let firstMklJob = 
+(** The first MKL job can take a while first time you run it, because 'MathNet.Numerics.MKL.dll' needs to be uploaded: *) 
+let firstNativeJob = 
     cloud { 
         Control.UseNativeMKL()
-        let m = Matrix<double>.Build.Random(200,200) 
+        let m = Matrix<double>.Build.Random(250,250) 
         return (m * m.Inverse()).Determinant()
     }
     |> cluster.CreateProcess
 
 // Check progress
-firstMklJob.ShowInfo()
+firstNativeJob.ShowInfo()
 
 // Wait for the result
-firstMklJob.Result
+firstNativeJob.Result
 
-(** Now run a much larger job: 1000 200x200 matrices, inverted using Intel MKL: *)
+(** Now run a much larger job: 1000 250x250 matrices, inverted using Intel MKL: *)
 let nativeMathJob = 
-    [| 1 .. 1000 |]
-    |> CloudFlow.OfArray
-    |> CloudFlow.map (fun i -> 
+    [ for i in 1 .. 1000 -> 
+         cloud { 
             Control.UseNativeMKL()
-            let m = Matrix<double>.Build.Random(200,200) 
-            (m * m.Inverse()).Determinant())
-    |> CloudFlow.sum
+            let m = Matrix<double>.Build.Random(250,250) 
+            return (m * m.Inverse()).Determinant() 
+         } ]
+    |> Cloud.Parallel
     |> cluster.CreateProcess
-
 
 // Check progress
 nativeMathJob.ShowInfo()
 
-cluster.ShowWorkers()
-
-cluster.ShowProcesses()
-
 // Wait for the result
 nativeMathJob.Result
 
-(** Now compare the execution times: *) 
-let timeNative  = nativeMathJob.ExecutionTime.Value.TotalSeconds / 1000.0 
-let timeManaged = managedMathJob.ExecutionTime.Value.TotalSeconds / 100.0  
+(** Once complete, you can compare the execution times of the jobs to see if using native code has improved performance: *) 
+let timeNative = nativeMathJob.ExecutionTime.Value.TotalSeconds / 1000.0 
+let timeCSharp = csharpMathJob.ExecutionTime.Value.TotalSeconds / 100.0  
 
-timeManaged/timeNative
+let perfRatio = timeCSharp/timeNative 
 
-(** In this tutorial, you've learned how to use C# DLLs, NuGet packages and 
-native DLLs in your MBrace computations. Continue with further samples to learn more about the
-MBrace programming model.  *)
+(** 
+## Summary
+
+In this tutorial, you've learned how to use C# DLLs, NuGet packages and 
+native DLLs in your MBrace computations. You've also compared performance between native code and 
+C# code running on your cluster for one particular example.  
+Continue with further samples to learn more about the MBrace programming model.  
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+ *)
