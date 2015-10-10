@@ -1,5 +1,9 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
+//#load "AzureCluster.fsx"
+
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
 
 
 open System
@@ -23,11 +27,9 @@ This tutorial preforms the following scenerio:
 To run this tutorial, you first need to provision a MBrace cluster which contains the Python interepreter. You can use the
 ProvisionWithPython solution in the StarterKit to do that.
 
-> NOTE: Before running, build this solution to get the required nuget packages, and edit credentials.fsx to enter your Azure connection strings.
-
 *)
 
-(** First connect to the cluster using a configuration to bind to your storage and service bus on Azure. *)
+(** First connect to the cluster. *)
 let cluster = Config.GetCluster() 
 
 // You can connect to the cluster and get details of the workers in the pool:

@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -15,7 +18,6 @@ let cluster = Config.GetCluster()
 
 In this tutorial, you use the AForge (you can install AForge from Nuget) to turn color images into gray ones by applying a gray filter.
 
-Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 #r "../../packages/AForge/lib/AForge.dll" 
@@ -35,7 +37,7 @@ let GetStreamFromUrl (url : string) =
     stream
 
 
-(** Next, you create a method that turns the downloaded color image into a gray image by applying an AForge filter, and then uploads the gray image to Azure blob. *)
+(** Next, you create a method that turns the downloaded color image into a gray image by applying an AForge filter, and then uploads the gray image to cloud storage. *)
 let GrayImageFromWeb (url : string) file =
     cloud {
         // Download image.
@@ -46,7 +48,7 @@ let GrayImageFromWeb (url : string) file =
         // Get the grayed image.
         let outputStream = new MemoryStream()
         do grayedBmp.Save(outputStream, Imaging.ImageFormat.Bmp)        
-        // Upload the gray image to Azure blob.
+        // Upload the gray image to cloud storage.
         let! cFile = CloudFile.WriteAllBytes(file, outputStream.ToArray())
         inputStream.Close()
         outputStream.Close()

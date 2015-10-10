@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 
 open System
 open System.IO
@@ -20,8 +23,6 @@ This example demonstrates Norvig's Spelling Corrector (http://norvig.com/spell-c
 It is a prototypical workflow for training and learning in the cloud - we use the cloud to extract statistical
 information from a body of text, and the statistical summary is used locally in your client application.
  
-Before running, edit credentials.fsx to enter your connection strings.
-
 ## Part 1 - Extract Statistics in the Cloud 
 *)
 #load "lib/collections.fsx"
