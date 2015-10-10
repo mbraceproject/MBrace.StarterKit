@@ -14,10 +14,10 @@ A detailed tutorial can be found [here](https://github.com/mbraceproject/MBrace.
 The directory contains a collection of solutions for provisioning custom MBrace cloud services on Azure.
 
 1. Clone this repo.
-2. You will need the [Azure SDK](http://azure.microsoft.com/en-us/downloads/) for the WorkerRole projects.
+2. You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/) for the WorkerRole projects.
 3. Depending on your Visual Studio/F# installation, select an appropriate solution from the azure folder.
 4. Insert your Service Bus and Azure Storage connection strings in the `ServiceConfiguration.Cloud.cscfg` file.
-5. In the `MBraceAzureService/Roles` subfolder, right click on `MBraceAzureRole` and go to properties to 
+5. In the `MBrace.Azure.CloudService/Roles` subfolder, right click on `MBrace.Azure.WorkerRole` and go to properties to 
    set the desired instance count and [worker size](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/). 
 6. Build your solution.
 7. Right click and Publish the MBraceAzureService project.

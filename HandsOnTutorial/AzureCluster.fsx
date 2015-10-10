@@ -18,7 +18,7 @@ module Config =
     // The storage connection string is of the form  
     //    DefaultEndpointsProtocol=https;AccountName=myAccount;AccountKey=myKey 
     //
-    // The serice bus connection string is of the form
+    // The service bus connection string is of the form
     //    Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s
 
     let myStorageConnectionString = "your storage connection string here"
@@ -35,6 +35,14 @@ module Config =
     // let createServiceBusConnectionString(serviceBusName, serviceBusKey) = sprintf "Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s" serviceBusName serviceBusKey
 
     let config = Configuration(myStorageConnectionString, myServiceBusConnectionString)
+
+    // It is possible to keep connection strings stored in the environment.
+    // 1. To set the environment variables:
+    // Configuration.EnvironmentStorageConnectionString <- "your storage connection string here"
+    // Configuration.EnvironmentServiceBusConnectionString <- "your service bus connection string here"
+    //
+    // 2. To recover the environment variables
+    // let config = Configuration.FromEnvironmentVariables()
 
     let GetCluster() =
         let cluster = AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)

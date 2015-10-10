@@ -68,7 +68,7 @@ tryFindMersenneLocal exponentRange
 let tryFindMersenneCloud ts = distributedMultiCoreTryFind Primality.isMersennePrime ts
 
 // ExecutionTime = 00:00:38.2472020, 3 small instance cluster
-let searchJob = tryFindMersenneCloud exponentRange |> cluster.Submit
+let searchJob = tryFindMersenneCloud exponentRange |> cluster.CreateProcess
 
 searchJob.ShowInfo()
 cluster.ShowWorkers()
