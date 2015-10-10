@@ -11,7 +11,7 @@
     <RootNamespace>MBraceAzureService</RootNamespace>
     <AssemblyName>MBraceAzureService</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
-    <Name>MBraceAzureService</Name>
+    <Name>MBrace.Azure.CloudService</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,21 +37,20 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MBraceAzureRole\MBraceAzureRole.csproj">
-      <Name>MBraceAzureRole</Name>
-      <Project>{35465652-47e8-4410-8ebc-8986b0867227}</Project>
-      <Private>True</Private>
-      <RoleType>Worker</RoleType>
-      <RoleName>MBraceAzureRole</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MBraceAzureRoleContent\" />
+    <Folder Include="MBrace.Azure.WorkerRoleContent" />
     <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
-    <DiagnosticsConfiguration Include="MBraceAzureRoleContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="MBrace.Azure.WorkerRoleContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MBrace.Azure.WorkerRole\MBrace.Azure.WorkerRole.csproj">
+      <Name>MBrace.Azure.WorkerRole</Name>
+      <Project>{35465652-47e8-4410-8ebc-8986b0867227}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>MBrace.Azure.WorkerRole</RoleName>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
