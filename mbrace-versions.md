@@ -1,6 +1,6 @@
 
 
-# Choose the StarterKit to match your cloud fabric and MBrace cluster version
+# Choose your StarterKit
 
 * [StarterKit for MBrace.Thespian "standalone cloud simulator" (master)](https://github.com/mbraceproject/MBrace.StarterKit/archive/master.zip)
 
