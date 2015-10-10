@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".project", ".project", "{73AFA19D-DD5C-4352-8208-BB674630EED4}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,10 +15,10 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MBrace.Azure.CloudService",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{D2950040-04C7-4684-9633-EE33F715F9B7}"
 	ProjectSection(SolutionItems) = preProject
-		..\.paket\paket.bootstrapper.exe = ..\.paket\paket.bootstrapper.exe
-		..\paket.dependencies = ..\paket.dependencies
-		..\paket.lock = ..\paket.lock
-		..\.paket\paket.targets = ..\.paket\paket.targets
+		..\..\.paket\paket.bootstrapper.exe = ..\..\.paket\paket.bootstrapper.exe
+		..\..\paket.dependencies = ..\..\paket.dependencies
+		..\..\paket.lock = ..\..\paket.lock
+		..\..\.paket\paket.targets = ..\..\.paket\paket.targets
 	EndProjectSection
 EndProject
 Global
