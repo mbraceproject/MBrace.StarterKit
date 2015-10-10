@@ -24,7 +24,7 @@ You now perform a very simple parallel distributed job on your MBrace cluster.
 let resultsTask = 
     [ for i in 1 .. 50 -> cloud { return sprintf "i'm work item %d" i } ]
     |> Cloud.Parallel
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 cluster.ShowProcesses()
 
@@ -43,7 +43,7 @@ let quickResults =
 let searchTask =
     [ for i in 1 .. 50 -> cloud { if i % 10 = 0 then return Some i else return None } ]
     |> Cloud.Choice
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 searchTask.ShowInfo()
 

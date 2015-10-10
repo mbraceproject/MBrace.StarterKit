@@ -4,12 +4,12 @@ source https://www.nuget.org/api/v2
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget MBrace.Thespian
-nuget MBrace.Azure 0.10.6-alpha
-nuget MathNet.Numerics
-nuget MathNet.Numerics.FSharp
-nuget MathNet.Numerics.MKL.Win-x64
+nuget MBrace.Azure 0.12.2-beta
 nuget Streams
 nuget Suave
 nuget AForge
 nuget AForge.Imaging
 nuget AForge.Math
+nuget MathNet.Numerics ~> 3.7.0
+nuget MathNet.Numerics.FSharp
+nuget MathNet.Numerics.MKL.Win-x64 ~> 1.8.0

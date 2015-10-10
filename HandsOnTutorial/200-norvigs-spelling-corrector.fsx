@@ -50,7 +50,7 @@ let download (uri: string) =
         return files
     }
 
-let downloadTask = download "http://norvig.com/big.txt" |> cluster.Submit
+let downloadTask = download "http://norvig.com/big.txt" |> cluster.CreateProcess
 
 downloadTask.ShowInfo()
 
@@ -61,7 +61,7 @@ let fileSizesJob =
     files
     |> Array.map (fun f -> CloudFile.GetSize f.Path)
     |> Cloud.Parallel 
-    |> cluster.Submit 
+    |> cluster.CreateProcess 
 
 fileSizesJob.Status
 fileSizesJob.ShowInfo()
@@ -82,7 +82,7 @@ let wordCountJob =
     |> CloudFlow.map (fun (m:Match) -> m.Value.ToLower()) 
     |> CloudFlow.countBy id 
     |> CloudFlow.toArray
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 wordCountJob.ShowInfo()
 

@@ -33,7 +33,7 @@ let msg = CloudQueue.Dequeue(queue) |> cluster.Run
 let sendTask = 
     cloud { for i in [ 0 .. 100 ] do 
                 do! queue.Enqueue (sprintf "hello%d" i) }
-     |> cluster.Submit
+     |> cluster.CreateProcess
 
 sendTask.ShowInfo() 
 
@@ -44,7 +44,7 @@ let receiveTask =
                let! msg = CloudQueue.Dequeue(queue)
                results.Add msg
             return results.ToArray() }
-     |> cluster.Submit
+     |> cluster.CreateProcess
 
 receiveTask.ShowInfo() 
 receiveTask.Result

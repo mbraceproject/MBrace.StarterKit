@@ -26,9 +26,9 @@ from your F# client script. (Using these is optional: you can also use the MBrac
 
 *)
 
-let root = CloudPath.DefaultDirectory |> cluster.RunOnCurrentProcess
+let root = CloudPath.DefaultDirectory |> cluster.RunLocally
 
-let (++) path1 path2 = CloudPath.Combine( [| path1; path2 |] ) |> cluster.RunOnCurrentProcess
+let (++) path1 path2 = CloudPath.Combine( [| path1; path2 |] ) |> cluster.RunLocally
 
 let ls path = cluster.Store.File.Enumerate(path)
 
@@ -47,19 +47,19 @@ let randdir() = cluster.Store.Path.GetRandomDirectoryName()
 
 let randfile() = cluster.Store.Path.GetRandomFilePath()
 
-let rm path = CloudFile.Delete(path) |> cluster.RunOnCurrentProcess
+let rm path = CloudFile.Delete(path) |> cluster.RunLocally
 
-let cat path = CloudFile.ReadAllText(path) |> cluster.RunOnCurrentProcess
+let cat path = CloudFile.ReadAllText(path) |> cluster.RunLocally
 
-let catLines path = CloudFile.ReadAllLines(path) |> cluster.RunOnCurrentProcess
+let catLines path = CloudFile.ReadAllLines(path) |> cluster.RunLocally
 
-let catBytes path = CloudFile.ReadAllBytes(path) |> cluster.RunOnCurrentProcess
+let catBytes path = CloudFile.ReadAllBytes(path) |> cluster.RunLocally
 
-let write path text = CloudFile.WriteAllText(path, text) |> cluster.RunOnCurrentProcess
+let write path text = CloudFile.WriteAllText(path, text) |> cluster.RunLocally
 
-let writeLines path lines = CloudFile.WriteAllLines(path, lines) |> cluster.RunOnCurrentProcess
+let writeLines path lines = CloudFile.WriteAllLines(path, lines) |> cluster.RunLocally
 
-let writeBytes path bytes = CloudFile.WriteAllBytes(path, bytes) |> cluster.RunOnCurrentProcess
+let writeBytes path bytes = CloudFile.WriteAllBytes(path, bytes) |> cluster.RunLocally
 
 
 (**
@@ -108,7 +108,7 @@ let cFile =
     local {
         return! CloudFile.Upload(tmpFile, sprintf "tmp/%s" (Path.GetFileName tmpFile))     
     }    
-    |> cluster.RunOnCurrentProcess
+    |> cluster.RunLocally
 
 (** After uploading the file, you remove the local file. *)
 File.Delete tmpFile
@@ -144,7 +144,17 @@ let cloudFiles =
             return file.Path
         } ]
    |> Cloud.Parallel 
+<<<<<<< HEAD
    |> cluster.Run
+=======
+   |> cluster.CreateProcess
+
+// Check progress
+namedCloudFilesJob.ShowInfo()
+
+// Get the result
+let namedCloudFiles = namedCloudFilesJob.Result
+>>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
 (** A collection of cloud files can be used as input to a cloud parallel data flow, summing 
 the third column of each line of each file in a distributed way. *)
@@ -153,7 +163,14 @@ let sumOfLengthsOfLines =
     |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun line -> line.Split(',').[2] |> int)
     |> CloudFlow.sum
+<<<<<<< HEAD
     |> cluster.Run
+=======
+    |> cluster.CreateProcess
+
+// Check progress
+sumOfLengthsOfLinesJob.ShowInfo()
+>>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
 (** Cleanup the cloud data *)
 rmdirRec (root ++ "data")

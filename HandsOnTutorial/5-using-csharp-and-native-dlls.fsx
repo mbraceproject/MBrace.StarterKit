@@ -56,7 +56,7 @@ let managedMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 // Show the progress
 managedMathJob.ShowInfo()
@@ -85,7 +85,7 @@ let firstMklJob =
         let m = Matrix<double>.Build.Random(200,200) 
         return (m * m.Inverse()).Determinant()
     }
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 // Check progress
 firstMklJob.ShowInfo()
@@ -102,7 +102,7 @@ let nativeMathJob =
             let m = Matrix<double>.Build.Random(200,200) 
             (m * m.Inverse()).Determinant())
     |> CloudFlow.sum
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 
 // Check progress

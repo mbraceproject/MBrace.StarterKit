@@ -30,7 +30,7 @@ cluster.ShowWorkers()
 (** Now execute your first cloud workflow, returning a handle to the running job: *)
 let task = 
     cloud { return "Hello world!" } 
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 (** This submits a task to the cluster. To get details for the task, execute the 
 following in your scripting client: *)
@@ -52,7 +52,7 @@ with one using cloud execution. (Note, if using an MBrace.Thespian locally simul
 cluster, these will be identical.) *)
 let localResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }
-    |> cluster.RunOnCurrentProcess
+    |> cluster.RunLocally
 
 let remoteResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }

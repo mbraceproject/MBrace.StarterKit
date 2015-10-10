@@ -78,7 +78,6 @@
     <None Include="7-using-cloud-data-files.fsx" />
     <None Include="8-using-cloud-queues.fsx" />
     <None Include="9-using-cloud-key-value-stores.fsx" />
-    <None Include="11-upload-file-to-blob.fsx" />
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
@@ -90,7 +89,6 @@
     <None Include="200-starting-a-web-server.fsx" />
     <None Include="200-launching-python.fsx" />
     <None Include="300-distributed-multicore-parallel-search.fsx" />
-    <None Include="400-using-cloud-queues.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
     <None Include="400-advanced-creating-new-serialized-things.fsx" />
     <None Include="999-cloud-file-perf.fsx" />
