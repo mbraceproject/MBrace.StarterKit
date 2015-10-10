@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -16,7 +19,6 @@ let cluster = Config.GetCluster()
  dividing work first by the number of workers in the cluster, and 
  secondly by the number of cores on each worker.
   
- Before running, edit credentials.fsx to enter your connection strings.
 **)
 
 #load "lib/collections.fsx"

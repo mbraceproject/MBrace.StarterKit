@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -16,7 +19,6 @@ let cluster = Config.GetCluster()
 This tutorial illustrates creating and using cloud channels, which allow you to send messages between
 cloud workflows.
  
-Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 (** Create an anonymous cloud channel: *) 

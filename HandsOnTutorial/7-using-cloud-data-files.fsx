@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -13,86 +16,137 @@ let cluster = Config.GetCluster()
 (**
 # Creating and Using Cloud Files
 
- This tutorial illustrates creating and using cloud files, and then processing them using cloud streams.
- 
- Before running, edit credentials.fsx to enter your connection strings.
+MBrace clusters have a cloud file system mapped to the corresponding cloud fabric. This can be 
+used like a distributed file system such as HDFS.
+
+## Using Unix-like commands from F# scripts
+
+First let's define and use some Unix-like file functions to access the cloud file system 
+from your F# client script. (Using these is optional: you can also use the MBrace API directly).
+
 *)
 
-cluster.ShowProcesses()
-cluster.ShowWorkers()
+let root = CloudPath.DefaultDirectory |> cluster.RunLocally
 
-(** Here's some data that simulates a log file for user click events: *)
-let linesOfFile = 
-    [ for i in 1 .. 1000 do 
-         let time = DateTime.Now.Date.AddSeconds(float i)
-         let text = sprintf "click user%d %s" (i%10) (time.ToString())
-         yield text ]
+let (++) path1 path2 = CloudPath.Combine( [| path1; path2 |] ) |> cluster.RunLocally
 
-(** Upload the data to a cloud file (held in blob storage). A fresh name is generated for the could file. *) 
-let anonCloudFile = 
-     cloud { 
-         let! path = CloudPath.GetRandomFileName()
-         let! file = CloudFile.WriteAllLines(path, linesOfFile)
-         return file 
-     }
-     |> cluster.Run
+let ls path = cluster.Store.File.Enumerate(path)
 
-(** Run a cloud job which reads all the lines of a cloud file: *) 
-let numberOfLinesInFile = 
-    cloud { 
-        let! data = CloudFile.ReadAllLines anonCloudFile.Path
-        return data.Length 
-    }
-    |> cluster.Run
+let rec lsRec path = 
+    seq { yield! cluster.Store.File.Enumerate(path)
+          for d in cluster.Store.Directory.Enumerate(path) do 
+              yield! lsRec path }
 
-(** Get the default directory of the store client: *)
-let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunLocally
+let mkdir path = cluster.Store.Directory.Create(path)
 
-(** Enumerate all subdirectories in the store client: *) 
-cluster.Store.Directory.Enumerate(defaultDirectory)
+let rmdir path = cluster.Store.Directory.Delete(path)
 
-(** Create a directory in the cloud file system: *)
-let directory = cluster.Store.Path.GetRandomDirectoryName()
-let freshDirectory = cluster.Store.Directory.Create(directory)
+let rmdirRec path = cluster.Store.Directory.Delete(path,recursiveDelete=true)
 
-(** Upload data to a cloud file (held in blob storage) where we give the cloud file a name. *) 
-let namedCloudFile = 
-    cloud { 
-        let fileName = freshDirectory.Path + "/file1"
-        do! CloudFile.Delete(fileName)
-        let! file = CloudFile.WriteAllLines(fileName, linesOfFile)
-        return file
+let randdir() = cluster.Store.Path.GetRandomDirectoryName()
+
+let randfile() = cluster.Store.Path.GetRandomFilePath()
+
+let rm path = CloudFile.Delete(path) |> cluster.RunLocally
+
+let cat path = CloudFile.ReadAllText(path) |> cluster.RunLocally
+
+let catLines path = CloudFile.ReadAllLines(path) |> cluster.RunLocally
+
+let catBytes path = CloudFile.ReadAllBytes(path) |> cluster.RunLocally
+
+let write path text = CloudFile.WriteAllText(path, text) |> cluster.RunLocally
+
+let writeLines path lines = CloudFile.WriteAllLines(path, lines) |> cluster.RunLocally
+
+let writeBytes path bytes = CloudFile.WriteAllBytes(path, bytes) |> cluster.RunLocally
+
+
+(**
+You now use these functions to create directories and files:
+
+*)
+
+mkdir (root ++ "data")
+
+write (root ++ "data" ++ "humpty.txt") "All the king's horses and all the king's men"
+write (root ++ "data" ++ "spider.txt") "Incy wincy spider climed up the water spout"
+
+ls (root ++ "data")
+
+(** Now check you've created the files correctly: *)
+cat (root ++ "data" ++ "spider.txt") 
+catLines (root ++ "data" ++ "spider.txt") 
+
+(** Now remove the directory of data: *)
+
+rmdirRec (root ++ "data")
+
+
+(**
+## Progammatic upload of data as part of cloud workflows
+
+The Unix-like abbreviations from the previous section are for use from your client scripts.
+You can also use the MBrace cloud file API directly from cloud workflows.
+
+First, crete a local temp file. 
+*)
+let tmpFile = 
+    let path = Path.GetTempFileName()
+    let lines = 
+        [ for i in 1 .. 1000 do 
+             let time = DateTime.Now.Date.AddSeconds(float i)
+             let text = sprintf "click user%d %s" (i%10) (time.ToString())
+             yield text ]
+    File.WriteAllLines(path, lines)
+    path
+
+(** Next, you upload the created file to the tmp container in cloud storage. The tmp container
+will be created if it does not exist. Note the use of the local {...} expression and the cluster.RunLocally method:  
+the uploading has to be run locally because it accesses a local path. *)
+let cFile = 
+    local {
+        return! CloudFile.Upload(tmpFile, sprintf "tmp/%s" (Path.GetFileName tmpFile))     
+    }    
+    |> cluster.RunLocally
+
+(** After uploading the file, you remove the local file. *)
+File.Delete tmpFile
+
+(** Now process the file in the MBrace cluster. This cloud expression runs in the MBrace cluster. *)
+let lines = 
+    cloud {
+        let! lines = CloudFile.ReadAllLines cFile.Path
+        let users = [ for line in lines -> line.Split(' ').[1] ]
+        return users |> Seq.distinct |> Seq.toList
     } 
     |> cluster.Run
 
-(** Read the named cloud file as part of a cloud job: *)
-let numberOfLinesInNamedFile = 
-    cloud { 
-        let! data = CloudFile.ReadAllLines namedCloudFile.Path
-        return data.Length 
-    }
-    |> cluster.Run
-
-//cluster.ShowSystemLogs(240.0)
-
 (** 
+## Using multiple cloud files as input to distributed cloud flows
 
-Now we generate a collection of cloud files and process them using cloud streams.
+Processing one small file in the cloud is not of much use.  However multiple, large cloud files can 
+be used as inputs to distributed cloud flows in a similar way to map-reduce jobs in Hadoop.
 
+Next you generate a collection of 100 cloud files and process them using a distributed cloud flow. 
 *)
+let dataDir = root ++ "data"
 
-let namedCloudFilesJob = 
+mkdir dataDir
+
+let cloudFiles = 
     [ for i in 1 .. 100 ->
-        // Note that we generate the contents of the files in the cloud - this cloud
-        // computation below only captures and sends an integer.
         cloud { 
-            let lines = [for j in 1 .. 100 -> "File " + string i + ", Item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
-            let nm = freshDirectory.Path + "/file" + string i
-            do! CloudFile.Delete(path=nm)
+            let lines = [for j in 1 .. 100000 -> "file " + string i + ", item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
+            let nm = dataDir + "/file" + string i
+            do! CloudFile.Delete(nm)
             let! file = CloudFile.WriteAllLines(nm, lines)
-            return file 
+            return file.Path
         } ]
    |> Cloud.Parallel 
+<<<<<<< HEAD
+   |> cluster.Run
+=======
    |> cluster.CreateProcess
 
 // Check progress
@@ -100,25 +154,28 @@ namedCloudFilesJob.ShowInfo()
 
 // Get the result
 let namedCloudFiles = namedCloudFilesJob.Result
+>>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
-(** A collection of cloud files can be used as input to a cloud
-parallel data flow. This is a very powerful feature. *)
-let sumOfLengthsOfLinesJob =
-    namedCloudFiles
-    |> Array.map (fun f -> f.Path)
+(** A collection of cloud files can be used as input to a cloud parallel data flow, summing 
+the third column of each line of each file in a distributed way. *)
+let sumOfLengthsOfLines =
+    cloudFiles
     |> CloudFlow.OfCloudFileByLine
-    |> CloudFlow.map (fun lines -> lines.Length)
+    |> CloudFlow.map (fun line -> line.Split(',').[2] |> int)
     |> CloudFlow.sum
+<<<<<<< HEAD
+    |> cluster.Run
+=======
     |> cluster.CreateProcess
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()
+>>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
-// Get the result
-let sumOfLengthsOfLines = sumOfLengthsOfLinesJob.Result
+(** Cleanup the cloud data *)
+rmdirRec (root ++ "data")
 
-(** In this tutorial, you've learned how to use cloud files
-including as partitioned inputs into CloudFlow programming.
-Continue with further samples to learn more about the
-MBrace programming model.  *)
+(** In this tutorial, you've learned how to use cloud files, from some simple Unix-like
+operations to using multiple cloud files as partitioned inputs into CloudFlow programming.
+Continue with further samples to learn more about the MBrace programming model.  *)
 

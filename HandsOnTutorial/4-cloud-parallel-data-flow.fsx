@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -14,11 +17,9 @@ let cluster = Config.GetCluster()
 (**
 # Using Cloud Flows
 
- You now learn the CloudFlow programming model, for cloud-scheduled
- parallel data flow tasks.  This model is similar to Hadoop, Spark
- and/or Dryad LINQ.
+You now learn the CloudFlow programming model, for cloud-scheduled
+parallel data flow tasks.  This model is similar to Hadoop and Spark.
  
- Before running, edit credentials.fsx to enter your connection strings.
 *)
 #load "lib/sieve.fsx"
 

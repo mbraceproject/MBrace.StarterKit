@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -40,8 +43,6 @@ https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
 You can manage storage using the "azure" command line tool, see
 https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
 
-Before running, edit credentials.fsx to enter your connection strings.
- 
 *)
  
 (** Here's some data (~1.0MB) *)

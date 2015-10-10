@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -14,9 +17,8 @@ let cluster = Config.GetCluster()
 (**
 # Example: Cloud Parallel Web Downloader 
 
- This example illustrates doing I/O tasks in parallel using the workers in the cluster
+This example illustrates doing I/O tasks in parallel using the workers in the cluster
  
- Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 // Cloud parallel url-downloader

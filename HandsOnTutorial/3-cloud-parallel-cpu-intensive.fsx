@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -15,8 +18,7 @@ let cluster = Config.GetCluster()
 
 You now perform a CPU-intensive cloud-parallel workload on your MBrace cluster.
 
-Before running, edit credentials.fsx to enter your connection strings.
-*)
+**)
 
 
 #load "lib/collections.fsx"

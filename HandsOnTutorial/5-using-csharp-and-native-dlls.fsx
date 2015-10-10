@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -12,18 +15,16 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Using C# DLLs, Native Components and Nuget Packages
+# Using C# DLLs and Native Components 
 
-It is very simple to use C# DLLs and any nuget packages in your cloud computations.
-You just download and reference the packages as normal
+It is very simple to use C# DLLs, native DLLs and any nuget packages in your cloud computations.
+For C# DLLs you just download and reference the packages as normal
 in your F# scripting or other client application. The DLLs for the packages are automatically uploaded to 
 the cloud workers as needed.  In a sense, you don't need to do anything special.
 
-In this tutorial, you use paket (http://fsprojects.fsharp.io/paket) as a tool to fetch packages from NuGet.
-You can alternatively just reference any DLLs you like using normal nuget commands.
-You also learn how to get native binaries to target machines should you need to do this.
+In this tutorial, you first reference some C# DLLs from the Math.NET NuGet package.
+You also use native binaries from the Intel MKL library.
   
-Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 

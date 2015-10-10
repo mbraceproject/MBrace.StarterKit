@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
@@ -143,7 +143,13 @@ let cluster = getCluster()
 
 cluster.ShowProcesses()
 
-// Use this to inspect the endpoints we can bind to in the cluster
+(** Use this to inspect the endpoints we can bind to in the cluster. 
+The code below is specific to MBrace.Azure where your code runs as part
+of an Azure worker role.  
+
+> Note: If using a locally simulated MBrace.Thespian cluster then you need to adjust this example to use an appropriate endpoint IP address.
+
+*)
 let endPointNames = 
     cloud { return Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.CurrentRoleInstance.InstanceEndpoints.Keys |> Seq.toArray }
     |> cluster.Run

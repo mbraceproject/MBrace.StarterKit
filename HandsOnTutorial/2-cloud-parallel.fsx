@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -11,10 +14,9 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 (**
-# Simple Cloud Parallelism with MBrace.Azure
+# Simple Cloud Parallelism 
 
 You now perform a very simple parallel distributed job on your MBrace cluster.
-Before running, edit credentials.fsx to enter your connection strings.
 
 *)
 

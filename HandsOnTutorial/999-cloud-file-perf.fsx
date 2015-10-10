@@ -2,6 +2,9 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+// Note: Before running, choose your cluster version at the top of this script.
+// If necessary, edit credentials.fsx to enter your connection strings.
+
 open System
 open System.IO
 open MBrace.Core
@@ -11,9 +14,8 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 (**
- This script tests cloud file perf
+This script tests cloud file perf
  
- Before running, edit credentials.fsx to enter your connection strings.
 *)
 
 // Create a directory in the cloud file system
