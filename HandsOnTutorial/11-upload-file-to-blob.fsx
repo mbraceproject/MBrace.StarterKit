@@ -46,7 +46,7 @@ let cFile =
     local {
         return! CloudFile.Upload(tmpFile, sprintf "tmp/%s" (Path.GetFileName tmpFile))     
     }    
-    |> cluster.RunOnCurrentProcess
+    |> cluster.RunLocally
 
 (** After uploading the file, you remove the local file. *)
 DeleteTempFile tmpFile

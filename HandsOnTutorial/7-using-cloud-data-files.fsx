@@ -46,7 +46,7 @@ let numberOfLinesInFile =
     |> cluster.Run
 
 (** Get the default directory of the store client: *)
-let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunOnCurrentProcess
+let defaultDirectory = CloudPath.DefaultDirectory |> cluster.RunLocally
 
 (** Enumerate all subdirectories in the store client: *) 
 cluster.Store.Directory.Enumerate(defaultDirectory)
@@ -93,7 +93,7 @@ let namedCloudFilesJob =
             return file 
         } ]
    |> Cloud.Parallel 
-   |> cluster.Submit
+   |> cluster.CreateProcess
 
 // Check progress
 namedCloudFilesJob.ShowInfo()
@@ -109,7 +109,7 @@ let sumOfLengthsOfLinesJob =
     |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun lines -> lines.Length)
     |> CloudFlow.sum
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 // Check progress
 sumOfLengthsOfLinesJob.ShowInfo()

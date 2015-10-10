@@ -30,7 +30,7 @@ cluster.ShowWorkers()
 (** Now execute your first cloud workflow and get a handle to the running job: *)
 let task = 
     cloud { return "Hello world!" } 
-    |> cluster.Submit
+    |> cluster.CreateProcess
 
 // You can get details for the task.
 task.ShowInfo()
@@ -51,7 +51,7 @@ cluster.ShowProcesses()
 be identical since your cloud is simulated.) *)
 let localResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }
-    |> cluster.RunOnCurrentProcess
+    |> cluster.RunLocally
 
 let remoteResult =
     cloud { printfn "hello, world" ; return Environment.MachineName }

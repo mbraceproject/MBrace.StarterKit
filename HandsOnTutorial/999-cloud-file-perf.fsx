@@ -30,7 +30,7 @@ let timeSizes sizes (f : int -> Cloud<'T>) =
           let! res = f sz
           return res
         }
-        |> cluster.Submit 
+        |> cluster.CreateProcess 
     printfn "awaiting result for size %d" sz
     let res = job.AwaitResult() 
     printfn "size %d took %fs" sz job.ExecutionTime.Value.TotalSeconds

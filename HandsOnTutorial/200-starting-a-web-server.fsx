@@ -86,12 +86,12 @@ let getLogsRequest ctxt =
 // This Suave request is executed in response to a GET on 
 //   http://nn.nn.nn.nn/cluster/submit/primes/%d
 //
-// It uses cluster.Submit to create a new job in the cluster.
+// It uses cluster.CreateProcess to create a new job in the cluster.
 let computePrimesRequest n ctxt = 
     async {
             let cluster = getCluster()
             let task = 
-              cluster.Submit 
+              cluster.CreateProcess 
                 (cloud { let primes = Sieve.getPrimes n
                          return sprintf "calculated %d primes: %A" primes.Length primes })
             let msg = 
@@ -157,7 +157,7 @@ By default, MBrace.Azure clusters created using Brisk engine on Azure allow us t
 
 Here we bind to DefaultHttpEndpoint.  
 *)
-let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.Submit
+let serverJob = suaveServerInCloud "DefaultHttpEndpoint" webServerSpec |> cluster.CreateProcess
 
 (**
 After you start the webserver (by binding to this internal endpoint), the website will 
