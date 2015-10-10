@@ -3,8 +3,8 @@ source https://www.nuget.org/api/v2
 
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
-nuget MBrace.Thespian 0.12.1-beta
-nuget MBrace.Azure 0.12.1-beta
+nuget MBrace.Thespian
+nuget MBrace.Azure 0.12.2-beta
 nuget Streams
 nuget Suave
 nuget AForge
