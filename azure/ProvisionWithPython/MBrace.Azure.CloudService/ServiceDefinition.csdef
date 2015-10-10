@@ -13,9 +13,5 @@
       <Task commandLine="startup.cmd" executionContext="elevated" taskType="simple">
       </Task>
     </Startup>
-    <Imports>
-      <Import moduleName="RemoteAccess" />
-      <Import moduleName="RemoteForwarder" />
-    </Imports>
   </WorkerRole>
 </ServiceDefinition>
