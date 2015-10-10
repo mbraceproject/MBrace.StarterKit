@@ -19,9 +19,8 @@ let cluster = Config.GetCluster()
 This tutorial illustrates creating and using cloud channels, which allow you to send messages between
 cloud workflows.
  
-*)
-
-(** Create an anonymous cloud channel: *) 
+First, create an anonymous cloud channel: 
+**) 
 let queue = CloudQueue.New<string>() |> cluster.Run
 
 (** Send to the channel by scheduling a cloud process to do the send: *)

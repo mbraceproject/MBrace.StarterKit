@@ -19,7 +19,7 @@ let cluster = Config.GetCluster()
 MBrace clusters have a cloud file system mapped to the corresponding cloud fabric. This can be 
 used like a distributed file system such as HDFS.
 
-## Using Unix-like commands from F# scripts
+## Accessing the Cloud File System from F# scripts
 
 First let's define and use some Unix-like file functions to access the cloud file system 
 from your F# client script. (Using these is optional: you can also use the MBrace API directly).
@@ -137,24 +137,17 @@ mkdir dataDir
 let cloudFiles = 
     [ for i in 1 .. 100 ->
         cloud { 
-            let lines = [for j in 1 .. 100000 -> "file " + string i + ", item " + string (i * 100 + j) + ", " + string (j + i * 100) ] 
+            let lines = 
+                [ for j in 1 .. 100000 -> 
+                    "file " + string i + ", item " + string (i*100+j) + ", " + string (j+i*100) ] 
             let nm = dataDir + "/file" + string i
             do! CloudFile.Delete(nm)
             let! file = CloudFile.WriteAllLines(nm, lines)
             return file.Path
         } ]
    |> Cloud.Parallel 
-<<<<<<< HEAD
    |> cluster.Run
-=======
-   |> cluster.CreateProcess
 
-// Check progress
-namedCloudFilesJob.ShowInfo()
-
-// Get the result
-let namedCloudFiles = namedCloudFilesJob.Result
->>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
 (** A collection of cloud files can be used as input to a cloud parallel data flow, summing 
 the third column of each line of each file in a distributed way. *)
@@ -163,14 +156,7 @@ let sumOfLengthsOfLines =
     |> CloudFlow.OfCloudFileByLine
     |> CloudFlow.map (fun line -> line.Split(',').[2] |> int)
     |> CloudFlow.sum
-<<<<<<< HEAD
     |> cluster.Run
-=======
-    |> cluster.CreateProcess
-
-// Check progress
-sumOfLengthsOfLinesJob.ShowInfo()
->>>>>>> 36c1cef9e4628e539ce05e51bb1068350cc8e8d5
 
 (** Cleanup the cloud data *)
 rmdirRec (root ++ "data")

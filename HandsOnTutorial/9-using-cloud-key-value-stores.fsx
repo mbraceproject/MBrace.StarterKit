@@ -18,9 +18,7 @@ let cluster = Config.GetCluster()
 
 In this example you learn how to use distributed key/value storage using CloudDictionary.
  
-*)
-
-(** Next, create a cloud key/value store (a cloud dictionary): *) 
+First, create a cloud key/value store (a cloud dictionary): *) 
 let dict =
     cloud {
         let! dict = CloudDictionary.New<int> ()
