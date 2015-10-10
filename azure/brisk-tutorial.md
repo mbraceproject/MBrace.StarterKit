@@ -27,7 +27,7 @@ Assumes you have an Azure account with at least 4 cores spare (there is a 20 cor
    Note: You must use the appropriate version tag for the MBrace version you installed on your cluster. See the link above
    for different versions.
 
-5. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``credentials.fsx``  script:
+5. In Visual Studio 2013, reset F# Interactive, enter the connection strings into the ``AzureCluster.fsx``  script:
 
 		let myStorageConnectionString = "DefaultEndpointsProtocol=..."
 		let myServiceBusConnectionString = "Endpoint=sb://brisk..."
