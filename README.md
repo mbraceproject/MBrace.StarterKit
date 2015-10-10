@@ -2,6 +2,8 @@
 
 A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/).
 
+[Choose your version](mbrace-versions.md).
+
 ## Contents
 
 ### Hands On Tutorials
