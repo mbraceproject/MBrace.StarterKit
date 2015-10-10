@@ -1,8 +1,8 @@
 # MBrace.StarterKit
 
-A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/).
+[Choose your version of the starter kit](mbrace-versions.md).
 
-[Choose your version](mbrace-versions.md).
+A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/).
 
 ## Contents
 
