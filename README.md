@@ -20,5 +20,4 @@ hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
 See also [azure/README.md](azure/README.md)
 
 * [Tutorial](azure/brisk-tutorial.md) on provisioning MBrace using Brisk.
-* [Azure Service Template](azure/MBrace.Azure.Service.VS2013.sln) for provisioning MBrace clusters usings F# 3.1/VS 2013.
-* [Azure Service Template](azure/MBrace.Azure.Service.VS2015.sln) for provisioning MBrace clusters usings F# 4.0/VS 2015.
+* [Azure Service Template](azure/CustomCloudService/MBrace.Azure.CloudService.sln) for provisioning MBrace clusters using Visual Studio (Azure SDK 2.7 required.)
