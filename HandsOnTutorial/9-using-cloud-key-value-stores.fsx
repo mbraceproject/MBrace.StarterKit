@@ -26,16 +26,16 @@ let dict =
     } |> cluster.Run
 
 (** Next, add an entry to the key/value store: *)
-dict.Add("key0", 42) |> Async.RunSynchronously
+CloudDictionary.Add "key0" 42 dict |> cluster.Run
 
 (** Next, check that the entry exists in the key/value store: *)
-dict.ContainsKey "key0" |> Async.RunSynchronously
+CloudDictionary.ContainsKey "key0" dict |> cluster.Run
 
 (** Next, lookup the entry in the key/value store: *)
-dict.TryFind "key0" |> Async.RunSynchronously
+CloudDictionary.TryFind "key0" dict |> cluster.Run
 
 (** Next, lookup a key which is not present in the key/value store: *)
-dict.TryFind "key-not-there" |> Async.RunSynchronously
+CloudDictionary.TryFind "key-not-there" dict |> cluster.Run
 
 (** Next, perform contested, distributed updates from many cloud workers: *) 
 let key = "contestedKey"
@@ -48,7 +48,7 @@ let contestTask =
 contestTask.ShowInfo()
 
 (** Next, verify result is correct: *) 
-dict.TryFind key |> Async.RunSynchronously
+CloudDictionary.TryFind key dict |> cluster.Run
 
 (** 
 ## Summary
