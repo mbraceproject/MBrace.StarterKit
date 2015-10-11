@@ -76,7 +76,7 @@ let processingFlow =
 (** This task will continue running until it is explicitly cancelled or the queues are deleted. Check on the task using the following: *)
 processingFlow.ShowInfo() 
 
-(** Next, you start a cloud task to send 100 requests to the queue: *)
+(** Next, you start a cloud task to send 100 different requests to the queue: *)
 let requestTask = 
     cloud { for i in [ 1 .. 100 ] do 
                 do! requestQueue.Enqueue (i * 100000 % 787853) }
@@ -84,7 +84,7 @@ let requestTask =
 
 requestTask.ShowInfo() 
 
-(** Next, you start a cloud task to collect up to 10 results from the output queue.  You can run this multiple times to collect all the results. *)
+(** Next, you run a cloud task to collect up to 10 results from the output queue.  You can run this multiple times to collect all the results. *)
 let collectedResults = 
     cloud { return! outputQueue.DequeueBatch 10 }
      |> cluster.Run
