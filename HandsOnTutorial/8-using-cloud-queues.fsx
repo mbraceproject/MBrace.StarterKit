@@ -3,7 +3,7 @@
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
-// If necessary, edit credentials.fsx to enter your connection strings.
+// If necessary, edit AzureCluster.fsx to enter your connection strings.
 
 open System
 open System.IO
@@ -23,10 +23,10 @@ First, create an anonymous cloud channel:
 **) 
 let queue = CloudQueue.New<string>() |> cluster.Run
 
-(** Send to the channel by scheduling a cloud process to do the send: *)
+(** Next, you send to the channel by scheduling a cloud process to do the send: *)
 CloudQueue.Enqueue (queue, "hello") |> cluster.Run
 
-(**  Receive from the channel by scheduling a cloud process to do the receive: *)
+(** Next, you receive from the channel by scheduling a cloud process to do the receive: *)
 let msg = CloudQueue.Dequeue(queue) |> cluster.Run
 
 let sendTask = 
@@ -47,3 +47,15 @@ let receiveTask =
 
 receiveTask.ShowInfo() 
 receiveTask.Result
+
+(** 
+## Summary
+
+In this tutorial, you've learned how to use queues in cloud storage.
+Continue with further samples to learn more about the MBrace programming model.  
+
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)

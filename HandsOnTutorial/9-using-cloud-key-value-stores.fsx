@@ -3,7 +3,7 @@
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
-// If necessary, edit credentials.fsx to enter your connection strings.
+// If necessary, edit AzureCluster.fsx to enter your connection strings.
 
 open System
 open System.IO
@@ -26,16 +26,16 @@ let dict =
     } |> cluster.Run
 
 (** Next, add an entry to the key/value store: *)
-dict.Add("key0", 42) |> Async.RunSynchronously
+CloudDictionary.Add "key0" 42 dict |> cluster.Run
 
 (** Next, check that the entry exists in the key/value store: *)
-dict.ContainsKey "key0" |> Async.RunSynchronously
+CloudDictionary.ContainsKey "key0" dict |> cluster.Run
 
 (** Next, lookup the entry in the key/value store: *)
-dict.TryFind "key0" |> Async.RunSynchronously
+CloudDictionary.TryFind "key0" dict |> cluster.Run
 
 (** Next, lookup a key which is not present in the key/value store: *)
-dict.TryFind "key-not-there" |> Async.RunSynchronously
+CloudDictionary.TryFind "key-not-there" dict |> cluster.Run
 
 (** Next, perform contested, distributed updates from many cloud workers: *) 
 let key = "contestedKey"
@@ -48,4 +48,15 @@ let contestTask =
 contestTask.ShowInfo()
 
 (** Next, verify result is correct: *) 
-dict.TryFind key |> Async.RunSynchronously
+CloudDictionary.TryFind key dict |> cluster.Run
+
+(** 
+## Summary
+
+In this tutorial, you've learned how to use key-value stores (i.e. dictionaries) in cloud storage.
+Continue with further samples to learn more about the MBrace programming model.  
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)

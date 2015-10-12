@@ -45,5 +45,4 @@ module Config =
     // let config = Configuration.FromEnvironmentVariables()
 
     let GetCluster() =
-        let cluster = AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
-        cluster
+        AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
