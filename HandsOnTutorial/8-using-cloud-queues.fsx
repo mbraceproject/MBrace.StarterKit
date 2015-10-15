@@ -24,15 +24,15 @@ First, create an cloud queue:
 let queue = CloudQueue.New<string>() |> cluster.Run
 
 (** Next, you send to the channel by scheduling a cloud process to do the send: *)
-CloudQueue.Enqueue (queue, "hello") |> cluster.Run
+cloud { queue.Enqueue "hello" } |> cluster.Run
 
 (** Next, you receive from the channel by scheduling a cloud process to do the receive: *)
-let msg = CloudQueue.Dequeue(queue) |> cluster.Run
+let msg = cloud { return queue.Dequeue() } |> cluster.Run
 
 (** Next, you start a cloud task to send 100 messages to the queue: *)
 let sendTask = 
     cloud { for i in [ 0 .. 100 ] do 
-                do! queue.Enqueue (sprintf "hello%d" i) }
+                queue.Enqueue (sprintf "hello%d" i) }
      |> cluster.CreateProcess
 
 sendTask.ShowInfo() 
@@ -41,7 +41,7 @@ sendTask.ShowInfo()
 let receiveTask = 
     cloud { let results = new ResizeArray<_>()
             for i in [ 0 .. 100 ] do 
-               let! msg = CloudQueue.Dequeue(queue)
+               let msg = queue.Dequeue()
                results.Add msg
             return results.ToArray() }
      |> cluster.CreateProcess
@@ -79,14 +79,14 @@ processingFlow.ShowInfo()
 (** Next, you start a cloud task to send 100 different requests to the queue: *)
 let requestTask = 
     cloud { for i in [ 1 .. 100 ] do 
-                do! requestQueue.Enqueue (i * 100000 % 787853) }
+                do requestQueue.Enqueue (i * 100000 % 787853) }
      |> cluster.CreateProcess
 
 requestTask.ShowInfo() 
 
 (** Next, you run a cloud task to collect up to 10 results from the output queue.  You can run this multiple times to collect all the results. *)
 let collectedResults = 
-    cloud { return! outputQueue.DequeueBatch 10 }
+    cloud { return outputQueue.DequeueBatch 10 }
      |> cluster.Run
 
 (** 

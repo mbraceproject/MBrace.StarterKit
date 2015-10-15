@@ -26,29 +26,29 @@ let dict =
     } |> cluster.Run
 
 (** Next, add an entry to the key/value store: *)
-CloudDictionary.Add "key0" 42 dict |> cluster.Run
+cloud { dict.Add ("key0", 42) } |> cluster.Run
 
 (** Next, check that the entry exists in the key/value store: *)
-CloudDictionary.ContainsKey "key0" dict |> cluster.Run
+cloud { return dict.ContainsKey "key0" } |> cluster.Run
 
 (** Next, lookup the entry in the key/value store: *)
-CloudDictionary.TryFind "key0" dict |> cluster.Run
+cloud { return dict.TryFind "key0" } |> cluster.Run
 
 (** Next, lookup a key which is not present in the key/value store: *)
-CloudDictionary.TryFind "key-not-there" dict |> cluster.Run
+cloud { return dict.TryFind "key-not-there" } |> cluster.Run
 
 (** Next, perform contested, distributed updates from many cloud workers: *) 
 let key = "contestedKey"
 let contestTask = 
     [|1 .. 100|]
     |> CloudFlow.OfArray
-    |> CloudFlow.iterLocal(fun i -> CloudDictionary.AddOrUpdate key (function None -> i | Some v -> i + v) dict |> Local.Ignore)
+    |> CloudFlow.iter(fun i -> dict.AddOrUpdate(key, function None -> i | Some v -> i + v) |> ignore)
     |> cluster.CreateProcess
 
 contestTask.ShowInfo()
 
 (** Next, verify result is correct: *) 
-CloudDictionary.TryFind key dict |> cluster.Run
+cloud { return dict.TryFind key } |> cluster.Run
 
 (** 
 ## Summary

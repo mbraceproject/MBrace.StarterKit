@@ -26,40 +26,42 @@ from your F# client script. (Using these is optional: you can also use the MBrac
 
 *)
 
-let root = CloudPath.DefaultDirectory |> cluster.RunLocally
+let fileSystem = cluster.Store.CloudFileSystem
 
-let (++) path1 path2 = CloudPath.Combine( [| path1; path2 |] ) |> cluster.RunLocally
+let root = fileSystem.Path.DefaultDirectory
 
-let ls path = cluster.Store.File.Enumerate(path)
+let (++) (path1 : string) (path2 : string) = fileSystem.Path.Combine(path1, path2)
+
+let ls path = fileSystem.File.Enumerate(path)
 
 let rec lsRec path = 
-    seq { yield! cluster.Store.File.Enumerate(path)
-          for d in cluster.Store.Directory.Enumerate(path) do 
+    seq { yield! fileSystem.File.Enumerate(path)
+          for d in fileSystem.Directory.Enumerate(path) do 
               yield! lsRec path }
 
-let mkdir path = cluster.Store.Directory.Create(path)
+let mkdir path = fileSystem.Directory.Create(path)
 
-let rmdir path = cluster.Store.Directory.Delete(path)
+let rmdir path = fileSystem.Directory.Delete(path)
 
-let rmdirRec path = cluster.Store.Directory.Delete(path,recursiveDelete=true)
+let rmdirRec path = fileSystem.Directory.Delete(path,recursiveDelete=true)
 
-let randdir() = cluster.Store.Path.GetRandomDirectoryName()
+let randdir() = fileSystem.Path.GetRandomDirectoryName()
 
-let randfile() = cluster.Store.Path.GetRandomFilePath()
+let randfile() = fileSystem.Path.GetRandomFilePath()
 
-let rm path = CloudFile.Delete(path) |> cluster.RunLocally
+let rm path = fileSystem.File.Delete path
 
-let cat path = CloudFile.ReadAllText(path) |> cluster.RunLocally
+let cat path = fileSystem.File.ReadAllText path
 
-let catLines path = CloudFile.ReadAllLines(path) |> cluster.RunLocally
+let catLines path = fileSystem.File.ReadAllLines path
 
-let catBytes path = CloudFile.ReadAllBytes(path) |> cluster.RunLocally
+let catBytes path = fileSystem.File.ReadAllBytes path
 
-let write path text = CloudFile.WriteAllText(path, text) |> cluster.RunLocally
+let write path text = fileSystem.File.WriteAllText(path, text)
 
-let writeLines path lines = CloudFile.WriteAllLines(path, lines) |> cluster.RunLocally
+let writeLines path lines = fileSystem.File.WriteAllLines(path, lines)
 
-let writeBytes path bytes = CloudFile.WriteAllBytes(path, bytes) |> cluster.RunLocally
+let writeBytes path bytes = fileSystem.File.WriteAllBytes(path, bytes)
 
 
 (**
