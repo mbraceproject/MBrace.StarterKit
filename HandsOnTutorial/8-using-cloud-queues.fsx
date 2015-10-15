@@ -63,13 +63,13 @@ You now learn how to use cloud queues as inputs to a data parallel cloud flow.
 
 (** First, you create a request queue and an output queue: *)
 let requestQueue = CloudQueue.New<int>() |> cluster.Run
-let outputQueue = CloudQueue.New<int>() |> cluster.Run
+let outputQueue = CloudQueue.New<int64>() |> cluster.Run
 
 (** Next, you create a data parallel cloud workflow with 4-way parallelism that reads from the request queue. The requests are integer messages indicating a number of prime nnumbers to compute. The outputs are the sum of the prime numbers. *)
 
 let processingFlow = 
     CloudFlow.OfCloudQueue(requestQueue, 4)
-    |> CloudFlow.map (fun msg -> Array.sum (Sieve.getPrimes msg))
+    |> CloudFlow.map (fun msg -> Array.sum (Array.map int64 (Sieve.getPrimes msg)))
     |> CloudFlow.toCloudQueue outputQueue
     |> cluster.CreateProcess
 
@@ -83,6 +83,8 @@ let requestTask =
      |> cluster.CreateProcess
 
 requestTask.ShowInfo() 
+
+cluster.ShowProcesses()
 
 (** Next, you run a cloud task to collect up to 10 results from the output queue.  You can run this multiple times to collect all the results. *)
 let collectedResults = 
