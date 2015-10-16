@@ -30,7 +30,7 @@ let fileSystem = cluster.Store.CloudFileSystem
 
 let root = fileSystem.Path.DefaultDirectory
 
-let (++) (path1 : string) (path2 : string) = fileSystem.Path.Combine(path1, path2)
+let (++) path1 path2 = fileSystem.Path.Combine(path1, path2)
 
 let ls path = fileSystem.File.Enumerate(path)
 
