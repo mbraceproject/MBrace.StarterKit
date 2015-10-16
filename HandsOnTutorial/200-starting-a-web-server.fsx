@@ -116,7 +116,7 @@ let getJobRequest v ctxt =
                 [ yield "<html>"
                   yield Angular.header
                   yield "<body>"
-                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" task.Id task.Status (try if task.Status = MBrace.Runtime.CloudProcessStatus.Completed then sprintf "%A" (task.AwaitResultBoxed()) else "" with _ -> "<err>") )
+                  yield (sprintf "<p>Job %s, Completed: %A, Result: %s</p>" task.Id task.Status (try if task.Status = CloudProcessStatus.Completed then sprintf "%A" (task.AwaitResultBoxed()) else "" with _ -> "<err>") )
                   yield "</body>"
                   yield "</html>" ]
                 |> String.concat "\n"

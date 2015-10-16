@@ -19,7 +19,7 @@ This script tests cloud file perf
 *)
 
 // Create a directory in the cloud file system
-let dp = cluster.Store.Directory.Create("perf-files")
+let dp = cluster.Store.CloudFileSystem.Directory.Create("perf-files")
 
 //--------------------------------------------------------------------
 // Stress test some data storage
