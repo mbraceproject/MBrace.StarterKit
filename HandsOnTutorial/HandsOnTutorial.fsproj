@@ -78,6 +78,7 @@
     <None Include="7-using-cloud-data-files.fsx" />
     <None Include="8-using-cloud-queues.fsx" />
     <None Include="9-using-cloud-key-value-stores.fsx" />
+    <None Include="0-thread-pool.fsx" />
     <None Include="lib\collections.fsx" />
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />

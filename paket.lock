@@ -60,7 +60,7 @@ NUGET
     Suave (0.32.1)
       FSharp.Core (>= 3.1.2.5)
     System.Spatial (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
-    TaskParallelLibrary (1.0.2856) - framework: net35
+    TaskParallelLibrary (1.0.2856.0) - framework: net35
     Thespian.Core (0.1.6-alpha)
       FsPickler (>= 1.2.1)
     Vagabond (0.11.0)
