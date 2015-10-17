@@ -1,7 +1,5 @@
 ﻿(*** hide ***)
-#I "../packages/MBrace.Thespian/tools/"
-#r "MBrace.Core.dll"
-#r "MBrace.Runtime.dll"
+#load "ThespianCluster.fsx"
 #r "../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
 open MBrace.Core
@@ -147,7 +145,9 @@ The simplest example are side-effects:
 *)
 
 let hello = cloud { printfn "Hello, World" }
+
 tp.RunSynchronously(hello) // writes to stdout of the current process, effect easily observable
+
 someDistributedCluster.Run(hello) // writes to stdout of some worker process, effect will most likely not be observed
 
 (**
@@ -172,3 +172,14 @@ let example3 = cloud {
 tp.RunSynchronously(example3, memoryEmulation = MemoryEmulation.Copied) // 100, as expected
 
 someDistributedCluster.Run(example3) // nondeterministic result
+
+(**
+
+## Summary
+
+In this tutorial, you've learned about `MBrace.ThreadPool` as ways of executing and testing 
+cloud workflows using the thread pool of your local client process.  
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)
