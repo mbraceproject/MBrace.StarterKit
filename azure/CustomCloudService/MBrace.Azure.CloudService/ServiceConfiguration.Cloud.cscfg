@@ -3,8 +3,8 @@
   <Role name="MBrace.Azure.WorkerRole">
     <Instances count="4" />
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" value="" />
       <Setting name="MBrace.StorageConnectionString" value="" />
+      <Setting name="MBrace.ServiceBusConnectionString" value="" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>

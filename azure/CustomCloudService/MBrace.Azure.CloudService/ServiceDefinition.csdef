@@ -5,8 +5,8 @@
       <LocalStorage name="LocalMBraceCache" cleanOnRoleRecycle="true" sizeInMB="409600" />
     </LocalResources>
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" />
       <Setting name="MBrace.StorageConnectionString" />
+      <Setting name="MBrace.ServiceBusConnectionString" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
     </ConfigurationSettings>
   </WorkerRole>

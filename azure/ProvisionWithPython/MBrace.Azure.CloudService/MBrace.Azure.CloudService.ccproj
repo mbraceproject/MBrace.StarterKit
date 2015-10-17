@@ -50,6 +50,7 @@
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>MBrace.Azure.WorkerRole</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
