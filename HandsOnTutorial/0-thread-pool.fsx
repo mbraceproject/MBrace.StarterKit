@@ -1,5 +1,7 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#I "../packages/MBrace.Thespian/tools/"
+#r "MBrace.Core.dll"
+#r "MBrace.Runtime.dll"
 #r "../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
 open MBrace.Core
