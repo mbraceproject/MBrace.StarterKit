@@ -26,7 +26,7 @@ let dict =
     } |> cluster.Run
 
 (** Next, add an entry to the key/value store: *)
-cloud { dict.Add ("key0", 42) } |> cluster.Run
+cloud { dict.ForceAdd ("key0", 42) } |> cluster.Run
 
 (** Next, check that the entry exists in the key/value store: *)
 cloud { return dict.ContainsKey "key0" } |> cluster.Run
