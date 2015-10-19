@@ -1133,6 +1133,7 @@ let AnalyzeMarketData =
                             // Store new running mean in the cloud dictionary.
                             dict.AddOrUpdate(symbol, function _ -> { Mean=newMean; Count=newCount; })  |> ignore                      
                             
+                            // A stock is signaled if it has ask or bid whose volume is larger than 1.2 times of its running mean.
                             let largeAsk = p.Asks |> Array.filter(fun v -> v > 1.2 * newMean) |> Seq.length
                             let largeBid = p.Bids|> Array.filter(fun v -> v > 1.2 * newMean) |> Seq.length
                             largeAsk + largeBid > 0                      
