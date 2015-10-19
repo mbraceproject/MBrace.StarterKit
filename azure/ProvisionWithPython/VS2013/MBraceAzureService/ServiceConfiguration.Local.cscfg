@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="MBraceAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
   <Role name="MBraceAzureRole">
-    <Instances count="10" />
+    <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="MBrace.ServiceBusConnectionString" value="" />
-      <Setting name="MBrace.StorageConnectionString" value="" />
+      <Setting name="MBrace.ServiceBusConnectionString" value="Endpoint=sb://msrcmbrace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=1XeMNubcpNzq+CjK27PTlJ6fNDlpndFh+aWmYlNX/p0=" />
+      <Setting name="MBrace.StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=msrcyiwe;AccountKey=IfmbnhCPrIdWMUzfw5EzFHH7KQLdgP1tIA6NuDaqEVTP+QQ8HI1YCzfO9aAEJt+n79Dn1k07XKQL9kLu2LP6cQ==" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="" />

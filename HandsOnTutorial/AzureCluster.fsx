@@ -21,8 +21,8 @@ module Config =
     // The serice bus connection string is of the form
     //    Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s
 
-    let myStorageConnectionString = "your storage connection string here"
-    let myServiceBusConnectionString = "your service bus connection string here"
+    let myStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=msrcyiwe;AccountKey=IfmbnhCPrIdWMUzfw5EzFHH7KQLdgP1tIA6NuDaqEVTP+QQ8HI1YCzfO9aAEJt+n79Dn1k07XKQL9kLu2LP6cQ=="
+    let myServiceBusConnectionString = "Endpoint=sb://msrcmbrace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=1XeMNubcpNzq+CjK27PTlJ6fNDlpndFh+aWmYlNX/p0="
 
     // Alternatively you can specify the connection strings by calling the functions below
     //

@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 
 open System
 open System.IO
@@ -9,18 +9,18 @@ open MBrace.Flow
 
 // Record for a single data package from the trading API.
 type MarketDataPackage = {    
-    Symbol : string;
-    Price : double;
-    Volume: double;
-    Asks: double array;
-    Bids: double array
+    Symbol : string
+    Price : double
+    Volume: double
+    Asks: double[]
+    Bids: double[]
 }
 
 // A group of many data packages, this is the element that we are going to put into the queue.
 // Group many packages together will reduce the number of Azure APIs (500 per second quota).
 // Need to respect the 64KB queue message side from Azure.
 type MarketDataGroup = {
-    Items : CloudValue<MarketDataPackage array>
+    Items : CloudValue<MarketDataPackage[]>
 }
 
 // Stock data sample used to generated simulated data.
@@ -1036,10 +1036,7 @@ type StockInfo = {
 
 let ParseLine (line : string) =
     let parts = line.Split ',' |> Array.toList
-    match parts with
-    | [symbol; price; volume] -> { Symbol = symbol; Price= float price; Volume = float volume; }
-    | _ -> {Symbol = ""; Price=1.2; Volume=2.4; }
-
+    { Symbol = parts.[0]; Price= float parts.[1]; Volume = float parts.[2]; }
 
 let stockInfo = 
     stockDataSample.Split '\n' 
@@ -1065,36 +1062,56 @@ let cluster = Config.GetCluster()
 
 // The queue which stores stock trading data.
 // Let's assume that there is another program which enqueues trading data into this queue.
-let trading_data_queue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
+let tradingDataQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
+
+// The queue which stores analysis results.
+let resultQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
+
 
 
 // Generate simulated market data, for the moment, generate 10 slices.
 // Wait 3 seconds between two slices.
 let SimulateMarket =
     cloud {                
-        //while true do
-        for i in 1..10 do
+        while true do
+        //for i in 1..10 do
             let md = SimulateMarketSlice stockInfo
             let! mdc = CloudValue.New md
-            let mdp = { Items = mdc; } 
-            let! r = CloudQueue.Enqueue(trading_data_queue, mdp)
+            let mdp = { Items = mdc } 
+            let! r = CloudQueue.Enqueue(tradingDataQueue, mdp)            
             do! Cloud.Sleep 3000
-        return! trading_data_queue.Count
-    }
+        return! tradingDataQueue.Count
+    } 
+    
+let simulationTask = SimulateMarket |> cluster.CreateTask   
+ 
 
-
-// The queue which stores analysis results.
-let analysis_result_queue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
 
 //let item = CloudQueue.Dequeue(trading_data_queue) |> cluster.Run
 //let itemCount = cloud { return! trading_data_queue.Count } |> cluster.Run
+//let itemCount = cloud { return! analysis_result_queue.Count } |> cluster.Run
 
 
 let LargeBidVolume = 1000.0
 let LargeAskVolume = 1000.0
 
+type MeanAskOrBidVolume = {
+    Volume: int;
+    Mean: float
+}
+
+// The cloud dictionary to store running means of stock traded volumes.
+// Keys of the dictionary are stock symbols, values are record representing
+// the running mean of the ask and bid volumes.
+let dict = 
+    cloud {
+        let! dict = CloudDictionary.New<MeanAskOrBidVolume>();
+        return dict
+    } |> cluster.Run
+
+
 // Does a market data have large ask or bid?
-let HasLargeAskOrBid(md : MarketDataPackage) = 
+let HasLargeAskOrBid(md : MarketDataPackage, dict : CloudDictionary<MeanAskOrBidVolume>) = 
     let largeAsk = md.Asks |> Array.filter(fun v -> v > LargeBidVolume) |> Seq.length
     let largeBid = md.Bids|> Array.filter(fun v -> v > LargeAskVolume) |> Seq.length
     largeAsk + largeBid > 0
@@ -1105,8 +1122,8 @@ let AnalyzeMarketData =
         // This version of the program runs the th
         let sleep_time = ref 1000
         while true do
-            let! data_group = CloudQueue.Dequeue(trading_data_queue)
-            let data_groups = [| data_group |]
+            let! data_group = CloudQueue.Dequeue(tradingDataQueue)
+            let data_groups = [| data_group |]                    
             if data_groups.Length > 0 then
                 sleep_time := 1000
                 // The task is simple now, just get the market data which has large asks or bids.
@@ -1117,11 +1134,11 @@ let AnalyzeMarketData =
                     |> CloudFlow.filter(fun md ->  HasLargeAskOrBid(md))
                     |> CloudFlow.toArray
 
-                let result = task |> cluster.Run
+                let! result = task
                 let! cValue = CloudValue.New result
                 let analysis_result = { Items = cValue }
                 
-                do! CloudQueue.Enqueue(analysis_result_queue, analysis_result)
+                do! CloudQueue.Enqueue(resultQueue, analysis_result)
             else
                 do! Cloud.Sleep(!sleep_time)
                 sleep_time := !sleep_time * 2
@@ -1131,3 +1148,6 @@ let AnalyzeMarketData =
 
 let analysisTask = AnalyzeMarketData |> cluster.CreateTask
 
+let item = CloudQueue.Dequeue(resultQueue) |> cluster.Run
+
+item.Items.Value.Length
