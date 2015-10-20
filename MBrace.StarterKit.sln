@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24606.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".project", ".project", "{73AFA19D-DD5C-4352-8208-BB674630EED4}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{ABC597
 		paket.dependencies = paket.dependencies
 		paket.lock = paket.lock
 		.paket\paket.targets = .paket\paket.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{07DD2642-ADB1-4944-94F0-937E3B8EC669}"
+	ProjectSection(SolutionItems) = preProject
+		data\test.csv = data\test.csv
+		data\train.csv = data\train.csv
 	EndProjectSection
 EndProject
 Global
