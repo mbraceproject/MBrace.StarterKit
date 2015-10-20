@@ -92,6 +92,7 @@
     <None Include="200-kmeans-clustering.fsx" />
     <None Include="200-monte-carlo-pi-approximation.fsx" />
     <None Include="200-starting-a-web-server.fsx" />
+    <None Include="200-knn-digit-recognizer.fsx" />
     <None Include="200-launching-python.fsx" />
     <None Include="300-distributed-multicore-parallel-search.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
