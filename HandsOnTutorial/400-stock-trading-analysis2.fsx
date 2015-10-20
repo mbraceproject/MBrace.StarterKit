@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 #r "../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"
 
 open System
@@ -8,7 +8,10 @@ open System.IO
 open MBrace.Core
 open MBrace.Flow
 open FSharp.Data
-open MBrace.Core.BuilderAsyncExtensions
+
+// Grab the MBrace cluster.
+let cluster = Config.GetCluster() 
+
 
 // Type that represents stock trading data.
 type StockInfo = {
@@ -22,9 +25,18 @@ type StockInfo = {
 let stockDataPath = __SOURCE_DIRECTORY__ + "/stock-data.csv"
 type Stocks = CsvProvider<stockDataPath>
 
+// The following lines read data from Azure blog storage.
+let fileSystem = cluster.Store.CloudFileSystem
+let ReadAllText path = fileSystem.File.ReadAllText path
+let text = ReadAllText "/stock-data/stock-data.csv"
+let data = Stocks.Load(new StringReader(text))
+
+// This line reads data from local file system.
+//let data = Stocks.Load(stockDataPath)
+
 // Load stock trading data.
 let stockInfo = seq { 
-    for row in Stocks.Load(stockDataPath).Rows do
+    for row in data.Rows do
         yield { Symbol=row.Symbol; Price=double row.Price; Volume=double row.Volume; }
     }
 
@@ -59,8 +71,6 @@ let SimulateMarketSlice (stockInfo : seq<StockInfo>) =
             yield { Symbol=symbol; Price=newPrice; Volume=newVolume; Asks=asks; Bids=bids; } } 
     |> Seq.toArray
 
-// Grab the MBrace cluster.
-let cluster = Config.GetCluster() 
 
 // The queue which stores stock trading data.
 let tradingDataQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
