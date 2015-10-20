@@ -9,6 +9,10 @@ open MBrace.Core
 open MBrace.Flow
 open FSharp.Data
 
+// Grab the MBrace cluster.
+let cluster = Config.GetCluster() 
+
+
 // Type that represents stock trading data.
 type StockInfo = {
     Symbol: string
@@ -21,11 +25,16 @@ type StockInfo = {
 let stockDataPath = __SOURCE_DIRECTORY__ + "/stock-data.csv"
 type Stocks = CsvProvider<stockDataPath>
 
-// Load stock trading data.
-let stockInfo = seq { 
-    for row in Stocks.Load(stockDataPath).Rows do
-        yield { Symbol=row.Symbol; Price=double row.Price; Volume=double row.Volume; }
-    }
+// The following lines read data from Azure blog storage.
+// If you run with a real Azure cluster, use the following lines.
+//let fileSystem = cluster.Store.CloudFileSystem
+//let ReadAllText path = fileSystem.File.ReadAllText path
+//let text = ReadAllText "/stock-data/stock-data.csv"
+//let data = Stocks.Load(new StringReader(text))
+
+// This line reads data from local file system.
+// If you run with the Spian cluster, use the following line.
+let data = Stocks.Load(stockDataPath)
 
 
 // Record for a single data package from the trading API.
