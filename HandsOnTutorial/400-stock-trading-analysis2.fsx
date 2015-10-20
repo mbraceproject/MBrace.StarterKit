@@ -1,7 +1,6 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
-
 #r "../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"
 
 open System
@@ -9,20 +8,21 @@ open System.IO
 open MBrace.Core
 open MBrace.Flow
 open FSharp.Data
+open MBrace.Core.BuilderAsyncExtensions
 
-[<Literal>]
-let stockDataPath = __SOURCE_DIRECTORY__ + "/stock-data.csv"
-
-
-type Stocks = CsvProvider<stockDataPath>
-
-// Parse stockDataSample into better format.
+// Type that represents stock trading data.
 type StockInfo = {
     Symbol: string
     Price: double
     Volume: double
 }
 
+// Setup CSV type provider.
+[<Literal>]
+let stockDataPath = __SOURCE_DIRECTORY__ + "/stock-data.csv"
+type Stocks = CsvProvider<stockDataPath>
+
+// Load stock trading data.
 let stockInfo = seq { 
     for row in Stocks.Load(stockDataPath).Rows do
         yield { Symbol=row.Symbol; Price=double row.Price; Volume=double row.Volume; }
@@ -59,23 +59,23 @@ let SimulateMarketSlice (stockInfo : seq<StockInfo>) =
             yield { Symbol=symbol; Price=newPrice; Volume=newVolume; Asks=asks; Bids=bids; } } 
     |> Seq.toArray
 
-
+// Grab the MBrace cluster.
 let cluster = Config.GetCluster() 
 
 // The queue which stores stock trading data.
-// Let's assume that there is another program which enqueues trading data into this queue.
 let tradingDataQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
 
 // The queue which stores analysis results.
 let resultQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
 
 
+
 // Generate simulated market data, for the moment, generate 10 slices.
 // Wait 3 seconds between two slices.
-let SimulateMarket =
+let SimulateMarket stockInfo =
     cloud {                
-        //while true do
-        for i in 1..10 do
+        while true do
+        //for i in 1..20 do
             let md = SimulateMarketSlice stockInfo
             let! mdc = CloudValue.New md
             let mdp = { Items = mdc } 
@@ -85,15 +85,15 @@ let SimulateMarket =
         return result
     } 
     
-let simulationTask = SimulateMarket |> cluster.CreateProcess   
+let simulationTask = SimulateMarket stockInfo |> cluster.CreateProcess   
  
 
 //let itemCount = tradingDataQueue.GetCount()
 
 // The data structure used to calculate running mean of ask or bid volume.
 type MeanAskOrBidVolume = {
-    Count: double
-    Mean: double
+    Count: double  // The number of elements so far to calculate mean.
+    Mean: double   // Previous mean value.
 }
 
 // The cloud dictionary to store running means of stock traded volumes.
@@ -105,41 +105,38 @@ let dict =
         return dict
     } |> cluster.Run
 
-
 let AnalyzeMarketData = 
-    cloud {
-        // This version of the program runs the th
-        let sleep_time = ref 1000
+    cloud {        
+        //for i in 1..10 do
         while true do
             let data_group = tradingDataQueue.Dequeue()
             let data_groups = [| data_group |]                    
-            if data_groups.Length > 0 then
-                sleep_time := 1000
-                // The task is simple now, just get the market data which has large asks or bids.
+            if data_groups.Length > 0 then                            
                 let! stocksWithLargeAskOrBid = 
                     data_groups
                     |> CloudFlow.OfArray
                     |> CloudFlow.collect(fun p -> p.Items.Value)
                     |> CloudFlow.filter(fun p -> 
-                            let symbol = p.Symbol
-                            // Calculate running mean of ask and bid volumes for a stock.
-                            let askAndBid = Array.concat([|p.Asks; p.Bids|])
-                            let askAndBidSum = Array.sum(askAndBid)
-                            let askAndBidLen = double askAndBid.Length
-                            let mean = dict.TryFind symbol 
-                            let (newMean, newCount) = 
-                                match mean with
-                                | Some(mean) ->  (mean.Count * mean.Mean + askAndBidSum /  (mean.Count + askAndBidLen), mean.Count + askAndBidLen)
-                                | None -> (askAndBidSum / askAndBidLen, askAndBidLen)  
+                        let symbol = p.Symbol
+                        // Calculate running mean of ask and bid volumes for a stock.
+                        let askAndBid = Array.concat([|p.Asks; p.Bids|])
+                        let askAndBidSum = Array.sum(askAndBid)
+                        let askAndBidLen = double askAndBid.Length
+                        let oldMean = dict.TryFind symbol         
+                        
+                        let (newMean, newCount) = 
+                            match oldMean with
+                            | Some(oldMean) ->  ((oldMean.Count * oldMean.Mean + askAndBidSum) /  (oldMean.Count + askAndBidLen), oldMean.Count + askAndBidLen)
+                            | None -> (askAndBidSum / askAndBidLen, askAndBidLen)  
 
-                            // Store new running mean in the cloud dictionary.
-                            dict.AddOrUpdate(symbol, function _ -> { Mean=newMean; Count=newCount; })  |> ignore                      
+                        // Store new running mean in the cloud dictionary.
+                        dict.AddOrUpdate(symbol, function _ -> { Mean=newMean; Count=newCount; })  |> ignore                      
                             
-                            // A stock is signaled if it has ask or bid whose volume is larger than 1.2 times of its running mean.
-                            let largeAsk = p.Asks |> Array.filter(fun v -> v > 1.2 * newMean) |> Seq.length
-                            let largeBid = p.Bids|> Array.filter(fun v -> v > 1.2 * newMean) |> Seq.length
-                            largeAsk + largeBid > 0                      
-                        )
+                        // A stock is signaled if it has ask or bid whose volume is larger than 1.2 times of its running mean.
+                        let largeAsk = p.Asks |> Array.filter(fun v -> v > 1.5 * newMean) |> Seq.length
+                        let largeBid = p.Bids|> Array.filter(fun v -> v > 1.5 * newMean) |> Seq.length
+                        largeAsk + largeBid > 0                      
+                      )
                     |> CloudFlow.toArray
 
                 if stocksWithLargeAskOrBid.Length > 0 then
@@ -147,16 +144,7 @@ let AnalyzeMarketData =
                     let analysisResult = { Items = cValue }  
                     resultQueue.Enqueue analysisResult                
             else
-                do! Cloud.Sleep(!sleep_time)
-                sleep_time := !sleep_time * 2
-                if !sleep_time > 10000 then
-                    sleep_time := 10000            
+                do! Cloud.Sleep(1000)
     }
 
 let analysisTask = AnalyzeMarketData |> cluster.CreateProcess
-
-
-
-//let item = CloudQueue.Dequeue(resultQueue) |> cluster.Run
-//
-//item.Items.Value.Length
