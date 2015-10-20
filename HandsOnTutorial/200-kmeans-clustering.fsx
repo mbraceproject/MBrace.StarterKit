@@ -100,7 +100,7 @@ module KMeans =
 
             // Stage 3: check convergence and decide whether to continue iteration
             if Array.forall2 (Array.forall2 (fun x y -> abs(x - y) < 1E-10)) newCentroids centroids then
-                return centroids
+                return newCentroids
             else
                 return! aux points newCentroids (iteration + 1)
         }
