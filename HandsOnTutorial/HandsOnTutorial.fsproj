@@ -83,10 +83,12 @@
     <None Include="lib\sieve.fsx" />
     <None Include="lib\mersenne.fsx" />
     <None Include="lib\webserver.fsx" />
+    <None Include="lib\textfiles.fsx" />
     <None Include="200-image-processing-example.fsx" />
     <None Include="200-cloud-parallel-web-download.fsx" />
     <None Include="200-norvigs-spelling-corrector.fsx" />
     <None Include="200-using-cloud-transactional-atoms.fsx" />
+    <None Include="200-wordcount.fsx" />
     <None Include="200-kmeans-clustering.fsx" />
     <None Include="200-starting-a-web-server.fsx" />
     <None Include="200-launching-python.fsx" />
