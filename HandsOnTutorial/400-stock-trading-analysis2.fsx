@@ -36,8 +36,6 @@ type Stocks = CsvProvider<stockDataPath>
 // If you run with the Spian cluster, use the following line.
 let data = Stocks.Load(stockDataPath)
 
-// Load stock trading data.
-
 let stockInfo = 
     [| for row in data.Rows do
         yield { Symbol=row.Symbol; Price=double row.Price; Volume=double row.Volume; }

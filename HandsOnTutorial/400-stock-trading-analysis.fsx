@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 #r "../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"
 
 open System
@@ -36,6 +36,10 @@ type Stocks = CsvProvider<stockDataPath>
 // If you run with the Spian cluster, use the following line.
 let data = Stocks.Load(stockDataPath)
 
+let stockInfo = 
+    [| for row in data.Rows do
+        yield { Symbol=row.Symbol; Price=double row.Price; Volume=double row.Volume; }
+    |] 
 
 // Record for a single data package from the trading API.
 type MarketDataPackage = {    
@@ -67,8 +71,6 @@ let SimulateMarketSlice (stockInfo : seq<StockInfo>) =
             yield { Symbol=symbol; Price=newPrice; Volume=newVolume; Asks=asks; Bids=bids; } } 
     |> Seq.toArray
 
-// Grab the MBrace cluster.
-let cluster = Config.GetCluster() 
 
 // The queue which stores stock trading data.
 let tradingDataQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
