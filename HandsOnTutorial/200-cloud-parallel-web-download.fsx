@@ -10,8 +10,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster
-let cluster = Config.GetCluster() 
 
 
 (**
@@ -23,6 +21,9 @@ This example illustrates doing I/O tasks in parallel using the workers in the cl
 
 // Cloud parallel url-downloader
 open System.Net
+
+let cluster = Config.GetCluster() 
+let fs = cluster.Store.CloudFileSystem
 
 let urls = 
     [| ("bing", "http://bing.com")
@@ -56,7 +57,7 @@ let files = filesTask.Result
 let contentsOfFiles = 
     files
     |> Array.map (fun file ->
-        cloud { let! text = CloudFile.ReadAllText(file.Path)
+        cloud { let text = fs.File.ReadAllText(file.Path)
                 return (file.Path, text.Length) })
     |> Cloud.Parallel
     |> cluster.Run

@@ -69,4 +69,8 @@ let tasks =
 
 (** 
 In this tutorial, you've learned how to use the AForge image processing library to turn color images to gray ones in MBrace.
+Continue with further samples to learn more about the MBrace programming model.  
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
 *)

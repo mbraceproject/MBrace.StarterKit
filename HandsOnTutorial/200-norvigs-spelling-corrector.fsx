@@ -13,8 +13,6 @@ open System.Text.RegularExpressions
 open MBrace.Core
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster
-let cluster = Config.GetCluster() 
 
 (**
 # Example: Training in the Cloud
@@ -27,6 +25,10 @@ information from a body of text, and the statistical summary is used locally in 
 *)
 #load "lib/collections.fsx"
 
+// Initialize client object to an MBrace cluster
+let cluster = Config.GetCluster() 
+let fs = cluster.Store.CloudFileSystem
+
 (**
 Step 1: download text file from source, 
 saving it to blob storage chunked into smaller files of 10000 lines each. 
@@ -35,7 +37,7 @@ let download (uri: string) =
     cloud {
         let webClient = new WebClient()
         do! Cloud.Log "Begin file download" 
-        let! text = webClient.AsyncDownloadString(Uri(uri)) |> Cloud.OfAsync 
+        let text = webClient.DownloadString(uri) 
         do! Cloud.Log "file downloaded" 
         // Partition the big text into smaller files 
         let! files = 
@@ -43,8 +45,8 @@ let download (uri: string) =
             |> Array.chunkBySize 10000
             |> Array.mapi (fun index lines -> 
                  local { 
-                    do! CloudFile.Delete(path = sprintf "text/%d.txt" index) 
-                    let! file = CloudFile.WriteAllLines(path = sprintf "text/%d.txt" index, lines = lines) 
+                    fs.File.Delete(sprintf "text/%d.txt" index) 
+                    let file = fs.File.WriteAllLines(path = sprintf "text/%d.txt" index, lines = lines) 
                     return file })
             |> Local.Parallel
         return files
