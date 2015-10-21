@@ -23,27 +23,26 @@ let cluster = Config.GetCluster()
 *)
 
 /// the classic monte carlo implementation
-/// take random points and see of they are inside the circle or not
-let monteCarloWorker (iterations : int) =
+/// take random points in the [0,1] x [0,1] square
+/// and count the occurences within the circle radius.
+/// The resulting fraction estimates π / 4.
+let localMonteCarloPiWorker (iterations : bigint) : bigint =
     let rand = new Random(obj().GetHashCode())
-
-    let mutable acc = 0
-    for i = 1 to int iterations do
-        let x = rand.NextDouble()
-        let y = rand.NextDouble()
-        if x * x + y * y <= 1. then
-            acc <- acc + 1
-
-    acc
-
-/// Monte carlo worker that spans large number of iterations
-let bigMonteCarloWorker (iterations : bigint) =
+    let maxIter = bigint Int32.MaxValue
     let mutable rem = iterations
     let mutable acc = 0I
     while rem > 0I do
-        let curr = min (bigint Int32.MaxValue) rem
-        acc <- acc + bigint(monteCarloWorker (int curr))
-        rem <- rem - curr
+        // bigints are heap allocated so break iteration into smaller segments that use int
+        let iter = min maxIter rem
+        let mutable currAcc = 0
+        for i = 1 to int iter do
+            let x = rand.NextDouble()
+            let y = rand.NextDouble()
+            if x * x + y * y <= 1. then
+                currAcc <- currAcc + 1
+
+        acc <- acc + bigint currAcc
+        rem <- rem - iter
 
     acc
 
@@ -52,7 +51,7 @@ let ratioToFloat divident divisor =
     let rec aux acc i dividend divisor =
         let div, rem = BigInteger.DivRem(dividend,divisor)
         if i = 15 || div = 0I && rem = 0I then acc else
-        let dec = float div * Math.Pow(10., - float i)
+        let dec = float div * Math.Pow(10., - float i) // div * 10^-i
         aux (acc + dec) (i + 1) (rem * 10I) divisor
 
     aux 0. 0 divident divisor
@@ -72,10 +71,10 @@ let calculatePi (iterations : bigint) : Cloud<float> = cloud {
     // perform the distributed sampling operation
     let! samples =
         CloudFlow.OfArray partitions
-        |> CloudFlow.map bigMonteCarloWorker
+        |> CloudFlow.map localMonteCarloPiWorker
         |> CloudFlow.sum
 
-    let ratio = ratioToFloat samples iterations // expecting π / 4
+    let ratio = ratioToFloat samples iterations // estimates π / 4
     return 4.0 * ratio
 }
 
