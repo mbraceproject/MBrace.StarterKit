@@ -27,25 +27,20 @@ let atom = CloudAtom.New(100) |> cluster.Run
 atom.Id
 
 // Get the value of the atom.
-let atomValue = atom |> CloudAtom.Read |> cluster.Run
+let atomValue = cloud { return atom.Value } |> cluster.Run
 
 // Transactionally update the value of the atom and output a result
-let atomUpdateResult = CloudAtom.Transact (atom, fun x -> string x,x*x) |> cluster.Run
+let atomUpdateResult = cloud { return atom.Transact(fun x -> string x,x*x) } |> cluster.Run
 
 // Have all workers atomically increment the counter in parallel
 cloud {
     let! clusterSize = Cloud.GetWorkerCount()
-    do!
-        // Start a whole lot of updaters in parallel
-        [ for i in 1 .. clusterSize * 2 -> 
-             cloud { return! CloudAtom.Update (atom, fun i -> i + 1) } ]
-        |> Cloud.Parallel
-        |> Cloud.Ignore
-
-    return! CloudAtom.Read atom
+    // Start a whole lot of updaters in parallel
+    let! _ = Cloud.Parallel [ for i in 1 .. clusterSize * 2 -> cloud { atom.Update(fun i -> i + 1) } ]
+    return atom.Value
 } |> cluster.Run
 
 // Delete the cloud atom
-CloudAtom.Delete atom  |> cluster.Run
+atom.Dispose() |> Async.RunSynchronously
 
 cluster.ShowProcesses()
