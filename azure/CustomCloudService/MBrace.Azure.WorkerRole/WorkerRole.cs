@@ -45,6 +45,9 @@ namespace MBrace.Azure.CloudService.WorkerRole
                 _svc.WorkingDirectory = customTempLocalResourcePath;
                 _svc.LogFile = "logs.txt";
                 _svc.MaxConcurrentWorkItems = Environment.ProcessorCount * 8;
+                
+                Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath, EnvironmentVariableTarget.Process);
+                Environment.SetEnvironmentVariable("TEMP", customTempLocalResourcePath, EnvironmentVariableTarget.Process);
 
                 RoleEnvironment.Changed += RoleEnvironment_Changed;
 
