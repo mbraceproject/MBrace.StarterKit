@@ -90,6 +90,32 @@ let persistedFlow = downloadProc.Result // get PersistedCloudFlow
 let wordCountProc = cluster.CreateProcess(computeWordCount 100 persistedFlow) // perform the wordcount operation
 
 cluster.ShowWorkers()
+<<<<<<< Updated upstream
 cluster.ShowProcesses()
+=======
+
+wordCountProc.ShowInfo()
+wordCountProc.Result
+
+cluster.Workers.Length
+
+cluster.ShowProcesses()
+
+
+
+open System
+open System.IO
+
+let files = Directory.EnumerateFiles("/Users/eirik/Desktop/textFiles.com") |> Seq.toArray
+
+files |> Array.Parallel.map (fun f -> cluster.Store.CloudFileSystem.File.Upload(f, "/textfiles/" + Path.GetFileName f))
+cluster.Store.CloudFileSystem.File.Upload(files, "/textfiles/")
+let data = files |> Seq.map File.ReadAllLines |> Seq.toArray
+
+
+
+
+#time
+>>>>>>> Stashed changes
 
 wordCountProc.Result
