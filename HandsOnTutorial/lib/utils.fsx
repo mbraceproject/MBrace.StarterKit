@@ -1,4 +1,8 @@
-﻿namespace global
+﻿[<AutoOpen>]
+module Utils
+
+/// Creates a new HashSet with provided sequence
+let hashSet (ts : seq<'T>) = new System.Collections.Generic.HashSet<'T>(ts)
 
 module Array = 
     let chunkBySize (n:int) (numbers: 'T[])  =

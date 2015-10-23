@@ -25,7 +25,7 @@ information from a body of text, and the statistical summary is used locally in 
  
 ## Part 1 - Extract Statistics in the Cloud 
 *)
-#load "lib/collections.fsx"
+#load "lib/utils.fsx"
 
 (**
 Step 1: download text file from source, 

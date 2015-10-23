@@ -21,7 +21,7 @@ let cluster = Config.GetCluster()
   
 **)
 
-#load "lib/collections.fsx"
+#load "lib/utils.fsx"
 #load "lib/mersenne.fsx"
 
 /// Distributed tryFind combinator with multicore balancing.

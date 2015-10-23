@@ -22,6 +22,7 @@ let cluster = Config.GetCluster()
 
 *)
 
+#load "lib/utils.fsx"
 #load "lib/textfiles.fsx"
 
 type WordFrequency = string * int64
@@ -35,21 +36,21 @@ let splitToWords (line : string) = wordRegex.Split line
 let normalize (word : string) = word.Trim().ToLower()
 
 /// words ignored by wordcount
-let private noiseWords = 
-    [|
-        "a"; "about"; "above"; "all"; "along"; "also"; "although"; "am"; "an"; "any"; "are"; "aren't"; "as"; "at";
-        "be"; "because"; "been"; "but"; "by"; "can"; "cannot"; "could"; "couldn't"; "did"; "didn't"; "do"; "does"; 
-        "doesn't"; "e.g."; "either"; "etc"; "etc."; "even"; "ever";"for"; "from"; "further"; "get"; "gets"; "got"; 
-        "had"; "hardly"; "has"; "hasn't"; "having"; "he"; "hence"; "her"; "here"; "hereby"; "herein"; "hereof"; 
-        "hereon"; "hereto"; "herewith"; "him"; "his"; "how"; "however"; "I"; "i.e."; "if"; "into"; "it"; "it's"; "its";
-        "me"; "more"; "most"; "mr"; "my"; "near"; "nor"; "now"; "of"; "onto"; "other"; "our"; "out"; "over"; "really"; 
-        "said"; "same"; "she"; "should"; "shouldn't"; "since"; "so"; "some"; "such"; "than"; "that"; "the"; "their"; 
-        "them"; "then"; "there"; "thereby"; "therefore"; "therefrom"; "therein"; "thereof"; "thereon"; "thereto"; 
-        "therewith"; "these"; "they"; "this"; "those"; "through"; "thus"; "to"; "too"; "under"; "until"; "unto"; "upon";
-        "us"; "very"; "viz"; "was"; "wasn't"; "we"; "were"; "what"; "when"; "where"; "whereby"; "wherein"; "whether";
-        "which"; "while"; "who"; "whom"; "whose"; "why"; "with"; "without"; "would"; "you"; "your" ; "have"; "thou"; "will"; 
-        "shall"
-    |] |> fun w -> new HashSet<_>(w)
+let private noiseWords =
+    hashSet [  
+        "about"; "above"; "along"; "also"; "although"; "aren't"; "because"; "been";
+        "cannot"; "could"; "couldn't"; "didn't"; "does"; "doesn't"; "e.g.";
+        "either"; "etc."; "even"; "ever"; "from"; "further"; "gets"; "hardly";
+        "hasn't"; "having"; "hence"; "here"; "hereby"; "herein"; "hereof";
+        "hereon"; "hereto"; "herewith"; "however"; "i.e."; "into"; "it's"; "more";
+        "most"; "near"; "onto"; "other"; "over"; "really"; "said"; "same";
+        "should"; "shouldn't"; "since"; "some"; "such"; "than"; "that"; "their";
+        "them"; "then"; "there"; "thereby"; "therefore"; "therefrom"; "therein";
+        "thereof"; "thereon"; "thereto"; "therewith"; "these"; "they"; "this";
+        "those"; "through"; "thus"; "under"; "until"; "unto"; "upon"; "very";
+        "wasn't"; "were"; "what"; "when"; "where"; "whereby"; "wherein"; "whether";
+        "which"; "while"; "whom"; "whose"; "with"; "without"; "would"; "your";
+        "have"; "thou"; "will"; "shall" ]
 
 /// specifies whether word is noise
 let isNoiseWord (word : string) = word.Length <= 3 || noiseWords.Contains word
