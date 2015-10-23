@@ -105,7 +105,6 @@
     <None Include="999-misc-cpu-perf.fsx" />
     <None Include="paket.references" />
     <Content Include="App.config" />
-    <None Include="stock-data.csv" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

@@ -22,7 +22,7 @@ type StockInfo = {
 
 // Setup CSV type provider.
 [<Literal>]
-let stockDataPath = __SOURCE_DIRECTORY__ + "/stock-data.csv"
+let stockDataPath = __SOURCE_DIRECTORY__ + "/../data/stock-data.csv"
 type Stocks = CsvProvider<stockDataPath>
 
 // The following lines read data from Azure blog storage.
