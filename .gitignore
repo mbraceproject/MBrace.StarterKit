@@ -217,3 +217,4 @@ packages/*
 .paket/paket.exe
 azure/HandsOnTutorial/script-packages/packages/
 azure/HandsOnTutorial/script-packages/paket*
+/HandsOnTutorial/AzureCluster.fsx

@@ -98,13 +98,21 @@
     <None Include="300-distributed-multicore-parallel-search.fsx" />
     <None Include="400-advanced-core-internals.fsx" />
     <None Include="400-advanced-creating-new-serialized-things.fsx" />
+    <None Include="400-stock-trading-analysis.fsx" />
+    <None Include="400-stock-trading-analysis2.fsx" />
     <None Include="999-cloud-file-perf.fsx" />
     <None Include="999-task-create-perf.fsx" />
     <None Include="999-misc-cpu-perf.fsx" />
     <None Include="paket.references" />
     <Content Include="App.config" />
+    <None Include="stock-data.csv" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Data">
+      <HintPath>..\packages\FSharp.Data.2.2.5\lib\net40\FSharp.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>False</Private>
@@ -114,5 +122,6 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
 </Project>
