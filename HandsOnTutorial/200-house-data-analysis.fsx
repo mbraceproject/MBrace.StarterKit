@@ -131,9 +131,9 @@ let newBuildsByCounty =
         let newBuilds = rows |> List.filter(fun r -> r.NewBuild = "Y") |> List.length
         let percentageNewBuilds = (100. / float rows.Length) * float newBuilds
         county, percentageNewBuilds)
+    |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
     |> cluster.Run
-    |> Array.sortByDescending snd
 
 (**
 
