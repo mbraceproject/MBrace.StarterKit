@@ -86,8 +86,6 @@ prices
 
 (**
 
-![Charted results](img/csv-graph.png)
-
 Easy.
 
 ## Persisted Cloud Flows
