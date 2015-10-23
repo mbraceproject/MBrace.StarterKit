@@ -1,7 +1,7 @@
 ﻿(*** hide ***)
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
-#r "../packages/FSharp.Data.2.2.5/lib/net40/FSharp.Data.dll"
+#r "../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
 
 open System
 open System.IO
