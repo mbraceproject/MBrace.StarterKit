@@ -46,12 +46,14 @@ https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
 *)
  
 (** Here's some data (~1.0MB) *)
-let data = String.replicate 10000 "The quick brown fox jumped over the lazy dog\r\n" 
+let mkData () = String.replicate 10000 "The quick brown fox jumped over the lazy dog\r\n" 
 
 
-(** Upload the data to blob storage and return a handle to the stored data *)
+(** Generate the data, upload to blob storage and return a handle to the stored data *)
 let persistedCloudData = 
-    cloud { let! cell = CloudValue.New data 
+    cloud { 
+            let data = mkData()
+            let! cell = CloudValue.New data 
             return cell }
     |> cluster.Run
 
