@@ -10,10 +10,13 @@ NUGET
       AForge (>= 2.2.5)
     Argu (1.1.2)
     FSharp.Core (4.0.0.1)
+    FSharp.Data (2.2.5)
+      Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
     FsPickler (1.5.2)
     FsPickler.Json (1.5.2)
       FsPickler (1.5.2)
       Newtonsoft.Json (>= 6.0.5)
+    Google.DataTable.Net.Wrapper (3.1.2)
     MathNet.Numerics (3.7.1)
       TaskParallelLibrary (>= 1.0.2856) - framework: net35
     MathNet.Numerics.FSharp (3.7.1)
@@ -73,3 +76,9 @@ NUGET
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
       Newtonsoft.Json (>= 5.0.8) - framework: wpv8.0, >= net40
+    XPlot.GoogleCharts (1.2.1)
+      Google.DataTable.Net.Wrapper
+      Newtonsoft.Json
+    XPlot.GoogleCharts.WPF (1.2.1)
+      XPlot.GoogleCharts (>= 1.2.1)
+    Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80

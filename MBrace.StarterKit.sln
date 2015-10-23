@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{ABC597
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{07DD2642-ADB1-4944-94F0-937E3B8EC669}"
 	ProjectSection(SolutionItems) = preProject
+		data\SampleHousePrices.csv = data\SampleHousePrices.csv
 		data\test.csv = data\test.csv
 		data\train.csv = data\train.csv
 	EndProjectSection
