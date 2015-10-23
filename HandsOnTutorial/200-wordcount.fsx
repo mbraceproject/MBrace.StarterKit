@@ -16,20 +16,25 @@ open MBrace.Flow
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
 
+#load "lib/utils.fsx"
+#load "lib/textfiles.fsx"
+
 (**
 
 # Simple WordCount
 
-*)
+This sample implements the classic word count example commonly associated with distributed Map/Reduce frameworks.
+We use CloudFlow for the implementation and [textfiles.com](http://www.textfiles.com) as our data source.
 
-#load "lib/utils.fsx"
-#load "lib/textfiles.fsx"
+First, some basic type definitions
+
+*)
 
 type WordFrequency = string * int64
 type WordCount = WordFrequency []
 
+// Regex word tokenizer
 let private wordRegex = new Regex(@"[\W]+", RegexOptions.Compiled)
-/// Regex word tokenizer
 let splitToWords (line : string) = wordRegex.Split line
 
 /// normalize word
@@ -55,14 +60,28 @@ let private noiseWords =
 /// specifies whether word is noise
 let isNoiseWord (word : string) = word.Length <= 3 || noiseWords.Contains word
 
+(**
+
+We are now ready to define our distributed workflows.
+First, we create a distributed download workflow that caches the contents of supplied urls across the cluster.
+This returns a PersistedCloudFlow type that can be readily used for consumption by future flow queries.
+
+*)
+
 /// Downloads and caches text files across the cluster
 let downloadAndCacheTextFiles (urls : seq<string>) : Cloud<PersistedCloudFlow<string>> =
     CloudFlow.OfHttpFileByLine urls
     |> CloudFlow.persist StorageLevel.Memory
 
+(**
+
+The actual wordcount computation can now be defined
+
+*)
+
 /// Computes the word count using the input cloud flow
-let computeWordCount (cutoff : int) (words : CloudFlow<string>) : Cloud<WordCount> =
-    words
+let computeWordCount (cutoff : int) (lines : CloudFlow<string>) : Cloud<WordCount> =
+    lines
     |> CloudFlow.collect splitToWords
     |> CloudFlow.map normalize
     |> CloudFlow.filter (not << isNoiseWord)
@@ -71,16 +90,19 @@ let computeWordCount (cutoff : int) (words : CloudFlow<string>) : Cloud<WordCoun
     |> CloudFlow.toArray
 
 
-////////////////////////////////////////////////
-// Test the wordcount sample using textfiles.com
+(**
+
+## Test the wordcount sample using textfiles.com
+
+*)
 
 
 // Step 1. Determine URIs to data inputs from textfiles.com
 let files = TextFiles.crawlForTextFiles() // get text file data from textfiles.com
-let testedFiles = files // |> Seq.take 50 // uncomment if you want to use a smaller subset
+let testedFiles = files // |> Seq.take 50 // uncomment to use a smaller dataset
 
-// Step 2. Download URIs to memory of workers in cluster
-let downloadProc = cluster.CreateProcess(downloadAndCacheTextFiles testedFiles) // download text and load to cluster
+// Step 2. Download URIs to across cluster and load in memory
+let downloadProc = cluster.CreateProcess(downloadAndCacheTextFiles testedFiles)
 
 cluster.ShowWorkers()
 cluster.ShowProcesses()
@@ -88,7 +110,7 @@ cluster.ShowProcesses()
 let persistedFlow = downloadProc.Result // get PersistedCloudFlow
 
 // Step 3. Perform wordcount on downloaded data
-let wordCountProc = cluster.CreateProcess(computeWordCount 100 persistedFlow) // perform the wordcount operation
+let wordCountProc = cluster.CreateProcess(computeWordCount 100 persistedFlow)
 
 cluster.ShowWorkers()
 cluster.ShowProcesses()

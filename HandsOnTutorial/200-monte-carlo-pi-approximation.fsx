@@ -20,19 +20,20 @@ let cluster = Config.GetCluster()
 
 # Monte Carlo Pi Approximation
 
+Implements the classic monte carlo implementation using MBrace.
+Take random points in the [0,1] x [0,1] square and count the occurences within the circle radius.
+The resulting fraction should estimate π / 4.
+
 *)
 
-/// the classic monte carlo implementation
-/// take random points in the [0,1] x [0,1] square
-/// and count the occurences within the circle radius.
-/// The resulting fraction estimates π / 4.
+/// local, single-threaded Pi estimator
 let localMonteCarloPiWorker (iterations : bigint) : bigint =
     let rand = new Random(obj().GetHashCode())
     let maxIter = bigint Int32.MaxValue
     let mutable rem = iterations
     let mutable acc = 0I
     while rem > 0I do
-        // bigints are heap allocated so break iteration into smaller segments that use int
+        // bigints are heap allocated so break iteration into smaller int segments
         let iter = min maxIter rem
         let mutable currAcc = 0
         for i = 1 to int iter do
@@ -56,7 +57,13 @@ let ratioToFloat divident divisor =
 
     aux 0. 0 divident divisor
 
-/// Calculate π
+(**
+
+We are now ready to create the distributed component of our sample:
+
+*)
+
+/// Calculate π using MBrace
 let calculatePi (iterations : bigint) : Cloud<float> = cloud {
     let! workers = Cloud.GetAvailableWorkers()
     let totalCores = workers |> Array.sumBy (fun w -> w.ProcessorCount) |> bigint
@@ -74,7 +81,7 @@ let calculatePi (iterations : bigint) : Cloud<float> = cloud {
         |> CloudFlow.map localMonteCarloPiWorker
         |> CloudFlow.sum
 
-    let ratio = ratioToFloat samples iterations // estimates π / 4
+    let ratio = ratioToFloat samples iterations
     return 4.0 * ratio
 }
 
