@@ -27,7 +27,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# MBrace, CloudFlows and FSharp.Data – data analysis made easy
+# Combining CloudFlows with FSharp.Data
 
 This sample has been taken from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
