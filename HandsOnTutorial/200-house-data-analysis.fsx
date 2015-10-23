@@ -86,7 +86,7 @@ prices
 
 (**
 
-![Charted results](../data/csv-graph.png)
+![Charted results](img/csv-graph.png)
 
 Easy.
 
