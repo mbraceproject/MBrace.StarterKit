@@ -51,14 +51,17 @@ I want to start with something simple – let’s get the average sale price of 
 
 let prices : (int * float) array =
     [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" ]
-    |> CloudFlow.OfHttpFileByLine                                                                    // Stream the HTTP file across the cluster
-    |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)                                             // Convert from raw text to our CSV Provided type
-    |> CloudFlow.groupBy(fun row -> row.DateOfTransfer.Month)                                        // Group by month
-    |> CloudFlow.map(fun (month, rows) -> month, rows |> Seq.averageBy (fun row -> float row.Price)) // Get the average price for each month
+    |> CloudFlow.OfHttpFileByLine
+    |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)
+    |> CloudFlow.groupBy(fun row -> row.DateOfTransfer.Month)
+    |> CloudFlow.map(fun (month, rows) -> month, rows |> Seq.averageBy (fun row -> float row.Price))
     |> CloudFlow.toArray
     |> cluster.Run
 
 (**
+
+The above snippet streams the data source across the cluster, then converts the raw text to our CSV provided type.
+Finally, entries are grouped by month and the average price for each month is computed.
 
 A *CloudFlow* is an MBrace primitive which allows a distributed set of transformations to be chained together, 
 just like you would with the Seq module in F# (or LINQ’s IEnumerable operators for the rest of the .NET world), 
