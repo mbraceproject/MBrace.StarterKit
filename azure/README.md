@@ -9,17 +9,15 @@ You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 
 1. Make a copy of the `CustomCloudService` directory.
 
-2. Create an Azure account using the [Azure management portal](https://manage.windowsazure.com/).
-
-3. Using the Azure management portal:
+2. Using the Azure management portal:
 
    * Create a storage account. Use any name (e.g. `mbrace10storage`).  Note the name and the primary access key.
 
    * Create a service bus account. Use any name (e.g. `mbrace10bus`). Note the `RootManageSharedAccessKey` connection string in the connection information.
 
-4. Insert these names and keys into the `ServiceConfiguration.Cloud.cscfg` file.
+3. Insert these names and keys into the `ServiceConfiguration.Cloud.cscfg` file.
 
-5. Right click and Publish the `MBrace.Azure.CloudService` project.  During publication, choose a new name for your cloud service. 
+4. Right click and Publish the `MBrace.Azure.CloudService` project.  During publication, choose a new name for your cloud service. 
 
 
 After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
