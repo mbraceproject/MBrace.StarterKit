@@ -27,6 +27,31 @@ After your service is published it should appear as a cloud service in the [Azur
 If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
 to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
 
+## Cluster Customization
+
+During configuration (and prior to deployment) you may want to:
+
+* adjust the size of VM used for worker instances in your cluster; or
+
+* add endpoints to your cloud service (so your MBrace cluster can publish 
+  TCP and HTTP endpoints, either public or to your virtual network, 
+  for example, you want your MBrace cluster to publish a web server); or
+
+* enable Remote Access to MBrace cluster worker instances; or
+
+* specify the size of local storage available on MBrace cluster worker instances; or
+
+* upload certificates as part of your provisioning process; or
+
+* specify Azure-specific local caching options; or
+
+* include additional web and worker roles in your cloud service; or
+
+* compile and deploy your own version of the MBrace cluster worker instance software. 
+
+In order to provision explicitly, as a prerequisite you need 
+to have an Azure account, basic knowledge of the Azure computing and
+an editing environment supporting F#.
 
 ### Creating custom MBrace Worker Roles with Python installed
 
@@ -111,6 +136,7 @@ First, you need to setup the connection strings for the service bus that you jus
 Then, you can follow the usual worker role publishing steps to publish the MBrace cluster. If you enable remote desktop on the worker roles, after they are published, you can login to those machines to verify that Python has been installed.
 
 ### Using Mbrace client to connect to the custom MBrace cluster
+
 Now, you can now go to the 200-launching-python tutorial in the HandsOnTutorial, and see how to use the newly built custom provision.
 
 ### Example startup PowerShell script to intall Java

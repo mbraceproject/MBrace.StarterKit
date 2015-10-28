@@ -20,6 +20,7 @@ open Newtonsoft.Json
 In this tutorial, you use the custom provision MBrace cluster to run a task that replies on Python code.
 
 This tutorial preforms the following scenerio:
+
 1. Use F# code to download a web page.
 2. Pass the content of the web page to a Python script via standard input. The Python script extracts and returns all the hyperlinks from the web page.
 3. Return all the extracted hyperlinks.
