@@ -71,9 +71,9 @@ The demo code to create a custom MBrace cluster is located at the `ProvisionWith
 
 1. The MBrace cluster is implemented as an Azure worker role. A worker role can be configured to launch a startup script when it is initialized.  I follow the steps [here](http://blogs.msdn.com/b/cclayton/archive/2012/05/17/windows-azure-start-up-tasks-part-1.aspx) to enable the startup script:
 
-    1.1. Add a `startup.md` script in the `MBraceAzureRole` project. In the Properties panel of this file, set `Build Action` to `Content` and and `Copy to Output Directory` to `Always Copy`.
+   1.1. Add a `startup.md` script in the `MBraceAzureRole` project. In the Properties panel of this file, set `Build Action` to `Content` and and `Copy to Output Directory` to `Always Copy`.
     
-    1.2. In the file `MBraceAzureService.ServiceDefinition.csdef`, add the following section after the `<ConfigurationSettings>` section:
+   1.2. In the file `MBraceAzureService.ServiceDefinition.csdef`, add the following section after the `<ConfigurationSettings>` section:
     ```
     <Startup>
         <Task commandLine="startup.cmd" executionContext="elevated" taskType="simple"></Task>
@@ -81,15 +81,15 @@ The demo code to create a custom MBrace cluster is located at the `ProvisionWith
     ```
     This XML section registers the startup.md file in the worker role initialization process.
     
-    1.3. Add the following line to `startup.md`
-    ```
-    PowerShell -ExecutionPolicy Unrestricted .\startup.ps1
-    ```
-    This line launches a PowerShell script `startup.ps1` (to be added as well). This is needed because third-party software installation is much easier to do in PowerShell script but the format of startup.md is Windows batch. Some tips in using PowerShell in Azure worker role startup script are [here](https://msdn.microsoft.com/en-us/library/azure/jj130675.aspx).
+   1.3. Add the following line to `startup.md`
+   ```
+   PowerShell -ExecutionPolicy Unrestricted .\startup.ps1
+   ```
+   This line launches a PowerShell script `startup.ps1` (to be added as well). This is needed because third-party software installation is much easier to do in PowerShell script but the format of startup.md is Windows batch. Some tips in using PowerShell in Azure worker role startup script are [here](https://msdn.microsoft.com/en-us/library/azure/jj130675.aspx).
     
-    1.4 Add a new script `startup.ps1` in the `MBraceAzureRole`, and set `Build Action` to `Content` and and `Copy to Output Directory` to `Always Copy`.
+   1.4 Add a new script `startup.ps1` in the `MBraceAzureRole`, and set `Build Action` to `Content` and and `Copy to Output Directory` to `Always Copy`.
     
-    1.5 In the `startup.ps1` file, add the following PowerShell code to install Python and setup the beautifulsoup package:
+   1.5 In the `startup.ps1` file, add the following PowerShell code to install Python and setup the beautifulsoup package:
     ```
     # Download Python installer
 echo "Downloading python."
@@ -119,10 +119,10 @@ echo "Installing beautifulsoup4."
 pip install beautifulsoup4
 
 echo "Done."
-    ```
+   ```
     
 
-    1.6 Enable the permission to launch processes by adding the line with the Runtime tag in the worker role's csdef file, under the WorkerRole section:
+   1.6 Enable the permission to launch processes by adding the line with the Runtime tag in the worker role's csdef file, under the WorkerRole section:
     ```
     <WorkerRole name="MBrace.Azure.WorkerRole" vmsize="Large">
             <Runtime executionContext ="elevated" />
