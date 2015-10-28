@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Monte Carlo Pi Approximation
+# Example: Monte Carlo Pi Approximation
 
 *)
 

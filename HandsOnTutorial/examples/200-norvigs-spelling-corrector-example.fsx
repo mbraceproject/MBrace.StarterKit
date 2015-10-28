@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -23,7 +23,7 @@ information from a body of text, and the statistical summary is used locally in 
  
 ## Part 1 - Extract Statistics in the Cloud 
 *)
-#load "lib/collections.fsx"
+#load "../lib/collections.fsx"
 
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 

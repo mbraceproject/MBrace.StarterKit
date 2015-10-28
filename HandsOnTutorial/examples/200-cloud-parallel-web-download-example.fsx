@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -31,7 +31,7 @@ let urls =
        ("google", "http://google.com")
        ("msn", "http://msn.com") |]
 
-/// Cloud workflow to download a file and wave it into cloud storage
+(** Next define a cloud workflow to download a file and wave it into cloud storage. *)
 let download (name: string, uri: string) = 
     cloud {
         let webClient = new WebClient()

@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 #r "System.Runtime.Serialization.dll"
 

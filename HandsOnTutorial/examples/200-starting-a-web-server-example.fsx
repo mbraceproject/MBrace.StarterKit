@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
 //#load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+#load "../AzureCluster.fsx"
 
 open System
 open System.IO
@@ -8,14 +8,14 @@ open MBrace.Core
 open MBrace.Flow
 
 (**
-# Starting a Web Server in your Cluster
+# Example: Starting a Web Server in your Cluster
 
 This tutorial illustrates creating a cloud process which 
 acts as a web server to monitor and control the cluster.
 *)
 
-#load "lib/webserver.fsx"
-#load "lib/sieve.fsx"
+#load "../lib/webserver.fsx"
+#load "../lib/sieve.fsx"
 
 open Suave
 open Suave.Types
@@ -71,13 +71,14 @@ It uses cluster.GetLogs to access information from the cluster.
 *)
 let getLogsRequest ctxt = 
     async {
-//            let logs = cluster.GetSystemLogs()
+            let cluster = getCluster()
+            let logs = cluster.GetSystemLogs()
             let msg = 
               [ yield "<html>"
                 yield Angular.header
                 yield "<body>"
-//                yield! logs |> Angular.table ["Time";"Message"] (fun w -> 
-//                    [ sprintf "%A" w.Time; w.Message ])
+                yield! logs |> Angular.table ["Time";"Message"] (fun w -> 
+                    [ sprintf "%A" w.DateTime; w.Message ])
                 yield "</body>"
                 yield "</html>" ]
               |> String.concat "\n"
@@ -187,4 +188,4 @@ serverJob.ShowLogs()
 // serverJob.Cancel()
 
 (** Use this to wait for the web server to exit after cancellation: *)
-// serverJob.Resut
+// serverJob.Result

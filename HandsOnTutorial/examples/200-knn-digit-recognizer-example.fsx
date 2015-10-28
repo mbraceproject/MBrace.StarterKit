@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -34,8 +34,10 @@ let pixelLength = 784 // 28 * 28
 type ImageId = int
 
 /// Image bitmap representation
-type Image = { Id : ImageId ; Pixels : int [] }
-with
+type Image = 
+    { Id : ImageId 
+      Pixels : int [] }
+
     /// Parses a set of points from text using the Kaggle digit recognizer CSV format
     static member Parse (file : string) : Image [] =
         File.ReadAllLines(file)
@@ -53,8 +55,10 @@ type Classification = int
 type Distance = Image -> Image -> uint64
 
 /// A training image annotaded by its classification
-type TrainingImage = { Classification : Classification ; Image : Image }
-with
+type TrainingImage = 
+    { Classification : Classification 
+      Image : Image }
+
     /// Parses a training set from text using the Kaggle digit recognizer CSV format
     static member Parse(file : string) : TrainingImage [] =
         File.ReadAllLines(file)
@@ -119,8 +123,8 @@ let validateLocalMulticore (classifier : Classifier) (training : TrainingImage [
 ////////////////////
 // Run the examples
 
-let trainPath = __SOURCE_DIRECTORY__ + "/../data/train.csv"
-let testPath = __SOURCE_DIRECTORY__ + "/../data/test.csv"
+let trainPath = __SOURCE_DIRECTORY__ + "/../../data/train.csv"
+let testPath = __SOURCE_DIRECTORY__ + "/../../data/test.csv"
 
 // parse data
 let training = TrainingImage.Parse trainPath
@@ -163,3 +167,4 @@ let classifyProc = cloud { return! classifyCloud classifier training tests } |> 
 
 cluster.ShowWorkers()
 cluster.ShowProcesses()
+

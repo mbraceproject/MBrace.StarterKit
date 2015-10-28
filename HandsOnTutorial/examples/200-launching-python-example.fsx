@@ -1,5 +1,5 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
+#load "../ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -15,7 +15,7 @@ open MBrace.Flow
 open Newtonsoft.Json
 
 (**
-# Using custom provision of MBrace cluster
+# Example: Using custom provision of an MBrace cluster and running Python on the cluster
 
 In this tutorial, you use the custom provision MBrace cluster to run a task that replies on Python code.
 
@@ -62,18 +62,15 @@ let job (url: string, pythonCode: string) =
         // Download the web page.
         let content = (new WebClient()).DownloadString(url)
         
-        // Create a temp file for the Python code.
+        // Create a local temp file on the client for the Python code.
         let pythonFile = Path.GetTempFileName()
         File.WriteAllText(pythonFile, pythonCode)
 
         // Launch the Python interpreter to extract hyperlinks.
-        let prcInfo = ProcessStartInfo("c:\\Python27\\python.exe", pythonFile)
-        prcInfo.UseShellExecute <- false
-        prcInfo.RedirectStandardInput <- true
-        prcInfo.RedirectStandardOutput <- true
+        let prcInfo = ProcessStartInfo("c:\\Python27\\python.exe", pythonFile, UseShellExecute=false, 
+                                       RedirectStandardInput=true, RedirectStandardOutput=true)
 
-        let prc = new Process()
-        prc.StartInfo <- prcInfo
+        let prc = new Process(StartInfo=prcInfo)
         prc.Start() |> ignore
         prc.StandardInput.Write(content)
         prc.StandardInput.Close()
