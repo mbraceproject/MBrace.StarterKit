@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
 
 # Using Cloud Values 
 
-You now learn how to upload data to Azure Blob Storage using CloudValue and
+You now learn how to upload data to cloud storage using CloudValue and
 then process it using MBrace cloud tasks.
 
 When using MBrace, data is implicitly uploaded if it is
@@ -28,20 +28,19 @@ process specification.  This is often the most convenient way to get
 small amounts (KB-MB) of data to the cloud: just use the data as part
 of a cloud workflow and run that work in the cloud.
 
-If you wish to _persist_ data in the cloud - for example, if it is too big
+If you wish to persist data in the cloud - for example, if it is too big
 to upload multiple times - then you can use one or more of the
 cloud data constructs that MBrace provides. 
  
 Note you can alternatively use any existing cloud storage 
-APIs or SDKs you already have access to. For example, if you wish you 
-can read/write using the .NET Azure storage SDKs directly rather than 
-using MBrace primitives.
+APIs or SDKs you already have access to. 
  
-You can copy larger data to Azure using the AzCopy.exe command line tool, see
-https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/
- 
+If using Azure, you can copy larger data to Azure using the AzCopy.exe command line tool, see
+https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/.
 You can manage storage using the "azure" command line tool, see
 https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
+Also, if you wish you  can read/write using the .NET Azure storage SDKs directly rather than 
+using MBrace primitives.
 
 *)
  
@@ -59,8 +58,8 @@ let persistedCloudData =
 
 (** Run a cloud job which reads the blob and processes the data *)
 let lengthOfData = 
-    cloud { let! data = CloudValue.Read persistedCloudData 
-            return data.Length }
+    cloud { let readData = persistedCloudData.Value
+            return readData.Length }
     |> cluster.Run
 
 (** 
@@ -72,4 +71,5 @@ Continue with further samples to learn more about the MBrace programming model.
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
 > by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
- *)
+
+*)

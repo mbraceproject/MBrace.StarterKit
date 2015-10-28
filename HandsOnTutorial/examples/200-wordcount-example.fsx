@@ -35,14 +35,14 @@ type WordFrequency = string * int64
 type WordCount = WordFrequency []
 
 // Regex word tokenizer
-let private wordRegex = new Regex(@"[\W]+", RegexOptions.Compiled)
+let wordRegex = new Regex(@"[\W]+", RegexOptions.Compiled)
 let splitToWords (line : string) = wordRegex.Split line
 
 /// normalize word
 let normalize (word : string) = word.Trim().ToLower()
 
 /// words ignored by wordcount
-let private noiseWords =
+let noiseWords =
     hashSet [  
         "about"; "above"; "along"; "also"; "although"; "aren't"; "because"; "been";
         "cannot"; "could"; "couldn't"; "didn't"; "does"; "doesn't"; "e.g.";
@@ -103,17 +103,22 @@ let files = TextFiles.crawlForTextFiles() // get text file data from textfiles.c
 let testedFiles = files // |> Seq.take 50 // uncomment to use a smaller dataset
 
 // Step 2. Download URIs to across cluster and load in memory
-let downloadProc = cluster.CreateProcess(downloadAndCacheTextFiles testedFiles)
+let downloadTask = 
+    downloadAndCacheTextFiles testedFiles
+    |> cluster.CreateProcess
 
 cluster.ShowWorkers()
 cluster.ShowProcesses()
 
-let persistedFlow = downloadProc.Result // get PersistedCloudFlow
+let persistedFlow = downloadTask.Result // get PersistedCloudFlow
 
 // Step 3. Perform wordcount on downloaded data
-let wordCountProc = cluster.CreateProcess(computeWordCount 100 persistedFlow)
+let wordCountTask = 
+    computeWordCount 100 persistedFlow 
+    |> cluster.CreateProcess
 
 cluster.ShowWorkers()
 cluster.ShowProcesses()
 
-wordCountProc.Result
+wordCountTask.Result
+

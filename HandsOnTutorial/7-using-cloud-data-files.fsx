@@ -72,7 +72,7 @@ You now use these functions to create directories and files:
 mkdir (root ++ "data")
 
 write (root ++ "data" ++ "humpty.txt") "All the king's horses and all the king's men"
-write (root ++ "data" ++ "spider.txt") "Incy wincy spider climed up the water spout"
+writeLines (root ++ "data" ++ "spider.txt") [ for i in 0 .. 1000 -> "Incy wincy spider climed up the water spout" ]
 
 ls (root ++ "data")
 
