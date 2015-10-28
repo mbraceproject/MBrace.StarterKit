@@ -17,7 +17,7 @@ let cluster = Config.GetCluster()
 
 
 (**
-# Using Data Parallel Cloud Flows
+# Introduction to Data Parallel Cloud Flows
 
 You now learn the CloudFlow programming model, for cloud-scheduled
 parallel data flow tasks.  This model is similar to Hadoop and Spark.

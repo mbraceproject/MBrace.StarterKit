@@ -14,7 +14,7 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 (**
-# Simple Cloud Parallelism 
+# Introduction to Cloud Combinators
 
 You now perform a very simple parallel distributed job on your MBrace cluster.
 
