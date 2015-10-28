@@ -1,8 +1,8 @@
 ﻿(*** hide ***)
-#I "../packages/MBrace.Thespian/tools/"
+#I "../../packages/MBrace.Thespian/tools/"
 #r "MBrace.Core.dll"
 #r "MBrace.Runtime.dll"
-#r "../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
 open MBrace.Core
 open MBrace.Core.BuilderAsyncExtensions

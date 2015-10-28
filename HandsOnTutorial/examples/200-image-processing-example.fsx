@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -14,7 +14,7 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 (**
-# Using MBrace for image processing
+# Example: Using MBrace for image processing
 
 In this tutorial, you use the AForge (you can install AForge from Nuget) to turn color images into gray ones by applying a gray filter.
 
@@ -56,17 +56,23 @@ let GrayImageFromWeb (url : string) file =
     }
 
 
-(** Last, you perform parallel downloading and image processing in MBrace cluster. *)
+(** Last, you perform parallel downloading and image processing in the MBrace cluster. *)
 let urls = [|
     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Tigress_at_Jim_Corbett_National_Park.jpg/330px-Tigress_at_Jim_Corbett_National_Park.jpg";
     "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Poligraf_Poligrafovich.JPG/800px-Poligraf_Poligrafovich.JPG" |]
 
 let tasks = 
-    [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath))) |] 
-    |> Cloud.Parallel
-    |> cluster.Run
+    [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath)))  |> cluster.CreateProcess |] 
+   
+
+let results = 
+    [| for t in tasks -> t.Result |]
 
 
 (** 
 In this tutorial, you've learned how to use the AForge image processing library to turn color images to gray ones in MBrace.
+Continue with further samples to learn more about the MBrace programming model.  
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
 *)

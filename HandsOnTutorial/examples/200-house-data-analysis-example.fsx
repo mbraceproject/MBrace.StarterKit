@@ -1,12 +1,12 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
 
-#r "../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
+#r "../../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
 
-#I "../packages/Google.DataTable.Net.Wrapper/lib"
-#I "../packages/XPlot.GoogleCharts/lib/net45"
-#I "../packages/XPlot.GoogleCharts.WPF/lib/net45"
+#I "../../packages/Google.DataTable.Net.Wrapper/lib"
+#I "../../packages/XPlot.GoogleCharts/lib/net45"
+#I "../../packages/XPlot.GoogleCharts.WPF/lib/net45"
 #r "XPlot.GoogleCharts.dll"
 #r "XPlot.GoogleCharts.WPF.dll"
 
@@ -39,7 +39,7 @@ I’m also using a local version of the CSV file which contains a subset of the 
 
 *)
 
-type HousePrices = CsvProvider< @"../data/SampleHousePrices.csv", HasHeaders = true>
+type HousePrices = CsvProvider< @"../../data/SampleHousePrices.csv", HasHeaders = true>
 
 (**
 

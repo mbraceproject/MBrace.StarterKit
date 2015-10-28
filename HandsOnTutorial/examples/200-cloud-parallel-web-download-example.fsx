@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -10,8 +10,6 @@ open System.IO
 open MBrace.Core
 open MBrace.Flow
 
-// Initialize client object to an MBrace cluster
-let cluster = Config.GetCluster() 
 
 
 (**
@@ -24,13 +22,16 @@ This example illustrates doing I/O tasks in parallel using the workers in the cl
 // Cloud parallel url-downloader
 open System.Net
 
+let cluster = Config.GetCluster() 
+let fs = cluster.Store.CloudFileSystem
+
 let urls = 
     [| ("bing", "http://bing.com")
        ("yahoo", "http://yahoo.com")
        ("google", "http://google.com")
        ("msn", "http://msn.com") |]
 
-/// Cloud workflow to download a file and wave it into cloud storage
+(** Next define a cloud workflow to download a file and wave it into cloud storage. *)
 let download (name: string, uri: string) = 
     cloud {
         let webClient = new WebClient()
@@ -56,7 +57,7 @@ let files = filesTask.Result
 let contentsOfFiles = 
     files
     |> Array.map (fun file ->
-        cloud { let! text = CloudFile.ReadAllText(file.Path)
+        cloud { let text = fs.File.ReadAllText(file.Path)
                 return (file.Path, text.Length) })
     |> Cloud.Parallel
     |> cluster.Run

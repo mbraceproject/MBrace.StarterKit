@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -16,12 +16,10 @@ open MBrace.Flow
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
 
-#load "lib/utils.fsx"
-#load "lib/textfiles.fsx"
 
 (**
 
-# Simple WordCount
+# Example: Cloud-distributed WordCount
 
 This sample implements the classic word count example commonly associated with distributed Map/Reduce frameworks.
 We use CloudFlow for the implementation and [textfiles.com](http://www.textfiles.com) as our data source.
@@ -29,6 +27,9 @@ We use CloudFlow for the implementation and [textfiles.com](http://www.textfiles
 First, some basic type definitions
 
 *)
+
+#load "../lib/utils.fsx"
+#load "../lib/textfiles.fsx"
 
 type WordFrequency = string * int64
 type WordCount = WordFrequency []

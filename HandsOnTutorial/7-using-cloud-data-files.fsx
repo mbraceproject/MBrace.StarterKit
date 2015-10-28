@@ -26,42 +26,42 @@ from your F# client script. (Using these is optional: you can also use the MBrac
 
 *)
 
-let fileSystem = cluster.Store.CloudFileSystem
+let fs = cluster.Store.CloudFileSystem
 
-let root = fileSystem.Path.DefaultDirectory
+let root = fs.Path.DefaultDirectory
 
-let (++) path1 path2 = fileSystem.Path.Combine(path1, path2)
+let (++) path1 path2 = fs.Path.Combine(path1, path2)
 
-let ls path = fileSystem.File.Enumerate(path)
+let ls path = fs.File.Enumerate(path)
 
 let rec lsRec path = 
-    seq { yield! fileSystem.File.Enumerate(path)
-          for d in fileSystem.Directory.Enumerate(path) do 
+    seq { yield! fs.File.Enumerate(path)
+          for d in fs.Directory.Enumerate(path) do 
               yield! lsRec path }
 
-let mkdir path = fileSystem.Directory.Create(path)
+let mkdir path = fs.Directory.Create(path)
 
-let rmdir path = fileSystem.Directory.Delete(path)
+let rmdir path = fs.Directory.Delete(path)
 
-let rmdirRec path = fileSystem.Directory.Delete(path,recursiveDelete=true)
+let rmdirRec path = fs.Directory.Delete(path,recursiveDelete=true)
 
-let randdir() = fileSystem.Path.GetRandomDirectoryName()
+let randdir() = fs.Path.GetRandomDirectoryName()
 
-let randfile() = fileSystem.Path.GetRandomFilePath()
+let randfile() = fs.Path.GetRandomFilePath()
 
-let rm path = fileSystem.File.Delete path
+let rm path = fs.File.Delete path
 
-let cat path = fileSystem.File.ReadAllText path
+let cat path = fs.File.ReadAllText path
 
-let catLines path = fileSystem.File.ReadAllLines path
+let catLines path = fs.File.ReadAllLines path
 
-let catBytes path = fileSystem.File.ReadAllBytes path
+let catBytes path = fs.File.ReadAllBytes path
 
-let write path text = fileSystem.File.WriteAllText(path, text)
+let write path text = fs.File.WriteAllText(path, text)
 
-let writeLines path lines = fileSystem.File.WriteAllLines(path, lines)
+let writeLines path lines = fs.File.WriteAllLines(path, lines)
 
-let writeBytes path bytes = fileSystem.File.WriteAllBytes(path, bytes)
+let writeBytes path bytes = fs.File.WriteAllBytes(path, bytes)
 
 
 (**
@@ -93,7 +93,7 @@ You can also use the MBrace cloud file API directly from cloud workflows.
 
 First, crete a local temp file. 
 *)
-let tmpFile = 
+let localTmpFile = 
     let path = Path.GetTempFileName()
     let lines = 
         [ for i in 1 .. 1000 do 
@@ -104,21 +104,16 @@ let tmpFile =
     path
 
 (** Next, you upload the created file to the tmp container in cloud storage. The tmp container
-will be created if it does not exist. Note the use of the local {...} expression and the cluster.RunLocally method:  
-the uploading has to be run locally because it accesses a local path. *)
-let cFile = 
-    local {
-        return! CloudFile.Upload(tmpFile, sprintf "tmp/%s" (Path.GetFileName tmpFile))     
-    }    
-    |> cluster.RunLocally
+will be created if it does not exist.  *)
+let cloudFile = fs.File.Upload(localTmpFile, sprintf "tmp/%s" (Path.GetFileName localTmpFile))     
 
 (** After uploading the file, you remove the local file. *)
-File.Delete tmpFile
+File.Delete localTmpFile
 
 (** Now process the file in the MBrace cluster. This cloud expression runs in the MBrace cluster. *)
 let lines = 
     cloud {
-        let! lines = CloudFile.ReadAllLines cFile.Path
+        let lines = fs.File.ReadAllLines cloudFile.Path
         let users = [ for line in lines -> line.Split(' ').[1] ]
         return users |> Seq.distinct |> Seq.toList
     } 
@@ -144,7 +139,7 @@ let cloudFiles =
                     "file " + string i + ", item " + string (i*100+j) + ", " + string (j+i*100) ] 
             let nm = dataDir + "/file" + string i
             do! CloudFile.Delete(nm)
-            let! file = CloudFile.WriteAllLines(nm, lines)
+            let file = fs.File.WriteAllLines(nm, lines)
             return file.Path
         } ]
    |> Cloud.Parallel 

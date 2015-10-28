@@ -1,7 +1,7 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
-#r "../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
+#r "../../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
 
 open System
 open System.IO
@@ -22,7 +22,7 @@ type StockInfo = {
 
 // Setup CSV type provider.
 [<Literal>]
-let stockDataPath = __SOURCE_DIRECTORY__ + "/../data/stock-data.csv"
+let stockDataPath = __SOURCE_DIRECTORY__ + "/../../data/stock-data.csv"
 type Stocks = CsvProvider<stockDataPath>
 
 // The following lines read data from Azure blog storage.

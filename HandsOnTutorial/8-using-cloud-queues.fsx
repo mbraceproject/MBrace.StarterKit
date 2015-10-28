@@ -69,7 +69,7 @@ let outputQueue = CloudQueue.New<int64>() |> cluster.Run
 
 let processingFlow = 
     CloudFlow.OfCloudQueue(requestQueue, 4)
-    |> CloudFlow.map (fun msg -> Array.sum (Array.map int64 (Sieve.getPrimes msg)))
+    |> CloudFlow.map (fun msg -> Sieve.getPrimes msg |> Array.map int64 |> Array.sum)
     |> CloudFlow.toCloudQueue outputQueue
     |> cluster.CreateProcess
 

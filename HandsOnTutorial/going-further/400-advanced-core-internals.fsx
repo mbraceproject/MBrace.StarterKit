@@ -1,4 +1,4 @@
-﻿#r "../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
+﻿#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
 
 open MBrace.Core
 

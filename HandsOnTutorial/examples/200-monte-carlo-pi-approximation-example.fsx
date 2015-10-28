@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Monte Carlo Pi Approximation
+# Example: Monte Carlo Pi Approximation
 
 Implements the classic monte carlo implementation using MBrace.
 Take random points in the [0,1] x [0,1] square and count the occurences within the circle radius.
