@@ -1,43 +1,44 @@
 # MBrace on Azure
 
-## Provisioning Your Cluster
+## Provisioning Your MBrace Cluster in Azure
 
-An MBrace cluster can be provisioned on Azure using the following methods:
+An MBrace cluster is provisioned on Azure by deploying an Azure Cloud Service with MBrace Worker Roles.
+The directory contains template solutions for this.
 
-### Use Brisk by Elastacloud
+You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 
-Go to http://www.briskengine.com/ and follow the on-screen instructions.
-A detailed tutorial can be found [here](https://github.com/mbraceproject/MBrace.StarterKits/blob/master/azure/brisk-tutorial.md).
+1. Make a copy of the `CustomCloudService` directory.
 
-### Creating a Custom Azure Cloud Service with MBrace Worker Roles
+2. Create an Azure account using the [Azure management portal](https://manage.windowsazure.com/).
 
-The directory contains a collection of solutions for provisioning custom MBrace cloud services on Azure.
+3. Using the Azure management portal:
 
-1. Clone this repo.
-2. You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/) for the WorkerRole projects.
-3. Depending on your Visual Studio/F# installation, select an appropriate solution from the azure folder.
-4. Insert your Service Bus and Azure Storage connection strings in the `ServiceConfiguration.Cloud.cscfg` file.
-5. In the `MBrace.Azure.CloudService/Roles` subfolder, right click on `MBrace.Azure.WorkerRole` and go to properties to 
-   set the desired instance count and [worker size](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/). 
-6. Build your solution.
-7. Right click and Publish the MBraceAzureService project.
-8. If using the hands-on tutorials, insert the same connection 
-   strings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
-   to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
+   * Create a storage account. Use any name (e.g. `mbrace10storage`).  Note the name and the primary access key.
+
+   * Create a service bus account. Use any name (e.g. `mbrace10bus`). Note the `RootManageSharedAccessKey` connection string in the connection information.
+
+4. Insert these names and keys into the `ServiceConfiguration.Cloud.cscfg` file.
+
+5. Right click and Publish the `MBrace.Azure.CloudService` project.  During publication, choose a new name for your cloud service. 
+
+
+After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
+
+If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
+to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
 
 
 ### Creating custom MBrace Worker Roles with Python installed
-Sometimes, you want to customize the MBrace cluster. For example, you have a machine learning algorithm written in Python and you want to use MBrace to launch it. So you  need to have the Python interpreter and all the dependant Python packages pre-installed in the MBrace cluster.
+
+Sometimes, you want to customize the MBrace cluster with extra software installed on all workers. 
+For example, you have a machine learning algorithm written in Python and you want to use MBrace to launch it. So you  need to have the Python interpreter and all the dependant Python packages pre-installed in the MBrace cluster.
 
 This section describes how to create a MBrace cluster with third-party software installation, and use it from the Mbrace client. The task at hand is:
 
 1. Create a Service Bus. 
 2. Create a custom MBrace cluster with Python installed and with the beautifulsoup4 package setup. 
 3. Publish the custom MBrace cluster.
-4. Use Mbrace client to connect to the custom MBrace cluster. 
-
-### Creating a Service Bus
-You can create a service bus from Azure web portal.  After creating the service bus, create a queue and a topic. You can choose any name for the server bus, the queue and the topic
+4. Use MBrace client to connect to the custom MBrace cluster. 
 
 #### Creating a custom MBrace cluster with Python installed
 

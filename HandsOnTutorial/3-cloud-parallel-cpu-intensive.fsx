@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
 #load "lib/sieve.fsx"
 
 (**
-# Using MBrace.Azure for CPU-intensive work
+# Introduction to CPU-intensive Cloud Parallelism
 
 In this tutorial you learn how to perform CPU-intensive cloud-parallel workload on your MBrace cluster.
 The work will be computing prime numbers, though you can easily replace this with any code

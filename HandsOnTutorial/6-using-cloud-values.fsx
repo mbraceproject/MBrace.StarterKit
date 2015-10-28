@@ -14,7 +14,7 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 (**
-# Creating and Using Cloud Values and Cloud Sequences
+# Creating and Using Cloud Values 
 
 # Using Cloud Values 
 
