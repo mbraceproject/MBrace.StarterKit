@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
 #load "../ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -21,7 +21,7 @@ let cluster = Config.GetCluster()
   
 **)
 
-#load "../lib/collections.fsx"
+#load "../lib/utils.fsx"
 #load "../lib/mersenne.fsx"
 
 /// Distributed tryFind combinator with multicore balancing.

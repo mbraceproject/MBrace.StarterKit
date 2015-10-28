@@ -5,7 +5,7 @@ nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget MBrace.Thespian
 nuget MBrace.Runtime prerelease
-nuget MBrace.Azure 0.14.0-beta
+nuget MBrace.Azure 0.16.0-beta
 nuget Streams
 nuget Suave
 nuget AForge
@@ -14,3 +14,6 @@ nuget AForge.Math
 nuget MathNet.Numerics ~> 3.7.0
 nuget MathNet.Numerics.FSharp
 nuget MathNet.Numerics.MKL.Win-x64 ~> 1.8.0
+nuget FSharp.Data ~> 2.0
+nuget XPlot.GoogleCharts ~> 1.2
+nuget XPlot.GoogleCharts.WPF

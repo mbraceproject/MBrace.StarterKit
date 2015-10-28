@@ -14,7 +14,7 @@ open MBrace.Flow
 let cluster = Config.GetCluster() 
 
 
-#load "lib/collections.fsx"
+#load "lib/utils.fsx"
 #load "lib/sieve.fsx"
 
 (**

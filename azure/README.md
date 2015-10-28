@@ -96,6 +96,13 @@ echo "Done."
     ```
     
 
+    1.6 Enable the permission to launch processes by adding the line with the Runtime tag in the worker role's csdef file, under the WorkerRole section:
+    ```
+    <WorkerRole name="MBrace.Azure.WorkerRole" vmsize="Large">
+            <Runtime executionContext ="elevated" />
+            ...
+    ```
+    
 ### Publishing the MBrace cluster
 
 First, you need to setup the connection strings for the service bus that you just created and for your storage account. To do this, right click the `MBraceAzureService.Roles.MBraceAzureRole` item and click Properties on the context menu. In the Setup page, go to Settings and put the connection strings into: `MBrace.ServiceBusConnectionString` and `MBrace.StorageConnectionString`. 

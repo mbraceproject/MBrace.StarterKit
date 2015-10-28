@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
 #load "../ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "../AzureCluster.fsx"
 
 open System
 open System.IO
@@ -18,7 +18,7 @@ let cluster = Config.GetCluster()
 
 *)
 
-#load "../lib/collections.fsx"
+#load "../lib/utils.fsx"
 #load "../lib/sieve.fsx"
 
 let getThread () = System.Threading.Thread.CurrentThread.ManagedThreadId
