@@ -156,7 +156,7 @@ let endPointNames =
     |> cluster.Run
 
 (**
-By default, MBrace.Azure clusters created using Brisk engine on Azure allow us to bind to 
+By default, MBrace.Azure clusters created using the Azure CustomCloudService allow us to bind to 
 
 * HTTP endpoint 'DefaultHttpEndpoint'
 * HTTP endpoint 'MBraceStats'

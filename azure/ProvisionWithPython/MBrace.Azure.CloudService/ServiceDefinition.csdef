@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="MBraceAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
-  <WorkerRole name="MBrace.Azure.WorkerRole" vmsize="Large">
-    <Runtime executionContext ="elevated" />
-    <LocalResources>
-      <LocalStorage name="LocalMBraceCache" cleanOnRoleRecycle="true" sizeInMB="409600" />
-    </LocalResources>
-    <ConfigurationSettings>
-      <Setting name="MBrace.StorageConnectionString" />
-      <Setting name="MBrace.ServiceBusConnectionString" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
-    </ConfigurationSettings>
-    <Startup>
-      <Task commandLine="startup.cmd" executionContext="elevated" taskType="simple">
-      </Task>
-    </Startup>
-  </WorkerRole>
+	<WorkerRole name="MBrace.Azure.WorkerRole" vmsize="Large">
+		<Runtime executionContext ="elevated" />
+		<LocalResources>
+			<LocalStorage name="LocalMBraceCache" cleanOnRoleRecycle="true" sizeInMB="409600" />
+		</LocalResources>
+		<ConfigurationSettings>
+			<Setting name="MBrace.StorageConnectionString" />
+			<Setting name="MBrace.ServiceBusConnectionString" />
+			<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+		</ConfigurationSettings>
+		<Startup>
+			<Task commandLine="startup.cmd" executionContext="elevated" taskType="simple">
+			</Task>
+		</Startup>
+		<Endpoints>
+			<InputEndpoint name="DefaultHttpEndpoint" protocol="http" port="80" />
+			<InputEndpoint name="MBraceStats" protocol="http" port="8083" />
+			<InputEndpoint name="DefaultTcpEndpoint" protocol="tcp" port="10100" />
+			<!-- <InputEndpoint name="DefaultHttpsEndpoint" protocol="https" port="443" certificate="SSL"/> -->
+			<!-- <InputEndpoint name="DefaultNetTcpEndpoint" protocol="tcp" port="808" certificate="SSL"/> -->
+		</Endpoints>
+	</WorkerRole>
 </ServiceDefinition>
