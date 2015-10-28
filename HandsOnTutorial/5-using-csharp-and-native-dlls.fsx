@@ -47,7 +47,7 @@ let check = (matrix1 * matrix1.Inverse()).Determinant()
 
 Next, run the code on MBrace. Note that the DLLs from the packages are uploaded automatically. 
 
-The following nverts 100 150x150 matrices using C# code on the cluster. 
+The following inverts 100 150x150 matrices using C# code on the cluster. 
 
 *) 
 let csharpMathJob = 
@@ -63,7 +63,7 @@ let csharpMathJob =
 csharpMathJob.ShowInfo()
 
 
-// Await the result, we expect ~100.0
+// Await the result, we expect an array of numbers very close to 1.0
 let csharpMathResults = csharpMathJob.Result
 
 

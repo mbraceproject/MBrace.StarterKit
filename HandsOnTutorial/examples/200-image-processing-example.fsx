@@ -59,11 +59,18 @@ let GrayImageFromWeb (url : string) file =
 (** Last, you perform parallel downloading and image processing in the MBrace cluster. *)
 let urls = [|
     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Tigress_at_Jim_Corbett_National_Park.jpg/330px-Tigress_at_Jim_Corbett_National_Park.jpg";
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Poligraf_Poligrafovich.JPG/800px-Poligraf_Poligrafovich.JPG" |]
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Poligraf_Poligrafovich.JPG/800px-Poligraf_Poligrafovich.JPG" 
+    "https://upload.wikimedia.org/wikipedia/commons/e/eb/Denizli_Atat%C3%BCrk_Stadyumu.jpg"
+    |]
 
 let tasks = 
     [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath)))  |> cluster.CreateProcess |] 
-   
+
+(** 
+The results are a set of cloud storage file paths for the generated images.  YOu can look these up in your
+cloud storage account browser.
+
+**)
 
 let results = 
     [| for t in tasks -> t.Result |]

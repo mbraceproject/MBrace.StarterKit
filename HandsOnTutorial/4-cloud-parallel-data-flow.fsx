@@ -42,7 +42,7 @@ let streamComputationTask =
 (**
 Next, check the progress of your job.
 
-> Note: the number of cloud tasks involved, which should be the number of workers + 1.  This indicates
+> Note: the number of cloud tasks involved, which should be the number of workers * 2.  This indicates
 > the input array has been partitioned and the work carried out in a distributed way.
 *)
 streamComputationTask.ShowInfo()

@@ -12,6 +12,10 @@ open FSharp.Data
 // Grab the MBrace cluster.
 let cluster = Config.GetCluster() 
 
+(**
+
+# Creating an Incremental Stock Analysis 
+*)
 
 // Type that represents stock trading data.
 type StockInfo = {

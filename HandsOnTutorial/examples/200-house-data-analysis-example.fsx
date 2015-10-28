@@ -49,14 +49,31 @@ I want to start with something simple – let’s get the average sale price of 
 
 *)
 
-let prices : (int * float) array =
-    [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" ]
+(* Each of these files is 3GB *)
+let sources = 
+    [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" ]
+
+let pricesTask =
+    sources
     |> CloudFlow.OfHttpFileByLine
     |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)
-    |> CloudFlow.groupBy(fun row -> row.DateOfTransfer.Month)
+    |> CloudFlow.groupBy(fun row -> (row.DateOfTransfer.Year, row.DateOfTransfer.Month))
     |> CloudFlow.map(fun (month, rows) -> month, rows |> Seq.averageBy (fun row -> float row.Price))
     |> CloudFlow.toArray
-    |> cluster.Run
+    |> cluster.CreateProcess
+
+
+(** 
+Now observe the progress and wait for the results: 
+*)
+
+pricesTask.ShowInfo()
+
+
+let prices = pricesTask.Result
 
 (**
 
@@ -78,8 +95,8 @@ So now that we have an array of int * float i.e. month * price, we can easily ma
 *)
 
 prices
-|> Seq.sortBy fst // sort by month
-|> Seq.map(fun (month, price) -> sprintf "%s 2015" (System.DateTime(2015, month, 1).ToString("MMM")), price)
+|> Seq.sortBy fst // sort by year, month
+|> Seq.map(fun ((year,month), price) -> sprintf "%s" (System.DateTime(year, month, 1).ToString("yyyy-MMM")), price)
 |> Chart.Line
 |> Chart.WithOptions(Options(curveType = "function"))
 |> Chart.Show
@@ -100,11 +117,15 @@ ready to be used for any number of strongly-typed queries we might have: –
 
 // download data, convert to provided type and partition across nodes in-memory only
 let persistedHousePrices =
-    [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" ]
+    sources
     |> CloudFlow.OfHttpFileByLine
     |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)
     |> CloudFlow.persist StorageLevel.Memory
     |> cluster.Run
+
+(** 
+With the results persisted on the nodes, we can use them again and again:
+*)
 
 // get average house price by month
 let pricesByMonth =
