@@ -240,7 +240,7 @@ averagePricesTask.ShowInfo()
 
 let averagePrices = averagePricesTask.Result
 
-(** Next, get the average prices per street. CloudFlow.cache is the same as persiting to memory. *)
+(** Next, use the cached results to get the most expensive city and street. *)
 
 let mostExpensiveTask =
     averagePrices
@@ -253,7 +253,7 @@ mostExpensiveTask.Result
 
 
 
-(** Next, get the least expensive city and street. Note that we are reusing the average-prices computation. *)
+(** Next, use the cached results to also get the least expensive city and street. *)
 let leastExpensiveTask =
     averagePrices
     |> CloudFlow.sortBy snd 100
