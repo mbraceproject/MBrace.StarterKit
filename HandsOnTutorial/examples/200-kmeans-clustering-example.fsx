@@ -21,6 +21,8 @@ let cluster = Config.GetCluster()
 
 # Example: Cloud-distributed k-means clustering with incremental notifications
 
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 This example shows how to implement the iterative algorithm k-Means, which finds centroids of clusters for points.
 
 It shows some important techniques

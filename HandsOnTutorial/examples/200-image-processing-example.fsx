@@ -16,6 +16,8 @@ let cluster = Config.GetCluster()
 (**
 # Example: Using MBrace for image processing
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 In this tutorial, you use the AForge (you can install AForge from Nuget) to turn color images into gray ones by applying a gray filter.
 
 *)

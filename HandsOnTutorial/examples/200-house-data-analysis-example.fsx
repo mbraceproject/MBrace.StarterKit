@@ -60,13 +60,13 @@ let sources =
   //if small then 
   //  [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
   //elif medium then 
-  //  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
+      [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
   //else
-    [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
-      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
-      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
-      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
-    ]
+  //  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
+  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
+  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
+  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
+  //  ]
 
 
 (**

@@ -20,6 +20,8 @@ let cluster = Config.GetCluster()
 (**
 # Introduction to CPU-intensive Cloud Parallelism
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 In this tutorial you learn how to perform CPU-intensive cloud-parallel workload on your MBrace cluster.
 The work will be computing prime numbers, though you can easily replace this with any code
 of your own.

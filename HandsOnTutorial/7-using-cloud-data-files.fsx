@@ -16,6 +16,8 @@ let cluster = Config.GetCluster()
 (**
 # Creating and Using Cloud Files
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 MBrace clusters have a cloud file system mapped to the corresponding cloud fabric. This can be 
 used like a distributed file system such as HDFS.
 

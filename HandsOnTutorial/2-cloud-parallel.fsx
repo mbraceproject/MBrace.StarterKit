@@ -16,6 +16,8 @@ let cluster = Config.GetCluster()
 (**
 # Introduction to Cloud Combinators
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 You now perform a very simple parallel distributed job on your MBrace cluster.
 
 *)

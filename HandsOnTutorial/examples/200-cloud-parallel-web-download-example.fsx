@@ -16,6 +16,9 @@ open MBrace.Flow
 # Example: Cloud Parallel Web Downloader 
 
 This example illustrates doing I/O tasks in parallel using the workers in the cluster
+
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
  
 *)
 

@@ -16,7 +16,7 @@ let cluster = Config.GetCluster()
 (**
 # Creating and Using Cloud Values 
 
-# Using Cloud Values 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
 
 You now learn how to upload data to cloud storage using CloudValue and
 then process it using MBrace cloud tasks.

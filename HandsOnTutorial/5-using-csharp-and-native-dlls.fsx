@@ -17,6 +17,8 @@ let cluster = Config.GetCluster()
 
 # Using C# DLLs and Native Components 
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 It is very simple to use C# DLLs, native DLLs and any nuget packages in your cloud computations.
 For C# DLLs you just download and reference the packages as normal
 in your F# scripting or other client application. The DLLs for the packages are automatically uploaded to 

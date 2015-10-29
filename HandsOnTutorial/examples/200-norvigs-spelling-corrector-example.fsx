@@ -21,6 +21,8 @@ This example demonstrates Norvig's Spelling Corrector (http://norvig.com/spell-c
 It is a prototypical workflow for training and learning in the cloud. You use the cloud to extract statistical
 information from a body of text. The statistical summary is used locally in your client application.
  
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 ## Part 1 - Extract Statistics in the Cloud 
 *)
 #load "../lib/utils.fsx"

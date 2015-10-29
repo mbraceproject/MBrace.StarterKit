@@ -16,6 +16,8 @@ let cluster = Config.GetCluster()
 (**
 # Using CloudDictionary
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 In this example you learn how to use distributed key/value storage using CloudDictionary.
  
 First, create a cloud key/value store (a cloud dictionary): *) 

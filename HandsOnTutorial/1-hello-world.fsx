@@ -8,7 +8,10 @@ open MBrace.Core
 open MBrace.Flow
 
 (**
+
 # Your First 'Hello World' Computation with MBrace
+
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
 
 A guide to creating a cluster is [here](http://www.m-brace.net/#try).
 
@@ -78,4 +81,5 @@ cluster.ClearAllProcesses()
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
 > by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+
 **)

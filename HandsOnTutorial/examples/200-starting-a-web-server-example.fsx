@@ -26,16 +26,14 @@ open Suave.Web
 open Webserver
 
 (**
-This Suave request is executed in response to a GET on 
 
-   http://nn.nn.nn.nn/cluster/workers
+# Starting a WebServer on your MBrace cluster
 
-It uses cluster.GetWorkers to access information from the cluster. 
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
+In this tutorial, you learn how to start a web server on your MBrace cluster that can introspect
+into the cluster, schedule work, report on jobs and so on.
 *)
-
-(** This is the Suave specification for the web server we will run in the cluster: *)
-let helloRequest ctxt = 
-    async { return! OK "hello" ctxt }
 
 let getCluster() = 
     Config.GetCluster() 
@@ -189,3 +187,14 @@ serverJob.ShowLogs()
 
 (** Use this to wait for the web server to exit after cancellation: *)
 // serverJob.Result
+
+(**
+In this tutorial, you've learned how to start a web server on an MBrace cluster which can respond
+to requests, control the cluster, access storage and so on.
+Continue with further samples to learn more about the MBrace programming model.   
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)
+
+

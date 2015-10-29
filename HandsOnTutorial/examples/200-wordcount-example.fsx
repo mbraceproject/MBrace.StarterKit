@@ -21,7 +21,10 @@ let cluster = Config.GetCluster()
 
 # Example: Cloud-distributed WordCount
 
-This sample implements the classic word count example commonly associated with distributed Map/Reduce frameworks.
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
+
+This example implements the classic word count example commonly associated with distributed Map/Reduce frameworks.
 We use CloudFlow for the implementation and [textfiles.com](http://www.textfiles.com) as our data source.
 
 First, some basic type definitions:

@@ -20,6 +20,8 @@ let cluster = Config.GetCluster()
 
 # Example: Monte Carlo Pi Approximation
 
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 In this example you learn you to perform distributed, multi-core CPU computations
 on your MBrace cluster.
 

@@ -19,6 +19,8 @@ let cluster = Config.GetCluster()
 (**
 # Introduction to Data Parallel Cloud Flows
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 You now learn the CloudFlow programming model, for cloud-scheduled
 parallel data flow tasks.  This model is similar to Hadoop and Spark.
  

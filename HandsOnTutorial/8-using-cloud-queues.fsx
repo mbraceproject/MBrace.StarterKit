@@ -16,6 +16,8 @@ let cluster = Config.GetCluster()
 (**
 # Using Cloud Queues
 
+> This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 In this tutorial you learn how to create and use cloud queues, which allow you to send messages between
 cloud workflows.  The state of queues is kept in cloud storage.
  

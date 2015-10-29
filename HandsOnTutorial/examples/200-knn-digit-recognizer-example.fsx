@@ -22,6 +22,8 @@ let cluster = Config.GetCluster()
 
 # KNN Digit Recognizer
 
+> This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
+
 This example shows a digit recognizer classification using k nearest neighbours based on the Kaggle dataset.
 https://www.kaggle.com/c/digit-recognizer
 
