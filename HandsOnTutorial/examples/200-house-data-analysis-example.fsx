@@ -32,31 +32,15 @@ let cluster = Config.GetCluster()
 # Combining CloudFlows with FSharp.Data to Analyze Historical UK House Price Data 
 
 In this example, you learn how to use data parallel cloud flows with historical event data
-drawn directly from open government data on the internet.  
-This sample has been adapted from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
-
-You start by generating a schema for our data using FSharp.Data and its CSV Type Provider. 
-Usually the type provider can infer all data types and columns but in this case the file does 
-not include headers, so we’ll supply them ourselves. 
-You use a local version of the CSV file which contains a subset of the data 
-(the live dataset even for a single month is > 10MB)
-
-*)
-
-type HousePrices = CsvProvider< @"../../data/SampleHousePrices.csv", HasHeaders = true>
-
-(**
-
-In that single line, you now have a strongly-typed way to parse CSV data. 
-Now, let’s move onto the MBrace side of things. 
-You start start with something simple – let’s get the average sale price of a property, by month, and chart it.
+drawn directly from open government data on the internet.  This sample has been adapted
+from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
 First, the input data.  (Each of these files is ~70MB but can take a significant amount of time to download
 due to possible rate-limiting from the server).
 *)
 
 let sources = 
-  //if small then 
+  //if tiny then 
   //  [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
   //elif medium then 
       [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
@@ -69,26 +53,23 @@ let sources =
 
 
 (**
-Next you stream the data source from the original web location and grab the first 10 lines, just to get a feel for the data:
+You start by using FSharp.Data and its CSV Type Provider. 
+Usually the type provider can infer all data types and columns but in this case the file does 
+not include headers, so we’ll supply them ourselves. 
+You use a local version of the CSV file which contains a subset of the data 
+(the live dataset even for a single month is > 10MB)
+
 *)
 
-
-let sampleData =
-    sources
-    |> CloudFlow.OfHttpFileByLine
-    |> CloudFlow.take 10
-    |> CloudFlow.toArray
-    |> cluster.Run
+type HousePrices = CsvProvider< @"../../data/SampleHousePrices.csv", HasHeaders = true>
 
 (**
-Next, again stream the data source from the original web location and 
+
+With that, you have a strongly-typed way to parse CSV data. 
+
+Now, stream the data source from the original web location and 
 across the cluster, then convert the raw text to our CSV provided type.
 Entries are grouped by month and the average price for each month is computed.
-
-A *CloudFlow* is an MBrace primitive which allows a distributed set of transformations to be chained together, 
-just like you would with the Seq module in F# (or LINQ’s IEnumerable operators for the rest of the .NET world), 
-except in MBrace, a CloudFlow pipeline is partitioned across the cluster, making full use of resources available in the cluster; 
-only when the pipelines are completed in each partition are they aggregated together again.
 
 *)
 
@@ -105,34 +86,35 @@ let pricesTask =
 
 (** 
 
+A *CloudFlow* is an MBrace primitive which allows a distributed set of transformations to be chained together.
+A CloudFlow pipeline is partitioned across the cluster, making full use of resources available:
+only when the pipelines are completed in each partition are they aggregated together again.
+
 Now observe the progress. Time will depend on download speeds to your data center or location.  
 For the large data sets above you can expect approximately 2 minutes.
 
 While you're waiting, notice that you're using type providers *in tandem* with cloud computations.
 Once we call the ParseRows function, in the next call in the pipeline,
 we’re working with a strongly-typed object model – so DateOfTransfer is a proper DateTime etc.
-
 For example, if you hit "." after "row" you will see the available information 
 includes ``Locality``, ``Price``, ``Street``, ``Postcode`` and so on.
-
 In addition, all dependent assemblies have automatically been shipped with MBrace.
-
 MBrace wasn’t explicitly designed to work with FSharp.Data and F# type providers – *it just works*.
 
 *)
-
-pricesTask.ShowInfo()
-cluster.ShowWorkers()
 
 (** 
 Now wait for the results. 
 *)
 
+pricesTask.ShowInfo()
+cluster.ShowWorkers()
+
 let prices = pricesTask.Result
 
 (**
 
-Now that you have an array of year, month and price data, we can easily map it on a chart.
+Now that you have a summary array of year, month and price data, you can chart the data.
 
 *)
 
@@ -150,8 +132,6 @@ chartPrices prices
 (**
 
 ![Price over time (2012 subset of data)](../img/house-prices-chart-1.png)
-
-Easy.
 
 ## Persisted Cloud Flows
 
