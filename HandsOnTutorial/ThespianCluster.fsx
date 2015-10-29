@@ -1,4 +1,5 @@
-﻿#I "../packages/MBrace.Thespian/tools" 
+﻿#I __SOURCE_DIRECTORY__
+#I "../packages/MBrace.Thespian/tools" 
 #I "../packages/Streams/lib/net45" 
 #r "../packages/Streams/lib/net45/Streams.dll"
 #I "../packages/MBrace.Flow/lib/net45" 

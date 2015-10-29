@@ -98,7 +98,8 @@ module KMeansHelpers =
 
 (** 
 This is the iterative computation.  Computes the new centroids based on classifying each point to an existing centroid. 
-Then computes new centroids based on that classification.
+Then computes new centroids based on that classification.  `emit` is used to emit observations of 
+intermediate states to a queue or some other sink.
 *)
    
 let rec KMeansCloudIterate (partitionedPoints, epsilon, centroids, iteration, emit) = cloud {
@@ -128,6 +129,7 @@ let rec KMeansCloudIterate (partitionedPoints, epsilon, centroids, iteration, em
 
     do! Cloud.Logf "KMeans: iteration [#%d], diff %A with centroids /n%A" iteration diff centroids
 
+    // emit an observation
     emit(DateTimeOffset.UtcNow,iteration,diff,centroids)
 
     if diff < epsilon then
@@ -181,9 +183,13 @@ let randPoints = Array.init partitions (KMeansHelpers.generatePoints dim pointsP
 
 Chart.FastPoint([| for points in randPoints do for p in Seq.take 500 points -> p.[0], p.[1] |] ) 
 
-(** Create a queue to observe the partial output results from the iterations. Then start the task. *)
+(** Next, you create a queue to observe the partial output results from the iterations. *)
 
-let watchQueue =  CloudQueue.New()  |> cluster.RunLocally
+type Observation = DateTimeOffset*int*float*Point[]
+
+let watchQueue =  CloudQueue.New<Observation>()  |> cluster.RunLocally
+
+(** Next, you start the task, emitting observations to the queue: *)
 
 let kmeansTask = 
     KMeansCloud(randPoints, numCentroids, epsilon, watchQueue.Enqueue) 
@@ -196,7 +202,7 @@ cluster.ShowWorkers()
 cluster.ShowProcesses()
 kmeansTask.ShowInfo()
 
-(** Chart the intermediate results as they arrive *)
+(** Next, you chart the intermediate results as they arrive as an incrementally updating chart: *)
 
 
 open FSharp.Control
@@ -211,7 +217,7 @@ asyncSeq {
                 yield d
                 do! Async.Sleep 1000
         | None -> do! Async.Sleep 1000
-} |> AsyncSeq.toObservable |> (fun c -> c) |> LiveChart.Point 
+} |> AsyncSeq.toObservable |> LiveChart.Point 
 
 
 
