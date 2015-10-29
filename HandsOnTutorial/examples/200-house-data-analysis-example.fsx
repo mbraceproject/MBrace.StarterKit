@@ -32,7 +32,10 @@ let cluster = Config.GetCluster()
 
 # Combining CloudFlows with FSharp.Data to Analyze Historical UK House Price Data 
 
-This sample has been taken from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
+In this example, you learn how to use data parallel cloud flows with historical event data
+drawn directly from open government data on the internet.  
+
+This sample has been adapted from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
 ## Type Providers on MBrace
 
@@ -215,7 +218,7 @@ let pricesByMonthTask =
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
-(** Make a chart of the results: *)
+(** Make a chart of the results. This will be the same chart as before, but based on persisted results. *)
 
 pricesByMonthTask.ShowInfo()
 pricesByMonthTask.Result
@@ -226,7 +229,10 @@ pricesByMonth |> chartPrices
 
 
 
-(** Next, get the average prices per street. CloudFlow.cache is the same as persiting to memory. *)
+(** 
+Next, get the average prices per street. This takes a fair while since there are a lot of streets.
+We persist the results: CloudFlow.cache is the same as persiting to memory. 
+*)
 
 let averagePricesTask =
     persistedHousePrices
@@ -242,7 +248,7 @@ let averagePrices = averagePricesTask.Result
 
 (** Next, use the cached results to get the most expensive city and street. *)
 
-let mostExpensiveTask =
+let mostExpensive =
     averagePrices
     |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
@@ -250,14 +256,14 @@ let mostExpensiveTask =
 
 
 (** Next, use the cached results to also get the least expensive city and street. *)
-let leastExpensiveTask =
+let leastExpensive =
     averagePrices
     |> CloudFlow.sortBy snd 100
     |> CloudFlow.toArray
     |> cluster.Run
 
 
-(** Next, get the percentage of new builds by county: *)
+(** Finally, as an example of a different kind of statistic, get the percentage of new builds by county: *)
 let newBuildsByCountyTask =
     persistedHousePrices
     |> CloudFlow.averageByKey
@@ -283,5 +289,17 @@ So notice that the first query takes 45 seconds to execute,
 which involves downloading the data and parsing it via the CSV type provider. 
 Once we’ve done that, we persist it across the cluster in memory – 
 then we can re-use that persisted flow in all subsequent queries, each of which just takes a few seconds to run.
+
+## Summary
+
+In this example, you've learned how to use data parallel cloud flows with historical event data
+drawn directly from the internet.  By using F# type providers (FSharp.Data) plus a sample of the data 
+you have given strong types to your information.  You then learned how to persist partial results
+and to calulate averages and sums of groups of the data.
+
+Continue with further samples to learn more about the MBrace programming model.  
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
 
 *)
