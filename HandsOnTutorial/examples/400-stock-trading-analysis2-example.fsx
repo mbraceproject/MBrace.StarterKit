@@ -119,11 +119,11 @@ let AnalyzeMarketData =
     cloud {        
         //for i in 1..10 do
         while true do
-            let data_group = tradingDataQueue.Dequeue()
-            let data_groups = [| data_group |]                    
-            if data_groups.Length > 0 then                            
+            let dataGroup = tradingDataQueue.Dequeue()
+            let dataGroups = [| dataGroup |]                    
+            if dataGroups.Length > 0 then                            
                 let! stocksWithLargeAskOrBid = 
-                    data_groups
+                    dataGroups
                     |> CloudFlow.OfArray
                     |> CloudFlow.collect(fun p -> p.Items.Value)
                     |> CloudFlow.filter(fun p -> 
