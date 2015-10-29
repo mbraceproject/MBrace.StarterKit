@@ -19,7 +19,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Example: Cloud-distributed k-means clustering 
+# Example: Cloud-distributed k-means clustering with incremental notifications
 
 This example shows how to implement the iterative algorithm k-Means, which finds centroids of clusters for points.
 
@@ -75,7 +75,7 @@ let selectionOfPoints =
 Chart.Point selectionOfPoints 
 
 (** 
-Giving ![Input to KMeans](../kmeans-input.png)
+Giving ![Input to KMeans](../img/kmeans-input.png)
 
 Now you define a set of helper functions and types related to points and finding centroids: 
 *)
@@ -230,7 +230,7 @@ Chart.Combine
 
 (** 
 
-Giving ![First results from KMeans](../kmeans-results-1.png)
+Giving ![First results from KMeans](../img/kmeans-results-1.png)
 
 ## Observing intermediate states of the algorithm 
 
@@ -280,7 +280,7 @@ asyncSeq {
 
 This produces the following incrementally:
 
-![Incremental results from KMeans](../kmeans-results-2-incremental.png)
+![Incremental results from KMeans](../img/kmeans-results-2-incremental.png)
 
 Now wait for the overall result:
 
@@ -299,7 +299,7 @@ Chart.Combine
 
 Giving 
 
-![The centroids found by the clustering](../kmeans-results-2.png)
+![The centroids found by the clustering](../img/kmeans-results-2.png)
 
 In this example, you've learned how to run an iterative algorithm on an MBrace cluster,
 including how to emit and observe intermediate states from the iterations.
