@@ -1,13 +1,9 @@
 ﻿(*** hide ***)
-//#load "../ThespianCluster.fsx"
-#load "../AzureCluster.fsx"
-#load "../../../FSharp.Charting/bin/FSharp.Charting.fsx"
-//#load "../../packages/FSharp.Charting/FSharp.Charting.fsx"
+#load "../ThespianCluster.fsx"
+//#load "../AzureCluster.fsx"
+
+#load "../../packages/FSharp.Charting/FSharp.Charting.fsx"
 #r "../../packages/FSharp.Control.AsyncSeq/lib/net45/FSharp.Control.AsyncSeq.dll"
-//#I "../../packages/XPlot.GoogleCharts/lib/net45"
-//#I "../../packages/XPlot.GoogleCharts.WPF/lib/net45"
-//#r "XPlot.GoogleCharts.dll"
-//#r "XPlot.GoogleCharts.WPF.dll"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -185,7 +181,7 @@ let randPoints = Array.init partitions (KMeansHelpers.generatePoints dim pointsP
 
 Chart.FastPoint([| for points in randPoints do for p in Seq.take 500 points -> p.[0], p.[1] |] ) 
 
-(** Create a queue to observe the partial output results from the iterations. *)
+(** Create a queue to observe the partial output results from the iterations. Then start the task. *)
 
 let watchQueue =  CloudQueue.New()  |> cluster.RunLocally
 
