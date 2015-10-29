@@ -30,7 +30,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Combining CloudFlows with FSharp.Data
+# Combining CloudFlows with FSharp.Data to Analyze Historical UK House Price Data 
 
 This sample has been taken from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
@@ -103,7 +103,10 @@ let pricesTask =
 
 (** 
 
-Notice that you're using type providers *in tandem* with cloud computations.
+Now observe the progress. Time will depend on download speeds to your data center or location.  
+For the large data sets above you can expect approximately 2 minutes.
+
+While you're waiting, notice that you're using type providers *in tandem* with cloud computations.
 Once we call the ParseRows function, in the next call in the pipeline,
 we’re working with a strongly-typed object model – so DateOfTransfer is a proper DateTime etc.
 
@@ -111,9 +114,9 @@ For example, if you hit "." after "row" you will see the available information
 includes ``Locality``, ``Price``, ``Street``, ``Postcode`` and so on.
 
 In addition, all dependent assemblies have automatically been shipped with MBrace.
-MBrace wasn’t explicitly designed to work with FSharp.Data – *it just works*.
 
-Now observe the progress. Time will depend on download speeds to your location.
+MBrace wasn’t explicitly designed to work with FSharp.Data and F# type providers – *it just works*.
+
 *)
 
 pricesTask.ShowInfo()
@@ -127,7 +130,7 @@ let prices = pricesTask.Result
 
 (**
 
-Now that you have an array of int * float i.e. month * price, we can easily map it on a chart.
+Now that you have an array of year, month and price data, we can easily map it on a chart.
 
 *)
 
