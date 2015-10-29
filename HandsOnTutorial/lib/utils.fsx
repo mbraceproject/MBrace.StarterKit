@@ -1,6 +1,14 @@
 ﻿[<AutoOpen>]
 module Utils
 
+#I __SOURCE_DIRECTORY__
+#I "../../packages/MBrace.Azure/tools" 
+#I "../../packages/Streams/lib/net45" 
+#r "../../packages/Streams/lib/net45/Streams.dll"
+#I "../../packages/MBrace.Flow/lib/net45" 
+#r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
+#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+
 /// Creates a new HashSet with provided sequence
 let hashSet (ts : seq<'T>) = new System.Collections.Generic.HashSet<'T>(ts)
 
@@ -25,3 +33,18 @@ module Array =
 module List = 
     let chunkBySize (n:int) (numbers: 'T list)  =  numbers |> List.toArray |> Array.chunkBySize n |> Array.toList |> List.map Array.toList
     let splitInto (n:int) (numbers: 'T list)  =  numbers |> List.toArray |> Array.splitInto n |> Array.toList |> List.map Array.toList
+
+module CloudFlow = 
+
+    open MBrace.Flow
+
+    let inline averageByKey (keyf: 'T -> 'Key) (valf: 'T -> 'Val) x =
+        x |> CloudFlow.foldBy keyf  (fun (count, sum)  row -> (count + 1, sum + valf row)) 
+            (fun (count,sum) (count2,sum2) -> (count + count2, sum + sum2))
+            (fun () -> (0,LanguagePrimitives.GenericZero<'Val>))
+        |> CloudFlow.map (fun (key, (count,sum)) -> (key, LanguagePrimitives.DivideByInt sum count))
+
+    let inline sumByKey (keyf: 'T -> 'Key) (valf: 'T -> 'Val) x =
+        x |> CloudFlow.foldBy keyf  (fun (sum: 'Val)  row -> (sum + valf row)) (+) (fun () -> LanguagePrimitives.GenericZero<'Val>)
+
+
