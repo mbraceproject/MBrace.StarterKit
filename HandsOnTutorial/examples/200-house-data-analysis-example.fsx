@@ -2,7 +2,6 @@
 #load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
 
-
 #r "../../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
 
 #I "../../packages/Google.DataTable.Net.Wrapper/lib"
@@ -53,16 +52,17 @@ In that single line, we now have a strongly-typed way to parse CSV data.
 Now, let’s move onto the MBrace side of things. 
 You start start with something simple – let’s get the average sale price of a property, by month, and chart it.
 
-First, the input data.  Each of these files is ~70MB
+First, the input data.  (Each of these files is ~70MB but can take a significant amount of time to download
+due to possible rate-limiting from the server).
 *)
-let small = false
 
 let sources = 
-  if small then 
-    [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
-  else
-    [// "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv"
-      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
+  //if small then 
+  //  [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
+  //elif medium then 
+  //  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
+  //else
+    [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
       "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
       "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
       "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
@@ -70,7 +70,7 @@ let sources =
 
 
 (**
-Next you stream the data source from the original web location and grab the first 10 lines:
+Next you stream the data source from the original web location and grab the first 10 lines, just to get a feel for the data:
 *)
 
 
