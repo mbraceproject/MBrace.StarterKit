@@ -21,8 +21,8 @@ let cluster = Config.GetCluster()
 In this tutorial you learn how to create and use cloud queues, which allow you to send messages between
 cloud workflows.  The state of queues is kept in cloud storage.
  
-First, create an cloud queue:
-**) 
+First, you create a cloud queue:
+*) 
 let queue = CloudQueue.New<string>() |> cluster.Run
 
 (** Next, you send to the channel by scheduling a cloud process to do the send: *)
@@ -102,5 +102,5 @@ about the MBrace programming model.
 
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
-> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+> by this script, see [ThespianCluster.fsx](ThespianCluster.html) or [AzureCluster.fsx](AzureCluster.html).
 *)

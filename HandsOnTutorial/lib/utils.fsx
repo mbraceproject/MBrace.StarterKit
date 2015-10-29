@@ -47,4 +47,10 @@ module CloudFlow =
     let inline sumByKey (keyf: 'T -> 'Key) (valf: 'T -> 'Val) x =
         x |> CloudFlow.foldBy keyf  (fun (sum: 'Val)  row -> (sum + valf row)) (+) (fun () -> LanguagePrimitives.GenericZero<'Val>)
 
+    let inline percentageByKey (keyf: 'T -> 'Key) (filterf: 'T -> bool) x =
+        x |> CloudFlow.foldBy keyf  (fun (count, sum)  row -> (count + 1L, if filterf row then sum + 1L else sum)) 
+            (fun (count,sum) (count2,sum2) -> (count + count2, sum + sum2))
+            (fun () -> (0L,0L))
+        |> CloudFlow.map (fun (key, (count,sum)) -> (key, (float sum / float count)))
+
 

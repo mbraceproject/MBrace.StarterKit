@@ -72,7 +72,7 @@ let tasks =
 The results are a set of cloud storage file paths for the generated images.  You can look these up in your
 cloud storage account browser.
 
-**)
+*)
 
 let results = 
     [| for t in tasks -> t.Result |]
@@ -83,5 +83,5 @@ In this tutorial, you've learned how to use the AForge image processing library 
 Continue with further samples to learn more about the MBrace programming model.  
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
-> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+> by this script, see [ThespianCluster.fsx](../ThespianCluster.html) or [AzureCluster.fsx](../AzureCluster.html).
 *)

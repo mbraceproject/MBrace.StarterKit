@@ -33,14 +33,13 @@ let cluster = Config.GetCluster()
 
 In this example, you learn how to use data parallel cloud flows with historical event data
 drawn directly from open government data on the internet.  
-
 This sample has been adapted from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
-## Type Providers on MBrace
-
-We’ll start by generating a schema for our data using FSharp.Data and its CSV Type Provider. 
-Usually the type provider can infer all data types and columns but in this case the file does not include headers, so we’ll supply them ourselves. 
-I’m also using a local version of the CSV file which contains a subset of the data (the live dataset even for a single month is > 10MB)
+You start by generating a schema for our data using FSharp.Data and its CSV Type Provider. 
+Usually the type provider can infer all data types and columns but in this case the file does 
+not include headers, so we’ll supply them ourselves. 
+You use a local version of the CSV file which contains a subset of the data 
+(the live dataset even for a single month is > 10MB)
 
 *)
 
@@ -48,7 +47,7 @@ type HousePrices = CsvProvider< @"../../data/SampleHousePrices.csv", HasHeaders 
 
 (**
 
-In that single line, we now have a strongly-typed way to parse CSV data. 
+In that single line, you now have a strongly-typed way to parse CSV data. 
 Now, let’s move onto the MBrace side of things. 
 You start start with something simple – let’s get the average sale price of a property, by month, and chart it.
 
@@ -315,6 +314,6 @@ and to calulate averages and sums of groups of the data.
 Continue with further samples to learn more about the MBrace programming model.  
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
-> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+> by this script, see [ThespianCluster.fsx](../ThespianCluster.html) or [AzureCluster.fsx](../AzureCluster.html).
 
 *)

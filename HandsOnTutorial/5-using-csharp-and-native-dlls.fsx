@@ -128,5 +128,5 @@ C# code running on your cluster for one particular example.
 Continue with further samples to learn more about the MBrace programming model.  
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
-> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+> by this script, see [ThespianCluster.fsx](ThespianCluster.html) or [AzureCluster.fsx](AzureCluster.html).
  *)
