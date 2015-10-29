@@ -15,30 +15,33 @@ let cluster = Config.GetCluster()
 (**
 
 # Creating an Incremental Stock Analysis 
+
+This example shows how to create a stock trading simulator.
+
+First, setup the CSV type provider to read a list of stocks in a strongly typed way:
 *)
 
-// Type that represents stock trading data.
+[<Literal>]
+let stockDataPath = __SOURCE_DIRECTORY__ + "/../../data/stock-data.csv"
+type Stocks = CsvProvider<stockDataPath>
+
+
+(** Load the list of stocks. This is relatively small data, so we can read it locally. *)
+
+let data = Stocks.Load(stockDataPath)
+
+(**
+
+Next, define a type that represents stock trading data:
+
+*)
+
 type StockInfo = {
     Symbol: string
     Price: double
     Volume: double
 }
-
-// Setup CSV type provider.
-[<Literal>]
-let stockDataPath = __SOURCE_DIRECTORY__ + "/../../data/stock-data.csv"
-type Stocks = CsvProvider<stockDataPath>
-
-// The following lines read data from Azure blog storage.
-// If you run with a real Azure cluster, use the following lines.
-//let fileSystem = cluster.Store.CloudFileSystem
-//let ReadAllText path = fileSystem.File.ReadAllText path
-//let text = ReadAllText "/stock-data/stock-data.csv"
-//let data = Stocks.Load(new StringReader(text))
-
-// This line reads data from local file system.
-// If you run with the Spian cluster, use the following line.
-let data = Stocks.Load(stockDataPath)
+(** Next, you extract some essential information from the list of stocks. *)
 
 let stockInfo = 
     [| for row in data.Rows do
@@ -54,84 +57,131 @@ type MarketDataPackage = {
     Bids: double[]
 }
 
-// A group of many data packages, this is the element that we are going to put into the queue.
-// Group many packages together will reduce the number of Azure APIs (500 per second quota).
-// Need to respect the 64KB queue message side from Azure.
-type MarketDataGroup = {
-    Items : CloudValue<MarketDataPackage[]>
-}
+(** 
+Next, define a function to generate simulated market data at a one timestamp based 
+on the input list of stocks and their average prices: 
+
+*)
 
 
-// Generate simulated market data at a one timestamp.
-let SimulateMarketSlice (stockInfo : seq<StockInfo>) =
+let SimulateMarketSlice (stockInfo : StockInfo[]) =
     let r = Random()
-    seq {
-        for s in stockInfo do
-            let symbol = s.Symbol
-            let newPrice = s.Price *  (1.0 + r.NextDouble()/5.0 - 0.1)
-            let newVolume = s.Volume
-            let asks = [| float (r.Next(500, 1500)) |]
-            let bids = [| float (r.Next(500, 1500)) |]
-            yield { Symbol=symbol; Price=newPrice; Volume=newVolume; Asks=asks; Bids=bids; } } 
-    |> Seq.toArray
+    [| for s in stockInfo -> 
+         { Symbol = s.Symbol
+           Price = s.Price *  (1.0 + r.NextDouble()/5.0 - 0.1)
+           Volume = s.Volume
+           Asks = [| float (r.Next(500, 1500)) |]
+           Bids = [| float (r.Next(500, 1500)) |] 
+         } 
+    |]
 
 
-// The queue which stores stock trading data.
+
+(** Next, define the queue which stores incoming market trading data. 
+
+We group many data packages together, write them to storage, and put them into the queue as one element.
+Group many packages together will reduce the number of cloud I/O operations which is 
+restricted by quota on most fabrics.  Additionally, the size of elements we can write to the queue
+is also restricted, so we write a cloud value, and the queue holds a reference to this cloud value.
+*)
+
+type MarketDataGroup = CloudValue<MarketDataPackage[]>
+
 let tradingDataQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
 
-// The queue which stores analysis results.
+(** Next, define the queue to store analysis results: *)
+
 let resultQueue = CloudQueue.New<MarketDataGroup>() |> cluster.Run
 
 
+(** 
+Next, define a function to generate simulated market data and write it into the request queue:
+Wait 3 seconds between two slices.
+*)
 
-// Generate simulated market data, for the moment, generate 10 slices.
-// Wait 3 seconds between two slices.
 let SimulateMarket stockInfo =
     cloud {                
         while true do
         //for i in 1..10 do
             let md = SimulateMarketSlice stockInfo
             let! mdc = CloudValue.New md
-            let mdp = { Items = mdc } 
-            tradingDataQueue.Enqueue mdp
+            tradingDataQueue.Enqueue mdc
             do! Cloud.Sleep 3000
-        let result = tradingDataQueue.GetCount()
-        return result
     } 
     
+
+(** 
+Next, start the simulation task to generate market data into the request queue:
+*)
+
 let simulationTask = SimulateMarket stockInfo |> cluster.CreateProcess   
  
+
+(** 
+Next, you define a function to determine if market data has a large ask or bid volume:
+*)
 
 let LargeBidVolume = 1000.0
 let LargeAskVolume = 1000.0
 
-// Does a market data have large ask or bid?
 let HasLargeAskOrBid(md : MarketDataPackage) = 
     let largeAsk = md.Asks |> Array.filter(fun v -> v > LargeBidVolume) |> Seq.length
     let largeBid = md.Bids |> Array.filter(fun v -> v > LargeAskVolume) |> Seq.length
     largeAsk + largeBid > 0
 
-// The task to process simulated stock trading data and generates
-// signals when a stock with large ask or bid volume is detected.
+(** 
+Next, define the task to process simulated stock trading data and generate
+signals when a stock with large ask or bid volume is detected.
+*)
+
 let AnalyzeMarketData = 
     cloud {
         while true do
-            let data_group = tradingDataQueue.Dequeue()
-            let data_groups = [| data_group |]                    
-            if data_groups.Length > 0 then
+            let dataGroup = tradingDataQueue.Dequeue()
+            let dataGroups = [| dataGroup |]                    
+            if dataGroups.Length > 0 then
                 // The task is simple now, just get the market data which has large asks or bids.
                 let! stocksWithLargeAskOrBid = 
-                    data_groups
+                    dataGroups
                     |> CloudFlow.OfArray
-                    |> CloudFlow.collect(fun p -> p.Items.Value)
+                    |> CloudFlow.collect(fun p -> p.Value)
                     |> CloudFlow.filter(fun md ->  HasLargeAskOrBid(md))
                     |> CloudFlow.toArray
 
-                let! cValue = CloudValue.New stocksWithLargeAskOrBid
-                let analysisResult = { Items = cValue }  
+                let! analysisResult = CloudValue.New stocksWithLargeAskOrBid
                 resultQueue.Enqueue analysisResult
             else
                 do! Cloud.Sleep(1000)
     }
 
+(** You now start the analysis task: *)
+
 let analysisTask = AnalyzeMarketData |> cluster.CreateProcess
+
+(** Next, get batches of results from the result queue: *)
+
+resultQueue.DequeueBatch(10)
+
+(** Finally, cancel the running simulation tasks: *)
+
+simulationTask.Cancel()
+analysisTask.Cancel()
+
+(** And check that all tasks have completed on the cluster: *)
+cluster.ShowProcesses()
+cluster.ShowWorkers()
+
+
+(** 
+## Summary
+
+In texample, you learned you to create a simulation running in the cloud.  The components
+in the simulation take base data and write outputs to cloud queues. 
+Continue with further samples to learn more about the MBrace programming model.  
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+ *)
+
+
