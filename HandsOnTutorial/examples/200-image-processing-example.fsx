@@ -67,7 +67,7 @@ let tasks =
     [|for url in urls -> GrayImageFromWeb url (sprintf ("tmp/%s") (Path.GetFileName(Uri(url).LocalPath)))  |> cluster.CreateProcess |] 
 
 (** 
-The results are a set of cloud storage file paths for the generated images.  YOu can look these up in your
+The results are a set of cloud storage file paths for the generated images.  You can look these up in your
 cloud storage account browser.
 
 **)
