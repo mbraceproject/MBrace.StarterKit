@@ -95,9 +95,8 @@ performing recomputations of the original flow.
 let persistedCloudFlow =
     inputs
     |> CloudFlow.OfArray
-    |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i, string j) })
-    |> CloudFlow.groupBy snd
-    |> CloudFlow.persist StorageLevel.MemoryAndDisk
+    |> CloudFlow.collect(fun i -> seq {for j in 1 .. 10000 -> (i+j, string j) })
+    |> CloudFlow.persist StorageLevel.Memory
     |> cluster.Run
 
 

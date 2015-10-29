@@ -22,10 +22,12 @@ let cluster = Config.GetCluster()
 
 # KNN Digit Recognizer
 
-Digit recognizer classification using k nearest neighbours based on the Kaggle dataset.
+This example shows a digit recognizer classification using k nearest neighbours based on the Kaggle dataset.
 https://www.kaggle.com/c/digit-recognizer
 
+First, define the types and constants relevant to images:
 *)
+
 
 [<Literal>]
 let pixelLength = 784 // 28 * 28
@@ -39,14 +41,19 @@ type Image =
       Pixels : int [] }
 
     /// Parses a set of points from text using the Kaggle digit recognizer CSV format
-    static member Parse (file : string) : Image [] =
-        File.ReadAllLines(file)
+    static member Parse file=
+        File.ReadAllLines file
         |> Stream.ofSeq
         |> Stream.skip 1
         |> Stream.map (fun line -> line.Split(','))
         |> Stream.map (fun line -> line |> Array.map int)
         |> Stream.mapi (fun i nums -> let id = i + 1 in { Id = id ; Pixels = nums })
         |> Stream.toArray
+
+(**
+
+Next, define the types relevant to classification of images:
+*)
 
 /// Digit classification
 type Classification = int
@@ -60,8 +67,8 @@ type TrainingImage =
       Image : Image }
 
     /// Parses a training set from text using the Kaggle digit recognizer CSV format
-    static member Parse(file : string) : TrainingImage [] =
-        File.ReadAllLines(file)
+    static member Parse file =
+        File.ReadAllLines file
         |> Stream.ofSeq
         |> Stream.skip 1
         |> Stream.map (fun line -> line.Split(','))
@@ -72,9 +79,15 @@ type TrainingImage =
                             { Classification = nums.[0] ; Image = image })
         |> Stream.toArray
 
-/// Digit classifier implementation
+/// Digit classifier 
 type Classifier = TrainingImage [] -> Image -> Classification
 
+(**
+
+Next, implement a range of image classifiers:
+*)
+
+/// Digit classifiers
 type Classifications =
 
     /// Writes a point classification to file
@@ -106,6 +119,11 @@ let knn (d : Distance) (k : int) : Classifier =
         |> Stream.maxBy snd
         |> fst
 
+
+(**
+
+Next, implement local multicore classification and validation:
+*)
 /// local multicore classification
 let classifyLocalMulticore (classifier : Classifier) (training : TrainingImage []) (images : Image []) =
     ParStream.ofArray images
@@ -119,6 +137,45 @@ let validateLocalMulticore (classifier : Classifier) (training : TrainingImage [
     |> ParStream.map(fun (expected,prediction) -> if expected = prediction then 1. else 0.)
     |> ParStream.sum
     |> fun results -> results / float validation.Length
+
+
+//// Performance (3.5Ghz Quad Core i7 CPU)
+//// Real: 00:01:02.281, CPU: 00:07:51.481, GC gen0: 179, gen1: 82, gen2: 62
+//validateLocalMulticore classifier training.[ .. 39999] training.[40000 ..]
+//
+//// Performance (3.5Ghz Quad Core i7 CPU)
+//// Real: 00:15:30.855, CPU: 01:56:59.842, GC gen0: 2960, gen1: 2339, gen2: 1513
+//classifyLocalMulticore classifier training tests
+
+
+(**
+
+Next, implement the distributed, cloud versions of the same algorithms, to classify and validate the images using 
+an MBrace cluster:
+*)
+
+
+/// Clasify test images using MBrace
+let classifyCloud (classifier : Classifier) (training : TrainingImage []) (images : Image []) =
+    CloudFlow.OfArray images
+    |> CloudFlow.map (fun img -> img.Id, classifier training img)
+    |> CloudFlow.toArray
+
+/// Validate training images using MBrace
+let validateCloud (classifier : Classifier) (training : TrainingImage []) (validation : TrainingImage []) = cloud {
+    let! successCount =
+        CloudFlow.OfArray validation
+        |> CloudFlow.filter (fun tI -> classifier training tI.Image = tI.Classification)
+        |> CloudFlow.length
+
+    return float successCount / float validation.Length
+}
+
+
+(**
+
+Now, acquire the samples:
+*)
 
 ////////////////////
 // Run the examples
@@ -134,37 +191,35 @@ let classifier = knn l2 10
 
 #time
 
-//// Performance (3.5Ghz Quad Core i7 CPU)
-//// Real: 00:01:02.281, CPU: 00:07:51.481, GC gen0: 179, gen1: 82, gen2: 62
-//validateLocalMulticore classifier training.[ .. 39999] training.[40000 ..]
-//
-//// Performance (3.5Ghz Quad Core i7 CPU)
-//// Real: 00:15:30.855, CPU: 01:56:59.842, GC gen0: 2960, gen1: 2339, gen2: 1513
-//classifyLocalMulticore classifier training tests
+(** Run the validation operation in the cluster: *)
 
-/// Validate training images using MBrace
-let validateCloud (classifier : Classifier) (training : TrainingImage []) (validation : TrainingImage []) = cloud {
-    let! successCount =
-        CloudFlow.OfArray validation
-        |> CloudFlow.filter (fun tI -> classifier training tI.Image = tI.Classification)
-        |> CloudFlow.length
+let validateTask = cloud { return! validateCloud classifier training.[0 .. 39999] training.[40000 ..] } |> cluster.CreateProcess
 
-    return float successCount / float validation.Length
-}
-
-/// Clasify test images using MBrace
-let classifyCloud (classifier : Classifier) (training : TrainingImage []) (images : Image []) =
-    CloudFlow.OfArray images
-    |> CloudFlow.map (fun img -> img.Id, classifier training img)
-    |> CloudFlow.toArray
-
-
-// 1. Validation operation
-let validateProc = cloud { return! validateCloud classifier training.[0 .. 39999] training.[40000 ..] } |> cluster.CreateProcess
-
-// 2. Send Classify job
-let classifyProc = cloud { return! classifyCloud classifier training tests } |> cluster.CreateProcess
+(** Check on its progress: *)
 
 cluster.ShowWorkers()
-cluster.ShowProcesses()
+validateTask.ShowInfo()
 
+(** Run the classification operation in the cluster: *)
+
+let classifyTask = cloud { return! classifyCloud classifier training tests } |> cluster.CreateProcess
+
+
+(** Check on its progress: *)
+
+cluster.ShowWorkers()
+classifyTask.ShowInfo()
+
+(** Get the results: *)
+let validateResult = validateTask.Result
+let classifyResult = classifyTask.Result
+
+(** 
+In this example, you've learned how perform a machine learning classification task 
+on an MBrace cluster. Continue with further samples to learn more about the
+MBrace programming model.   
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)

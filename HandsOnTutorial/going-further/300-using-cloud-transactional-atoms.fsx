@@ -20,19 +20,19 @@ let cluster = Config.GetCluster()
 **)
 
 
-/// Create an anoymous cloud atom with an initial value
+(** Create an anoymous cloud atom with an initial value: *)
 let atom = CloudAtom.New(100) |> cluster.Run
 
-// Check the unique ID of the atom
+(** Check the unique ID of the atom: *)
 atom.Id
 
-// Get the value of the atom.
+(** Get the value of the atom: *)
 let atomValue = cloud { return atom.Value } |> cluster.Run
 
-// Transactionally update the value of the atom and output a result
+(** Transactionally update the value of the atom and output a result: *)
 let atomUpdateResult = cloud { return atom.Transact(fun x -> string x,x*x) } |> cluster.Run
 
-// Have all workers atomically increment the counter in parallel
+(** Have all workers atomically increment the counter in parallel *)
 cloud {
     let! clusterSize = Cloud.GetWorkerCount()
     // Start a whole lot of updaters in parallel
@@ -40,7 +40,20 @@ cloud {
     return atom.Value
 } |> cluster.Run
 
-// Delete the cloud atom
+(** Delete the cloud atom *)
 atom.Dispose() |> Async.RunSynchronously
 
 cluster.ShowProcesses()
+
+
+(**
+In this tutorial, you've learned how to use cloud transactional atoms.
+Continue with further samples to learn more about the
+MBrace programming model.   
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)
+
+

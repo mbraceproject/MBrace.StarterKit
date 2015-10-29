@@ -20,13 +20,17 @@ let cluster = Config.GetCluster()
 
 # Example: Monte Carlo Pi Approximation
 
-Implements the classic monte carlo implementation using MBrace.
+In this example you learn you to perform distributed, multi-core CPU computations
+on your MBrace cluster.
+
+The example implements the classic monte carlo implementation using MBrace.
 Take random points in the [0,1] x [0,1] square and count the occurences within the circle radius.
 The resulting fraction should estimate π / 4.
 
+First, define a local, single-threaded Pi estimator:
+
 *)
 
-/// local, single-threaded Pi estimator
 let localMonteCarloPiWorker (iterations : bigint) : bigint =
     let rand = new Random(obj().GetHashCode())
     let maxIter = bigint Int32.MaxValue
@@ -47,7 +51,10 @@ let localMonteCarloPiWorker (iterations : bigint) : bigint =
 
     acc
 
-/// convert a bigint rational to float
+(**
+Next, define a helper function to convert a bigint rational to floating point number:
+*)
+
 let ratioToFloat divident divisor =
     let rec aux acc i dividend divisor =
         let div, rem = BigInteger.DivRem(dividend,divisor)
@@ -59,11 +66,11 @@ let ratioToFloat divident divisor =
 
 (**
 
-We are now ready to create the distributed component of our sample:
+We are now ready to create the distributed component of our sample.
+Now calculate π using MBrace:
 
 *)
 
-/// Calculate π using MBrace
 let calculatePi (iterations : bigint) : Cloud<float> = cloud {
     let! workers = Cloud.GetAvailableWorkers()
     let totalCores = workers |> Array.sumBy (fun w -> w.ProcessorCount) |> bigint
@@ -85,9 +92,24 @@ let calculatePi (iterations : bigint) : Cloud<float> = cloud {
     return 4.0 * ratio
 }
 
+(** Start the cloud process: *)
 
-let calcProc = cluster.CreateProcess(calculatePi 10000000000I)
+let calcTask = cluster.CreateProcess(calculatePi 10000000000I)
+
+(** Check on its progress: *)
 
 cluster.ShowWorkers()
-calcProc.ShowInfo()
-calcProc.Result
+calcTask.ShowInfo()
+
+(** Get the result: *)
+calcTask.Result
+
+(** 
+In this example, you've learned how to run a CPU-intensive Monte Carlo algorithm 
+on an MBrace cluster. Continue with further samples to learn more about the
+MBrace programming model.   
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)

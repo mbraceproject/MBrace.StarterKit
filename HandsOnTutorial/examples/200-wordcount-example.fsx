@@ -24,7 +24,7 @@ let cluster = Config.GetCluster()
 This sample implements the classic word count example commonly associated with distributed Map/Reduce frameworks.
 We use CloudFlow for the implementation and [textfiles.com](http://www.textfiles.com) as our data source.
 
-First, some basic type definitions
+First, some basic type definitions:
 
 *)
 
@@ -41,7 +41,9 @@ let splitToWords (line : string) = wordRegex.Split line
 /// normalize word
 let normalize (word : string) = word.Trim().ToLower()
 
-/// words ignored by wordcount
+(** Now, define the words to ignore in the word count: *)
+
+/// The words ignored by wordcount
 let noiseWords =
     hashSet [  
         "about"; "above"; "along"; "also"; "although"; "aren't"; "because"; "been";
@@ -76,7 +78,7 @@ let downloadAndCacheTextFiles (urls : seq<string>) : Cloud<PersistedCloudFlow<st
 
 (**
 
-The actual wordcount computation can now be defined
+The wordcount function can now be defined:
 
 *)
 
@@ -95,14 +97,15 @@ let computeWordCount (cutoff : int) (lines : CloudFlow<string>) : Cloud<WordCoun
 
 ## Test the wordcount sample using textfiles.com
 
+
+Step 1. Determine URIs to data inputs from textfiles.com
 *)
 
 
-// Step 1. Determine URIs to data inputs from textfiles.com
 let files = TextFiles.crawlForTextFiles() // get text file data from textfiles.com
 let testedFiles = files // |> Seq.take 50 // uncomment to use a smaller dataset
 
-// Step 2. Download URIs to across cluster and load in memory
+(** Step 2. Download URIs to across cluster and load in memory *)
 let downloadTask = 
     downloadAndCacheTextFiles testedFiles
     |> cluster.CreateProcess
@@ -112,13 +115,27 @@ cluster.ShowProcesses()
 
 let persistedFlow = downloadTask.Result // get PersistedCloudFlow
 
-// Step 3. Perform wordcount on downloaded data
+(** Step 3. Perform wordcount on downloaded data *)
 let wordCountTask = 
     computeWordCount 100 persistedFlow 
     |> cluster.CreateProcess
 
+(** Check progress: *)
+
 cluster.ShowWorkers()
 cluster.ShowProcesses()
 
+(** Wait for the results: *)
 wordCountTask.Result
+
+(**
+In this tutorial, you've learned how to perform a scalable textual analysis task using MBrace.
+Continue with further samples to learn more about the
+MBrace programming model.   
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+*)
+
 
