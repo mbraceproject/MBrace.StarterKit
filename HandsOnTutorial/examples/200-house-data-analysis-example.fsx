@@ -246,11 +246,7 @@ let mostExpensiveTask =
     averagePrices
     |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
-    |> cluster.CreateProcess
-
-mostExpensiveTask.ShowInfo()
-mostExpensiveTask.Result
-
+    |> cluster.Run
 
 
 (** Next, use the cached results to also get the least expensive city and street. *)
@@ -258,10 +254,7 @@ let leastExpensiveTask =
     averagePrices
     |> CloudFlow.sortBy snd 100
     |> CloudFlow.toArray
-    |> cluster.CreateProcess
-
-leastExpensiveTask.ShowInfo()
-leastExpensiveTask.Result
+    |> cluster.Run
 
 
 (** Next, get the percentage of new builds by county: *)
