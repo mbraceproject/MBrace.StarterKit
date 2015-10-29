@@ -50,10 +50,10 @@ type Point = float[]
 /// Generates a set of points via a random walk from the origin, using provided seed.
 let generatePoints dim numPoints seed : Point[] =
     let rand = Random(seed * 2003 + 22)
-    let prev = Array.zeroCreate<float> dim
+    let prev = Array.zeroCreate dim
 
     let nextPoint () =
-        let arr = Array.zeroCreate<float> dim
+        let arr = Array.zeroCreate dim
         for i = 0 to dim - 1 do 
             arr.[i] <- prev.[i] + rand.NextDouble() * 40.0 - 20.0
             prev.[i] <- arr.[i]
