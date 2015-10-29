@@ -150,6 +150,8 @@ let chartPrices prices =
 chartPrices prices
 (**
 
+![Price over time (2012 subset of data)](../img/house-prices-chart-1.png)
+
 Easy.
 
 ## Persisted Cloud Flows
@@ -262,8 +264,21 @@ let leastExpensive =
     |> CloudFlow.toArray
     |> cluster.Run
 
+(** Count the sales by city: *)
 
-(** Finally, as an example of a different kind of statistic, get the percentage of new builds by county: *)
+let purchasesByCity =
+    persistedHousePrices
+    |> CloudFlow.countBy (fun row -> row.TownCity)
+    |> CloudFlow.toArray
+    |> cluster.Run
+
+Chart.Pie purchasesByCity|> Chart.Show
+
+
+(** 
+![Count by city](../img/house-prices-by-city.png)
+
+Finally, as an example of a different kind of statistic, get the percentage of new builds by county: *)
 let newBuildsByCountyTask =
     persistedHousePrices
     |> CloudFlow.averageByKey
