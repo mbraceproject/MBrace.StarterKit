@@ -9,7 +9,7 @@ NUGET
     AForge.Math (2.2.5)
       AForge (>= 2.2.5)
     Argu (1.1.2)
-    FSharp.Charting (0.90.12)
+    FSharp.Charting (0.90.13)
     FSharp.Control.AsyncSeq (2.0.2)
     FSharp.Core (4.0.0.1)
     FSharp.Data (2.2.5)
