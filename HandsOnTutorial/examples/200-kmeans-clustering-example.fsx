@@ -31,28 +31,58 @@ It shows some important techniques
 
 * How to observe that queue using incremental charting
 
-First you define a set of helper functions and types related to points and finding centroids: 
+First define some parameters for the input set we want to classify: 
 *)
+
+
+let dim = 2 // point dimensions: we use 2 dimensions so we can chart the results
+let numCentroids = 5 // The number of centroids to find
+let partitions = 12 // The number of point partitions
+let pointsPerPartition = 50000 // The number of points per partition
+let epsilon = 0.1
+
+(** Generate some random input data, a deterministic set of points based on the parameters above. *)
+
 
 /// Represents a multi-dimensional point.
 type Point = float[]
 
+/// Generates a set of points via a random walk from the origin, using provided seed.
+let generatePoints dim numPoints seed : Point[] =
+    let rand = Random(seed * 2003 + 22)
+    let prev = Array.zeroCreate<float> dim
+
+    let nextPoint () =
+        let arr = Array.zeroCreate<float> dim
+        for i = 0 to dim - 1 do 
+            arr.[i] <- prev.[i] + rand.NextDouble() * 40.0 - 20.0
+            prev.[i] <- arr.[i]
+        arr
+
+    [| for i in 1 .. numPoints -> nextPoint() |]
+
+let randPoints = Array.init partitions (generatePoints dim pointsPerPartition)
+
+(** Next you display a chart showing the first 500 points from each partition: *)
+
+let point2d (p:Point) = p.[0], p.[1]
+
+let selectionOfPoints = 
+    [ for points in randPoints do 
+         for i in 0 .. 100 .. points.Length-1 do
+             yield point2d points.[i] ]
+
+Chart.Point selectionOfPoints 
+
+(** 
+Giving ![Input to KMeans](../kmeans-input.png)
+
+Now you define a set of helper functions and types related to points and finding centroids: 
+*)
+
+
 [<AutoOpen>]
 module KMeansHelpers =
-
-    /// Generates a set of points via a random walk from the origin, using provided seed.
-    let generatePoints dim numPoints seed =
-        let rand = Random(seed * 2003 + 22)
-        let prev = Array.zeroCreate<float> dim
-
-        let nextPoint () : Point =
-            let arr = Array.zeroCreate<float> dim
-            for i = 0 to dim - 1 do 
-                arr.[i] <- prev.[i] + rand.NextDouble() * 40.0 - 20.0
-                prev.[i] <- arr.[i]
-            arr
-
-        [| for i in 1 .. numPoints -> nextPoint() |]
 
     /// Calculates the distance between two points.
     let dist (p1 : Point) (p2 : Point) = 
@@ -167,23 +197,48 @@ let KMeansCloud(points, numCentroids, epsilon, emit) = cloud {
 }
 
 
-(** Now define some parameters for the input set we want to classify: *)
+(** 
+## Running a test flight of the algorithm 
 
-let dim = 2 // point dimensions: we use 2 dimensions so we can chart the results
-let numCentroids = 5 // The k argument of the kmeans algorithm, and the dimension of points.
-let partitions = 12 // number of point partitions
-let pointsPerPartition = 50000 // number of points per partition
-let epsilon = 0.1
 
-(** Generate some random input data, a deterministic set of points based on the parameters above. *)
+You can now run a test flight of the algorithm with a drastically increased epsilon value to allow for
+more rapid convergence:
+*)
 
-let randPoints = Array.init partitions (KMeansHelpers.generatePoints dim pointsPerPartition)
+let kmeansTask = 
+    KMeansCloud(randPoints, numCentroids, epsilon*10000.0, ignore) 
+    |> cluster.CreateProcess
 
-(** Next you display a chart showing the first 500 points from each partition: *)
+(** Take a look at progress *)
 
-Chart.FastPoint([| for points in randPoints do for p in Seq.take 500 points -> p.[0], p.[1] |] ) 
+cluster.ShowWorkers()
+cluster.ShowProcesses()
+kmeansTask.ShowLogs()
+kmeansTask.ShowInfo()
 
-(** Next, you create a queue to observe the partial output results from the iterations. *)
+(** Get the result: *)
+
+let centroids = kmeansTask.Result
+
+(** Now chart a selection of the original points and the overall result *)
+
+Chart.Combine   
+    [ Chart.Point(selectionOfPoints)
+      Chart.Point(centroids |> Array.map point2d, Color=Drawing.Color.Red) ]
+
+
+
+(** 
+
+Giving ![First results from KMeans](../kmeans-results-1.png)
+
+## Observing intermediate states of the algorithm 
+
+Frequently when running iterative algorithms or long running processes you will need
+to emit information for visualization and inspection of the progress of the algorithm.
+
+To do this, you create a queue to observe the partial output results from the iterations. 
+*)
 
 type Observation = DateTimeOffset*int*float*Point[]
 
@@ -191,16 +246,16 @@ let watchQueue =  CloudQueue.New<Observation>()  |> cluster.RunLocally
 
 (** Next, you start the task, emitting observations to the queue: *)
 
-let kmeansTask = 
+let kmeansTask2 = 
     KMeansCloud(randPoints, numCentroids, epsilon, watchQueue.Enqueue) 
     |> cluster.CreateProcess
 
 (** Take a look at progress *)
 
-kmeansTask.ShowLogs()
+kmeansTask2.ShowLogs()
 cluster.ShowWorkers()
 cluster.ShowProcesses()
-kmeansTask.ShowInfo()
+kmeansTask2.ShowInfo()
 
 (** Next, you chart the intermediate results as they arrive as an incrementally updating chart: *)
 
@@ -213,7 +268,7 @@ asyncSeq {
         match watchQueue.TryDequeue() with
         | Some (time, iteration, diff, centroids) -> 
                 centroidsSoFar.Add centroids
-                let d = [ for centroids in centroidsSoFar do for p in centroids -> p.[0], p.[1] ]
+                let d = [ for centroids in centroidsSoFar do for p in centroids -> point2d p ]
                 yield d
                 do! Async.Sleep 1000
         | None -> do! Async.Sleep 1000
@@ -221,15 +276,34 @@ asyncSeq {
 
 
 
-(** Now wait for the overall result *)
+(** 
 
-kmeansTask.Result
+This produces the following incrementally:
 
+![Incremental results from KMeans](../kmeans-results-2-incremental.png)
+
+Now wait for the overall result:
+
+*)
+
+let centroids2 = kmeansTask2.Result
+
+(** Now chart the original points, the centroids we computed on the first flight, and the final centroids. *)
+
+Chart.Combine   
+    [ Chart.Point(selectionOfPoints)
+      Chart.Point(centroids |> Array.map point2d, Color=Drawing.Color.Orange,MarkerSize=10) 
+      Chart.Point(centroids2 |> Array.map point2d, Color=Drawing.Color.Red,MarkerSize=5) ]
 
 (** 
-In this example, you've learned how to run an iterative clustering algorithm on an MBrace cluster.
-Continue with further samples to learn more about the
-MBrace programming model.   
+
+Giving 
+
+![The centroids found by the clustering](../kmeans-results-2.png)
+
+In this example, you've learned how to run an iterative algorithm on an MBrace cluster,
+including how to emit and observe intermediate states from the iterations.
+Continue with further samples to learn more about the MBrace programming model.   
 
 
 > Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
