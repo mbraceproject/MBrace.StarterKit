@@ -223,19 +223,43 @@ pricesByMonth |> chartPrices
 
 
 
-(** Next, get the property types in London: *)
-let londonPropertiesTask =
+(** Next, get the average prices per street. CloudFlow.cache is the same as persiting to memory. *)
+
+let averagePricesTask =
     persistedHousePrices
-    |> CloudFlow.filter(fun row -> row.TownCity = "LONDON")
-    |> CloudFlow.countBy(fun row -> row.PropertyType)
+    |> CloudFlow.averageByKey
+          (fun row -> (row.TownCity, row.Street))
+          (fun row -> float row.Price)
+    |> CloudFlow.cache
+    |> cluster.CreateProcess
+
+averagePricesTask.ShowInfo()
+
+let averagePrices = averagePricesTask.Result
+
+(** Next, get the average prices per street. CloudFlow.cache is the same as persiting to memory. *)
+
+let mostExpensiveTask =
+    averagePrices
+    |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
-londonPropertiesTask.ShowInfo()
-londonPropertiesTask.Result
+mostExpensiveTask.ShowInfo()
+mostExpensiveTask.Result
 
-(** Make a chart of the results: *)
-londonPropertiesTask.Result |> Chart.Column |> Chart.Show
+
+
+(** Next, get the least expensive city and street. Note that we are reusing the average-prices computation. *)
+let leastExpensiveTask =
+    averagePrices
+    |> CloudFlow.sortBy snd 100
+    |> CloudFlow.toArray
+    |> cluster.CreateProcess
+
+leastExpensiveTask.ShowInfo()
+leastExpensiveTask.Result
+
 
 (** Next, get the percentage of new builds by county: *)
 let newBuildsByCountyTask =
@@ -249,19 +273,6 @@ let newBuildsByCountyTask =
 
 newBuildsByCountyTask.ShowInfo()
 newBuildsByCountyTask.Result
-
-(** Next, get the most expensive street: *)
-let mostExpensiveTask =
-    persistedHousePrices
-    |> CloudFlow.averageByKey
-          (fun row -> (row.TownCity, row.Street))
-          (fun row -> float row.Price)
-    |> CloudFlow.sortByDescending snd 100
-    |> CloudFlow.toArray
-    |> cluster.CreateProcess
-
-mostExpensiveTask.ShowInfo()
-mostExpensiveTask.Result
 
 
 (** Make a chart of the results: *)
