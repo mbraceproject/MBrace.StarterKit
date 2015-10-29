@@ -18,8 +18,8 @@ open MBrace.Flow
 # Example: Training in the Cloud
 
 This example demonstrates Norvig's Spelling Corrector (http://norvig.com/spell-correct.html).
-It is a prototypical workflow for training and learning in the cloud - we use the cloud to extract statistical
-information from a body of text, and the statistical summary is used locally in your client application.
+It is a prototypical workflow for training and learning in the cloud. You use the cloud to extract statistical
+information from a body of text. The statistical summary is used locally in your client application.
  
 ## Part 1 - Extract Statistics in the Cloud 
 *)
@@ -156,7 +156,11 @@ findBestCorrection "korrecter"
 findBestCorrection "fantom"
 findBestCorrection "pgantom"
 
-(** In this example, you've seen how cloud tasks can be used to 
-extract statistical information returned to the client.
-Continue with further samples to learn more about the
-MBrace programming model.   *)
+(** 
+In this example, you've seen how cloud tasks can be used to extract statistical information returned to the client.
+Continue with further samples to learn more about the MBrace programming model.  
+
+
+> Note, you can use the above techniques from both scripts and compiled projects. To see the components referenced 
+> by this script, see [MBrace.Thespian.fsx](MBrace.Thespian.html) or [MBrace.Azure.fsx](MBrace.Azure.html).
+ *)

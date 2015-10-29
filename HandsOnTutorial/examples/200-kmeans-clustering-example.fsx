@@ -1,6 +1,13 @@
 ﻿(*** hide ***)
-#load "../ThespianCluster.fsx"
-//#load "../AzureCluster.fsx"
+//#load "../ThespianCluster.fsx"
+#load "../AzureCluster.fsx"
+#load "../../../FSharp.Charting/bin/FSharp.Charting.fsx"
+//#load "../../packages/FSharp.Charting/FSharp.Charting.fsx"
+#r "../../packages/FSharp.Control.AsyncSeq/lib/net45/FSharp.Control.AsyncSeq.dll"
+//#I "../../packages/XPlot.GoogleCharts/lib/net45"
+//#I "../../packages/XPlot.GoogleCharts.WPF/lib/net45"
+//#r "XPlot.GoogleCharts.dll"
+//#r "XPlot.GoogleCharts.WPF.dll"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -8,6 +15,8 @@
 open System
 open Nessos.Streams
 open MBrace.Core
+open FSharp.Charting
+
 
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
@@ -16,35 +25,44 @@ let cluster = Config.GetCluster()
 
 # Example: Cloud-distributed k-means clustering 
 
+This example shows how to implement the iterative algorithm k-Means, which finds centroids of clusters for points.
+
+It shows some important techniques
+
+* How to partition data and keep affinity of workers to data
+
+* How to emit partial results to an intermediate queue
+
+* How to observe that queue using incremental charting
+
+First you define a set of helper functions and types related to points and finding centroids: 
 *)
 
 /// Represents a multi-dimensional point.
 type Point = float[]
 
-module KMeans =
+[<AutoOpen>]
+module KMeansHelpers =
 
-    /// <summary>
-    ///     Generates a set of pseudo random points, using provided seed.
-    /// </summary>
-    /// <param name="dim">Point dimension.</param>
-    /// <param name="numPoints">Number of points to generate.</param>
-    /// <param name="seed">Random number generation seed.</param>
-    let generatePoints (dim: int) (numPoints: int) (seed: int) =
-        if dim <= 0 || numPoints < 0 then raise <| new ArgumentOutOfRangeException()
+    /// Generates a set of points via a random walk from the origin, using provided seed.
+    let generatePoints dim numPoints seed =
         let rand = Random(seed * 2003 + 22)
+        let prev = Array.zeroCreate<float> dim
 
         let nextPoint () : Point =
             let arr = Array.zeroCreate<float> dim
-            for i = 0 to dim - 1 do arr.[i] <- rand.NextDouble() * 40.0 - 20.0
+            for i = 0 to dim - 1 do 
+                arr.[i] <- prev.[i] + rand.NextDouble() * 40.0 - 20.0
+                prev.[i] <- arr.[i]
             arr
 
         [| for i in 1 .. numPoints -> nextPoint() |]
 
-    // Calculates the distance between two points.
+    /// Calculates the distance between two points.
     let dist (p1 : Point) (p2 : Point) = 
         Array.fold2 (fun acc e1 e2 -> acc + pown (e1 - e2) 2) 0.0 p1 p2
 
-    // Assigns a point to the correct centroid, and returns the index of that centroid.
+    /// Assigns a point to the correct centroid, and returns the index of that centroid.
     let findCentroid (p: Point) (centroids: Point[]) : int =
         let mutable mini = 0
         let mutable min = Double.PositiveInfinity
@@ -70,7 +88,7 @@ module KMeans =
 
         Array.init centroids.Length (fun i -> (i, (lens.[i], sums.[i])))
 
-    /// sums a collectoin of points
+    /// Sums a collection of points
     let sumPoints (pointArr : Point []) dim : Point =
         let sum = Array.zeroCreate dim
         for p in pointArr do
@@ -78,79 +96,131 @@ module KMeans =
                 sum.[i] <- sum.[i] + p.[i]
         sum
 
-    /// scalar division of a point
+    /// Scalar division of a point
     let divPoint (point : Point) (x : float) : Point =
         Array.map (fun p -> p / x) point
 
-module KMeansCloud =
+(** 
+This is the iterative computation.  Computes the new centroids based on classifying each point to an existing centroid. 
+Then computes new centroids based on that classification.
+*)
+   
+let rec KMeansCloudIterate (partitionedPoints, epsilon, centroids, iteration, emit) = cloud {
 
-    open KMeans
+     // Stage 1: map computations to each worker per point partition
+    let! clusterParts =
+        partitionedPoints
+        |> Array.map (fun (p:CloudArray<_>, w) -> cloud { return kmeansLocal p.Value centroids }, w)
+        |> Cloud.Parallel
 
-    // iteration tail-recursive function
-    let rec iterate (points : (CloudArray<Point> * IWorkerRef) []) 
-                    (centroids : Point[]) (iteration : int) : Cloud<Point[]> = cloud {
+    // Stage 2: reduce computations to obtain the new centroids
+    let dim = centroids.[0].Length
+    let newCentroids =
+        clusterParts
+        |> Array.concat
+        |> ParStream.ofArray
+        |> ParStream.groupBy fst
+        |> ParStream.sortBy fst
+        |> ParStream.map snd
+        |> ParStream.map (fun clp -> clp |> Seq.map snd |> Seq.toArray |> Array.unzip)
+        |> ParStream.map (fun (ns,points) -> Array.sum ns, sumPoints points dim)
+        |> ParStream.map (fun (n, sum) -> divPoint sum (float n))
+        |> ParStream.toArray
 
-        do! Cloud.Logf "KMeans: iteration [#%d] with centroids \n %A" iteration centroids
+    // Stage 3: check convergence and decide whether to continue iteration
+    let diff = Array.map2 dist newCentroids centroids |> Array.max
 
-        // Stage 1: map computations to each worker per point partition
-        let! clusterParts =
-            points
-            |> Array.map (fun (p, w) -> cloud { return KMeans. kmeansLocal p.Value centroids }, w)
-            |> Cloud.Parallel
+    do! Cloud.Logf "KMeans: iteration [#%d], diff %A with centroids /n%A" iteration diff centroids
 
-        // Stage 2: reduce computations to obtain the new centroids
-        let dim = centroids.[0].Length
-        let centroids' =
-            clusterParts
-            |> Array.concat
-            |> ParStream.ofArray
-            |> ParStream.groupBy fst
-            |> ParStream.map snd
-            |> ParStream.map (fun clp -> clp |> Seq.map snd |> Seq.toArray |> Array.unzip)
-            |> ParStream.map (fun (ns,points) -> Array.sum ns, sumPoints points dim)
-            |> ParStream.map (fun (n, sum) -> divPoint sum (float n))
-            |> ParStream.toArray
+    emit(DateTimeOffset.UtcNow,iteration,diff,centroids)
 
-        // Stage 3: check convergence and decide whether to continue iteration
-        if Array.forall2 (fun c c' -> dist c c' < 1E-10) centroids' centroids then
-            return centroids'
-        else
-            return! iterate points centroids' (iteration + 1)
-    }
+    if diff < epsilon then
+        return newCentroids
+    else
+        return! KMeansCloudIterate (partitionedPoints, epsilon, newCentroids, iteration+1, emit)
+}
 
-    let calculate (k : int) (points : seq<#seq<Point>>) : Cloud<Point []> = cloud {
-        let initCentroids = points |> Seq.concat |> Seq.take k |> Seq.toArray
+            
+(** The main cloud routine. Partitions the points according to the available workers, then iterates. *)
 
-        let! workers = Cloud.GetAvailableWorkers()
-        do! Cloud.Logf "KMeans: persisting point data to store."
-        let! assignedPoints = 
-            points 
-            |> Seq.mapi (fun i p -> 
-                local { 
-                    // always schedule the same subset of points to the same worker
-                    // for caching performance gains
-                    let! ca = CloudValue.NewArray(p, StorageLevel.MemoryAndDisk) 
-                    return ca, workers.[i % workers.Length] }) 
-            |> Local.Parallel
+        
 
-        do! Cloud.Logf "KMeans: persist completed, starting iteration."
+let KMeansCloud(points, numCentroids, epsilon, emit) = cloud {  
 
-        return! iterate assignedPoints initCentroids 1
-    }
+    let initCentroids = points |> Seq.concat |> Seq.take numCentroids |> Seq.toArray
+
+    let! workers = Cloud.GetAvailableWorkers()
+    do! Cloud.Logf "KMeans: persisting partitioned point data to store."
+        
+    // Divide the points
+    let! partitionedPoints = 
+        points 
+        |> Seq.mapi (fun i p -> 
+            local { 
+                // always schedule the same subset of points to the same worker
+                // for caching performance gains
+                let! ca = CloudValue.NewArray(p, StorageLevel.MemoryAndDisk) 
+                return ca, workers.[i % workers.Length] }) 
+        |> Local.Parallel
+
+    do! Cloud.Logf "KMeans: persist completed, starting iteration."
+
+    return! KMeansCloudIterate(partitionedPoints, epsilon, initCentroids, 1, emit) 
+}
 
 
-let dim = 7 // point dimensions
-let k = 5 // The k argument of the kmeans algorithm, and the dimension of points.
+(** Now define some parameters for the input set we want to classify: *)
+
+let dim = 2 // point dimensions: we use 2 dimensions so we can chart the results
+let numCentroids = 5 // The k argument of the kmeans algorithm, and the dimension of points.
 let partitions = 12 // number of point partitions
-let pointsPerPartition = 500000 // number of points per partition
+let pointsPerPartition = 50000 // number of points per partition
+let epsilon = 0.1
 
-// generate deterministic set of points based on the parameters above
-let randPoints = Array.init partitions (KMeans.generatePoints dim pointsPerPartition)
+(** Generate some random input data, a deterministic set of points based on the parameters above. *)
 
-let kmeansProc = KMeansCloud.calculate k randPoints |> cluster.CreateProcess 
+let randPoints = Array.init partitions (KMeansHelpers.generatePoints dim pointsPerPartition)
 
-kmeansProc.ShowLogs()
+(** Next you display a chart showing the first 500 points from each partition: *)
+
+Chart.FastPoint([| for points in randPoints do for p in Seq.take 500 points -> p.[0], p.[1] |] ) 
+
+(** Create a queue to observe the partial output results from the iterations. *)
+
+let watchQueue =  CloudQueue.New()  |> cluster.RunLocally
+
+let kmeansTask = 
+    KMeansCloud(randPoints, numCentroids, epsilon, watchQueue.Enqueue) 
+    |> cluster.CreateProcess
+
+(** Take a look at progress *)
+
+kmeansTask.ShowLogs()
 cluster.ShowWorkers()
-kmeansProc.ShowInfo()
-kmeansProc.Result
+cluster.ShowProcesses()
+kmeansTask.ShowInfo()
+
+(** Chart the intermediate results as they arrive *)
+
+
+open FSharp.Control
+
+asyncSeq { 
+    let centroidsSoFar = ResizeArray()
+    while true do
+        match watchQueue.TryDequeue() with
+        | Some (time, iteration, diff, centroids) -> 
+                centroidsSoFar.Add centroids
+                let d = [ for centroids in centroidsSoFar do for p in centroids -> p.[0], p.[1] ]
+                yield d
+                do! Async.Sleep 1000
+        | None -> do! Async.Sleep 1000
+} |> AsyncSeq.toObservable |> (fun c -> c) |> LiveChart.Point 
+
+
+
+(** Now wait for the overall result *)
+
+kmeansTask.Result
+
 

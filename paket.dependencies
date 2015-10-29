@@ -1,6 +1,7 @@
 redirects: on
 source https://www.nuget.org/api/v2
 
+nuget FSharp.Core
 nuget MBrace.Core prerelease
 nuget MBrace.Flow
 nuget MBrace.Thespian
@@ -15,5 +16,7 @@ nuget MathNet.Numerics ~> 3.7.0
 nuget MathNet.Numerics.FSharp
 nuget MathNet.Numerics.MKL.Win-x64 ~> 1.8.0
 nuget FSharp.Data ~> 2.0
+nuget FSharp.Charting
+nuget FSharp.Control.AsyncSeq
 nuget XPlot.GoogleCharts ~> 1.2
 nuget XPlot.GoogleCharts.WPF
