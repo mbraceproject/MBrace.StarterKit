@@ -2,6 +2,7 @@
 #load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
 
+
 #r "../../packages/FSharp.Data/lib/net40/FSharp.Data.dll"
 
 #I "../../packages/Google.DataTable.Net.Wrapper/lib"
@@ -9,6 +10,8 @@
 #I "../../packages/XPlot.GoogleCharts.WPF/lib/net45"
 #r "XPlot.GoogleCharts.dll"
 #r "XPlot.GoogleCharts.WPF.dll"
+
+#load "../lib/utils.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
@@ -49,12 +52,17 @@ You start start with something simple – let’s get the average sale price of 
 
 First, the input data.  Each of these files is ~70MB
 *)
+let small = false
+
 let sources = 
-    [// "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2007-part1.csv"
-      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv"
-     // "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
-     // "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
-     // "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
+  if small then 
+    [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
+  else
+    [// "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
+      "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
     ]
 
 
@@ -85,41 +93,55 @@ only when the pipelines are completed in each partition are they aggregated toge
 let pricesTask =
     sources
     |> CloudFlow.OfHttpFileByLine
-    |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)
-    |> CloudFlow.groupBy(fun row -> (row.DateOfTransfer.Year, row.DateOfTransfer.Month))
-    |> CloudFlow.map(fun (month, rows) -> month, rows |> Seq.averageBy (fun row -> float row.Price))
+    |> CloudFlow.collect HousePrices.ParseRows
+    |> CloudFlow.averageByKey 
+            (fun row -> row.DateOfTransfer.Year, row.DateOfTransfer.Month) // the key of the groups
+            (fun row -> float row.Price) // the statistic to average
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
 
 (** 
-Now observe the progress and wait for the results. Time will depend on download speeds to your location.
+
+Notice that you're using type providers *in tandem* with cloud computations.
+Once we call the ParseRows function, in the next call in the pipeline,
+we’re working with a strongly-typed object model – so DateOfTransfer is a proper DateTime etc.
+
+For example, if you hit "." after "row" you will see the available information 
+includes ``Locality``, ``Price``, ``Street``, ``Postcode`` and so on.
+
+In addition, all dependent assemblies have automatically been shipped with MBrace.
+MBrace wasn’t explicitly designed to work with FSharp.Data – *it just works*.
+
+Now observe the progress. Time will depend on download speeds to your location.
 *)
 
 pricesTask.ShowInfo()
+cluster.ShowWorkers()
 
+(** 
+Now wait for the results. 
+*)
 
 let prices = pricesTask.Result
 
 (**
 
-Also notice that you're using type providers *in tandem* with cloud computations.
-Once we call the ParseRows function, in the next call in the pipeline,
-we’re working with a strongly-typed object model – so DateOfTransfer is a proper DateTime etc.
-All dependent assemblies have automatically been shipped with MBrace.
-MBrace wasn’t explicitly designed to work with FSharp.Data – *it just works*.
-
 Now that you have an array of int * float i.e. month * price, we can easily map it on a chart.
 
 *)
 
-prices
-|> Seq.sortBy fst // sort by year, month
-|> Seq.map(fun ((year,month), price) -> sprintf "%s" (DateTime(year, month, 1).ToString("yyyy-MMM")), price)
-|> Chart.Line
-|> Chart.WithOptions(Options(curveType = "function"))
-|> Chart.Show
+let formatYearMonth (year,month) = sprintf "%s" (DateTime(year, month, 1).ToString("yyyy-MMM"))
 
+let chartPrices prices = 
+    prices
+    |> Seq.sortBy fst // sort by year, month
+    |> Seq.map(fun (ym, price) -> formatYearMonth ym, price)
+    |> Chart.Line
+    |> Chart.WithOptions(Options(curveType = "function"))
+    |> Chart.Show
+
+chartPrices prices
 (**
 
 Easy.
@@ -137,15 +159,26 @@ ready to be used for any number of strongly-typed queries we might have: –
 *)
 
 // download data, convert to provided type and partition across nodes in-memory only
-let persistedHousePrices =
+let persistedHousePricesTask =
     sources
-    |> CloudFlow.OfHttpFileByLine
-//    |> CloudFlow.take 1000
-    |> CloudFlow.map (HousePrices.ParseRows >> Seq.head)
+    |> CloudFlow.OfHttpFileByLine 
+    |> CloudFlow.collect HousePrices.ParseRows
     |> CloudFlow.persist StorageLevel.Memory
-    |> cluster.Run
+    |> cluster.CreateProcess
+
+(** Now observe progress: *)
+
+persistedHousePricesTask.ShowInfo()
+cluster.ShowWorkers()
+
+(** Now wait for the results: *)
+
+let persistedHousePrices = persistedHousePricesTask.Result
 
 (** 
+
+The input file will have been partitioned depending on the number of workers in your cluster.
+The partitions are already assigned to different workers.
 With the results persisted on the nodes, we can use them again and again.
 
 First, get the total number of entries across the partitioned, persisted result:
@@ -168,17 +201,27 @@ let first100 =
     |> CloudFlow.toArray
     |> cluster.Run
 
-(** Next, get the average house price by month *)
+
+(** Next, get the average house price by year/month. *)
 
 let pricesByMonthTask =
     persistedHousePrices
-    |> CloudFlow.groupBy(fun row -> row.DateOfTransfer.Month)
-    |> CloudFlow.map(fun (month, rows) -> month, rows |> Seq.averageBy (fun row -> float row.Price))
+    |> CloudFlow.averageByKey 
+          (fun row -> (row.DateOfTransfer.Year, row.DateOfTransfer.Month)) 
+          (fun row -> float row.Price)
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
+(** Make a chart of the results: *)
+
 pricesByMonthTask.ShowInfo()
 pricesByMonthTask.Result
+
+let pricesByMonth = pricesByMonthTask.Result
+
+pricesByMonth |> chartPrices
+
+
 
 (** Next, get the property types in London: *)
 let londonPropertiesTask =
@@ -191,17 +234,15 @@ let londonPropertiesTask =
 londonPropertiesTask.ShowInfo()
 londonPropertiesTask.Result
 
-Chart.Column londonPropertiesTask.Result |> Chart.Show
+(** Make a chart of the results: *)
+londonPropertiesTask.Result |> Chart.Column |> Chart.Show
 
 (** Next, get the percentage of new builds by county: *)
 let newBuildsByCountyTask =
     persistedHousePrices
-    |> CloudFlow.groupBy(fun row -> row.County)
-    |> CloudFlow.map(fun (county, rows) ->
-        let rows = rows |> Seq.toList
-        let newBuilds = rows |> List.filter(fun r -> r.NewBuild = "Y") |> List.length
-        let percentageNewBuilds = (100. / float rows.Length) * float newBuilds
-        county, percentageNewBuilds)
+    |> CloudFlow.averageByKey
+          (fun row -> row.County)
+          (fun row -> if row.NewBuild = "Y" then 1.0 else 0.0)
     |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
     |> cluster.CreateProcess
@@ -209,22 +250,23 @@ let newBuildsByCountyTask =
 newBuildsByCountyTask.ShowInfo()
 newBuildsByCountyTask.Result
 
+(** Next, get the most expensive street: *)
+let mostExpensiveTask =
+    persistedHousePrices
+    |> CloudFlow.averageByKey
+          (fun row -> (row.TownCity, row.Street))
+          (fun row -> float row.Price)
+    |> CloudFlow.sortByDescending snd 100
+    |> CloudFlow.toArray
+    |> cluster.CreateProcess
+
+mostExpensiveTask.ShowInfo()
+mostExpensiveTask.Result
+
+
+(** Make a chart of the results: *)
+
 Chart.Column newBuildsByCountyTask.Result |> Chart.Show
-
-cluster.ShowProcesses()
-cluster.ShowWorkers()
-
-let housePrices = persistedHousePrices |>  CloudFlow.take 10 |> CloudFlow.toArray |> cluster.Run
-
-housePrices
-    |> Seq.groupBy(fun row -> row.County)
-    |> Seq.map(fun (county, rows) ->
-        let rows = rows |> Seq.toList
-        let newBuilds = rows |> List.filter(fun r -> r.NewBuild = "Y") |> List.length
-        let percentageNewBuilds = (100. / float rows.Length) * float newBuilds
-        county, percentageNewBuilds)
-    |> Seq.sortByDescending snd 
-    |> Seq.toArray
 
 (**
 
