@@ -288,7 +288,7 @@ then we can re-use that persisted flow in all subsequent queries, each of which 
 In this example, you've learned how to use data parallel cloud flows with historical event data
 drawn directly from the internet.  By using F# type providers (FSharp.Data) plus a sample of the data 
 you have given strong types to your information.  You then learned how to persist partial results
-and to calulate averages and sums of groups of the data.
+and to calculate averages and sums of groups of the data.
 
 Continue with further samples to learn more about the MBrace programming model.  
 
