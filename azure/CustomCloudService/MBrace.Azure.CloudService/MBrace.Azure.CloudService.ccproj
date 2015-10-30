@@ -8,8 +8,8 @@
     <ProjectGuid>d2e22f3f-b562-471f-b4eb-ac2e5d44434a</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MBraceAzureService</RootNamespace>
-    <AssemblyName>MBraceAzureService</AssemblyName>
+    <RootNamespace>MBrace.Azure.CloudService</RootNamespace>
+    <AssemblyName>MBrace.Azure.CloudService</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
     <Name>MBrace.Azure.CloudService</Name>
   </PropertyGroup>
