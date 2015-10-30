@@ -1,38 +1,12 @@
 # MBrace on Azure
 
-## Provisioning Your MBrace Cluster in Azure
 
-###  Creating a Cluster - The Easy Way
-
-1. [Create an Azure account])(https://azure.microsoft.com) and [download your publication settings file ](https://manage.windowsazure.com/publishsettings).
-
-2. Build this repository to get the ``MBrace.Azure`` package 
-
-       cd MBrace.StarterKit
-
-       msbuild   (or build Mbrace.StarterKit.sln in your editor)
-
-3. Edit the ``create-cluster.fsx`` script in F# Interactive. Adjust the region as necessary, e.g. ``Regions.West_US``
-  
-       notepad azure/create-cluster.fsx  
-
-   Then run the script - either from the command line or using send-to-interactive in your editor:
-
-       cd azure
-       fsi create-cluster.fsx 
- 
-   Your cluster will now eventually appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com).
-
-Now go through the [Programming Model Tutorials](http://www.m-brace.net/programming-model.html), the code is in ``HandsOnTutorial``
-If using the starter kit, note your connection strings from ``config`` and enter them in ``HandsOnTutorial/AzureCluster.fsx``.  You can also
-find these connection strings in the Configure panel of your cloud service in the [Azure management portal](https://manage.windowsazure.com).
-
+See [Getting started with MBrace on Azure](http://m-brace.net/#try-azure).
 
 ###  Manually Creating a Custom Package to Deploy
 
-
 An MBrace cluster is provisioned on Azure by deploying an Azure Cloud Service with MBrace Worker Roles.
-The provisioning process above creates storage, service bus and virtual machine assets in Azure using
+The basic provisioning process creates storage, service bus and virtual machine assets in Azure using
 [default packages created as part of MBrace.Azure releases](https://github.com/mbraceproject/MBrace.Azure/releases).
 
 You can build your own artisan packages that contain pre-installed software, adjusted settings or installation scripts.
