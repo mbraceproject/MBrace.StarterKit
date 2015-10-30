@@ -58,11 +58,17 @@ let sources =
 
 (* For larger data you can add more years: *)
 
-let bigources = 
+let bigSources = 
   [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
     "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
     "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
     "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv"  ]
+
+(* For testing you can uses micro data: *)
+
+let tinySources = 
+  [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/" 
+    + "SampleHousePriceFile.csv" ]
 
 (**
 Now, stream the data source from the original web location and 
