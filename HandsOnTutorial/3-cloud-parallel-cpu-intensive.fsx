@@ -63,7 +63,7 @@ Alternatively, you could have started 30 independent jobs.  This can be handy if
 *)
 
 let jobs =  
-    [ for i in 1 .. 30 -> 
+    [ for i in 1 .. 10 -> 
          cloud { 
             let primes = Sieve.getPrimes 100000000
             return sprintf "calculated %d primes %A on machine '%s'" primes.Length primes Environment.MachineName 

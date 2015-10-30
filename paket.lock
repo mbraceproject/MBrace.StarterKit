@@ -19,6 +19,12 @@ NUGET
       FsPickler (1.5.2)
       Newtonsoft.Json (>= 6.0.5)
     Google.DataTable.Net.Wrapper (3.1.2)
+    Hyak.Common (1.0.3)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net403+win+wpa81
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net403+win+wpa81
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net403+win+wpa81
     MathNet.Numerics (3.7.1)
       TaskParallelLibrary (>= 1.0.2856) - framework: net35
     MathNet.Numerics.FSharp (3.7.1)
@@ -26,12 +32,14 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (0.16.0-beta)
+    MBrace.Azure (0.16.1-beta)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.5.2)
       FsPickler.Json (>= 1.5.2)
       MBrace.Core (0.16.0-beta)
       MBrace.Runtime (0.16.0-beta)
+      Microsoft.WindowsAzure.Management.Libraries
+      Microsoft.WindowsAzure.Management.ServiceBus
       Newtonsoft.Json (>= 7.0.1)
       Vagabond (>= 0.12.0)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
@@ -52,13 +60,69 @@ NUGET
       MBrace.Runtime (0.16.0-beta)
       Thespian.Core (0.1.6-alpha)
       Vagabond (>= 0.12.0 < 0.13.0)
+    Microsoft.Azure.Common (2.1.0)
+      Hyak.Common (>= 1.0.2)
+      Microsoft.Azure.Common.Dependencies (>= 1.0.0)
+    Microsoft.Azure.Common.Dependencies (1.0.0)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Bcl (1.1.10) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Build (>= 1.0.14)
+    Microsoft.Bcl.Async (1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl (>= 1.1.8)
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: portable-net45+wp80+wpa81+win, >= net40
     Microsoft.Data.Edm (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
     Microsoft.Data.OData (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Edm (5.6.4)
       System.Spatial (5.6.4)
     Microsoft.Data.Services.Client (5.6.4) - framework: >= net40
       Microsoft.Data.OData (5.6.4)
+    Microsoft.Net.Http (2.2.29) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl (>= 1.1.10)
+      Microsoft.Bcl.Build (>= 1.0.14)
+    Microsoft.WindowsAzure.Common (1.4.1)
+      Microsoft.WindowsAzure.Common.Dependencies (>= 1.1.1)
+    Microsoft.WindowsAzure.Common.Dependencies (1.1.1)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
     Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
+    Microsoft.WindowsAzure.Management (4.1.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Compute (12.3.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Libraries (2.0.0)
+      Microsoft.WindowsAzure.Common (>= 1.3.0 < 2.0)
+      Microsoft.WindowsAzure.Management (>= 2.0.0)
+      Microsoft.WindowsAzure.Management.Compute (>= 5.0.0)
+      Microsoft.WindowsAzure.Management.MediaServices (>= 2.0.0)
+      Microsoft.WindowsAzure.Management.Monitoring (>= 1.0.0)
+      Microsoft.WindowsAzure.Management.Network (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Scheduler (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Sql (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.Storage (>= 3.0.0)
+      Microsoft.WindowsAzure.Management.WebSites (>= 3.0.0)
+    Microsoft.WindowsAzure.Management.MediaServices (4.1.0)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Monitoring (4.1.0)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Network (7.0.3)
+      Microsoft.Azure.Common (>= 2.1.0 < 3.0)
+    Microsoft.WindowsAzure.Management.Scheduler (6.2.0)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.ServiceBus (0.17.1-preview)
+      Microsoft.Azure.Common (>= 2.0.1 < 3.0)
+    Microsoft.WindowsAzure.Management.Sql (5.2.0)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.Storage (5.1.1)
+      Microsoft.Azure.Common (>= 2.0.4 < 3.0)
+    Microsoft.WindowsAzure.Management.WebSites (4.0.0)
+      Microsoft.WindowsAzure.Common (>= 1.3.0 < 2.0)
     Mono.Cecil (0.9.6.1)
     Newtonsoft.Json (7.0.1)
     Streams (0.4.1)
