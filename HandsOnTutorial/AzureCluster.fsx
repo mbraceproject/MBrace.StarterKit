@@ -23,8 +23,8 @@ module Config =
     //    Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s
 
 
-    let myStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mbracef73a030a;AccountKey=lLFQfHXH2UpWZsrLDK6ypX51MOaHWxz/WVldvcNXX30B8K6Yh54NeWgnsn3+gcVZHnvn1MVIEUsT/fgugyXwew=="
-    let myServiceBusConnectionString = "Endpoint=sb://mbracec0b29764.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=MiH4t/1ADKAbmKdCMplRqpDZUnbzJ4svS+drAq6TwfM="
+    let myStorageConnectionString = "..."
+    let myServiceBusConnectionString = "..."
 
     // Alternatively you can specify the connection strings by calling the functions below
     //
