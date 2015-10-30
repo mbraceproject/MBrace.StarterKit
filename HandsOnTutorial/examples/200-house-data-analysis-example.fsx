@@ -35,24 +35,6 @@ In this example, you learn how to use data parallel cloud flows with historical 
 drawn directly from open government data on the internet.  This sample has been adapted
 from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
-First, the input data.  (Each of these files is ~70MB but can take a significant amount of time to download
-due to possible rate-limiting from the server).
-*)
-
-let sources = 
-  //if tiny then 
-  //  [ "https://raw.githubusercontent.com/mbraceproject/MBrace.StarterKit/master/data/SampleHousePriceFile.csv" ]
-  //elif medium then 
-      [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
-  //else
-  //  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
-  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
-  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
-  //    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" 
-  //  ]
-
-
-(**
 You start by using FSharp.Data and its CSV Type Provider. 
 Usually the type provider can infer all data types and columns but in this case the file does 
 not include headers, so we’ll supply them ourselves. 
@@ -67,6 +49,22 @@ type HousePrices = CsvProvider< @"../../data/SampleHousePrices.csv", HasHeaders 
 
 With that, you have a strongly-typed way to parse CSV data. 
 
+Here is the input data.  (Each of these files is ~70MB but can take a significant amount of time to download
+due to possible rate-limiting from the server).
+*)
+
+let sources = 
+  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
+
+(* For larger data you can add more years: *)
+
+let bigources = 
+  [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2012.csv"
+    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2013.csv"
+    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv"
+    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv"  ]
+
+(**
 Now, stream the data source from the original web location and 
 across the cluster, then convert the raw text to our CSV provided type.
 Entries are grouped by month and the average price for each month is computed.
