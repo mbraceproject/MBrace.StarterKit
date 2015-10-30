@@ -29,10 +29,10 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Combining CloudFlows with FSharp.Data to Analyze Historical UK House Price Data 
+# Using Data Parallel Cloud Flows to Analyze Historical Event Data
 
-In this example, you learn how to use data parallel cloud flows with historical event data
-drawn directly from open government data on the internet.  This sample has been adapted
+In this example, you learn how to use data parallel cloud flows with historical event data at scale.
+The data is drawn directly from open government data on the internet.  This sample has been adapted
 from Isaac Abraham's [blog](https://cockneycoder.wordpress.com/2015/10/20/mbrace-cloudflows-and-fsharp-data-a-perfect-match/).
 
 You start by using FSharp.Data and its CSV Type Provider. 
@@ -76,8 +76,8 @@ let pricesTask =
     |> CloudFlow.OfHttpFileByLine
     |> CloudFlow.collect HousePrices.ParseRows
     |> CloudFlow.averageByKey 
-            (fun row -> row.DateOfTransfer.Year, row.DateOfTransfer.Month) // the key of the groups
-            (fun row -> float row.Price) // the statistic to average
+            (fun row -> row.DateOfTransfer.Year, row.DateOfTransfer.Month) 
+            (fun row -> float row.Price) 
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
@@ -116,7 +116,8 @@ Now that you have a summary array of year, month and price data, you can chart t
 
 *)
 
-let formatYearMonth (year,month) = sprintf "%s" (DateTime(year, month, 1).ToString("yyyy-MMM"))
+let formatYearMonth (year,month) = 
+    sprintf "%s" (DateTime(year, month, 1).ToString("yyyy-MMM"))
 
 let chartPrices prices = 
     prices
