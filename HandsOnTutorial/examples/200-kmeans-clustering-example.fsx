@@ -19,7 +19,7 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Example: Cloud-distributed k-means clustering with incremental notifications
+# Example: Running an iterative algorithm at scale with incremental notifications
 
 > This example is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
 
