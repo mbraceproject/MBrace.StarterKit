@@ -2,36 +2,45 @@
 
 ## Provisioning Your MBrace Cluster in Azure
 
+###  Creating a Cluster - The Easy Way
+
+1. [Create an Azure account])(https://azure.microsoft.com) and [download your publication settings file ](https://manage.windowsazure.com/publishsettings).
+
+2. Build this repository to get the ``MBrace.Azure`` package 
+
+       cd MBrace.StarterKit
+
+       msbuild   (or build Mbrace.StarterKit.sln in your editor)
+
+3. Edit the ``create-cluster.fsx`` script in F# Interactive. Adjust the region as necessary, e.g. ``Regions.West_US``
+  
+       notepad azure/create-cluster.fsx  
+
+   Then run the script - either from the command line or using send-to-interactive in your editor:
+
+       cd azure
+       fsi create-cluster.fsx 
+ 
+   Your cluster will now eventually appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com).
+
+Now go through the [Programming Model Tutorials](http://www.m-brace.net/programming-model.html), the code is in ``HandsOnTutorial``
+If using the starter kit, note your connection strings from ``config`` and enter them in ``HandsOnTutorial/AzureCluster.fsx``.  You can also
+find these connection strings in the Configure panel of your cloud service in the [Azure management portal](https://manage.windowsazure.com).
+
+
+###  Manually Creating a Custom Package to Deploy
+
+
 An MBrace cluster is provisioned on Azure by deploying an Azure Cloud Service with MBrace Worker Roles.
+The provisioning process above creates storage, service bus and virtual machine assets in Azure using
+[default packages created as part of MBrace.Azure releases](https://github.com/mbraceproject/MBrace.Azure/releases).
+
+You can build your own artisan packages that contain pre-installed software, adjusted settings or installation scripts.
 The directory contains template solutions for this.
 
-You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
+By building an artisan cloud service you can:
 
-1. Make a copy of the `CustomCloudService` directory.
-
-2. Using the Azure management portal:
-
-   * Create a storage account. Use any name (e.g. `mbrace10storage`).  Note the name and the primary access key.
-
-   * Create a service bus account. Use any name (e.g. `mbrace10bus`). Note the `RootManageSharedAccessKey` connection string in the connection information.
-
-3. Insert these names and keys into the `ServiceConfiguration.Cloud.cscfg` file.
-
-4. Right click and Publish the `MBrace.Azure.CloudService` project.  During publication, choose a new name for your cloud service. 
-
-
-After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
-
-If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
-to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
-
-## Cluster Customization
-
-During configuration (and prior to deployment) you may want to:
-
-* adjust the size of VM used for worker instances in your cluster; or
-
-* add endpoints to your cloud service (so your MBrace cluster can publish 
+* adjust the endpoints to your cloud service from the defaults (so your MBrace cluster can publish 
   TCP and HTTP endpoints, either public or to your virtual network, 
   for example, you want your MBrace cluster to publish a web server); or
 
@@ -48,10 +57,33 @@ During configuration (and prior to deployment) you may want to:
 * compile and deploy your own version of the MBrace cluster worker instance software. 
 
 In order to provision explicitly, as a prerequisite you need 
-to have an Azure account, basic knowledge of the Azure computing and
-an editing environment supporting F#.
+to have an Azure account and basic knowledge of Azure computing.
 
-### Creating custom MBrace Worker Roles with Python installed
+You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
+
+1. Make a copy of the `CustomCloudService` directory.
+
+2. Using the Azure management portal:
+
+   * Create a storage account. Use any name (e.g. `mbrace10storage`).  Note the name and the primary access key.
+
+   * Create a service bus account. Use any name (e.g. `mbrace10bus`). Note the `RootManageSharedAccessKey` connection string in the connection information.
+
+3. Insert these names and keys into the `ServiceConfiguration.Cloud.cscfg` file.
+
+4. Right click and Package the `MBrace.Azure.CloudService` project.  The `MBrace.Azure.CloudService.cspkg` package will now be ready to use
+   with the script-based deployment process above:
+
+       Management.CreateCluster(pubSettingsFile, Regions.North_Europe, CloudServicePackage = ...)
+
+   If you want to provision and deploy from Visual Studio, right click and Publish the `MBrace.Azure.CloudService` project.  During publication, choose a new name for your cloud service. 
+   After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
+
+   If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
+   to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
+
+
+### Creating a Cluster with Python pre-installed on workers
 
 Sometimes, you want to customize the MBrace cluster with extra software installed on all workers. 
 For example, you have a machine learning algorithm written in Python and you want to use MBrace to launch it. So you  need to have the Python interpreter and all the dependant Python packages pre-installed in the MBrace cluster.
@@ -122,7 +154,9 @@ Then, you can follow the usual worker role publishing steps to publish the MBrac
 
 Now, you can now go to the 200-launching-python tutorial in the HandsOnTutorial, and see how to use the newly built custom provision.
 
-### Customizing a cluster to install Java
+### Creating a Cluster with Java  pre-installed on Workers
+
+As for Python, but instead use this:
 
 	# Download JDK.
 	# Instructions are taken from http://stackoverflow.com/questions/24430141/downloading-jdk-using-powershell.

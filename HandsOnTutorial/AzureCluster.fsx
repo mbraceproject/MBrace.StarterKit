@@ -23,8 +23,8 @@ module Config =
     //    Endpoint=sb://%s.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=%s
 
 
-    let myStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mbrace10storage;AccountKey=QIgkxF317t36PwbjQF3stydjhpH6069vft1D8Iv6uglyIqTw8tWkfN1I0m778Ve0IBmkl3Emgo9qkrjANcQi2A=="
-    let myServiceBusConnectionString = "Endpoint=sb://mbrace10bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=1QqM8VH4oFxpZQlidXIv8kRG/q4Wh8yLfPgURQc+QNQ="
+    let myStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mbracef73a030a;AccountKey=lLFQfHXH2UpWZsrLDK6ypX51MOaHWxz/WVldvcNXX30B8K6Yh54NeWgnsn3+gcVZHnvn1MVIEUsT/fgugyXwew=="
+    let myServiceBusConnectionString = "Endpoint=sb://mbracec0b29764.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=MiH4t/1ADKAbmKdCMplRqpDZUnbzJ4svS+drAq6TwfM="
 
     // Alternatively you can specify the connection strings by calling the functions below
     //
@@ -48,3 +48,4 @@ module Config =
 
     let GetCluster() =
         AzureCluster.Connect(config, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+
