@@ -83,7 +83,8 @@ let pricesTask =
     |> CloudFlow.collect HousePrices.ParseRows
     |> CloudFlow.averageByKey 
             (fun row -> row.DateOfTransfer.Year, row.DateOfTransfer.Month) 
-            (fun row -> float row.Price) 
+            (fun row -> float row.Price)
+    |> CloudFlow.sortBy fst 100
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
@@ -127,7 +128,6 @@ let formatYearMonth (year,month) =
 
 let chartPrices prices = 
     prices
-    |> Seq.sortBy fst // sort by year, month
     |> Seq.map(fun (ym, price) -> formatYearMonth ym, price)
     |> Chart.Line
     |> Chart.WithOptions(Options(curveType = "function"))
@@ -201,6 +201,7 @@ let pricesByMonthTask =
     |> CloudFlow.averageByKey 
           (fun row -> (row.DateOfTransfer.Year, row.DateOfTransfer.Month)) 
           (fun row -> float row.Price)
+    |> CloudFlow.sortBy fst 100
     |> CloudFlow.toArray
     |> cluster.CreateProcess
 
@@ -253,10 +254,11 @@ let leastExpensive =
 let purchasesByCity =
     persistedHousePrices
     |> CloudFlow.countBy (fun row -> row.TownCity)
+    |> CloudFlow.sortByDescending snd 1500
     |> CloudFlow.toArray
     |> cluster.Run
 
-Chart.Pie purchasesByCity|> Chart.Show
+Chart.Pie purchasesByCity |> Chart.Show
 
 
 (** 
@@ -265,9 +267,9 @@ Chart.Pie purchasesByCity|> Chart.Show
 Finally, as an example of a different kind of statistic, get the percentage of new builds by county: *)
 let newBuildsByCountyTask =
     persistedHousePrices
-    |> CloudFlow.averageByKey
+    |> CloudFlow.percentageByKey
           (fun row -> row.County)
-          (fun row -> if row.NewBuild = "Y" then 1.0 else 0.0)
+          (fun row -> row.NewBuild = "Y")
     |> CloudFlow.sortByDescending snd 100
     |> CloudFlow.toArray
     |> cluster.CreateProcess
