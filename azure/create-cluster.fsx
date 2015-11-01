@@ -4,7 +4,8 @@ open MBrace.Azure
     
 let pubSettingsFile = @"... path to your downloaded publication settings file ... "
     
-let config = Management.CreateCluster(pubSettingsFile,Regions.North_Europe)  // adjust your region as necessary
+// create a cluster - optional arguments include VM size, cluster size etc.
+let config = Management.CreateCluster(pubSettingsFile, Regions.North_Europe)  // adjust your region as necessary
 
 //If using the starter kit, note your connection strings and enter them in ``HandsOnTutorial/AzureCluster.fsx``
 //
@@ -17,4 +18,9 @@ let config = Management.CreateCluster(pubSettingsFile,Regions.North_Europe)  // 
 //    config.StorageConnectionString
 //     config.ServiceBusConnectionString
 
+// Report on the status of provisioning by calling GetClusters
+Management.GetClusters(pubSettingsFile)
+
+// Delete a cluster by supplying the cluster name
+Management.DeleteCluster(pubSettingsFile, " ... cluster name ... ")
 
