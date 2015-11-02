@@ -53,7 +53,7 @@ Here is the input data.  (Each of these files is ~70MB but can take a significan
 due to possible rate-limiting from the server).
 *)
 
-let sources = 
+let smallSources = 
   [ "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/b/pp-2012-part1.csv" ]
 
 (* For larger data you can add more years: *)
@@ -76,6 +76,9 @@ across the cluster, then convert the raw text to our CSV provided type.
 Entries are grouped by month and the average price for each month is computed.
 
 *)
+//let sources = tinySources
+let sources = smallSources
+//let sources = bigSources
 
 let pricesTask =
     sources
@@ -224,7 +227,7 @@ We persist the results: CloudFlow.cache is the same as persiting to memory.
 let averagePricesTask =
     persistedHousePrices
     |> CloudFlow.averageByKey
-          (fun row -> (row.TownCity, row.Street))
+          (fun row -> (row.TownCity, row.District, row.Street))
           (fun row -> float row.Price)
     |> CloudFlow.cache
     |> cluster.CreateProcess
@@ -249,6 +252,7 @@ let leastExpensive =
     |> CloudFlow.toArray
     |> cluster.Run
 
+
 (** Count the sales by city: *)
 
 let purchasesByCity =
@@ -264,32 +268,113 @@ Chart.Pie purchasesByCity |> Chart.Show
 (** 
 ![Count by city](../img/house-prices-by-city.png)
 
-Finally, as an example of a different kind of statistic, get the percentage of new builds by county: *)
-let newBuildsByCountyTask =
-    persistedHousePrices
-    |> CloudFlow.percentageByKey
-          (fun row -> row.County)
-          (fun row -> row.NewBuild = "Y")
-    |> CloudFlow.sortByDescending snd 100
-    |> CloudFlow.toArray
-    |> cluster.CreateProcess
-
-newBuildsByCountyTask.ShowInfo()
-newBuildsByCountyTask.Result
-
-
-(** Make a chart of the results: *)
-
-Chart.Column newBuildsByCountyTask.Result |> Chart.Show
-
-(**
-
 And so on.
 
 So notice that the first query takes 45 seconds to execute,
 which involves downloading the data and parsing it via the CSV type provider. 
 Once we’ve done that, we persist it across the cluster in memory – 
 then we can re-use that persisted flow in all subsequent queries, each of which just takes a few seconds to run.
+
+
+### Finding the Current Prices of Monopoly Streets
+
+We all know and love the game [Monopoly](https://en.wikipedia.org/wiki/Go_to_jail).
+For those who grew up in the United Kingdom or Australia, you probably played
+using the London street names and prices where buying Mayfair cost £400.  But how do
+prices today look, and which streets are now the most expensive?
+
+Next, you get the list of all streets on the Monopoly board using the HTML type provider
+over [this web page](http://www.jdawiseman.com/papers/trivia/monopoly-rents.html).
+This is a type provider in FSharp.Data that helps you crack the content of HTML tables.
+*)
+
+type MonopolyTable = 
+    HtmlProvider<"http://www.jdawiseman.com/papers/trivia/monopoly-rents.html">
+
+let monopolyPage = MonopolyTable.GetSample()
+
+(**
+This page contains a particular table with all the property names for the UK edition of Monopoly:
+*)
+let data = monopolyPage.Tables.Table2.Rows 
+
+(** 
+
+Giving:
+
+    [("Property", "Cost", "M’tg", "Site", "1 hse", "2 hses", "3 hses", "4 hses","Hotel");
+     ("Old Kent Road", "60", "30", "2", "10", "30", "90", "160", "250");
+     ...
+     ("Park Lane", "350", "175", "35", "175", "500", "1100", "1300", "1500");
+     ("Mayfair", "400", "200", "50", "200", "600", "1400", "1700", "2000")]
+
+*)
+
+(**
+Next you put the names into a set, converting them to lower case as you go:
+*)
+
+let monopolyStreets = 
+        [ for p in data do 
+             let streetName = p.Column1.ToLower()
+             // Strip off the header 
+             if streetName <> "Property" then 
+                 yield streetName
+          // Yield one random street in Mayfair
+          yield "Grosvenor Street".ToLower()]
+        |> set
+
+
+(**
+Next, you find the sales that correspond to Monopoly streets, again reusing your calculation
+of average-prices on streets:
+*)
+
+let monopoly =
+    averagePrices
+    |> CloudFlow.filter (fun ((city, district, street),price) -> 
+          city = "LONDON" && monopolyStreets.Contains(street.ToLower())) 
+    |> CloudFlow.sortByDescending snd 100
+    |> CloudFlow.toArray
+    |> cluster.Run
+
+
+
+
+(**
+
+You're done! If you are using the large 4-year data set, you will see this:
+
+    [|(("LONDON", "CITY OF WESTMINSTER", "TRAFALGAR SQUARE"), 5540000.0);
+      (("LONDON", "CITY OF WESTMINSTER", "PICCADILLY"), 3500000.0);
+      (("LONDON", "CITY OF WESTMINSTER", "THE STRAND"), 3100000.0);
+      (("LONDON", "KENSINGTON AND CHELSEA", "MARLBOROUGH STREET"), 2975000.0);
+      (("LONDON", "CITY OF WESTMINSTER", "PARK LANE"), 2465000.0);
+      (("LONDON", "CITY OF WESTMINSTER", "OXFORD STREET"), 1803150.0);
+      (("LONDON", "CITY OF WESTMINSTER", "WHITEHALL"), 1130000.0);
+      (("LONDON", "CITY OF WESTMINSTER", "BOW STREET"), 1056428.571);
+      (("LONDON", "CAMDEN", "EUSTON ROAD"), 1045781.25);
+      (("LONDON", "CITY OF WESTMINSTER", "GROSVENOR STREET"), 717400.0);
+      (("LONDON", "CITY OF WESTMINSTER", "PALL MALL"), 700000.0);
+      (("LONDON", "CITY OF LONDON", "FLEET STREET"), 621111.1111);
+      (("LONDON", "BRENT", "REGENT STREET"), 581421.4286);
+      (("LONDON", "REDBRIDGE", "NORTHUMBERLAND AVENUE"), 549850.0);
+      (("LONDON", "ISLINGTON", "PENTONVILLE ROAD"), 539376.4634);
+      (("LONDON", "NEWHAM", "BOND STREET"), 360000.0);
+      (("LONDON", "TOWER HAMLETS", "WHITECHAPEL ROAD"), 330071.4286);
+      (("LONDON", "ENFIELD", "PARK LANE"), 290400.0);
+      (("LONDON", "SOUTHWARK", "OLD KENT ROAD"), 266975.6622);
+      (("LONDON", "HARINGEY", "PARK LANE"), 210770.8333);
+      (("LONDON", "EALING", "BOND STREET"), 206000.0)|]
+*)
+
+(**
+
+Some of these results are false: they are probably not the streets being referred
+to in the Monopoly game!  But most are accurate.  You will see that the "red" set
+does particularly well in the 21st century!!  Also, many of the "cheap" properties
+are still at the lower end of the list, albeit at roughly 7,000x the price of the original
+game!
 
 ## Summary
 
