@@ -2,7 +2,7 @@
 
 [Choose your version of the starter kit](mbrace-versions.md).
 
-A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/).
+A collection of templates, demos and tutorials for [MBrace](http://mbrace.io/).
 
 ## Contents
 
@@ -11,7 +11,7 @@ A collection of templates, demos and tutorials for [MBrace](http://m-brace.net/)
 The directory [HandsOnTutorial](HandsOnTutorial) contains a set of scripted 
 hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
 
-1. Provision your cluster, see [m-brace.net](http://m-brace.net/#try).
+1. Provision your cluster, see [mbrace.io](http://mbrace.io/#try).
 2. Open and build the solution ``MBrace.StarterKit.sln`` before working with the scripts
    to restore the necessary packages.
 

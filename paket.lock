@@ -91,7 +91,7 @@ NUGET
       Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
       Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
-    Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
+    Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net40
     Microsoft.WindowsAzure.Management (4.1.1)
       Microsoft.Azure.Common (>= 2.0.4 < 3.0)
     Microsoft.WindowsAzure.Management.Compute (12.3.1)

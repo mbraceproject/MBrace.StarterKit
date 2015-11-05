@@ -87,7 +87,7 @@ let job (url: string, pythonCode: string) =
     }
 
 (** Finally, run the MBrace task and get the results. *)
-let result = job("http://www.m-brace.net/", pythonCode) |> cluster.Run
+let result = job("http://www.mbrace.io/", pythonCode) |> cluster.Run
 
 (**
 In this tutorial, you've learned how to launch an external process withing a cloud expression.
