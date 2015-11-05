@@ -1,7 +1,7 @@
 # MBrace on Azure
 
 
-See [Getting started with MBrace on Azure](http://m-brace.net/#try-azure).
+See [Getting started with MBrace on Azure](http://mbrace.io/#try-azure).
 
 ###  Manually Creating a Custom Package to Deploy
 

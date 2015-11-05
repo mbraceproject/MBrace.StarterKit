@@ -13,7 +13,7 @@ open MBrace.Flow
 
 > This tutorial is from the [MBrace Starter Kit](https://github.com/mbraceproject/MBrace.StarterKit).
 
-A guide to creating a cluster is [here](http://www.m-brace.net/#try).
+A guide to creating a cluster is [here](http://www.mbrace.io/#try).
 
 Start F# Interactive in your editor.  Highlight the text below and press "Alt-Enter" (Visual Studio) or the other
 appropriate execution command for your editor. This connects to the cluster.  If you are using a locally simulated
