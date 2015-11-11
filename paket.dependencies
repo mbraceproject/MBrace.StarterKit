@@ -2,11 +2,11 @@ redirects: on
 source https://www.nuget.org/api/v2
 
 nuget FSharp.Core
-nuget MBrace.Core 1.0.0
-nuget MBrace.Flow 1.0.0
-nuget MBrace.Thespian 1.0.0
-nuget MBrace.Runtime 1.0.0
-nuget MBrace.Azure 0.16.3-beta
+nuget MBrace.Core
+nuget MBrace.Flow
+nuget MBrace.Thespian
+nuget MBrace.Runtime
+nuget MBrace.Azure 1.0.0
 nuget MBrace.Azure.Management
 nuget Streams
 nuget Suave
