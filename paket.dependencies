@@ -1,7 +1,7 @@
 redirects: on
 source https://www.nuget.org/api/v2
 
-nuget FSharp.Core 3.1.2.5
+nuget FSharp.Core
 nuget MBrace.Core
 nuget MBrace.Flow
 nuget MBrace.Thespian
