@@ -44,7 +44,7 @@ You can now connect to your cluster as follows:
 let cluster = AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
 
 (**
-You now have a connetion to your cluster.
+You now have a connection to your cluster.
 
 However you should now also record your cluster details in ``AzureCluster.fsx`` by evaluating the following code snippet:
 
