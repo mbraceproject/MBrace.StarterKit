@@ -18,7 +18,7 @@ NUGET
     FsPickler.Json (1.5.2)
       FsPickler (1.5.2)
       Newtonsoft.Json (>= 6.0.5)
-    Google.DataTable.Net.Wrapper (3.1.2)
+    Google.DataTable.Net.Wrapper (3.1.2.0)
     Hyak.Common (1.0.3)
       Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
@@ -32,7 +32,7 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.0.0)
+    MBrace.Azure (1.1.0)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.5.2)
       FsPickler.Json (>= 1.5.2)
@@ -42,10 +42,11 @@ NUGET
       Vagabond (>= 0.12.0)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.0.0)
-      MBrace.Azure (>= 1.0.0)
+    MBrace.Azure.Management (1.1.0)
+      MBrace.Azure (>= 1.1.0)
       MBrace.Core (>= 1.0.0 < 1.1.0)
       MBrace.Runtime (>= 1.0.0 < 1.1.0)
+      Microsoft.Bcl.Async
       Microsoft.WindowsAzure.Management.Libraries
       Microsoft.WindowsAzure.Management.ServiceBus
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
@@ -76,11 +77,11 @@ NUGET
       Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
       Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
-    Microsoft.Bcl (1.1.10) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Async (1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Bcl.Async (1.0.168)
       Microsoft.Bcl (>= 1.1.8)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
     Microsoft.Data.Edm (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
     Microsoft.Data.OData (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Edm (5.6.4)
