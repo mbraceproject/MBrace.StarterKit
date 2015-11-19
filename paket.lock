@@ -18,7 +18,7 @@ NUGET
     FsPickler.Json (1.5.2)
       FsPickler (1.5.2)
       Newtonsoft.Json (>= 6.0.5)
-    Google.DataTable.Net.Wrapper (3.1.2.0)
+    Google.DataTable.Net.Wrapper (3.1.2)
     Hyak.Common (1.0.3)
       Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
@@ -32,7 +32,7 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.1.0)
+    MBrace.Azure (1.1.1)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.5.2)
       FsPickler.Json (>= 1.5.2)
@@ -42,8 +42,8 @@ NUGET
       Vagabond (>= 0.12.0)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.0)
-      MBrace.Azure (>= 1.1.0)
+    MBrace.Azure.Management (1.1.1)
+      MBrace.Azure (>= 1.1.1)
       MBrace.Core (>= 1.0.0 < 1.1.0)
       MBrace.Runtime (>= 1.0.0 < 1.1.0)
       Microsoft.Bcl.Async
