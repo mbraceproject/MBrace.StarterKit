@@ -2,6 +2,7 @@
 #load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
 
+#load "../lib/utils.fsx"
 #load "../../packages/FSharp.Charting/FSharp.Charting.fsx"
 #r "../../packages/FSharp.Control.AsyncSeq/lib/net45/FSharp.Control.AsyncSeq.dll"
 
@@ -140,7 +141,7 @@ let rec KMeansCloudIterate (partitionedPoints, epsilon, centroids, iteration, em
     let! clusterParts =
         partitionedPoints
         |> Array.map (fun (p:CloudArray<_>, w) -> cloud { return kmeansLocal p.Value centroids }, w)
-        |> Cloud.Parallel
+        |> Cloud.ParallelOnSpecificWorkers
 
     // Stage 2: reduce computations to obtain the new centroids
     let dim = centroids.[0].Length

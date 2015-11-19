@@ -11,6 +11,7 @@ open MBrace.Core
 open MBrace.Flow
 
 
+#load "../lib/utils.fsx"
 
 (**
 # Example: Cloud Parallel Web Downloader 
@@ -36,7 +37,7 @@ let urls =
 
 (** Next define a cloud workflow to download a file and wave it into cloud storage. *)
 let download (name: string, uri: string) = 
-    cloud {
+    local {
         let webClient = new WebClient()
         let! text = webClient.AsyncDownloadString(Uri(uri)) |> Cloud.OfAsync
         do! CloudFile.Delete(sprintf "pages/%s.html" name)
@@ -47,7 +48,7 @@ let download (name: string, uri: string) =
 let filesTask = 
     urls 
     |> Array.map download
-    |> Cloud.Parallel
+    |> Cloud.ParallelBalanced
     |> cluster.CreateProcess
 
 // Check on progress...
@@ -60,9 +61,9 @@ let files = filesTask.Result
 let contentsOfFiles = 
     files
     |> Array.map (fun file ->
-        cloud { let text = fs.File.ReadAllText(file.Path)
+        local { let text = fs.File.ReadAllText(file.Path)
                 return (file.Path, text.Length) })
-    |> Cloud.Parallel
+    |> Cloud.ParallelBalanced
     |> cluster.Run
 
 

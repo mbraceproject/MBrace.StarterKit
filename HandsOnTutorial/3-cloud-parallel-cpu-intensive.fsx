@@ -40,12 +40,12 @@ let locallyComputedPrimes =
     the multiple machines (workers) in the cluster. *)
 let clusterPrimesTask =
     [| for i in 1 .. 30 -> 
-         cloud { 
+         local { 
             let primes = Sieve.getPrimes 100000000
             return sprintf "calculated %d primes %A on machine '%s'" primes.Length primes Environment.MachineName 
          }
     |]
-    |> Cloud.Parallel
+    |> Cloud.ParallelBalanced
     |> cluster.CreateProcess
 
 

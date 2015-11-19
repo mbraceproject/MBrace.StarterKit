@@ -2,6 +2,8 @@
 #load "ThespianCluster.fsx"
 //#load "AzureCluster.fsx"
 
+#load "lib/utils.fsx"
+
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.fsx to enter your connection strings.
 
@@ -54,11 +56,13 @@ The following inverts 100 150x150 matrices using C# code on the cluster.
 *) 
 let csharpMathJob = 
     [ for i in 1 .. 100 -> 
-         cloud { 
+         local { 
+            Control.UseManaged()
+            Control.UseSingleThread()
             let m = Matrix<double>.Build.Random(250,250) 
             return (m * m.Inverse()).Determinant()
          } ]
-    |> Cloud.Parallel
+    |> Cloud.ParallelBalanced
     |> cluster.CreateProcess
 
 // Show the progress
@@ -99,12 +103,13 @@ firstNativeJob.Result
 (** Now run a much larger job: 1000 250x250 matrices, inverted using Intel MKL: *)
 let nativeMathJob = 
     [ for i in 1 .. 1000 -> 
-         cloud { 
+         local { 
             Control.UseNativeMKL()
+            Control.UseSingleThread()
             let m = Matrix<double>.Build.Random(250,250) 
             return (m * m.Inverse()).Determinant() 
          } ]
-    |> Cloud.Parallel
+    |> Cloud.ParallelBalanced
     |> cluster.CreateProcess
 
 // Check progress

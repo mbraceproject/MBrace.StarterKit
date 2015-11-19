@@ -40,8 +40,8 @@ let clusterSingleMachineSingleThreaded =
      } |>  cluster.Run
 
 
-// Run in the cluster, on a single randome worker, multi-threaded. This exploits the
-// mutli-core nature of a single random machine in the cluster.  Performance
+// Run in the cluster, on a single random worker, multi-threaded. This exploits the
+// multi-core nature of a single random machine in the cluster.  Performance
 // will depend on the specification of your machines in the cluster.
 //
 // Sample time: Real: 00:00:24.236, CPU: 00:00:03.000, GC gen0: 53, gen1: 10, gen2: 0
@@ -69,7 +69,7 @@ let clusterMultiWorkerMultiThreaded =
             numbers
             |> Array.splitInto clusterWorkerCount
             |> Array.map(fun nums -> 
-                 cloud { 
+                 local { 
                    return
                        nums
                        |> Array.splitInto System.Environment.ProcessorCount
@@ -78,5 +78,5 @@ let clusterMultiWorkerMultiThreaded =
                              let primes = Sieve.getPrimes n 
                              yield sprintf "calculated %d primes: %A on thread %d" primes.Length primes (getThread()) |])
                   })
-            |> Cloud.Parallel
+            |> Cloud.ParallelBalanced
         } |> cluster.Run

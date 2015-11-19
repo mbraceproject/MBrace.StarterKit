@@ -12,6 +12,7 @@ open MBrace.Flow
 
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
+#load "lib/utils.fsx"
 
 (**
 # Creating and Using Cloud Files
@@ -135,7 +136,7 @@ mkdir dataDir
 
 let cloudFiles = 
     [ for i in 1 .. 100 ->
-        cloud { 
+        local { 
             let lines = 
                 [ for j in 1 .. 100000 -> 
                     "file " + string i + ", item " + string (i*100+j) + ", " + string (j+i*100) ] 
@@ -144,7 +145,7 @@ let cloudFiles =
             let file = fs.File.WriteAllLines(nm, lines)
             return file.Path
         } ]
-   |> Cloud.Parallel 
+   |> Cloud.ParallelBalanced
    |> cluster.Run
 
 

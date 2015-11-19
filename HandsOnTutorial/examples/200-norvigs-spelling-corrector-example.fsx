@@ -64,7 +64,7 @@ let files = downloadTask.Result
 let fileSizesJob = 
     files
     |> Array.map (fun f -> CloudFile.GetSize f.Path)
-    |> Cloud.Parallel 
+    |> Cloud.ParallelBalanced
     |> cluster.CreateProcess 
 
 fileSizesJob.Status

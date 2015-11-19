@@ -9,6 +9,8 @@ module Utils
 #r "../../packages/MBrace.Core/lib/net45/MBrace.Core.dll"
 #r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
 
+open MBrace.Core
+
 /// Creates a new HashSet with provided sequence
 let hashSet (ts : seq<'T>) = new System.Collections.Generic.HashSet<'T>(ts)
 
@@ -54,3 +56,18 @@ module CloudFlow =
         |> CloudFlow.map (fun (key, (count,sum)) -> (key, (float sum / float count)))
 
 
+type Cloud with 
+    /// Execute the single-machine cloud work items in parallel. Computation
+    /// is balanced across the cluster according to multicore capacity.
+    static member ParallelBalanced jobs = 
+         jobs |> MBrace.Library.Cloud.Balanced.mapLocal id 
+
+    /// Execute the single-machine cloud work items in parallel.
+    /// Returns the immediate result once a positive result is found. Computation
+    /// is balanced across the cluster according to multicore capacity.
+    static member ChoiceBalanced jobs = 
+         jobs |> MBrace.Library.Cloud.Balanced.tryPickLocal id 
+
+    /// Execute the cloud work items on specific workers.
+    static member ParallelOnSpecificWorkers (jobsAndWorkers: (#Cloud<'T> * IWorkerRef)[] ) = 
+         MBrace.Core.Cloud.Parallel (jobsAndWorkers)

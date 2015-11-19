@@ -26,11 +26,11 @@ module Config =
 
     // You can download your publication settings file at 
     //     https://manage.windowsazure.com/publishsettings
-    let pubSettingsFile = @"..."
+    let pubSettingsFile = @"C:\Users\dsyme\Downloads\MSRC-UK CC70550-10-29-2015-credentials.publishsettings" 
 
     // Your cluster name is reported when you create your cluster, or can be found in 
     // the Azure management console.
-    let clusterName = "..." 
+    let clusterName = "mbracefce23447" 
 
     /// Get the deployment for the cluster
     let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, clusterName) 
