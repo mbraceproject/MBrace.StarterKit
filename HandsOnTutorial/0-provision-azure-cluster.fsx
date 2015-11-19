@@ -154,12 +154,12 @@ manager.Storage.ShowAccounts()
 
 Yielding
 
- Azure Storage Accounts for subscription "Azure Free Trial"          
+    Azure Storage Accounts for subscription "Azure Free Trial"          
 
- Account Name    Region          Account Type  Status   Affinity Group    
- ------------    ------          ------------  ------   --------------    
- mynewaccount    Southeast Asia  Standard_LRS  Created  N/A
- existingaccount North Europe    Standard_LRS  Created  N/A
+    Account Name    Region          Account Type  Status   Affinity Group    
+    ------------    ------          ------------  ------   --------------    
+    mynewaccount    Southeast Asia  Standard_LRS  Created  N/A
+    existingaccount North Europe    Standard_LRS  Created  N/A
 
 ## Summary
 
