@@ -44,19 +44,21 @@ You can now connect to your cluster as follows:
 let cluster = AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
 
 (**
-However you must now also record your cluster details in AzureCluster.fsx. This lets you reconnect to your cluster later
-and whenever you ``#load "AzureCluster.fsx"`` followed by ``let cluster = GetCluster()``:
+You now have a connetion to your cluster.
 
-    let pubSettingsFile = "..."
-    let clusterName = "..."
-
-Evaluating the following code snippet will insert you the values you need into AzureCluster.fsx:
+However you should now also record your cluster details in ``AzureCluster.fsx`` by evaluating the following code snippet:
 
 *)
 
-Config.RecordClusterDetails(pubSettingsFile, deployment)
+Config.RecordClusterDetails (pubSettingsFile, deployment.ServiceName)
 
 (**
+
+This lets you reconnect to your cluster later by using the following:
+
+    #load "AzureCluster.fsx"
+    let cluster = Config.GetCluster()
+
 ## Summary
 
 In this tutorial, you've learned how to provision an MBrace clusters running on Azure using MBrace.Azure.Management.

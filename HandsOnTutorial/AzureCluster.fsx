@@ -1,4 +1,4 @@
-﻿#I __SOURCE_DIRECTORY__
+#I __SOURCE_DIRECTORY__
 #I "../packages/MBrace.Azure/tools" 
 #I "../packages/Streams/lib/net45" 
 #r "../packages/Streams/lib/net45/Streams.dll"
@@ -17,23 +17,31 @@ module Config =
     open MBrace.Azure
     open MBrace.Azure.Management
 
+    type Deployment with 
+        static member GetDeployment(pubSettingsFile,clusterName) = 
+            let mgr = SubscriptionManager.FromPublishSettingsFile(pubSettingsFile, Region.North_Europe)
+            mgr.GetDeployment(clusterName)
+
     // This script is used to reconnect to your cluster.
 
     // You can download your publication settings file at 
     //     https://manage.windowsazure.com/publishsettings
-    let pubSettingsFile = @"C:\path\to\my.publishsettings" 
+    let pubSettingsFile = @"..."
 
     // Your cluster name is reported when you create your cluster, or can be found in 
     // the Azure management console.
-    let clusterName = "... enter your cluster name here ..."
+    let clusterName = "..." 
 
-    // Connect to the cluster 
+    /// Get the deployment for the cluster
+    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, clusterName) 
+
+    /// Connect to the cluster 
     let GetCluster() = 
-        let deployment = Deployment.GetDeployment(pubSettingsFile, clusterName)
+        let deployment = GetDeployment()
         AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
 
-
-    let RecordClusterDetails(pubSettingsFile, deployment: Deployment) = 
+    /// Modify this file to record the cluster details
+    let RecordClusterDetails(pubSettingsFile, clusterName) = 
 
         let file = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
         let lines = 
@@ -41,6 +49,6 @@ module Config =
                  if line.Trim().StartsWith("let pubSettingsFile") then 
                      sprintf """    let pubSettingsFile = @"%s" """ pubSettingsFile
                  elif line.Trim().StartsWith("let clusterName") then 
-                     sprintf """    let clusterName = "%s" """ deployment.ServiceName
+                     sprintf """    let clusterName = "%s" """ clusterName
                  else line ]
         File.WriteAllLines(file,lines)

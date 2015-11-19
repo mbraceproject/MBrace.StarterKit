@@ -11,7 +11,7 @@ NUGET
     Argu (1.1.2)
     FSharp.Charting (0.90.13)
     FSharp.Control.AsyncSeq (2.0.2)
-    FSharp.Core (4.0.0.1)
+    FSharp.Core (3.1.2.5)
     FSharp.Data (2.2.5)
       Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
     FsPickler (1.5.2)
@@ -99,7 +99,7 @@ NUGET
       Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
       Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
-    Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net40
+    Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
     Microsoft.WindowsAzure.Management (4.1.1)
       Microsoft.Azure.Common (>= 2.0.4 < 3.0)
     Microsoft.WindowsAzure.Management.Compute (12.3.1)

@@ -22,7 +22,7 @@ all authentication information necessary to manage your Azure subscription(s).
 *)
 
 // replace with your local .publishsettings path
-let pubSettingsFile = @"C:\path\to\my.publishsettings" 
+let pubSettingsFile = Config.pubSettingsFile
 
 (**
 
