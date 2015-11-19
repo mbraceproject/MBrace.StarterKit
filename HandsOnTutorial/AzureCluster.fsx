@@ -11,6 +11,7 @@ namespace global
 
 module Config =
 
+    open System.IO
     open MBrace.Core
     open MBrace.Runtime
     open MBrace.Azure
@@ -32,4 +33,14 @@ module Config =
         AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
 
 
+    let RecordClusterDetails(pubSettingsFile, deployment: Deployment) = 
 
+        let file = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
+        let lines = 
+            [ for line in File.ReadAllLines(file) ->
+                 if line.Trim().StartsWith("let pubSettingsFile") then 
+                     sprintf """    let pubSettingsFile = @"%s" """ pubSettingsFile
+                 elif line.Trim().StartsWith("let clusterName") then 
+                     sprintf """    let clusterName = "%s" """ deployment.ServiceName
+                 else line ]
+        File.WriteAllLines(file,lines)

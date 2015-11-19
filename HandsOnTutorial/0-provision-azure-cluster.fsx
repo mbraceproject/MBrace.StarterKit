@@ -1,9 +1,7 @@
 ﻿(*** hide ***)
-#I __SOURCE_DIRECTORY__
-#I "../packages/MBrace.Azure/tools" 
-#load "../packages/MBrace.Azure/MBrace.Azure.fsx"
-#load "../packages/MBrace.Azure.Management/MBrace.Azure.Management.fsx"
+#load "AzureCluster.fsx"
 
+open MBrace.Azure
 open MBrace.Azure.Management
 
 (**
@@ -39,20 +37,24 @@ let deployment = SubscriptionManager.Provision(pubSettingsFile, region, vmSize=v
 (**
 This will provision a 4-worker MBrace cluster of Large (A3) instances
 Provisioning can take some time (approximately 5 minutes). 
+You can now connect to your cluster as follows:
 
-Now record your details in AzureCluster.fsx in order to reconnect to your cluster later.
+*)
+
+let cluster = AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+
+(**
+However you must now also record your cluster details in AzureCluster.fsx. This lets you reconnect to your cluster later
+and whenever you ``#load "AzureCluster.fsx"`` followed by ``let cluster = GetCluster()``:
 
     let pubSettingsFile = "..."
     let clusterName = "..."
 
-Evaluating the following code snippet will show you the values you need.
+Evaluating the following code snippet will insert you the values you need into AzureCluster.fsx:
 
 *)
 
-printfn """
-    let pubSettingsFile = @"%s"
-    let clusterName = "%s"
-""" pubSettingsFile deployment.ServiceName
+Config.RecordClusterDetails(pubSettingsFile, deployment)
 
 (**
 ## Summary
