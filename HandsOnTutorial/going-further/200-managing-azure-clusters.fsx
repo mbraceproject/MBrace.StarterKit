@@ -30,7 +30,7 @@ Next, read your publish settings file by calling
 
 *)
 
-let pubSettings = PublishSettings.Parse pubSettingsFile
+let pubSettings = PublishSettings.ParseFile pubSettingsFile
 
 (** 
 
