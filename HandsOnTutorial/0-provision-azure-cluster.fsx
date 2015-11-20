@@ -17,47 +17,62 @@ to provision an MBrace cluster using F# Interactive. In order to proceed, you wi
 to [sign up](https://azure.microsoft.com/en-us/pricing/free-trial/) for an Azure subscription. Once signed up, 
 [download your publication settings file ](https://manage.windowsazure.com/publishsettings).
 
+Before proceeding, please go to `AzureCluster.fsx` and set your azure authentication data and deployment preferences.
+Once done, we can reload the script.
+
 *)
 
-// replace with your local .publishsettings path
-let pubSettingsFile = @"C:\Users\...\Downloads\..." 
+#load "AzureCluster.fsx"
 
 (**
 
-Next, specify your region and the size and number of your virtual machines, and create your cluster:
+Now let's create a new cluster by calling
 
 *)
-    
-let region = Region.North_Europe
-let vmSize = VMSize.Large
-let vmCount = 4
-    
-let deployment = Deployment.Provision(pubSettingsFile, region, vmSize=vmSize, vmCount=vmCount) 
+
+let deployment = Config.ProvisionCluster()
 
 (**
-This will provision a 4-worker MBrace cluster of Large (A3) instances
+
+We can track the provisioning progress of the cluster by calling
+
+*)
+
+deployment.ShowInfo()
+
+(**
+
 Provisioning can take some time (approximately 5 minutes). 
-You can now connect to your cluster as follows:
+Once done, you can now connect to your cluster as follows:
 
 *)
 
-let cluster = AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
+let cluster = Config.GetCluster()
+
+cluster.ShowWorkers()
 
 (**
-You now have a connection to your cluster.
 
-However you should now also record your cluster details in ``AzureCluster.fsx`` by evaluating the following code snippet:
+You can now run any of the subsequent tutorials and examples in your Azure cluster.
+
+## Modifying the cluster
+
+You can resize the cluster by calling
 
 *)
 
-Config.RecordClusterDetails (pubSettingsFile, deployment.ServiceName)
+Config.ResizeCluster 20
+
 
 (**
 
-This lets you reconnect to your cluster later by using the following:
+When done, it is important to make sure that the cluster has been deprovisioned
 
-    #load "AzureCluster.fsx"
-    let cluster = Config.GetCluster()
+*)
+
+Config.DeleteCluster()
+
+(**
 
 ## Summary
 
@@ -68,5 +83,3 @@ To learn more about provisioning, monitoring, scaling and deleting clusters usin
 see [going-further/200-managing-azure-clusters.fsx](going-further/200-managing-azure-clusters.html).
 
 *)
-
-
