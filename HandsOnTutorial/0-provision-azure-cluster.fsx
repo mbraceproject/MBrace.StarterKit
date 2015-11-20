@@ -47,6 +47,7 @@ Once done, you can now connect to your cluster as follows:
 
 *)
 
+#load "AzureCluster.fsx"
 let cluster = Config.GetCluster()
 
 cluster.ShowWorkers()
