@@ -21,15 +21,14 @@ module Config =
 
     // You can download your publication settings file at 
     //     https://manage.windowsazure.com/publishsettings
-    let pubSettingsFile = @"C:\path\to\your.publishsettings" 
+    let pubSettingsFile = @"C:\path\to\your.publishsettings"
 
     // If your publication settings defines more than one subscription,
     // you will need to specify which one you will be using here.
     let subscriptionId : string option = None
 
-    // Your cluster name is reported when you create your cluster, or can be found in 
-    // the Azure management console.
-    let clusterName = "please enter a valid cluster name" 
+    // Your prefered Azure service name for your cluster. Leave 'None' for an auto-generated name.
+    let clusterName : string option = None
 
     // Your prefered Azure region. Assign this to a data center close to your location.
     let region = Region.North_Europe
@@ -39,10 +38,24 @@ module Config =
     let vmCount = 4
 
     /// Gets the already existing deployment
-    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, clusterName, ?subscriptionId = subscriptionId) 
+    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = Option.get clusterName, ?subscriptionId = subscriptionId) 
 
     /// Provisions a new cluster to Azure with supplied parameters
-    let ProvisionCluster() = Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, ?subscriptionId = subscriptionId)
+    let ProvisionCluster() = 
+        let deployment = Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, ?serviceName = clusterName, ?subscriptionId = subscriptionId)
+        // update this file with the new serviceName
+        if Option.isNone clusterName then
+            let thisFile = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
+            let updated = 
+                [ for l in File.ReadAllLines thisFile ->
+                    if l.Trim().StartsWith "let clusterName : string option =" then
+                        sprintf "    let clusterName : string option = Some \"%s\"" deployment.ServiceName
+                    else
+                        l ]
+
+            File.WriteAllLines(thisFile, updated)
+
+        deployment
 
     /// Resizes the cluster using an updated VM count
     let ResizeCluster(newVmCount : int) =
