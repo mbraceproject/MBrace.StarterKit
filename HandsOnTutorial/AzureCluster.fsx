@@ -17,11 +17,6 @@ module Config =
     open MBrace.Azure
     open MBrace.Azure.Management
 
-    type Deployment with 
-        static member GetDeployment(pubSettingsFile,clusterName) = 
-            let mgr = SubscriptionManager.FromPublishSettingsFile(pubSettingsFile, Region.North_Europe)
-            mgr.GetDeployment(clusterName)
-
     // This script is used to reconnect to your cluster.
 
     // You can download your publication settings file at 

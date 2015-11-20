@@ -32,7 +32,7 @@ let region = Region.North_Europe
 let vmSize = VMSize.Large
 let vmCount = 4
     
-let deployment = SubscriptionManager.Provision(pubSettingsFile, region, vmSize=vmSize, vmCount=vmCount) 
+let deployment = Deployment.Provision(pubSettingsFile, region, vmSize=vmSize, vmCount=vmCount) 
 
 (**
 This will provision a 4-worker MBrace cluster of Large (A3) instances
