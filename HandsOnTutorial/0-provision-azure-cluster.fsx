@@ -47,7 +47,6 @@ Once done, you can now connect to your cluster as follows:
 
 *)
 
-#load "AzureCluster.fsx"
 let cluster = Config.GetCluster()
 
 cluster.ShowWorkers()
@@ -63,7 +62,6 @@ You can resize the cluster by calling
 *)
 
 Config.ResizeCluster 20
-
 
 (**
 

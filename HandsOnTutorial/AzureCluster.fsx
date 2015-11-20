@@ -27,8 +27,9 @@ module Config =
     // you will need to specify which one you will be using here.
     let subscriptionId : string option = None
 
-    // Your prefered Azure service name for your cluster. Leave 'None' for an auto-generated name.
-    let clusterName : string option = None
+    // Your prefered Azure service name for the cluster.
+    // NB: must be a valid DNS prefix unique across Azure.
+    let clusterName = "replace with a valid azure service name"
 
     // Your prefered Azure region. Assign this to a data center close to your location.
     let region = Region.North_Europe
@@ -38,24 +39,11 @@ module Config =
     let vmCount = 4
 
     /// Gets the already existing deployment
-    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = Option.get clusterName, ?subscriptionId = subscriptionId) 
+    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
 
     /// Provisions a new cluster to Azure with supplied parameters
     let ProvisionCluster() = 
-        let deployment = Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, ?serviceName = clusterName, ?subscriptionId = subscriptionId)
-        // update this file with the new serviceName
-        if Option.isNone clusterName then
-            let thisFile = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
-            let updated = 
-                [ for l in File.ReadAllLines thisFile ->
-                    if l.Trim().StartsWith "let clusterName : string option =" then
-                        sprintf "    let clusterName : string option = Some \"%s\"" deployment.ServiceName
-                    else
-                        l ]
-
-            File.WriteAllLines(thisFile, updated)
-
-        deployment
+        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId)
 
     /// Resizes the cluster using an updated VM count
     let ResizeCluster(newVmCount : int) =
