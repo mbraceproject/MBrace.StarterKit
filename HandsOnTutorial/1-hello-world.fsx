@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-//#load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+#load "ThespianCluster.fsx"
+//#load "AzureCluster.fsx"
 
 open System
 open System.IO

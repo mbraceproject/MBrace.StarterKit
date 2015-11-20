@@ -17,38 +17,45 @@ module Config =
     open MBrace.Azure
     open MBrace.Azure.Management
 
-    type Deployment with 
-        static member GetDeployment(pubSettingsFile,clusterName) = 
-            let mgr = SubscriptionManager.FromPublishSettingsFile(pubSettingsFile, Region.North_Europe)
-            mgr.GetDeployment(clusterName)
-
     // This script is used to reconnect to your cluster.
 
     // You can download your publication settings file at 
     //     https://manage.windowsazure.com/publishsettings
-    let pubSettingsFile = @"C:\Users\...\Downloads\..." 
+    let pubSettingsFile = @"C:\path\to\your.publishsettings"
 
-    // Your cluster name is reported when you create your cluster, or can be found in 
-    // the Azure management console.
-    let clusterName = "..." 
+    // If your publication settings defines more than one subscription,
+    // you will need to specify which one you will be using here.
+    let subscriptionId : string option = None
 
-    /// Get the deployment for the cluster
-    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, clusterName) 
+    // Your prefered Azure service name for the cluster.
+    // NB: must be a valid DNS prefix unique across Azure.
+    let clusterName = "replace with a valid azure service name"
+
+    // Your prefered Azure region. Assign this to a data center close to your location.
+    let region = Region.North_Europe
+    // Your prefered VM size
+    let vmSize = VMSize.Large
+    // Your prefered cluster count
+    let vmCount = 4
+
+    /// Gets the already existing deployment
+    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
+
+    /// Provisions a new cluster to Azure with supplied parameters
+    let ProvisionCluster() = 
+        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId)
+
+    /// Resizes the cluster using an updated VM count
+    let ResizeCluster(newVmCount : int) =
+        let deployment = GetDeployment()
+        deployment.Resize(newVmCount)
+
+    /// Deletes an existing cluster deployment
+    let DeleteCluster() =
+        let deployment = GetDeployment()
+        deployment.Delete()
 
     /// Connect to the cluster 
     let GetCluster() = 
         let deployment = GetDeployment()
-        AzureCluster.Connect(deployment.Configuration, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
-
-    /// Modify this file to record the cluster details
-    let RecordClusterDetails(pubSettingsFile, clusterName) = 
-
-        let file = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
-        let lines = 
-            [ for line in File.ReadAllLines(file) ->
-                 if line.Trim().StartsWith("let pubSettingsFile") then 
-                     sprintf """    let pubSettingsFile = @"%s" """ pubSettingsFile
-                 elif line.Trim().StartsWith("let clusterName") then 
-                     sprintf """    let clusterName = "%s" """ clusterName
-                 else line ]
-        File.WriteAllLines(file,lines)
+        AzureCluster.Connect(deployment, logger = ConsoleLogger(true), logLevel = LogLevel.Info)
