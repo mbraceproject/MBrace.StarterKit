@@ -20,7 +20,7 @@ to [sign up](https://azure.microsoft.com/en-us/pricing/free-trial/) for an Azure
 *)
 
 // replace with your local .publishsettings path
-let pubSettingsFile = @"C:\Users\dsyme\Downloads\MSRC-UK CC70550-10-29-2015-credentials.publishsettings" 
+let pubSettingsFile = @"C:\Users\...\Downloads\..." 
 
 (**
 
