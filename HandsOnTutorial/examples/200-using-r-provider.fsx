@@ -27,12 +27,12 @@ let cluster = Config.GetCluster()
 
 (**
 
-# Using R Provider with MBrace
+# Using the R type provider with MBrace
 
 In this tutorial, you will learn how you can use MBrace to distribute code that utilises the 
 [R Type Provider](http://bluemountaincapital.github.io/FSharpRProvider/).
 
-## Installing R across you cluster
+## Installing R across your cluster
 
 First of all, we define a bit of MBrace code that performs installation of R components on an MBrace cluster.
 This assumes that worker processes are run with elevated permisions. 
@@ -95,7 +95,7 @@ isRInstalledCloud() |> cluster.Run
 
 (**
 
-## Using the R provider with MBrace
+## Deploying R provider code to your cluster
 
 We are now ready to begin using the R type provider with MBrace.
 Here is a simple, non-parallel example taken from the R Type Provider [tutorial](http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html).
