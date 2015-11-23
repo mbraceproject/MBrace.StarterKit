@@ -6,7 +6,7 @@ nuget MBrace.Core
 nuget MBrace.Flow
 nuget MBrace.Thespian
 nuget MBrace.Runtime
-nuget MBrace.Azure 1.1.4
+nuget MBrace.Azure 1.1.5
 nuget MBrace.Azure.Management
 nuget Streams
 nuget Suave
@@ -21,3 +21,4 @@ nuget FSharp.Charting
 nuget FSharp.Control.AsyncSeq
 nuget XPlot.GoogleCharts ~> 1.2
 nuget XPlot.GoogleCharts.WPF
+nuget RProvider

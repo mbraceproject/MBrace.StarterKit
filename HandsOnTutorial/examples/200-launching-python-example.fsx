@@ -16,7 +16,6 @@ open System.Diagnostics
 open MBrace.Core
 open MBrace.Library
 open MBrace.Flow
-open Newtonsoft.Json
 
 (**
 # Example: Running python code using MBrace
