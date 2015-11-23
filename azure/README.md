@@ -35,7 +35,7 @@ to have an Azure account and basic knowledge of Azure computing.
 
 You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 
-## Provisioning your custom MBrace service
+### Provisioning your custom MBrace service
 
 1. Make any appropriate changes to your Worker role implementation.
 2. Set the desired VM size by double clicking the `Roles/MBrace.Azure.WorkerRole` item in the cloud service project.
@@ -45,7 +45,7 @@ You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 6. Run any of the supplied samples and tutorials.
    with the script-based deployment process above:
 
-## Provisioning using Visual Studio
+### Provisioning using Visual Studio
 
 Alternatively, you can provision and deploy from Visual Studio. Right click and Publish the `MBrace.Azure.CloudService` project. During publication, choose a new name for your cloud service. After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
 
