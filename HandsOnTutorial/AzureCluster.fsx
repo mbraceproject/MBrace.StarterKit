@@ -47,7 +47,7 @@ module Config =
     let useCustomCloudService = false
     let private tryGetCustomCsPkg () =
         if useCustomCloudService then
-            let path = __SOURCE_DIRECTORY__ + "/../azure/CustomCloudService/bin/cspkg/app.publish/MBrace.Azure.CloudService.cspkg" |> Path.GetFullPath
+            let path = __SOURCE_DIRECTORY__ + "/../azure/CustomCloudService/bin/app.publish/MBrace.Azure.CloudService.cspkg" |> Path.GetFullPath
             if not <| File.Exists path then failwith "Find the 'MBrace.Azure.CloudService' project under 'azure\CustomCloudService' and hit 'Package...'."
             Some path
         else
