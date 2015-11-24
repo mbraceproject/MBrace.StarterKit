@@ -38,12 +38,27 @@ module Config =
     // Your prefered cluster count
     let vmCount = 4
 
+    // set to true if you would like to provision
+    // the custom cloud service bundled with the StarterKit
+    // In order to use this feature, you will need to open
+    // the `CustomCloudService` solution under the `azure` folder 
+    // inside the MBrace.StarterKit repo.
+    // Right click on the cloud service item and hit "Package.."
+    let useCustomCloudService = false
+    let private tryGetCustomCsPkg () =
+        if useCustomCloudService then
+            let path = __SOURCE_DIRECTORY__ + "/../azure/CustomCloudService/bin/app.publish/MBrace.Azure.CloudService.cspkg" |> Path.GetFullPath
+            if not <| File.Exists path then failwith "Find the 'MBrace.Azure.CloudService' project under 'azure\CustomCloudService' and hit 'Package...'."
+            Some path
+        else
+            None
+
     /// Gets the already existing deployment
     let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
 
     /// Provisions a new cluster to Azure with supplied parameters
     let ProvisionCluster() = 
-        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId)
+        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId, ?cloudServicePackage = tryGetCustomCsPkg())
 
     /// Resizes the cluster using an updated VM count
     let ResizeCluster(newVmCount : int) =

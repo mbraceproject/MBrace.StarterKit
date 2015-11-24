@@ -5,7 +5,7 @@
     <ConfigurationSettings>
       <Setting name="MBrace.StorageConnectionString" value="" />
       <Setting name="MBrace.ServiceBusConnectionString" value="" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
