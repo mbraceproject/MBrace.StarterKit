@@ -73,34 +73,34 @@ NUGET
       Hyak.Common (>= 1.0.2)
       Microsoft.Azure.Common.Dependencies (>= 1.0.0)
     Microsoft.Azure.Common.Dependencies (1.0.0)
-      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
     Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Bcl.Async (1.0.168)
       Microsoft.Bcl (>= 1.1.8)
     Microsoft.Bcl.Build (1.0.21) - import_targets: false
-    Microsoft.Data.Edm (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
-    Microsoft.Data.OData (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
+    Microsoft.Data.Edm (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+    Microsoft.Data.OData (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
       Microsoft.Data.Edm (5.7.0)
       System.Spatial (5.7.0)
     Microsoft.Data.Services.Client (5.7.0) - framework: >= net40
       Microsoft.Data.OData (5.7.0)
-    Microsoft.Net.Http (2.2.29) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Net.Http (2.2.29) - framework: >= net40, portable-net403+win+wpa81, portable-net45+wp80+wpa81+win
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.WindowsAzure.Common (1.4.1)
       Microsoft.WindowsAzure.Common.Dependencies (>= 1.1.1)
     Microsoft.WindowsAzure.Common.Dependencies (1.1.1)
-      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
-      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
-    Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net40
+      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
+      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
+    Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
     Microsoft.WindowsAzure.Management (4.1.1)
       Microsoft.Azure.Common (>= 2.0.4 < 3.0)
     Microsoft.WindowsAzure.Management.Compute (12.3.1)
@@ -145,7 +145,7 @@ NUGET
     Streams (0.4.1)
     Suave (0.33.0)
       FSharp.Core (>= 3.1.2.5)
-    System.Spatial (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
+    System.Spatial (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
     TaskParallelLibrary (1.0.2856) - framework: net35
     Thespian.Core (0.1.6-alpha)
       FsPickler (>= 1.2.1)
@@ -155,13 +155,17 @@ NUGET
     WindowsAzure.ServiceBus (2.5.4)
       Microsoft.WindowsAzure.ConfigurationManager
     WindowsAzure.Storage (4.3.0)
-      Microsoft.Data.OData (>= 5.6.2) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
+      Microsoft.Data.OData (>= 5.6.2) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
-      Newtonsoft.Json (>= 5.0.8) - framework: wpv8.0, >= net40
+      Newtonsoft.Json (>= 5.0.8) - framework: >= net40, wpv8.0
     XPlot.GoogleCharts (1.2.2)
       Google.DataTable.Net.Wrapper
       Newtonsoft.Json
     XPlot.GoogleCharts.WPF (1.2.2)
       XPlot.GoogleCharts (>= 1.2.2)
     Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80
+GITHUB
+  remote: fslaborg/FSharp.Charting
+  specs:
+    docs/content/EventEx-0.1.fsx (1bff0e14dd6d305a7c1ffabe59c6d1126e977f2d)

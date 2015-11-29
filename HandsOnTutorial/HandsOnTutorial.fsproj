@@ -104,6 +104,7 @@
     <None Include="paket.references" />
     <None Include="ThespianCluster.fsx" />
     <None Include="AzureCluster.fsx" />
+    <None Include="Dashboard.fsx" />
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
