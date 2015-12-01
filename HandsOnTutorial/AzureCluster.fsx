@@ -21,15 +21,15 @@ module Config =
 
     // You can download your publication settings file at 
     //     https://manage.windowsazure.com/publishsettings
-    let pubSettingsFile = @"/Users/eirik/Desktop/eirik.publishsettings"
+    let pubSettingsFile = @"C:\path\to\your.publishsettings"
 
     // If your publication settings defines more than one subscription,
     // you will need to specify which one you will be using here.
-    let subscriptionId : string option = Some "Nessos"
+    let subscriptionId : string option = None
 
     // Your prefered Azure service name for the cluster.
     // NB: must be a valid DNS prefix unique across Azure.
-    let clusterName = "eiriktests"
+    let clusterName = "replace with a valid and unique cloud service name"
 
     // Your prefered Azure region. Assign this to a data center close to your location.
     let region = Region.North_Europe
