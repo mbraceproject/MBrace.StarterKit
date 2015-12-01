@@ -93,7 +93,6 @@
     <None Include="going-further\400-advanced-creating-new-serialized-things.fsx" />
     <None Include="going-further\400-advanced-core-thread-pool.fsx" />
     <None Include="going-further\400-advanced-core-internals.fsx" />
-    <None Include="lib\Dashboard.fsx" />
     <None Include="perf-scripts\999-cloud-file-perf.fsx" />
     <None Include="perf-scripts\999-task-create-perf.fsx" />
     <None Include="perf-scripts\999-misc-cpu-perf.fsx" />
@@ -102,6 +101,7 @@
     <None Include="lib\mersenne.fsx" />
     <None Include="lib\webserver.fsx" />
     <None Include="lib\textfiles.fsx" />
+    <None Include="lib\Dashboard.fsx" />
     <None Include="paket.references" />
     <None Include="ThespianCluster.fsx" />
     <None Include="AzureCluster.fsx" />
