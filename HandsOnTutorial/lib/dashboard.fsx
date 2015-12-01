@@ -1,4 +1,4 @@
-﻿#I @"..\packages"
+﻿#I @"..\..\packages"
 #r @"MBrace.Core\lib\net45\MBrace.Core.dll"
 #r @"MBrace.Runtime\lib\net45\MBrace.Runtime.dll"
 #r "FSharp.Control.AsyncSeq/lib/net45/FSharp.Control.AsyncSeq.dll"
@@ -57,6 +57,6 @@ let OpenDashboard (cluster:MBraceClient) =
                   "Available", total - inUse ]) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Cluster Memory"
             stream |> Event.mapWorker (fun worker -> getNullable worker.CpuUsage) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Column(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "CPU Usage" ]
         Chart.Columns [
-            stream |> Event.map (fun (time, workers) -> time.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.asTimeSeries 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 200.)) "Total Active Work Items"
+            stream |> Event.map (fun (time, workers) -> time.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.asTimeSeries 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "Total Active Work Items"
             stream |> Event.mapWorker (fun w -> getNullable w.NetworkUsageDown + getNullable w.NetworkUsageUp) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Bar(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 5000., Title = "Kbps")) "Bandwith Utilization" ]
         ]
