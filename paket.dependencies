@@ -22,3 +22,4 @@ nuget FSharp.Control.AsyncSeq
 nuget XPlot.GoogleCharts ~> 1.2
 nuget XPlot.GoogleCharts.WPF
 nuget RProvider
+github fslaborg/FSharp.Charting docs/content/EventEx-0.1.fsx
