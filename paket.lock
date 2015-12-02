@@ -15,9 +15,9 @@ NUGET
     FSharp.Core (4.0.0.1)
     FSharp.Data (2.2.5)
       Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
-    FsPickler (1.5.2)
-    FsPickler.Json (1.5.2)
-      FsPickler (1.5.2)
+    FsPickler (1.6.2)
+    FsPickler.Json (1.6.2)
+      FsPickler (1.6.2)
       Newtonsoft.Json (>= 6.0.5)
     Google.DataTable.Net.Wrapper (3.1.2)
     Hyak.Common (1.0.3)
@@ -33,74 +33,74 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.1.6)
+    MBrace.Azure (1.1.8)
       Argu (>= 1.0.0 < 2.0.0)
-      FsPickler (>= 1.5.2)
-      FsPickler.Json (>= 1.5.2)
-      MBrace.Core (>= 1.0.0 < 1.1.0)
-      MBrace.Runtime (>= 1.0.0 < 1.1.0)
+      FsPickler (>= 1.6.2)
+      FsPickler.Json (>= 1.6.2)
+      MBrace.Core (>= 1.0.3 < 1.1.0)
+      MBrace.Runtime (>= 1.0.3 < 1.1.0)
       Newtonsoft.Json (>= 7.0.1)
-      Vagabond (>= 0.12.0)
+      Vagabond (>= 0.12.2)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.6)
-      MBrace.Azure (>= 1.1.6)
-      MBrace.Core (>= 1.0.0 < 1.1.0)
-      MBrace.Runtime (>= 1.0.0 < 1.1.0)
+    MBrace.Azure.Management (1.1.8)
+      MBrace.Azure (>= 1.1.8)
+      MBrace.Core (>= 1.0.3 < 1.1.0)
+      MBrace.Runtime (>= 1.0.3 < 1.1.0)
       Microsoft.Bcl.Async
       Microsoft.WindowsAzure.Management.Libraries
       Microsoft.WindowsAzure.Management.ServiceBus
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Core (1.0.0)
-    MBrace.Flow (1.0.0)
+    MBrace.Core (1.0.3)
+    MBrace.Flow (1.0.3)
       FSharp.Core
-      MBrace.Core (1.0.0)
+      MBrace.Core (1.0.3)
       Streams (>= 0.4.0 < 0.5.0)
-    MBrace.Runtime (1.0.0)
-      FsPickler (>= 1.5.0 < 1.6.0)
-      FsPickler.Json (>= 1.5.0 < 1.6.0)
-      MBrace.Core (1.0.0)
-      Vagabond (>= 0.12.0 < 0.13.0)
-    MBrace.Thespian (1.0.0)
+    MBrace.Runtime (1.0.3)
+      FsPickler (>= 1.6.2 < 1.7.0)
+      FsPickler.Json (>= 1.6.2 < 1.7.0)
+      MBrace.Core (1.0.3)
+      Vagabond (>= 0.12.2 < 0.13.0)
+    MBrace.Thespian (1.0.3)
       Argu (>= 1.0.0 < 2.0.0)
-      FsPickler (>= 1.5.0 < 1.6.0)
-      MBrace.Core (1.0.0)
-      MBrace.Runtime (1.0.0)
+      FsPickler (>= 1.6.2 < 1.7.0)
+      MBrace.Core (1.0.3)
+      MBrace.Runtime (1.0.3)
       Thespian.Core (0.1.6-alpha)
-      Vagabond (>= 0.12.0 < 0.13.0)
+      Vagabond (>= 0.12.2 < 0.13.0)
     Microsoft.Azure.Common (2.1.0)
       Hyak.Common (>= 1.0.2)
       Microsoft.Azure.Common.Dependencies (>= 1.0.0)
     Microsoft.Azure.Common.Dependencies (1.0.0)
-      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
-    Microsoft.Bcl (1.1.10)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Bcl (1.1.10) - framework: portable-net403+win+wpa81, portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Async (1.0.168)
+    Microsoft.Bcl.Async (1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Bcl (>= 1.1.8)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false
-    Microsoft.Data.Edm (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
-    Microsoft.Data.OData (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: portable-net403+win+wpa81, portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.Data.Edm (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
+    Microsoft.Data.OData (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Edm (5.7.0)
       System.Spatial (5.7.0)
     Microsoft.Data.Services.Client (5.7.0) - framework: >= net40
       Microsoft.Data.OData (5.7.0)
-    Microsoft.Net.Http (2.2.29) - framework: >= net40, portable-net403+win+wpa81, portable-net45+wp80+wpa81+win
+    Microsoft.Net.Http (2.2.29) - framework: portable-net45+wp80+wpa81+win, >= net40
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.WindowsAzure.Common (1.4.1)
       Microsoft.WindowsAzure.Common.Dependencies (>= 1.1.1)
     Microsoft.WindowsAzure.Common.Dependencies (1.1.1)
-      Microsoft.Bcl (>= 1.1.9) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Bcl.Async (>= 1.0.168) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Bcl.Build (>= 1.0.14) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Microsoft.Net.Http (>= 2.2.22) - framework: >= net40, portable-net45+wp80+wpa81+win
-      Newtonsoft.Json (>= 6.0.4) - framework: >= net40, portable-net45+wp80+wpa81+win
-    Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
+      Microsoft.Bcl (>= 1.1.9) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Microsoft.Net.Http (>= 2.2.22) - framework: portable-net45+wp80+wpa81+win, >= net40
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-net45+wp80+wpa81+win, >= net40
+    Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net40
     Microsoft.WindowsAzure.Management (4.1.1)
       Microsoft.Azure.Common (>= 2.0.4 < 3.0)
     Microsoft.WindowsAzure.Management.Compute (12.3.1)
@@ -133,7 +133,7 @@ NUGET
     Microsoft.WindowsAzure.Management.WebSites (4.0.0)
       Microsoft.WindowsAzure.Common (>= 1.3.0 < 2.0)
     Mono.Cecil (0.9.6.1)
-    Newtonsoft.Json (7.0.1)
+    Newtonsoft.Json (7.0.1) - framework: wpv8.0, portable-net45+wp80+wpa81+win, >= net40
     R.NET.Community (1.6.4)
       DynamicInterop (0.7.4)
     R.NET.Community.FSharp (1.6.4)
@@ -145,20 +145,20 @@ NUGET
     Streams (0.4.1)
     Suave (0.33.0)
       FSharp.Core (>= 3.1.2.5)
-    System.Spatial (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+    System.Spatial (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
     TaskParallelLibrary (1.0.2856) - framework: net35
     Thespian.Core (0.1.6-alpha)
       FsPickler (>= 1.2.1)
-    Vagabond (0.12.0)
-      FsPickler (>= 1.5.0 < 2.0.0)
-      Mono.Cecil (>= 0.9.6.1 < 0.9.7)
+    Vagabond (0.12.2)
+      FsPickler (>= 1.6.1 < 1.7.0)
+      Mono.Cecil (>= 0.9.6.1 < 0.9.7.0)
     WindowsAzure.ServiceBus (2.5.4)
       Microsoft.WindowsAzure.ConfigurationManager
     WindowsAzure.Storage (4.3.0)
-      Microsoft.Data.OData (>= 5.6.2) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
+      Microsoft.Data.OData (>= 5.6.2) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
-      Newtonsoft.Json (>= 5.0.8) - framework: >= net40, wpv8.0
+      Newtonsoft.Json (>= 5.0.8) - framework: wpv8.0, >= net40
     XPlot.GoogleCharts (1.2.2)
       Google.DataTable.Net.Wrapper
       Newtonsoft.Json

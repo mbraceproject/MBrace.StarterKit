@@ -6,7 +6,7 @@ nuget MBrace.Core
 nuget MBrace.Flow
 nuget MBrace.Thespian
 nuget MBrace.Runtime
-nuget MBrace.Azure 1.1.6
+nuget MBrace.Azure 1.1.8
 nuget MBrace.Azure.Management
 nuget Streams
 nuget Suave
