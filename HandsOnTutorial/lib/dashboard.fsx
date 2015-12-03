@@ -14,6 +14,7 @@
 
 open FSharp.Charting
 open System
+open System.Threading
 open System.Windows
 open System.Windows.Controls
 open System.Windows.Media.Imaging
@@ -23,14 +24,23 @@ open MBrace.Core
 open MBrace.Runtime
 open MBrace.Azure.Management
 
-
-Window().Close()
-
-type private ClusterStatusStream = IEvent<WorkerRef array>
-
 module private Event =
-    let mapWorker getField =
-        Event.map(snd >> Seq.map(fun (worker:WorkerRef) -> worker.Id, getField worker))
+
+    let mkPoller interval getter =
+        let cts = new CancellationTokenSource()
+        let event = new Event<_>()
+        let rec poller () = async {
+            let! result = getter () |> Async.Catch
+            match result with
+            | Choice1Of2 info -> try event.Trigger info with _ -> ()
+            | Choice2Of2 _ -> ()
+            do! Async.Sleep interval
+            return! poller()
+        }
+
+        Async.Start(poller(), cts.Token)
+        cts, event.Publish
+        
 
 module private ChartBuilders =
     let stylize chartName = Chart.WithTitle(Text = chartName, InsideArea = false)
@@ -44,62 +54,92 @@ module private ChartBuilders =
 
     let dashGrid = ChartTypes.Grid(LineColor = Color.Gainsboro, LineDashStyle = ChartDashStyle.Dash)
 
-let OpenDashboard (cluster:MBraceClient) =
-    let getNullable nullable =
-        nullable
-        |> Option.ofNullable
-        |> defaultArg <| 0.
+    let showWithCancellation (cts : CancellationTokenSource) (chart : ChartTypes.GenericChart) =
+        let form = chart.ShowChart()
+        let _ = form.Closing.Subscribe(fun _ -> cts.Cancel())
+        { new IDisposable with member __.Dispose() = cts.Cancel() ; form.Close() }
 
-    let stream = Event.clock 500 |> Event.map(fun time -> time, cluster.Workers)
+[<AutoOpen>]
+module Dashboard =
 
-    Chart.Rows [
-        Chart.Columns [
-            stream |> Event.map (fun (_, workers) ->
-                let inUse = workers |> Seq.sumBy(fun w -> getNullable w.MemoryUsage)
-                let total = workers |> Seq.sumBy(fun w -> getNullable w.TotalMemory)
-                [ "In Use", inUse
-                  "Available", total - inUse ]) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Cluster Memory"
-            stream |> Event.mapWorker (fun worker -> getNullable worker.CpuUsage) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Column(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "CPU Usage" ]
-        Chart.Columns [
-            stream |> Event.map (fun (time, workers) -> time.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.windowAtMost 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "Total Active Work Items"
-            stream |> Event.mapWorker (fun w -> getNullable w.NetworkUsageDown + getNullable w.NetworkUsageUp) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Bar(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 5000., Title = "Kbps")) "Bandwith Utilization" ]
-        ]
+    type private WorkerInfo =
+        {
+            Id : string
+            MemoryUsage : float
+            TotalMemory : float
+            CpuUsage    : float
+            ActiveWorkItems : int
+            NetworkUsageUp : float
+            NetworkUsageDown : float
+        }
 
-let OpenDeploymentDashboard (deployment : Deployment) =
-    let stream = Event.clock 5000 |> Event.choose(fun _ -> try Some(deployment.Nodes, deployment.DeploymentState) with _ -> None)
+    type MBraceClient with
+        member cluster.OpenDashboard() =
+            let getWorkerInfo (w : WorkerRef) =
+                let (!) (n : Nullable<float>) = n.GetValueOrDefault 0.
+                {
+                    Id = w.Id
+                    MemoryUsage = ! w.MemoryUsage
+                    TotalMemory = ! w.TotalMemory
+                    CpuUsage    = ! w.CpuUsage
+                    ActiveWorkItems = w.ActiveWorkItems
+                    NetworkUsageUp = ! w.NetworkUsageDown
+                    NetworkUsageDown = ! w.NetworkUsageDown
+                }
 
-    let progressPie () = 
-        stream 
-        |> Event.map (fun (_,state) -> 
-                match state with 
-                | Provisioning pct -> [("", 1. - pct); ("%Complete", pct)]  
-                | _ -> [(string state, 100.)])
+            let cts, stream = Event.mkPoller 500 (fun () -> async { return cluster.Workers |> Array.map getWorkerInfo })
 
-        |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Provision Progress (Cluster)"
+            Chart.Rows [
+                Chart.Columns [
+                    stream |> Event.map (fun workers ->
+                        let inUse = workers |> Seq.sumBy(fun w -> w.MemoryUsage)
+                        let total = workers |> Seq.sumBy(fun w -> w.TotalMemory)
+                        [ ("In Use", inUse);
+                            ("Available", total - inUse) ]) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Cluster Memory"
+                    stream |> Event.map (fun ws -> ws |> Seq.map (fun w -> w.Id, w.CpuUsage)) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Column(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "CPU Usage" ]
+                Chart.Columns [
+                    stream |> Event.map (fun workers -> DateTime.Now.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.windowAtMost 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "Total Active Work Items"
+                    stream |> Event.map (fun ws -> ws |> Seq.map (fun w -> w.Id, w.NetworkUsageDown + w.NetworkUsageUp)) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Bar(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 5000., Title = "Kbps")) "Bandwith Utilization" ]
+                ]
 
-    let nodeChart () =
-        stream
-        |> Event.map (fun (nodes,_) ->
-            let getNodePct (node : VMInstance) =
-                let score =
-                    match node.Status with
-                    | "StoppedVM"           -> 1
-                    | "CreatingVM"          -> 2
-                    | "StartingVM"          -> 3
-                    | "RoleStateUnknown"    -> 4
-                    | "BusyRole"            -> 5
-                    | "ReadyRole"           -> 6
-                    | _                     -> 0
+            |> ChartBuilders.showWithCancellation cts
 
-                float score * 100. / 6.
+    type Deployment with
+        member deployment.OpenDashboard() =
+            let cts, stream = Event.mkPoller 5000 (fun () -> deployment.GetInfoAsync())
+            let progressPie () = 
+                stream
+                |> Event.map (fun info -> 
+                        match info.DeploymentState with 
+                        | Provisioning pct -> [("", 1. - pct); (sprintf "%2.2f%% Complete" (100. * pct), pct)]  
+                        | s -> [(string s, 100.)])
 
-            nodes |> Seq.map (fun n -> sprintf "%s\n(%s)" n.Id n.Status, getNodePct n) |> Seq.sortByDescending fst)
+                |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Provision Progress (Cluster)"
 
-        |> ChartBuilders.asLiveChart(fun (a,b) -> 
-                LiveChart.Bar(a, Name = b, YTitle = "%Complete")
-                |> Chart.WithXAxis(MajorGrid = ChartBuilders.dashGrid)
-                |> Chart.WithYAxis(MajorGrid = ChartBuilders.dashGrid, Max = 100., Min = 0.) 
-                |> Chart.WithStyling(Color = Color.BurlyWood)) "Provision Progress (VMs)"
+            let nodeChart () =
+                stream
+                |> Event.map (fun info ->
+                    let getNodePct (node : VMInstance) =
+                        let score =
+                            match node.Status with
+                            | "StoppedVM"           -> 1
+                            | "CreatingVM"          -> 2
+                            | "StartingVM"          -> 3
+                            | "RoleStateUnknown"    -> 4
+                            | "BusyRole"            -> 5
+                            | "ReadyRole"           -> 6
+                            | _                     -> 0
 
-    Chart.Columns [nodeChart () ; progressPie ()]
-    |> Chart.WithTitle (sprintf "Cluster %A" deployment.ServiceName)
+                        float score * 100. / 6.
+
+                    info.VMInstances |> Seq.map (fun n -> sprintf "%s\n(%s)" n.Id n.Status, getNodePct n) |> Seq.sortByDescending fst)
+
+                |> ChartBuilders.asLiveChart(fun (a,b) -> 
+                        LiveChart.Bar(a, Name = b, YTitle = "%Complete")
+                        |> Chart.WithXAxis(MajorGrid = ChartBuilders.dashGrid)
+                        |> Chart.WithYAxis(MajorGrid = ChartBuilders.dashGrid, Max = 100., Min = 0.) 
+                        |> Chart.WithStyling(Color = Color.BurlyWood)) "Provision Progress (VMs)"
+
+            Chart.Columns [nodeChart () ; progressPie ()]
+            |> Chart.WithTitle (sprintf "Cluster %A" deployment.ServiceName)
+            |> ChartBuilders.showWithCancellation cts
