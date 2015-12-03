@@ -9,6 +9,8 @@
 #r "PresentationFramework"
 #r "WindowsBase"
 #r "System.Xaml"
+#r @"MBrace.Azure\lib\net45\MBrace.Azure.dll"
+#r @"MBrace.Azure.Management\lib\net45\MBrace.Azure.Management.dll"
 
 open FSharp.Charting
 open System
@@ -18,6 +20,7 @@ open System.Windows.Media.Imaging
 open MBrace.Core
 open MBrace.Runtime
 
+
 Window().Close()
 
 type ClusterStatusStream = IEvent<WorkerRef array>
@@ -25,10 +28,6 @@ type ClusterStatusStream = IEvent<WorkerRef array>
 module Event =
     let mapWorker getField =
         Event.map(snd >> Seq.map(fun (worker:WorkerRef) -> worker.Id, getField worker))
-    let asTimeSeries n =
-        Event.scan(fun state ev ->
-            (state @ [ ev ])
-            |> List.skip(state.Length - n)) []
 
 module ChartBuilders =
     let private stylize chartName = Chart.WithTitle(Text = chartName, InsideArea = false)
@@ -57,6 +56,34 @@ let OpenDashboard (cluster:MBraceClient) =
                   "Available", total - inUse ]) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Cluster Memory"
             stream |> Event.mapWorker (fun worker -> getNullable worker.CpuUsage) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Column(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "CPU Usage" ]
         Chart.Columns [
-            stream |> Event.map (fun (time, workers) -> time.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.asTimeSeries 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "Total Active Work Items"
+            stream |> Event.map (fun (time, workers) -> time.ToShortTimeString(), workers |> Seq.sumBy(fun w -> w.ActiveWorkItems)) |> Event.windowAtMost 60 |> ChartBuilders.asLiveChart (fun (a, b) -> LiveChart.Line(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 100.)) "Total Active Work Items"
             stream |> Event.mapWorker (fun w -> getNullable w.NetworkUsageDown + getNullable w.NetworkUsageUp) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Bar(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 5000., Title = "Kbps")) "Bandwith Utilization" ]
         ]
+
+open MBrace.Azure.Management
+let OpenDeploymentDashboard getDeployment =
+    let stream = Event.clock 10000 |> Event.map(fun time -> time, getDeployment())
+    stream
+    |> Event.map(fun (_, deployment:Deployment) ->
+        let nodeCount = deployment.Nodes.Length
+        let multiplier = 100. / (float nodeCount * 7.)
+        let nodeScores =
+            deployment.Nodes
+            |> Seq.mapi(fun index node ->
+                let status = sprintf "Node %d (%s)" index node.Status
+                let completed =
+                    match node.Status with
+                    | "StoppedVM"           -> 2
+                    | "CreatingVM"          -> 3
+                    | "StartingVM"          -> 4
+                    | "RoleStateUnknown"    -> 5
+                    | "BusyRole"            -> 6
+                    | "ReadyRole"           -> 7
+                    | _ -> 1 // Give a default value so it always shows in chart
+                status, float completed * multiplier)
+            |> Seq.toList
+        let remaining = 100. - (nodeScores |> List.sumBy snd)
+        ("Remaining", remaining) :: nodeScores)
+    |> ChartBuilders.asLiveChart (fun (a,b) ->
+        LiveChart.Pie(a, Name = b) |> Chart.With3D())
+        "Provisioning Status"
