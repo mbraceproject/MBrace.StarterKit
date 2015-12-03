@@ -17,20 +17,23 @@ open System
 open System.Windows
 open System.Windows.Controls
 open System.Windows.Media.Imaging
+open System.Windows.Forms.DataVisualization.Charting
+open System.Drawing
 open MBrace.Core
 open MBrace.Runtime
+open MBrace.Azure.Management
 
 
 Window().Close()
 
-type ClusterStatusStream = IEvent<WorkerRef array>
+type private ClusterStatusStream = IEvent<WorkerRef array>
 
-module Event =
+module private Event =
     let mapWorker getField =
         Event.map(snd >> Seq.map(fun (worker:WorkerRef) -> worker.Id, getField worker))
 
-module ChartBuilders =
-    let private stylize chartName = Chart.WithTitle(Text = chartName, InsideArea = false)
+module private ChartBuilders =
+    let stylize chartName = Chart.WithTitle(Text = chartName, InsideArea = false)
     let constructHistoricalSeries mapper =
         Event.map mapper
         >> Event.scan(fun state ev ->
@@ -38,6 +41,8 @@ module ChartBuilders =
             |> List.skip(state.Length - 60)) []
     let asLiveChart createChart chartName stream =
         createChart(stream, chartName) |> stylize chartName
+
+    let dashGrid = ChartTypes.Grid(LineColor = Color.Gainsboro, LineDashStyle = ChartDashStyle.Dash)
 
 let OpenDashboard (cluster:MBraceClient) =
     let getNullable nullable =
@@ -60,30 +65,41 @@ let OpenDashboard (cluster:MBraceClient) =
             stream |> Event.mapWorker (fun w -> getNullable w.NetworkUsageDown + getNullable w.NetworkUsageUp) |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Bar(a, Name = b) |> Chart.WithYAxis(Min = 0., Max = 5000., Title = "Kbps")) "Bandwith Utilization" ]
         ]
 
-open MBrace.Azure.Management
-let OpenDeploymentDashboard getDeployment =
-    let stream = Event.clock 10000 |> Event.map(fun time -> time, getDeployment())
-    stream
-    |> Event.map(fun (_, deployment:Deployment) ->
-        let nodeCount = deployment.Nodes.Length
-        let multiplier = 100. / (float nodeCount * 7.)
-        let nodeScores =
-            deployment.Nodes
-            |> Seq.mapi(fun index node ->
-                let status = sprintf "Node %d (%s)" index node.Status
-                let completed =
+let OpenDeploymentDashboard (deployment : Deployment) =
+    let stream = Event.clock 5000 |> Event.choose(fun _ -> try Some(deployment.Nodes, deployment.DeploymentState) with _ -> None)
+
+    let progressPie () = 
+        stream 
+        |> Event.map (fun (_,state) -> 
+                match state with 
+                | Provisioning pct -> [("", 1. - pct); ("%Complete", pct)]  
+                | _ -> [(string state, 100.)])
+
+        |> ChartBuilders.asLiveChart (fun (a,b) -> LiveChart.Pie(a, Name = b) |> Chart.With3D()) "Provision Progress (Cluster)"
+
+    let nodeChart () =
+        stream
+        |> Event.map (fun (nodes,_) ->
+            let getNodePct (node : VMInstance) =
+                let score =
                     match node.Status with
-                    | "StoppedVM"           -> 2
-                    | "CreatingVM"          -> 3
-                    | "StartingVM"          -> 4
-                    | "RoleStateUnknown"    -> 5
-                    | "BusyRole"            -> 6
-                    | "ReadyRole"           -> 7
-                    | _ -> 1 // Give a default value so it always shows in chart
-                status, float completed * multiplier)
-            |> Seq.toList
-        let remaining = 100. - (nodeScores |> List.sumBy snd)
-        ("Remaining", remaining) :: nodeScores)
-    |> ChartBuilders.asLiveChart (fun (a,b) ->
-        LiveChart.Pie(a, Name = b) |> Chart.With3D())
-        "Provisioning Status"
+                    | "StoppedVM"           -> 1
+                    | "CreatingVM"          -> 2
+                    | "StartingVM"          -> 3
+                    | "RoleStateUnknown"    -> 4
+                    | "BusyRole"            -> 5
+                    | "ReadyRole"           -> 6
+                    | _                     -> 0
+
+                float score * 100. / 6.
+
+            nodes |> Seq.map (fun n -> sprintf "%s\n(%s)" n.Id n.Status, getNodePct n) |> Seq.sortByDescending fst)
+
+        |> ChartBuilders.asLiveChart(fun (a,b) -> 
+                LiveChart.Bar(a, Name = b, YTitle = "%Complete")
+                |> Chart.WithXAxis(MajorGrid = ChartBuilders.dashGrid)
+                |> Chart.WithYAxis(MajorGrid = ChartBuilders.dashGrid, Max = 100., Min = 0.) 
+                |> Chart.WithStyling(Color = Color.BurlyWood)) "Provision Progress (VMs)"
+
+    Chart.Columns [nodeChart () ; progressPie ()]
+    |> Chart.WithTitle (sprintf "Cluster %A" deployment.ServiceName)

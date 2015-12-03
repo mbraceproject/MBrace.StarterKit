@@ -1,5 +1,6 @@
 ﻿(*** hide ***)
 #load "AzureCluster.fsx"
+//#load "lib/Dashboard.fsx"
 
 open MBrace.Azure
 open MBrace.Azure.Management
@@ -31,6 +32,8 @@ Now let's create a new cluster by calling
 *)
 
 let deployment = Config.ProvisionCluster()
+
+//Dashboard.OpenDeploymentDashboard deployment
 
 (**
 
