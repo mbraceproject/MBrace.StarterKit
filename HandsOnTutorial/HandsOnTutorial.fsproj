@@ -101,7 +101,7 @@
     <None Include="lib\mersenne.fsx" />
     <None Include="lib\webserver.fsx" />
     <None Include="lib\textfiles.fsx" />
-    <None Include="lib\Dashboard.fsx" />
+    <None Include="lib\washboard.fsx" />
     <None Include="paket.references" />
     <None Include="ThespianCluster.fsx" />
     <None Include="AzureCluster.fsx" />
