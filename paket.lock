@@ -53,7 +53,7 @@ NUGET
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
     MBrace.Core (1.0.5)
-    MBrace.CSharp (0.0.3-alpha)
+    MBrace.CSharp (0.0.4-alpha)
       FSharp.Core
       MBrace.Core (1.0.5)
       MBrace.Flow (1.0.5)
