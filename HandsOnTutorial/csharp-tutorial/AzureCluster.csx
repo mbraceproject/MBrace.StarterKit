@@ -1,31 +1,29 @@
-﻿#r "System.Net.dll"
-#r "../../packages/FSharp.Core/lib/net40/FSharp.Core.dll"
+﻿#r "../../packages/FSharp.Core/lib/net40/FSharp.Core.dll"
 #r "../../packages/System.Runtime.Loader/lib/DNXCore50/System.Runtime.Loader.dll"
-#r "../../packages/MBrace.Azure/tools/FsPickler.dll"
-#r "../../packages/MBrace.Azure/tools/Vagabond.dll"
-#r "../../packages/MBrace.Azure/tools/Argu.dll"
-#r "../../packages/MBrace.Azure/tools/Newtonsoft.Json.dll"
-#r "../../packages/MBrace.Azure/tools/Microsoft.Data.Edm.dll"
-#r "../../packages/MBrace.Azure/tools/Microsoft.Data.OData.dll"
-#r "../../packages/MBrace.Azure/tools/Microsoft.WindowsAzure.Configuration.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Core.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Runtime.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Azure.dll"
-#r "../../packages/Microsoft.WindowsAzure.Common/lib/net45/Microsoft.WindowsAzure.Common.dll"
-#r "../../packages/Microsoft.WindowsAzure.Common/lib/net45/Microsoft.WindowsAzure.Common.NetFramework.dll"
-#r "../../packages/Microsoft.Azure.Common/lib/net45/Microsoft.Azure.Common.dll"
-#r "../../packages/Microsoft.Azure.Common/lib/net45/Microsoft.Azure.Common.NetFramework.dll"
-#r "../../packages/Microsoft.Bcl.Async/lib/net40/Microsoft.Threading.Tasks.dll"
-#r "../../packages/Hyak.Common/lib/net45/Hyak.Common.dll"
+#r "../../packages/Streams/lib/net45/Streams.dll"
+#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+#r "../../packages/MBrace.CSharp/lib/net45/MBrace.CSharp.dll"
+
+#r "../../packages/Hyak.Common/lib/net40/Hyak.Common.dll"
+#r "../../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.dll"
+#r "../../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.NetFramework.dll"
 #r "../../packages/Microsoft.WindowsAzure.Management/lib/net40/Microsoft.WindowsAzure.Management.dll"
 #r "../../packages/Microsoft.WindowsAzure.Management.Compute/lib/net40/Microsoft.WindowsAzure.Management.Compute.dll"
 #r "../../packages/Microsoft.WindowsAzure.Management.Storage/lib/net40/Microsoft.WindowsAzure.Management.Storage.dll"
 #r "../../packages/Microsoft.WindowsAzure.Management.ServiceBus/lib/net40/Microsoft.WindowsAzure.Management.ServiceBus.dll"
 #r "../../packages/MBrace.Azure.Management/lib/net45/MBrace.Azure.Management.dll"
-#r "../../packages/Streams/lib/net45/Streams.dll"
-#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
-#r "../../packages/MBrace.CSharp/lib/net45/MBrace.CSharp.dll"
+#r "System.Net.dll"
 
+// getting mysterious runtime error when NetFramework.dll referenced without
+// Hyak.Common.dll co-existing in the same directory in C# interactive
+// reference a local copy of the assemblies to temporarily overcome the problem
+#r "../../lib/Microsoft.Azure.Common.NetFramework.dll" 
+
+using System;
+using System.IO;
 using MBrace.Core.CSharp;
 using MBrace.Azure;
 using MBrace.Azure.Management;
@@ -38,7 +36,7 @@ public class Config
 
         // You can download your publication settings file at 
         //     https://manage.windowsazure.com/publishsettings
-        PublishSettings = "";
+        PublishSettings = @"C:\path\to\your.publishsettings";
 
         // If your publication settings defines more than one subscription,
         // you will need to specify which one you will be using here.
@@ -46,7 +44,7 @@ public class Config
 
         // Your prefered Azure service name for the cluster.
         // NB: must be a valid DNS prefix unique across Azure.
-        ClusterName = "";
+        ClusterName = "enter a valid cluster name";
 
         // Your prefered Azure region. Assign this to a data center close to your location.
         Region = Region.North_Europe;
