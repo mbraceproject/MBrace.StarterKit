@@ -14,6 +14,7 @@
 #r "../../packages/Microsoft.WindowsAzure.Common/lib/net45/Microsoft.WindowsAzure.Common.dll"
 #r "../../packages/Microsoft.WindowsAzure.Common/lib/net45/Microsoft.WindowsAzure.Common.NetFramework.dll"
 #r "../../packages/Microsoft.Azure.Common/lib/net45/Microsoft.Azure.Common.dll"
+#r "../../packages/Microsoft.Azure.Common/lib/net45/Microsoft.Azure.Common.NetFramework.dll"
 #r "../../packages/Microsoft.Bcl.Async/lib/net40/Microsoft.Threading.Tasks.dll"
 #r "../../packages/Hyak.Common/lib/net45/Hyak.Common.dll"
 #r "../../packages/Microsoft.WindowsAzure.Management/lib/net40/Microsoft.WindowsAzure.Management.dll"
