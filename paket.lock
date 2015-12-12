@@ -19,7 +19,7 @@ NUGET
     FsPickler.Json (1.6.2)
       FsPickler (1.6.2)
       Newtonsoft.Json (>= 6.0.5)
-    Google.DataTable.Net.Wrapper (3.1.2.0)
+    Google.DataTable.Net.Wrapper (3.1.2)
     Hyak.Common (1.0.3)
       Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
@@ -33,42 +33,47 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.1.10)
+    MBrace.Azure (1.1.11)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.6.2)
       FsPickler.Json (>= 1.6.2)
-      MBrace.Core (>= 1.0.3 < 1.1.0)
-      MBrace.Runtime (>= 1.0.3 < 1.1.0)
+      MBrace.Core (>= 1.0.5 < 1.1.0)
+      MBrace.Runtime (>= 1.0.5 < 1.1.0)
       Newtonsoft.Json (>= 7.0.1)
-      Vagabond (>= 0.12.2)
+      Vagabond (>= 0.12.3)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.10)
-      MBrace.Azure (>= 1.1.10)
-      MBrace.Core (>= 1.0.3 < 1.1.0)
-      MBrace.Runtime (>= 1.0.3 < 1.1.0)
+    MBrace.Azure.Management (1.1.11)
+      MBrace.Azure (>= 1.1.11)
+      MBrace.Core (>= 1.0.5 < 1.1.0)
+      MBrace.Runtime (>= 1.0.5 < 1.1.0)
       Microsoft.Bcl.Async
       Microsoft.WindowsAzure.Management.Libraries
       Microsoft.WindowsAzure.Management.ServiceBus
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Core (1.0.3)
-    MBrace.Flow (1.0.3)
+    MBrace.Core (1.0.5)
+    MBrace.CSharp (0.0.3-alpha)
       FSharp.Core
-      MBrace.Core (1.0.3)
+      MBrace.Core (1.0.5)
+      MBrace.Flow (1.0.5)
       Streams (>= 0.4.0 < 0.5.0)
-    MBrace.Runtime (1.0.3)
+    MBrace.Flow (1.0.5)
+      FSharp.Core
+      MBrace.Core (1.0.5)
+      Streams (>= 0.4.0 < 0.5.0)
+    MBrace.Runtime (1.0.5)
       FsPickler (>= 1.6.2 < 1.7.0)
       FsPickler.Json (>= 1.6.2 < 1.7.0)
-      MBrace.Core (1.0.3)
-      Vagabond (>= 0.12.2 < 0.13.0)
-    MBrace.Thespian (1.0.3)
+      MBrace.Core (1.0.5)
+      Vagabond (>= 0.12.3 < 0.13.0)
+    MBrace.Thespian (1.0.5)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.6.2 < 1.7.0)
-      MBrace.Core (1.0.3)
-      MBrace.Runtime (1.0.3)
-      Thespian.Core (0.1.6-alpha)
-      Vagabond (>= 0.12.2 < 0.13.0)
+      MBrace.Core (1.0.5)
+      MBrace.Runtime (1.0.5)
+      Thespian (0.1.7-alpha)
+      Vagabond (>= 0.12.3 < 0.13.0)
     Microsoft.Azure.Common (2.1.0)
       Hyak.Common (>= 1.0.2)
       Microsoft.Azure.Common.Dependencies (>= 1.0.0)
@@ -145,12 +150,46 @@ NUGET
     Streams (0.4.1)
     Suave (0.33.0)
       FSharp.Core (>= 3.1.2.5)
+    System.Globalization (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+    System.IO (4.0.10) - framework: dnxcore50
+      System.Globalization (>= 4.0.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0.0) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0.10) - framework: dnxcore50
+      System.Text.Encoding.Extensions (>= 4.0.0) - framework: dnxcore50
+      System.Threading (>= 4.0.0) - framework: dnxcore50
+      System.Threading.Tasks (>= 4.0.0) - framework: dnxcore50
+    System.Private.Uri (4.0.0) - framework: dnxcore50
+    System.Reflection (4.0.10)
+      System.IO (>= 4.0.0) - framework: dnxcore50
+      System.Reflection.Primitives (>= 4.0.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.20) - framework: dnxcore50
+    System.Reflection.Primitives (4.0.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+      System.Threading (>= 4.0.0) - framework: dnxcore50
+    System.Runtime (4.0.20) - framework: dnxcore50
+      System.Private.Uri (>= 4.0.0) - framework: dnxcore50
+    System.Runtime.Loader (4.0.0-beta-23516)
+      System.IO (>= 4.0.0)
+      System.Reflection (>= 4.0.0)
+      System.Runtime (>= 4.0.0)
     System.Spatial (5.7.0) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
-    TaskParallelLibrary (1.0.2856.0) - framework: net35
-    Thespian.Core (0.1.6-alpha)
-      FsPickler (>= 1.2.1)
-    Vagabond (0.12.2)
-      FsPickler (>= 1.6.1 < 1.7.0)
+    System.Text.Encoding (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+    System.Text.Encoding.Extensions (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+      System.Text.Encoding (>= 4.0.10) - framework: dnxcore50
+    System.Threading (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+      System.Threading.Tasks (>= 4.0.0) - framework: dnxcore50
+    System.Threading.Tasks (4.0.10) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
+    TaskParallelLibrary (1.0.2856) - framework: net35
+    Thespian (0.1.7-alpha)
+      FsPickler (>= 1.6.2 < 1.7.0)
+    Vagabond (0.12.3)
+      FsPickler (>= 1.6.2 < 1.7.0)
       Mono.Cecil (>= 0.9.6.1 < 0.9.7.0)
     WindowsAzure.ServiceBus (2.5.4)
       Microsoft.WindowsAzure.ConfigurationManager
