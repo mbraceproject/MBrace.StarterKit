@@ -38,7 +38,7 @@ cluster.ShowWorkers();
 /** Now execute your first cloud workflow, returning a handle to the running job: */
 
 var workflow = CloudBuilder.FromFunc(() => "Hello, World!");
-var task = cluster.CreateProcess(task);
+var task = cluster.CreateProcess(workflow);
 
 /**
 
