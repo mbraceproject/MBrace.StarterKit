@@ -4,6 +4,16 @@
 using MBrace.Azure;
 using MBrace.Azure.Management;
 
+// IMPORTANT:
+// Before running this tutorial, make sure that you install binding redirects to FSharp.Core
+// on your C# Interactive executable. To do this, find "InteractiveHost.exe" in your Visual Studio 2015 Installation.
+// From your command prompt, enter the command:
+//
+//   explorer.exe /select, %programfiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\PrivateAssemblies\InteractiveHost.exe
+//
+// Find the file "InteractiveHost.exe.config" that is bundled in the C# tutorial folder and place it next to InteractiveHost.exe.
+// Now, reset your C# Interactive session. You are now ready to start using your C# REPL.
+
 /**
 
 # Provisioning your cluster using C# interactive
