@@ -33,8 +33,11 @@ You now perform a very simple parallel distributed job on your MBrace cluster.
 
 /** You now use Cloud.Parallel to run 10 cloud workflows in parallel using fork-join pattern. */
 
-var leaf = CloudBuilder.FromFunc((int i) => string.Format("I'm work item {0}", i));
-var parallel = CloudBuilder.Parallel(Enumerable.Range(1, 10).Select(leaf).ToArray());
+var parallel =
+    Enumerable.Range(1, 10)
+        .Select(i => CloudBuilder.FromFunc(() => string.Format("I'm work item {0}", i)))
+        .Parallel();
+
 var parallelTask = cluster.CreateProcess(parallel);
 
 parallelTask.ShowInfo();
