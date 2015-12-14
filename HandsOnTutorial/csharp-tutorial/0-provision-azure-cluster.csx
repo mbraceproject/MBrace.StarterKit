@@ -7,7 +7,7 @@ using MBrace.Azure.Management;
 // IMPORTANT:
 // Before running this tutorial, make sure that you install binding redirects to FSharp.Core
 // on your C# Interactive executable. To do this, find "InteractiveHost.exe" in your Visual Studio 2015 Installation.
-// From your command prompt, enter the command:
+// From your command prompt, enter the following command:
 //
 //   explorer.exe /select, %programfiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\PrivateAssemblies\InteractiveHost.exe
 //

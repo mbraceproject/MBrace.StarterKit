@@ -89,6 +89,7 @@
     <None Include="examples\400-stock-trading-analysis2-example.fsx" />
     <None Include="csharp-tutorial\0-provision-azure-cluster.csx" />
     <None Include="csharp-tutorial\1-hello-world.csx" />
+    <None Include="csharp-tutorial\2-cloud-parallel.csx" />
     <None Include="csharp-tutorial\3-cloud-flow.csx" />
     <None Include="csharp-tutorial\ThespianCluster.csx" />
     <None Include="csharp-tutorial\AzureCluster.csx" />
