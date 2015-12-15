@@ -19,7 +19,7 @@ NUGET
     FsPickler.Json (1.7.0)
       FsPickler (1.7.0)
       Newtonsoft.Json (>= 6.0.5)
-    Google.DataTable.Net.Wrapper (3.1.2)
+    Google.DataTable.Net.Wrapper (3.1.2.0)
     Hyak.Common (1.0.3)
       Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
@@ -53,7 +53,7 @@ NUGET
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
     MBrace.Core (1.0.7)
-    MBrace.CSharp (0.0.6-alpha)
+    MBrace.CSharp (0.0.7-alpha)
       FSharp.Core
       MBrace.Core (1.0.7)
       MBrace.Flow (1.0.7)
@@ -185,7 +185,7 @@ NUGET
       System.Threading.Tasks (>= 4.0.0) - framework: dnxcore50
     System.Threading.Tasks (4.0.10) - framework: dnxcore50
       System.Runtime (>= 4.0.0) - framework: dnxcore50
-    TaskParallelLibrary (1.0.2856) - framework: net35
+    TaskParallelLibrary (1.0.2856.0) - framework: net35
     Thespian (0.1.8-alpha)
       FsPickler (>= 1.7.0)
     Vagabond (0.12.4)
