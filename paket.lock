@@ -20,12 +20,12 @@ NUGET
       FsPickler (1.7.0)
       Newtonsoft.Json (>= 6.0.5)
     Google.DataTable.Net.Wrapper (3.1.2)
-    Hyak.Common (1.0.3)
+    Hyak.Common (1.1.0)
       Microsoft.Bcl (>= 1.1.9) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Async (>= 1.0.168) - framework: portable-net403+win+wpa81
       Microsoft.Bcl.Build (>= 1.0.14) - framework: portable-net403+win+wpa81
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net403+win+wpa81
-      Newtonsoft.Json (>= 6.0.4) - framework: portable-net403+win+wpa81
+      Newtonsoft.Json (>= 7.0.1) - framework: portable-net403+win+wpa81
     MathNet.Numerics (3.7.1)
       TaskParallelLibrary (>= 1.0.2856) - framework: net35
     MathNet.Numerics.FSharp (3.7.1)
@@ -33,45 +33,45 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.1.15)
+    MBrace.Azure (1.1.16)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.7.0)
       FsPickler.Json (>= 1.7.0)
-      MBrace.Core (>= 1.0.8 < 1.1.0)
-      MBrace.Runtime (>= 1.0.8 < 1.1.0)
+      MBrace.Core (>= 1.0.9 < 1.1.0)
+      MBrace.Runtime (>= 1.0.9 < 1.1.0)
       Newtonsoft.Json (>= 7.0.1)
       Vagabond (>= 0.12.5)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.15)
-      MBrace.Azure (>= 1.1.15)
-      MBrace.Core (>= 1.0.8 < 1.1.0)
-      MBrace.Runtime (>= 1.0.8 < 1.1.0)
-      Microsoft.Bcl.Async
-      Microsoft.WindowsAzure.Management.Libraries
-      Microsoft.WindowsAzure.Management.ServiceBus
+    MBrace.Azure.Management (1.1.16)
+      MBrace.Azure (>= 1.1.16)
+      MBrace.Core (>= 1.0.9 < 1.1.0)
+      MBrace.Runtime (>= 1.0.9 < 1.1.0)
+      Microsoft.Bcl.Async (>= 1.0.0 < 2.0.0)
+      Microsoft.WindowsAzure.Management.Libraries (>= 2.0.0 < 3.0.0)
+      Microsoft.WindowsAzure.Management.ServiceBus (>= 0.17.0-prerelease < 1.0.0-prerelease)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Core (1.0.8)
-    MBrace.CSharp (0.0.8-alpha)
+    MBrace.Core (1.0.9)
+    MBrace.CSharp (1.0.9-alpha)
       FSharp.Core
-      MBrace.Core (1.0.8)
-      MBrace.Flow (1.0.8)
+      MBrace.Core (1.0.9)
+      MBrace.Flow (1.0.9)
       Streams (>= 0.4.0 < 0.5.0)
-    MBrace.Flow (1.0.8)
+    MBrace.Flow (1.0.9)
       FSharp.Core
-      MBrace.Core (1.0.8)
+      MBrace.Core (1.0.9)
       Streams (>= 0.4.0 < 0.5.0)
-    MBrace.Runtime (1.0.8)
+    MBrace.Runtime (1.0.9)
       FsPickler (>= 1.7.0 < 1.8.0)
       FsPickler.Json (>= 1.7.0 < 1.8.0)
-      MBrace.Core (1.0.8)
+      MBrace.Core (1.0.9)
       Vagabond (>= 0.12.5 < 0.13.0)
-    MBrace.Thespian (1.0.8)
+    MBrace.Thespian (1.0.9)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.7.0 < 1.8.0)
-      MBrace.Core (1.0.8)
-      MBrace.Runtime (1.0.8)
+      MBrace.Core (1.0.9)
+      MBrace.Runtime (1.0.9)
       Thespian (>= 0.1.8-alpha < 0.2.0)
       Vagabond (>= 0.12.5 < 0.13.0)
     Microsoft.Azure.Common (2.1.0)
@@ -198,11 +198,11 @@ NUGET
       Microsoft.Data.Services.Client (>= 5.6.2) - framework: >= net40
       Microsoft.WindowsAzure.ConfigurationManager (>= 1.8.0.0) - framework: >= net40
       Newtonsoft.Json (>= 5.0.8) - framework: >= net40, wpv8.0
-    XPlot.GoogleCharts (1.2.2)
+    XPlot.GoogleCharts (1.3.0)
       Google.DataTable.Net.Wrapper
       Newtonsoft.Json
-    XPlot.GoogleCharts.WPF (1.2.2)
-      XPlot.GoogleCharts (>= 1.2.2)
+    XPlot.GoogleCharts.WPF (1.3.0)
+      XPlot.GoogleCharts (>= 1.3.0)
     Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80
 GITHUB
   remote: fslaborg/FSharp.Charting
