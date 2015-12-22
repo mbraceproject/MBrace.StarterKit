@@ -84,10 +84,9 @@ cluster, these will be identical.)
     
 */
 
-var testWorkflow =
-    CloudBuilder
-        .FromFunc(() => Console.WriteLine("Hello, World!"))
-        .OnSuccess(unit => Environment.MachineName);
+var testWorkflow = CloudBuilder
+    .FromFunc(() => Console.WriteLine("Hello, World!"))
+    .OnSuccess(() => Environment.MachineName);
 
 var localResult = cluster.RunLocally(testWorkflow);
 var remoteResult = cluster.Run(testWorkflow);

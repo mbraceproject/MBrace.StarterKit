@@ -41,12 +41,12 @@ implemented by a final cloud task.
 
 var inputs = Enumerable.Range(1, 100).ToArray();
 
-var streamComputationWorkflow =
-    CloudFlow.OfArray(inputs)
-        .Select(num => num * num)
-        .Select(num => num % 10)
-        .CountBy(num => num)
-        .ToArray();
+var streamComputationWorkflow = CloudFlow
+    .OfArray(inputs)
+    .Select(num => num * num)
+    .Select(num => num % 10)
+    .CountBy(num => num)
+    .ToArray();
 
 var streamComputationTask = cluster.CreateProcess(streamComputationWorkflow);
 
@@ -85,7 +85,8 @@ performing recomputations of the original flow.
 
 var persistedCloudFlow =
     cluster.Run(
-        CloudFlow.OfArray(Enumerable.Range(1, 100).ToArray())
+        CloudFlow
+            .OfArray(Enumerable.Range(1, 100).ToArray())
             .SelectMany(i => Enumerable.Range(1, 10000).Select(j => new Tuple<int, string>(i + j, j.ToString())))
             .Persist(MBrace.Core.StorageLevel.Memory));
 
@@ -121,15 +122,15 @@ across the cluster by caching our CloudFlow:
 // helper method: trims quote literals from given string
 string trim(string input) { return input.Trim(new char[] { '\"' }); }
 
-var cacheFlow = 
-    CloudFlow.OfHTTPFileByLine(urls) // read CSV dataset by text line
-        .Select(line => line.Split(',')) // split csv line into tokens
-        .Select(arr => // parse using anonymous types
-            new {
-                TransactionId = Guid.Parse(trim(arr[0])), Price = Double.Parse(trim(arr[1])), DateOfTransfer = DateTime.Parse(trim(arr[2])),
-                PostCode = trim(arr[3]), Street = trim(arr[10]), District = trim(arr[13]), City = trim(arr[12]), County = trim(arr[14])
-            }) 
-        .Cache(); // cache to memory across cluster
+var cacheFlow = CloudFlow
+    .OfHttpFileByLine(urls) // read CSV dataset by text line
+    .Select(line => line.Split(',')) // split csv line into tokens
+    .Select(arr => // parse using anonymous types
+        new {
+            TransactionId = Guid.Parse(trim(arr[0])), Price = Double.Parse(trim(arr[1])), DateOfTransfer = DateTime.Parse(trim(arr[2])),
+            PostCode = trim(arr[3]), Street = trim(arr[10]), District = trim(arr[13]), City = trim(arr[12]), County = trim(arr[14])
+        }) 
+    .Cache(); // cache to memory across cluster
 
 var cacheFlowProc = cluster.CreateProcess(cacheFlow); // Start caching process
 
@@ -144,27 +145,25 @@ First, let's find the top 10 properties found in the City of London:
 
 */
 
-var top10London =
-    cachedFlow
-        .Where(trans => trans.City == "LONDON")
-        .OrderByDescending(trans => trans.Price, 10)
-        .ToArray();
+var top10London = cachedFlow
+    .Where(trans => trans.City == "LONDON")
+    .OrderByDescending(trans => trans.Price, 10)
+    .ToArray();
 
 cluster.Run(top10London);
 
 /**
 
-Now, let's compute the compute the city with the highest prices, on average:
+Now, let's compute find the 10 cities with the highest property prices, on average:
 
 */
 
-var maxAverageCity =
-    cachedFlow
-        .GroupBy(trans => trans.City)
-        .Select(gp => new { City = gp.Item1, Average = gp.Item2.Select(t => t.Price).Average() })
-        .MaxBy(city => city.Average);
+var top10AvgCities = cachedFlow
+    .AverageByKey((row => row.City), (row => row.Price))
+    .OrderByDescending((kv => kv.Value), 10)
+    .ToArray();
 
-cluster.Run(maxAverageCity);
+cluster.Run(top10AvgCities);
 
 /**
 
