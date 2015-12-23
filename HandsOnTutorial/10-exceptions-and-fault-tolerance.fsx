@@ -180,7 +180,7 @@ because of problems in an MBrace runtime. Faults can happen for a multitude of r
   * Bugs in the runtime implementation.
   * Sudden death of a worker node: VMs of a cloud service can often be reset by the
     administrator without warning.
-  * User errors that can cause the worker process to crash like stack overflows.
+  * User errors that can cause the worker process to crash, such as stack overflows.
 
 Let's have a closer look at an example of a fault, so that we gain a better understanding
 of how they work. First, we define a cloud function that forces the death of a worker
@@ -206,7 +206,7 @@ Sure enough, after a while we will be receiving the following exception:
     MBrace.Core.FaultException: Work item '7927b7ad-f3ee-46cb-928b-92683f279722' was being processed by worker 'mbrace://grothendieck:52789' which has died.
        at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in ...
        at Microsoft.FSharp.Control.AsyncBuilderImpl.args@835-1.Invoke(a a)
-       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in ...
+       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, ...
        at <StartupCode$FSI_0035>.$FSI_0035.main@() in ...
 
 Note that this computation has killed one of our worker instances.
@@ -225,7 +225,7 @@ cluster.ShowProcesses()
 we can indeed verify that the last computation has faulted:
 
     [lang=console]
-    Processes                                                                                                                                                                   
+    Processes
 
     Name                            Process Id         Status  Execution Time  
     ----                            ----------         ------  --------------  
@@ -337,7 +337,7 @@ cluster.Run(run(), faultPolicy = FaultPolicy.WithMaxRetries 1)
 
 The `Cloud.IsPreviouslyFaulted` primitive gives true if the current work item
 is part of a computation that has previously faulted and currently being retried.
-We can use this knowledge to alter the execution of computation.
+We can use this knowledge to dynamically alter its mode of execution.
 
 Let's now have a look at a more useful example. Let's define a parallel combinator
 that returns partial results even in the presence of faults.
@@ -386,7 +386,7 @@ Let's now test our workflow:
 
 let test2() = cloud {
     let d = Random().Next(0,10)
-    if d = 1 then do! die()
+    if d = 0 then do! die()
     if d < 5 then return failwithf "error %d" d
     else return d
 }
