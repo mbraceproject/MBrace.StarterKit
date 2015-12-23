@@ -39,12 +39,12 @@ any user exception will be caught and rethrown on the client side:
     [lang=console]
     System.Exception: kaboom!
        at FSI_0010.it@24-3.Invoke(Unit unitVar)
-       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 98
+       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in ...
     --- End of stack trace from previous location where exception was thrown ---
-       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Runtime\Runtime\CloudProcess.fs:line 211
+       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in ...
        at Microsoft.FSharp.Control.AsyncBuilderImpl.args@835-1.Invoke(a a)
-       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Utils\AsyncExtensions.fs:line 99
-       at <StartupCode$FSI_0010>.$FSI_0010.main@() in C:\Users\eirik\Development\mbrace\MBrace.StarterKit\HandsOnTutorial\10-exceptions-and-fault-tolerance.fsx:line 24
+       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, ...
+       at <StartupCode$FSI_0010>.$FSI_0010.main@() in ...
     Stopped due to error
 
 This has interesting ramifications when our cloud computation spans multiple machines:
@@ -67,12 +67,12 @@ actively cancelling any of the outstanding sibling computations:
     [lang=console]
     System.DivideByZeroException: Attempted to divide by zero.
        at FSI_0013.div@47-1.Invoke(Unit unitVar)
-       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 98
+       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in ...
        at Cloud.Parallel(seq<Cloud<Int32>> computations)
     --- End of stack trace from previous location where exception was thrown ---
-       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Runtime\Runtime\CloudProcess.fs:line 211
+       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in ...
        at Microsoft.FSharp.Control.AsyncBuilderImpl.args@835-1.Invoke(a a)
-       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Utils\AsyncExtensions.fs:line 99
+       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 ...
        at <StartupCode$FSI_0014>.$FSI_0014.main@()
 
 While the stacktrace offers a precise indication of what went wrong,
@@ -83,7 +83,9 @@ Let's see how we can use MBrace to improve this in our example:
 
 exception WorkerException of worker:IWorkerRef * input:int * exn:exn
 with
-    override e.Message = sprintf "Worker '%O' given input %d has failed with exception: '%O'" e.worker e.input e.exn
+    override e.Message = 
+        sprintf "Worker '%O' given input %d has failed with exception:\n'%O'" 
+            e.worker e.input e.exn
 
 
 cloud {
@@ -103,16 +105,17 @@ cloud {
 Which yields the following stacktrace:
 
     [lang=console]
-    FSI_0023+WorkerException: Worker 'mbrace://grothendieck:52789' given input 5 has failed with exception: 'System.DivideByZeroException: Attempted to divide by zero.
+    FSI_0023+WorkerException: Worker 'mbrace://grothendieck:52789' given input 5 has failed with exception: 
+    'System.DivideByZeroException: Attempted to divide by zero.
        at FSI_0024.div@88-32.Invoke(Unit unitVar)
-       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 98'
+       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in ...'
        at FSI_0024.div@91-34.Invoke(IWorkerRef _arg2)
-       at MBrace.Core.Builders.Bind@331-1.Invoke(ExecutionContext ctx, T t) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 331
+       at MBrace.Core.Builders.Bind@331-1.Invoke(ExecutionContext ctx, T t) in ...
        at Cloud.Parallel(seq<Cloud<Int32>> computations)
     --- End of stack trace from previous location where exception was thrown ---
-       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Runtime\Runtime\CloudProcess.fs:line 211
+       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in ...
        at Microsoft.FSharp.Control.AsyncBuilderImpl.args@835-1.Invoke(a a)
-       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Utils\AsyncExtensions.fs:line 99
+       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 ...
        at <StartupCode$FSI_0025>.$FSI_0025.main@()
 
 It is also possible to catch exceptions raised by distributed workflows:
@@ -156,15 +159,15 @@ Which when executed will result in the following value:
         Choice2Of2
           System.DivideByZeroException: Attempted to divide by zero.
        at FSI_0031.div@140-47.Invoke(Unit unitVar)
-       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 98
+       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in ...
             {Data = dict [];
              HResult = -2147352558;
              HelpLink = null;
              InnerException = null;
              Message = "Attempted to divide by zero.";
              Source = "FSI-ASSEMBLY_f0c42c06-f5a8-45d0-ab7b-2fec2628dff0_10";
-             StackTrace = "   at FSI_0031.div@140-47.Invoke(Unit unitVar)
-       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Continuation\Builders.fs:line 98";
+             StackTrace = "   at FSI_0031.div@140-47.Invoke(Unit unitVar)"
+       at MBrace.Core.BuilderImpl.Invoke@98.Invoke(Continuation`1 c) in ...;
              TargetSite = null;}; Choice1Of2 -10; Choice1Of2 -5; Choice1Of2 -3;
         Choice1Of2 -2; Choice1Of2 -2|]
 
@@ -201,10 +204,10 @@ Sure enough, after a while we will be receiving the following exception:
 
     [lang=console]
     MBrace.Core.FaultException: Work item '7927b7ad-f3ee-46cb-928b-92683f279722' was being processed by worker 'mbrace://grothendieck:52789' which has died.
-       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Runtime\Runtime\CloudProcess.fs:line 211
+       at <StartupCode$MBrace-Runtime>.$CloudProcess.AwaitResult@211-2.Invoke(CloudProcessResult _arg2) in ...
        at Microsoft.FSharp.Control.AsyncBuilderImpl.args@835-1.Invoke(a a)
-       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in C:\Users\eirik\Development\mbrace\MBrace.Core\src\MBrace.Core\Utils\AsyncExtensions.fs:line 99
-       at <StartupCode$FSI_0035>.$FSI_0035.main@() in C:\Users\eirik\Development\mbrace\MBrace.StarterKit\HandsOnTutorial\10-exceptions-and-fault-tolerance.fsx:line 194
+       at MBrace.Core.Internals.AsyncExtensions.Async.RunSync[T](FSharpAsync`1 workflow, FSharpOption`1 cancellationToken) in ...
+       at <StartupCode$FSI_0035>.$FSI_0035.main@() in ...
 
 Note that this computation has killed one of our worker instances.
 If working with MBrace on Azure, the service fabric will ensure that the dead instance will be reset.
@@ -224,11 +227,11 @@ we can indeed verify that the last computation has faulted:
     [lang=console]
     Processes                                                                                                                                                                   
 
-    Name                            Process Id         Status  Execution Time         Work items        Result Type         Start Time             Completion Time       
-    ----                            ----------         ------  --------------         ----------        -----------         ----------             ---------------       
-          67272653-9d80-403e-848a-8c99760cb943      Completed  00:00:00.5097248    0 /   0 /  11 /  11  Choice<int,exn> []  23/12/2015 1:36:38 μμ  23/12/2015 1:36:38 μμ 
-          d1b47fe3-4cc0-4ad9-b22f-5ba2ec9f749e  UserException  00:00:00.8093416    0 /   0 /   5 /   5  int []              23/12/2015 1:58:10 μμ  23/12/2015 1:58:11 μμ 
-          4e537251-0191-4afe-9a9a-fb3f966ee2ef        Faulted  00:07:07.1084813    0 /   1 /   1 /   2  unit                23/12/2015 2:48:11 μμ    
+    Name                            Process Id         Status  Execution Time  
+    ----                            ----------         ------  --------------  
+          67272653-9d80-403e-848a-8c99760cb943      Completed  00:00:00.5097248
+          d1b47fe3-4cc0-4ad9-b22f-5ba2ec9f749e  UserException  00:00:00.8093416
+          4e537251-0191-4afe-9a9a-fb3f966ee2ef        Faulted  00:07:07.1084813
 
 MBrace will respond to faults in our cloud process by raising a `FaultException`.
 What differentiates fault exceptions from normal user exceptions is that they often
