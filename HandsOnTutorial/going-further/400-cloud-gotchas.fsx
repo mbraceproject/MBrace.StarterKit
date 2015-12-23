@@ -1,4 +1,5 @@
-﻿#load "../ThespianCluster.fsx"
+﻿(*** hide ***)
+#load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -13,7 +14,7 @@ open MBrace.Flow
 // Initialize client object to an MBrace cluster
 let cluster = Config.GetCluster() 
 
-(*
+(**
 
 # Cloud Gotchas
 
@@ -34,7 +35,7 @@ This can be done using the cluster.Runlocally() method:
 cloud { return Environment.MachineName } |> cluster.Run         // local execution
 cloud { return Environment.MachineName } |> cluster.RunLocally  // remote execution
 
-(*
+(**
 
 As demonstrated above, local versus remote execution comes with minute differences w.r.t.
 to the computed result as well as observed side-effects.
@@ -46,7 +47,7 @@ can you guess what the difference will be when run locally as opposed to remotel
 
 cloud { let _ = printfn "I am a side-effect!" in return 42 }
 
-(*
+(**
 
 While the above is a mostly harmless example, what can be said about the example below?
 
@@ -59,7 +60,7 @@ let getContents = cloud { return Directory.EnumerateFiles currentDirectory |> Se
 cluster.RunLocally getContents
 cluster.Run getContents
 
-(*
+(**
 
 Why does the error happen? Can you suggest a way the above could be fixed?
 
@@ -77,7 +78,7 @@ let downloader = cloud {
     return downloadProc.Result
 }
 
-(*
+(**
 
 What will happen if we attempt to execute the snippet above?
 
@@ -85,7 +86,7 @@ What will happen if we attempt to execute the snippet above?
 
 cluster.Run(downloader)
 
-(*
+(**
 
 Assingment: can you rewrite the snippet above so that it no longer fails?
 Tip: can you detect what segments of the code entail transition to a different machine?
@@ -103,7 +104,7 @@ type Session() =
     member s.Increment() =
         cluster.Run(cloud { return value + 1 })
 
-(*
+(**
 
 Can you predict what will happen if we run the following line?
 
@@ -111,7 +112,7 @@ Can you predict what will happen if we run the following line?
 
 Session().Increment()
 
-(*
+(**
 
 Can you fix the problem only by changing the Increment() implementation?
 
@@ -126,7 +127,7 @@ module Session2 =
 
 Session2.increment()
 
-(*
+(**
 
 Can you explain why the behaviour of the above differs from the original example?
 
@@ -143,7 +144,7 @@ let example2 = cloud {
     return Object.ReferenceEquals(data, proc.Result) 
 }
 
-(*
+(**
 
 Can you guess its result?
 
@@ -152,7 +153,7 @@ Can you guess its result?
 cluster.Run example2
 cluster.RunLocally example2
 
-(*
+(**
 
 Can you explain why this behaviour happens?
 
@@ -169,7 +170,7 @@ let example3 = cloud {
     return data
 }
 
-(*
+(**
 
 Can you guess its result?
 
@@ -178,7 +179,7 @@ Can you guess its result?
 cluster.Run example3
 cluster.RunLocally example3
 
-(*
+(**
 
 Can you explain why this behaviour happens?
 
