@@ -28,12 +28,12 @@ Follow the instructions and complete the assignments described below.
 
 MBrace makes it possible to execute cloud workflows in the local process
 just as if they were asynchronous workflows: parallelism is achieved using the local threadpool.
-This can be done using the cluster.Runlocally() method:
+This can be done using the `cluster.Runlocally()` method:
 
 *)
 
-cloud { return Environment.MachineName } |> cluster.Run         // local execution
-cloud { return Environment.MachineName } |> cluster.RunLocally  // remote execution
+cloud { return Environment.MachineName } |> cluster.Run         // remote execution
+cloud { return Environment.MachineName } |> cluster.RunLocally  // local execution
 
 (**
 
