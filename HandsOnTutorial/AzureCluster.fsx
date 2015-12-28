@@ -53,12 +53,15 @@ module Config =
         else
             None
 
+    let GetSubscriptionManager() = 
+        SubscriptionManager.FromPublishSettingsFile(pubSettingsFile, region, ?subscriptionId = subscriptionId, logger = new ConsoleLogger())
+
     /// Gets the already existing deployment
-    let GetDeployment() = Deployment.GetDeployment(pubSettingsFile, serviceName = clusterName, ?subscriptionId = subscriptionId) 
+    let GetDeployment() = GetSubscriptionManager().GetDeployment(clusterName) 
 
     /// Provisions a new cluster to Azure with supplied parameters
     let ProvisionCluster() = 
-        Deployment.Provision(pubSettingsFile, region, vmCount, vmSize, serviceName = clusterName, ?subscriptionId = subscriptionId, ?cloudServicePackage = tryGetCustomCsPkg())
+        GetSubscriptionManager().Provision(vmCount, serviceName = clusterName, vmSize = vmSize, ?cloudServicePackage = tryGetCustomCsPkg())
 
     /// Resizes the cluster using an updated VM count
     let ResizeCluster(newVmCount : int) =
