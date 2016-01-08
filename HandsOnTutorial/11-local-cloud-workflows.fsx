@@ -239,8 +239,10 @@ cloud {
 fails with the error
 
     [lang=bash]
-    System.Runtime.Serialization.SerializationException: Cloud process of type 'int' uses non-serializable closure. 
-        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0020+it@230-7' contains non-serializable field of type 'System.Net.WebClient'.
+    System.Runtime.Serialization.SerializationException: Cloud process of type 'int' uses 
+    non-serializable closure. 
+        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0020+it@230-7' contains 
+    non-serializable field of type 'System.Net.WebClient'.
 
 Since its closure has been rendered nonserializable due to its containing an instance of type `WebClient`.
 
