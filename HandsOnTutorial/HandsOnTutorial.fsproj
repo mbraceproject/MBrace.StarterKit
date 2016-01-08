@@ -75,6 +75,7 @@
     <None Include="8-using-cloud-queues.fsx" />
     <None Include="9-using-cloud-key-value-stores.fsx" />
     <None Include="10-exceptions-and-fault-tolerance.fsx" />
+    <None Include="11-local-cloud-workflows.fsx" />
     <None Include="examples\200-image-processing-example.fsx" />
     <None Include="examples\200-cloud-parallel-web-download-example.fsx" />
     <None Include="examples\200-norvigs-spelling-corrector-example.fsx" />
