@@ -44,8 +44,10 @@ cloud {
 which when run yields
 
     [lang=bash]
-    System.Runtime.Serialization.SerializationException: Cloud.Parallel<string> workflow uses non-serializable closures. 
-        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0005+download@37-1' contains non-serializable field of type 'System.Net.WebClient'.
+    System.Runtime.Serialization.SerializationException: Cloud.Parallel<string> workflow 
+    uses non-serializable closures. 
+        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0005+download@37-1' contains 
+    non-serializable field of type 'System.Net.WebClient'.
 
 The obvious fix here is to remove the global `WebClient` instance, which is not serializable
 and replace it with localized instantiations:
@@ -239,10 +241,8 @@ cloud {
 fails with the error
 
     [lang=bash]
-    System.Runtime.Serialization.SerializationException: Cloud process of type 'int' uses 
-    non-serializable closure. 
-        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0020+it@230-7' contains 
-    non-serializable field of type 'System.Net.WebClient'.
+    System.Runtime.Serialization.SerializationException: Cloud process of type 'int' uses non-serializable closure. 
+        ---> Nessos.FsPickler.NonSerializableTypeException: Type 'FSI_0020+it@230-7' contains non-serializable field of type 'System.Net.WebClient'.
 
 Since its closure has been rendered nonserializable due to its containing an instance of type `WebClient`.
 
