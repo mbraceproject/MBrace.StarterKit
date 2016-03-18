@@ -33,7 +33,7 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8.0)
       MathNet.Numerics (>= 2.4.0)
-    MBrace.Azure (1.1.21)
+    MBrace.Azure (1.1.25)
       Argu (>= 1.0.0 < 2.0.0)
       FsPickler (>= 1.8.0)
       FsPickler.Json (>= 1.8.0)
@@ -43,8 +43,8 @@ NUGET
       Vagabond (>= 0.12.7)
       WindowsAzure.ServiceBus (>= 2.5.2 < 2.6.0)
       WindowsAzure.Storage (>= 4.3.0 < 4.4.0)
-    MBrace.Azure.Management (1.1.21)
-      MBrace.Azure (>= 1.1.21)
+    MBrace.Azure.Management (1.1.25)
+      MBrace.Azure (>= 1.1.25)
       MBrace.Core (>= 1.0.18 < 1.1.0)
       MBrace.Runtime (>= 1.0.18 < 1.1.0)
       Microsoft.Bcl.Async (>= 1.0.0 < 2.0.0)
@@ -152,7 +152,7 @@ NUGET
       FSharp.Core (>= 3.1.2.5)
     System.Globalization (4.0.10) - framework: dnxcore50
       System.Runtime (>= 4.0.0) - framework: dnxcore50
-    System.IO (4.0.10)
+    System.IO (4.0.10) - framework: dnxcore50
       System.Globalization (>= 4.0.0) - framework: dnxcore50
       System.Runtime (>= 4.0.20) - framework: dnxcore50
       System.Text.Encoding (>= 4.0.0) - framework: dnxcore50
@@ -161,19 +161,19 @@ NUGET
       System.Threading (>= 4.0.0) - framework: dnxcore50
       System.Threading.Tasks (>= 4.0.0) - framework: dnxcore50
     System.Private.Uri (4.0.0) - framework: dnxcore50
-    System.Reflection (4.0.10)
+    System.Reflection (4.0.10) - framework: dnxcore50
       System.IO (>= 4.0.0) - framework: dnxcore50
       System.Reflection.Primitives (>= 4.0.0) - framework: dnxcore50
       System.Runtime (>= 4.0.20) - framework: dnxcore50
     System.Reflection.Primitives (4.0.0) - framework: dnxcore50
       System.Runtime (>= 4.0.0) - framework: dnxcore50
       System.Threading (>= 4.0.0) - framework: dnxcore50
-    System.Runtime (4.0.20)
+    System.Runtime (4.0.20) - framework: dnxcore50
       System.Private.Uri (>= 4.0.0) - framework: dnxcore50
     System.Runtime.Loader (4.0.0-beta-23516)
-      System.IO (>= 4.0.0)
-      System.Reflection (>= 4.0.0)
-      System.Runtime (>= 4.0.0)
+      System.IO (>= 4.0.0) - framework: dnxcore50
+      System.Reflection (>= 4.0.0) - framework: dnxcore50
+      System.Runtime (>= 4.0.0) - framework: dnxcore50
     System.Spatial (5.7.0) - framework: >= net40, winv4.5, wpv8.1, wpv8.0
     System.Text.Encoding (4.0.10) - framework: dnxcore50
       System.Runtime (>= 4.0.0) - framework: dnxcore50
