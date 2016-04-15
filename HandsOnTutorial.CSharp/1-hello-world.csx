@@ -1,5 +1,5 @@
-﻿#load "csharp-tutorial/ThespianCluster.csx"
-//#load "csharp-tutorial/AzureCluster.csx"
+﻿#load "ThespianCluster.csx"
+//#load "AzureCluster.csx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.csx to enter your connection strings.

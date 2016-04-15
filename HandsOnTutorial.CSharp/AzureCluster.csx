@@ -1,26 +1,26 @@
-﻿#r "../../packages/FSharp.Core/lib/net40/FSharp.Core.dll"
-#r "../../packages/System.Runtime.Loader/lib/DNXCore50/System.Runtime.Loader.dll"
-#r "../../packages/MBrace.Azure/tools/MBrace.Core.dll"
-#r "../../packages/MBrace.Azure/tools/MBrace.Runtime.dll"
-#r "../../packages/MBrace.Azure/tools/MBrace.Azure.dll"
-#r "../../packages/Streams/lib/net45/Streams.dll"
-#r "../../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
-#r "../../packages/MBrace.CSharp/lib/net45/MBrace.CSharp.dll"
+﻿#r "../packages/FSharp.Core/lib/net40/FSharp.Core.dll"
+#r "../packages/System.Runtime.Loader/lib/DNXCore50/System.Runtime.Loader.dll"
+#r "../packages/MBrace.Azure/tools/MBrace.Core.dll"
+#r "../packages/MBrace.Azure/tools/MBrace.Runtime.dll"
+#r "../packages/MBrace.Azure/tools/MBrace.Azure.dll"
+#r "../packages/Streams/lib/net45/Streams.dll"
+#r "../packages/MBrace.Flow/lib/net45/MBrace.Flow.dll"
+#r "../packages/MBrace.CSharp/lib/net45/MBrace.CSharp.dll"
 
-#r "../../packages/Hyak.Common/lib/net40/Hyak.Common.dll"
-#r "../../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.dll"
-#r "../../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.NetFramework.dll"
-#r "../../packages/Microsoft.WindowsAzure.Management/lib/net40/Microsoft.WindowsAzure.Management.dll"
-#r "../../packages/Microsoft.WindowsAzure.Management.Compute/lib/net40/Microsoft.WindowsAzure.Management.Compute.dll"
-#r "../../packages/Microsoft.WindowsAzure.Management.Storage/lib/net40/Microsoft.WindowsAzure.Management.Storage.dll"
-#r "../../packages/Microsoft.WindowsAzure.Management.ServiceBus/lib/net40/Microsoft.WindowsAzure.Management.ServiceBus.dll"
-#r "../../packages/MBrace.Azure.Management/lib/net45/MBrace.Azure.Management.dll"
+#r "../packages/Hyak.Common/lib/net40/Hyak.Common.dll"
+#r "../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.dll"
+#r "../packages/Microsoft.Azure.Common/lib/net40/Microsoft.Azure.Common.NetFramework.dll"
+#r "../packages/Microsoft.WindowsAzure.Management/lib/net40/Microsoft.WindowsAzure.Management.dll"
+#r "../packages/Microsoft.WindowsAzure.Management.Compute/lib/net40/Microsoft.WindowsAzure.Management.Compute.dll"
+#r "../packages/Microsoft.WindowsAzure.Management.Storage/lib/net40/Microsoft.WindowsAzure.Management.Storage.dll"
+#r "../packages/Microsoft.WindowsAzure.Management.ServiceBus/lib/net40/Microsoft.WindowsAzure.Management.ServiceBus.dll"
+#r "../packages/MBrace.Azure.Management/lib/net45/MBrace.Azure.Management.dll"
 #r "System.Net.dll"
 
 // getting mysterious runtime error when NetFramework.dll referenced without
 // Hyak.Common.dll co-existing in the same directory in C# interactive
 // reference a local copy of the assemblies to temporarily overcome the problem
-#r "../../lib/Microsoft.Azure.Common.NetFramework.dll" 
+#r "../lib/Microsoft.Azure.Common.NetFramework.dll" 
 
 using System;
 using System.IO;

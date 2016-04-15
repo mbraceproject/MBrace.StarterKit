@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{07DD2642-A
 		data\train.csv = data\train.csv
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOnTutorial.CSharp", "HandsOnTutorial.CSharp\HandsOnTutorial.CSharp.csproj", "{5EC724BB-2876-4E98-9C9F-2375586CCAFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF4661CC-A8B7-418F-A977-51A4B6CBC803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC724BB-2876-4E98-9C9F-2375586CCAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC724BB-2876-4E98-9C9F-2375586CCAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC724BB-2876-4E98-9C9F-2375586CCAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC724BB-2876-4E98-9C9F-2375586CCAFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

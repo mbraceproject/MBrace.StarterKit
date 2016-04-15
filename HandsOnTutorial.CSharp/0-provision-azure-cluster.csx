@@ -1,5 +1,5 @@
 ﻿/*** hide ***/
-#load "csharp-tutorial/AzureCluster.csx"
+#load "AzureCluster.csx"
 
 using MBrace.Azure;
 using MBrace.Azure.Management;
@@ -30,7 +30,7 @@ Once done, we can reload the script.
 
 */
 
-#load "csharp-tutorial/AzureCluster.csx"
+#load "AzureCluster.csx"
 
 /**
 
