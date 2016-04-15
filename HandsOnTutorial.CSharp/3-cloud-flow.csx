@@ -107,8 +107,8 @@ public housing market trend data which is encoded in CSV files:
 */
 
 var urls = new string[] {
-    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2014.csv",
-    "http://publicdata.landregistry.gov.uk/market-trend-data/price-paid-data/a/pp-2015.csv" };
+    "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2014.csv",
+    "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2015.csv" };
 
 /**
 
