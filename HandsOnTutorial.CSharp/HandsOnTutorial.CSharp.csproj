@@ -45,7 +45,7 @@
     <None Include="2-cloud-parallel.csx" />
     <None Include="3-cloud-flow.csx" />
     <None Include="AzureCluster.csx" />
-    <None Include="InteractiveHost.exe.config" />
+    <None Include="config\InteractiveHost.exe.config" />
     <None Include="ThespianCluster.csx" />
   </ItemGroup>
   <ItemGroup>
