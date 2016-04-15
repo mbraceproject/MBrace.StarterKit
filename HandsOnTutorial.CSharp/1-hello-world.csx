@@ -1,5 +1,5 @@
-﻿#load "ThespianCluster.csx"
-//#load "AzureCluster.csx"
+﻿#load "config/ThespianCluster.csx"
+//#load "config/AzureCluster.csx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.csx to enter your connection strings.
@@ -11,7 +11,7 @@
 //
 //   explorer.exe /select, %programfiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE\PrivateAssemblies\InteractiveHost.exe
 //
-// Find the file "InteractiveHost.exe.config" that is bundled in the C# tutorial folder and place it next to InteractiveHost.exe.
+// Find the file "config/InteractiveHost.exe.config" that is bundled in the C# tutorial folder and place it next to InteractiveHost.exe.
 // Now, reset your C# Interactive session. You are now ready to start using your C# REPL.
 
 using System;
