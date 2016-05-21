@@ -1,6 +1,7 @@
 ﻿(*** hide ***)
 #load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
+//#load "../AwsCluster.fsx"
 
 #load "../lib/utils.fsx"
 #load "../../packages/FSharp.Charting/FSharp.Charting.fsx"

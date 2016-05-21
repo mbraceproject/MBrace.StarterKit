@@ -1,6 +1,8 @@
 ﻿(*** hide ***)
 #load "../ThespianCluster.fsx"
 //#load "../AzureCluster.fsx"
+//#load "../AwsCluster.fsx"
+
 #r "System.Runtime.Serialization.dll"
 
 open System
