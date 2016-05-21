@@ -44,6 +44,7 @@
     <None Include="1-hello-world.csx" />
     <None Include="2-cloud-parallel.csx" />
     <None Include="3-cloud-flow.csx" />
+    <None Include="config\AwsCluster.csx" />
     <None Include="config\AzureCluster.csx" />
     <None Include="config\InteractiveHost.exe.config" />
     <None Include="config\ThespianCluster.csx" />

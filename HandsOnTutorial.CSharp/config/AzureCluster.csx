@@ -1,5 +1,5 @@
 ﻿#r "../../packages/FSharp.Core/lib/net40/FSharp.Core.dll"
-#r "../../packages/System.Runtime.Loader/lib/DNXCore50/System.Runtime.Loader.dll"
+#r "../../packages/System.Runtime.Loader/lib/netstandard1.5/System.Runtime.Loader.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Core.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Runtime.dll"
 #r "../../packages/MBrace.Azure/tools/MBrace.Azure.dll"

@@ -1,5 +1,6 @@
 ﻿#load "config/ThespianCluster.csx"
 //#load "config/AzureCluster.csx"
+//#load "config/AwsCluster.csx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.csx to enter your connection strings.
@@ -93,7 +94,7 @@ var persistedCloudFlow =
 
 persistedCloudFlow.ShowInfo();
 
-var length = persistedCloudFlow.Count;
+var length = persistedCloudFlow.ElementCount;
 var max = cluster.Run(persistedCloudFlow.MaxBy((Tuple<int, string> t) => t.Item1));
 
 /**

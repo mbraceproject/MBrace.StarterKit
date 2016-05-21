@@ -1,5 +1,6 @@
 ﻿#load "config/ThespianCluster.csx"
 //#load "config/AzureCluster.csx"
+//#load "config/AwsCluster.csx"
 
 // Note: Before running, choose your cluster version at the top of this script.
 // If necessary, edit AzureCluster.csx to enter your connection strings.
