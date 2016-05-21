@@ -20,3 +20,8 @@ hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
 See also [azure/README.md](azure/README.md)
 
 * [Azure Cluster (provisioned as a Custom Cloud Service)](azure/CustomCloudService/MBrace.Azure.CloudService.sln) for provisioning MBrace clusters using Visual Studio (Azure SDK 2.7 required.)
+
+
+### AWS Cluster templates
+
+See also [aws/README.md](aws/README.md)
