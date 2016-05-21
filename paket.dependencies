@@ -26,4 +26,8 @@ nuget XPlot.GoogleCharts ~> 1.2
 nuget XPlot.GoogleCharts.WPF
 nuget RProvider
 
+nuget Owin version_in_path: true
+nuget Microsoft.Owin version_in_path: true
+nuget Microsoft.Owin.Host.SystemWeb
+
 github fslaborg/FSharp.Charting docs/content/EventEx-0.1.fsx
