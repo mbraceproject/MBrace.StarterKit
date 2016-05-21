@@ -16,7 +16,7 @@ and fill out the following fields:
 * `AccessKey` and `SecretKey`: Credentials key pair corresponding to your user.
 User must have full access to S3, DynamoDB and SQS. 
 
-The above information uniquely identifies yours cluster,
+The above information uniquely identifies your cluster,
 so make sure that all workers/clients are providing the same configuration.
 
 ### Testing the web worker
