@@ -317,7 +317,7 @@ Next you put the names into a set, converting them to lower case as you go:
 
 let monopolyStreets = 
         [ for p in data do 
-             let streetName = p.Column1.ToLower()
+             let streetName = p.Property.ToLower()
              // Strip off the header 
              if streetName <> "Property" then 
                  yield streetName
