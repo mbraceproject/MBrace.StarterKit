@@ -16,7 +16,7 @@ namespace MBrace.AWS.WebWorker
         {
             var hostname = $"webWorker-{Environment.MachineName}";
             var creds = new MBraceAWSCredentials(Config.AccessKey, Config.SecretKey);
-            var config = new Configuration(Config.Region, creds);
+            var config = MBrace.AWS.Configuration.Define(Config.Region, creds);
             var service = new WorkerService(config, hostname);
 
             service.Start();

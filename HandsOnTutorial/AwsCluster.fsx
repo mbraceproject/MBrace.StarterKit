@@ -20,7 +20,8 @@ module Config =
     /// AWS Credential source identifier for the client session
     type CredentialSource =
         | CredentialStore of profileName:string
-        | ProvidedKey of accessKey:string * secretKey:string 
+        | ProvidedKey of accessKey:string * secretKey:string
+        | FromEnvironmentVariables // $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY
 
     // Fill out 
 
@@ -42,10 +43,11 @@ module Config =
     let GetConfiguration() = 
         let credentials =
             match credentialSource with
-            | CredentialStore pf -> Amazon.Util.ProfileManager.GetAWSCredentials pf
-            | ProvidedKey(ak,sk) -> new MBraceAWSCredentials(ak, sk) :> _
+            | FromEnvironmentVariables -> MBraceAWSCredentials.FromEnvironmentVariables()
+            | CredentialStore pf -> MBraceAWSCredentials.FromCredentialsStore(pf)
+            | ProvidedKey(ak,sk) -> new MBraceAWSCredentials(ak, sk)
 
-        new Configuration(region, credentials, ?resourcePrefix = resourcePrefix)
+        Configuration.Define(region, credentials, ?resourcePrefix = resourcePrefix)
 
     /// Initializes an MBrace.AWS client instance which connects to cluster with given configuration
     let GetCluster() = AWSCluster.Connect(GetConfiguration(), logger = ConsoleLogger(), logLevel = LogLevel.Info)

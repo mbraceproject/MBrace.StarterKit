@@ -71,7 +71,7 @@ public class Config
         else throw new ArgumentException("No ProfileName or AccessKey has been specified by the user!");
 
         var prefix = (ResourcePrefix != null) ? ResourcePrefix.ToOption() : Option.None<string>();
-        return new Configuration(Region, credentials, prefix);
+        return Configuration.Define(Region, credentials, prefix);
     }
 
     /// <summary>
