@@ -46,7 +46,7 @@ NUGET
       MathNet.Numerics (3.7.1)
     MathNet.Numerics.MKL.Win-x64 (1.8)
       MathNet.Numerics (>= 2.4)
-    MBrace.AWS (0.1.0-alpha)
+    MBrace.AWS (0.1.1-alpha)
       Argu (>= 2.0 < 3.0)
       AWSSDK.DynamoDBv2 (>= 3.0 < 4.0)
       AWSSDK.S3 (>= 3.0 < 4.0)
