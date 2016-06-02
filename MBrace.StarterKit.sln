@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".project", ".project", "{73
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HandsOnTutorial.FSharp", "HandsOnTutorial\HandsOnTutorial.FSharp.fsproj", "{DF4661CC-A8B7-418F-A977-51A4B6CBC803}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HandsOnTutorial.FSharp", "HandsOnTutorial.FSharp\HandsOnTutorial.FSharp.fsproj", "{DF4661CC-A8B7-418F-A977-51A4B6CBC803}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{ABC597C9-AEA0-495B-A333-65C442226212}"
 	ProjectSection(SolutionItems) = preProject
