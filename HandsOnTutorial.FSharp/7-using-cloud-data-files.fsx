@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-#load "ThespianCluster.fsx"
-//#load "AzureCluster.fsx"
+//#load "ThespianCluster.fsx"
+#load "AzureCluster.fsx"
 //#load "AwsCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -109,7 +109,7 @@ let localTmpFile =
 
 (** Next, you upload the created file to the tmp container in cloud storage. The tmp container
 will be created if it does not exist.  *)
-let cloudFile = fs.File.Upload(localTmpFile, sprintf "tmp/%s" (Path.GetFileName localTmpFile))     
+let cloudFile = fs.File.Upload(localTmpFile, sprintf "%s/tmp/%s" root (Path.GetFileName localTmpFile))     
 
 (** After uploading the file, you remove the local file. *)
 File.Delete localTmpFile
