@@ -1,6 +1,6 @@
 ﻿(*** hide ***)
-//#load "ThespianCluster.fsx"
-#load "AzureCluster.fsx"
+#load "ThespianCluster.fsx"
+//#load "AzureCluster.fsx"
 //#load "AwsCluster.fsx"
 
 // Note: Before running, choose your cluster version at the top of this script.
@@ -95,7 +95,7 @@ rmdirRec (root ++ "data")
 The Unix-like abbreviations from the previous section are for use from your client scripts.
 You can also use the MBrace cloud file API directly from cloud workflows.
 
-First, crete a local temp file. 
+First, create a local temp file. 
 *)
 let localTmpFile = 
     let path = Path.GetTempFileName()
