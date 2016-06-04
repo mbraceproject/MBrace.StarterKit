@@ -95,7 +95,7 @@ rmdirRec (root ++ "data")
 The Unix-like abbreviations from the previous section are for use from your client scripts.
 You can also use the MBrace cloud file API directly from cloud workflows.
 
-First, crete a local temp file. 
+First, create a local temp file. 
 *)
 let localTmpFile = 
     let path = Path.GetTempFileName()
@@ -109,7 +109,7 @@ let localTmpFile =
 
 (** Next, you upload the created file to the tmp container in cloud storage. The tmp container
 will be created if it does not exist.  *)
-let cloudFile = fs.File.Upload(localTmpFile, sprintf "tmp/%s" (Path.GetFileName localTmpFile))     
+let cloudFile = fs.File.Upload(localTmpFile, sprintf "%s/tmp/%s" root (Path.GetFileName localTmpFile))     
 
 (** After uploading the file, you remove the local file. *)
 File.Delete localTmpFile
