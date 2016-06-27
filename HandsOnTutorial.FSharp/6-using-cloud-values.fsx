@@ -37,9 +37,9 @@ Note you can alternatively use any existing cloud storage
 APIs or SDKs you already have access to. 
  
 If using Azure, you can copy larger data to Azure using the AzCopy.exe command line tool, see
-https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/.
+[Transfer data with the AzCopy Command-Line Utility](https://azure.microsoft.com/en-us/documentation/articles/storage-use-azcopy/).
 You can manage storage using the "azure" command line tool, see
-https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
+[Install the Azure CLI](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/)
 Also, if you wish you  can read/write using the .NET Azure storage SDKs directly rather than 
 using MBrace primitives.
 
