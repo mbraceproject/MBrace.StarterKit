@@ -40,8 +40,8 @@ You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 1. Make any appropriate changes to your Worker role implementation.
 2. Set the desired VM size by double clicking the `Roles/MBrace.Azure.WorkerRole` item in the cloud service project.
 3. Right click the `MBrace.Azure.CloudService` project and hit `Package..`. This will create a new cspkg in your local bin folder.
-4. Open `HandsOnTutorial.sln` in the StarterKit and find [`AzureCluster.fsx`](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/HandsOnTutorial/AzureCluster.fsx). Follow the instructions and be sure to set the `useCustomCloudService` binding to `true`. Save any changes to `AzureCluster.fsx`.
-5. Open [0-provision-azure-cluster.fsx](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/HandsOnTutorial/0-provision-azure-cluster.fsx). Follow the instructions and provision your custom cloud service.
+4. Open `HandsOnTutorial.sln` in the StarterKit and find [`AzureCluster.fsx`](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/HandsOnTutorial.FSharp/AzureCluster.fsx). Follow the instructions and be sure to set the `useCustomCloudService` binding to `true`. Save any changes to `AzureCluster.fsx`.
+5. Open [0-provision-azure-cluster.fsx](https://github.com/mbraceproject/MBrace.StarterKit/blob/master/HandsOnTutorial.FSharp/0-provision-azure-cluster.fsx). Follow the instructions and provision your custom cloud service.
 6. Run any of the supplied samples and tutorials.
    with the script-based deployment process above:
 
@@ -49,5 +49,5 @@ You will need the [Azure SDK 2.7](http://azure.microsoft.com/en-us/downloads/).
 
 Alternatively, you can provision and deploy from Visual Studio. Right click and Publish the `MBrace.Azure.CloudService` project. During publication, choose a new name for your cloud service. After your service is published it should appear as a cloud service in the [Azure management portal](https://manage.windowsazure.com/).
 
-If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial/AzureCluster.fsx#L24) and connect 
-to your runtime (see [hello-world.fsx](../HandsOnTutorial/1-hello-world.fsx) for an example).
+If using the hands-on tutorials, insert the same connection trings in [MBraceCluster.fsx](../HandsOnTutorial.FSharp/AzureCluster.fsx#L24) and connect 
+to your runtime (see [hello-world.fsx](../HandsOnTutorial.FSharp/1-hello-world.fsx) for an example).
