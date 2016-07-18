@@ -7,8 +7,8 @@ nuget MBrace.Core
 nuget MBrace.Flow
 nuget MBrace.Thespian
 nuget MBrace.Runtime
-nuget MBrace.Azure 1.3.0
-nuget MBrace.Azure.Management 1.3.0
+nuget MBrace.Azure ~> 1.4.0
+nuget MBrace.Azure.Management ~> 1.4.0
 nuget MBrace.AWS prerelease
 nuget MBrace.CSharp
 nuget Streams
