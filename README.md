@@ -8,8 +8,8 @@ A collection of templates, demos and tutorials for [MBrace](http://mbrace.io/).
 
 ### Hands On Tutorials
 
-The directory [HandsOnTutorial](HandsOnTutorial) contains a set of scripted 
-hands-on tutorials showing how to use an MBrace cluster from F# Interactive.
+The directory [HandsOnTutorial.FSharp](HandsOnTutorial.FSharp) contains a set of scripted 
+hands-on tutorials showing how to use an MBrace cluster from F# Interactive (See [HandsOnTutorial.CSharp](HandsOnTutorial.CSharp) for C# examples). 
 
 1. Provision your cluster, see [mbrace.io](http://mbrace.io/#try).
 2. Open and build the solution ``MBrace.StarterKit.sln`` before working with the scripts
