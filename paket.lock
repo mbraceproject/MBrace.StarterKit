@@ -14,7 +14,7 @@ NUGET
       AWSSDK.Core (>= 3.3.18 < 3.4)
     AWSSDK.S3 (3.3.11.2)
       AWSSDK.Core (>= 3.3.18 < 3.4)
-    AWSSDK.SQS (3.3.2.9)
+    AWSSDK.SQS (3.3.3)
       AWSSDK.Core (>= 3.3.18 < 3.4)
     DynamicInterop (0.7.4)
     FSharp.AWS.DynamoDB (0.7.0-beta)
@@ -50,7 +50,7 @@ NUGET
       FSharp.AWS.DynamoDB (>= 0.7.0-beta)
       MBrace.Core (>= 1.5 < 1.6)
       MBrace.Runtime
-    MBrace.Azure (1.5)
+    MBrace.Azure (1.5.1)
       Argu (>= 3.2 < 4.0)
       FsPickler (>= 4.0 < 5.0)
       MBrace.Core (>= 1.5 < 1.6)
@@ -58,8 +58,8 @@ NUGET
       System.Reflection.Metadata
       WindowsAzure.ServiceBus (>= 3.0 < 4.0)
       WindowsAzure.Storage (>= 7.0 < 8.0)
-    MBrace.Azure.Management (1.5)
-      MBrace.Azure (>= 1.5)
+    MBrace.Azure.Management (1.5.1)
+      MBrace.Azure (>= 1.5.1)
       MBrace.Core (>= 1.5 < 1.6)
       MBrace.Runtime (>= 1.5 < 1.6)
       Microsoft.Bcl.Async (>= 1.0 < 2.0)
