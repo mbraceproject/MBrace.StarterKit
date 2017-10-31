@@ -7,8 +7,8 @@ nuget MBrace.Flow ~> 1.5.2
 nuget MBrace.CSharp ~> 1.5.2 prerelease
 nuget MBrace.Thespian ~> 1.5.2
 nuget MBrace.Runtime ~> 1.5.2
-nuget MBrace.Azure ~> 1.5.1
-nuget MBrace.Azure.Management ~> 1.5.1
+nuget MBrace.Azure ~> 1.5.5
+nuget MBrace.Azure.Management ~> 1.5.5
 nuget MBrace.AWS 0.1.10-alpha
 nuget Streams
 nuget Suave ~> 1.1.3
